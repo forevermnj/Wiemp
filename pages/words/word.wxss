@@ -1,0 +1,38 @@
+/**word.wxss**/
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.startword{
+  background-color: #6495ED;
+  color: white;
+  width: 300px;
+}
+
+.tip{
+  margin-left: 0px;
+}
+
+.voice{
+  margin-right: 0px;
+  margin-left: 200px;
+}
+
+.bcs{
+  margin-top: 250px;
+}
+
+.tz{
+   font-size: 50px;
+}
+
+.vo{
+  color:white;
+  background-color: #6495ED;
+}
+
+.ti{
+  color:white;
+  background-color: #6495ED;
+}

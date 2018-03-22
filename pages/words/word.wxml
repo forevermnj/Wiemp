@@ -1,0 +1,13 @@
+<view class="container">
+   <text class="tz">{{motto}}</text>
+
+   <!--底层按钮-->
+   <view class="bcs" style="display:flex;">
+     <view class="tip">
+      <button hover-class='ti'>提示</button>
+     </view>
+     <view class="voice">
+      <button bindtap='speech' hover-class="vo">语音</button>
+     </view>
+   </view>
+</view>
