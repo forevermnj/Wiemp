@@ -55,7 +55,7 @@ Page({
   //开始背单词吧
   startword: function(e){
     wx.request({
-      url: 'https://aisss5ct.qcloud.la/learn/user/query',
+      url: 'https://192.168.1.11/learn/user/query',
       method:'GET',
       success: function (res) {
         console.log(res.data.data[0].username);
