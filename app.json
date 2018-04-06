@@ -1,13 +1,14 @@
 {
   "pages":[
+    "pages/words/word",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/words/word"
+    "pages/logs/logs"
+    
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor":"white",
-    "navigationBarTitleText": "百词斩",
+    "navigationBarTitleText": "英语小程序",
     "navigationBarTextStyle":"black"
   }
 }

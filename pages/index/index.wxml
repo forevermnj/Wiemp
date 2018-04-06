@@ -1,13 +1,20 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <view class="style7">
+   <view style="display:flex;">
+     <view class="style1">
+       <image style='width:20px;height:20px'        src='../image/index/1.png'></image>
+     </view>
+     <view>
+       <text class='style2'>
+      <image style='width:20px;height:20px'    src='../image/index/1.png'></image>30天英语打卡</text>
+     </view>
+   </view>
+   <text class='style3'>专业银行英语学习平台</text>
   </view>
-  <view class="usermotto">
-    <button class="startword" bindtap="startword">开始背单词吧</button>
+  
+  <view class="style4">
+    <button class="style5" bindtap="startword">微信登录</button>
   </view>
+  <text class='style6'>注册</text>
 </view>

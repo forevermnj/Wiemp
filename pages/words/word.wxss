@@ -1,38 +1,28 @@
 /**word.wxss**/
-
-.usermotto {
-  margin-top: 200px;
-}
-
-.startword{
-  background-color: #6495ED;
-  color: white;
-  width: 300px;
-}
-
-.tip{
-  margin-left: 0px;
-}
-
-.voice{
-  margin-right: 0px;
-  margin-left: 200px;
-}
-
-.bcs{
-  margin-top: 250px;
-}
-
-.tz{
+.style1{
    font-size: 50px;
 }
 
-.vo{
+.style2{
+  margin-top: 10px;
+}
+
+.style3{
+  margin-left: 0px;
+}
+
+.style4{
   color:white;
   background-color: #6495ED;
 }
 
-.ti{
+.style5{
+  margin-right: 0px;
+  margin-left: 108px;
+}
+
+.style6{
   color:white;
   background-color: #6495ED;
 }
+
