@@ -7,44 +7,6 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    //登录
-    wx.login({
-      success: res => {
-        //发送 res.code 到后台换取 openId, sessionKey, unionId
-        if (res.code) {
-          //调用获取用户信息接口
-          wx.getUserInfo({
-            success: function (resu) {
-              //console.log({ encryptedData: resu.encryptedData, iv: resu.iv,                   code: res.code })
-              //解密用户信息
-              wx.request({
-                url: 'https://aisss5ct.qcloud.la/learn/user/login/login',
-                method: 'POST',
-                header: {
-                  "Content-Type": "application/json"
-                },
-                data: {
-                  code: res.code,
-                  encrypteData: resu.encryptedData,
-                  iv: resu.iv
-                },
-                success: function (res) {
-                  console.log(res)
-                }
-              })
-            },
-            fail: function () {
-              console.log('获取用户信息失败')
-            }
-          })
-
-
-          
-        } else {
-          console.log('获取用户登录态失败！' + res.errMsg)
-        }
-      }
-    })
     // 获取用户信息
     wx.getSetting({
       success: res => {

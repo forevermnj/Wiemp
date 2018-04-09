@@ -14,7 +14,7 @@
   </view>
   
   <view class="style4">
-    <button class="style5" bindtap="startword">微信登录</button>
+    <button class="style5" bindtap="webchatLogin">微信登录</button>
   </view>
   <text class='style6'>注册</text>
 </view>

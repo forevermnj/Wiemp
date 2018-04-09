@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/words/word",
     "pages/index/index",
+    "pages/page_001/page_001",
     "pages/logs/logs"
     
   ],
