@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="style7">
+  <view class="style4">
    <view style="display:flex;">
      <view class="style1">
        <image style='width:20px;height:20px'        src='../image/index/1.png'></image>
@@ -13,8 +13,4 @@
    <text class='style3'>专业银行英语学习平台</text>
   </view>
   
-  <view class="style4">
-    <button class="style5" bindtap="webchatLogin">微信登录</button>
-  </view>
-  <text class='style6'>注册</text>
 </view>
