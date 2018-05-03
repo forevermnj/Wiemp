@@ -1,18 +1,33 @@
-<!--绑定手指滑动事件-->
-<view bindtouchstart='slidStart' bindtouchmove='slidAfter' bindtouchend='slidEnd'  class="container">
+<!--首页-->
+<view class="mainpagetop">
+  <!--完成单词-->
+  <view id='topmargin'>
+    <text>已完成单词</text>
+  </view>
+  <view>
+    <text class="style3">{{words_account}}</text>
+    <text>个</text>
+  </view>
+  <view>
+    <button class="button1">开始背单词吧</button>
+  </view>
+  <view wx:if="{{task == 'done'}}">
+    <text class="style1">您今天已完成打卡</text> </view>
+  <view wx:else="{{task == 'not_yet'}}">
+    <text class="style1">您今天未完成打卡</text> </view>
+</view>
 
-   <!--显示单词-->
-   <view>
-     <text class="style1">{{word}}</text>
-   </view>
-   
-   <!--底层按钮-->
-   <view class="style2" style="display:flex;">
-     <view class="style3">
-      <button hover-class='style4'>提示</button>
-     </view>
-     <view class="style5">
-      <button bindtap='speech' hover-class="style6">语音</button>
-     </view> 
-   </view>
+<view>
+<!--常用链接1-->
+  <view class='link1' id='wronglist' bindtap='linkto'>
+    <image class='image1' src='../image/page_001/2.png'></image>
+    <text>易错单词</text>
+    <text class='arrow'>></text>
+  </view>
+  <!--常用链接2-->
+  <view class='link1' id='learncalender' bindtap='linkto'>
+    <image class='image1' src='../image/page_001/3.png'></image>
+    <text>学习日历</text>
+    <text class='arrow'>></text>
+  </view>
 </view>
