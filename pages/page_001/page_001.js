@@ -1,35 +1,81 @@
-//page_001.js
+// pages/page_001/page_001.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    word: 'Good'
+    words_account: '280',
+    task: 'done' //done, not_yet
   },
-  onLoad:function(){
-    
+
+  linkto: function (event) {
+    if (event.target.id == "wronglist") {
+      wx.navigateTo({
+        url: '../page_101/page_101'
+      })
+    }
+    else if (event.target.id == "learncalender") {
+      wx.navigateTo({
+        url: '../page_101/page_101'
+      })
+    }
+
   },
-  //单词发声
-  speech:function(){
-    wx.request({
-      url: 'https://aisss5ct.qcloud.la/Emp/mobile/word/pronunciation/'+this.data.word,
-      method: 'GET',
-      success: function (res) {
-        //console.log(res.data);
-        const backgroundAudioManager = wx.getBackgroundAudioManager()
-        backgroundAudioManager.src = res.data //设置了src之后会自动播放 
-      }
-    })
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
   },
-  //手指滑动开始
-  slidStart:function(){
-    
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
   },
-  //手指滑动后
-  slidAfter:function(){
-    this.setData({
-      word: 'Sun'
-    })
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
   },
-  //手指滑动结束
-  slidEnd:function(){
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
 
   }
 })

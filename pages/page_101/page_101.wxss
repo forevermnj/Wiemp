@@ -1,0 +1,28 @@
+/**word.wxss**/
+.style1{
+   font-size: 50px;
+}
+
+.style2{
+  margin-top: 190px;
+}
+
+.style3{
+  margin-left: 0px;
+}
+
+.style4{
+  color:white;
+  background-color: #6495ED;
+}
+
+.style5{
+  margin-right: 0px;
+  margin-left: 108px;
+}
+
+.style6{
+  color:white;
+  background-color: #6495ED;
+}
+
