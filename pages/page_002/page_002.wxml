@@ -1,0 +1,18 @@
+<!--pages/page_002/page_002.wxml-->
+<view>
+  <view class='main'>
+    <view>
+      <view class='englishword'>
+        <text>{{wordlist[index]}}</text>
+      </view>
+    </view>
+    <view>
+      <view class='message'>
+        <text>点击显示释义</text>
+      </view>
+    </view>
+  </view>
+  <view class='footer'>
+    <text>{{index}}/{{totalaccount}}</text>
+  </view>
+</view>

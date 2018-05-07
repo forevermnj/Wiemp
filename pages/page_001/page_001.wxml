@@ -9,7 +9,7 @@
     <text>个</text>
   </view>
   <view>
-    <button class="button1">开始背单词吧</button>
+    <button class="button1" bindtap='exercise'>开始背单词吧</button>
   </view>
   <view wx:if="{{task == 'done'}}">
     <text class="style1">您今天已完成打卡</text> </view>

@@ -1,15 +1,15 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/page_001/page_001",
+    "pages/page_002/page_002",
     "pages/page_101/page_101",
     "pages/logs/logs"
-    
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor":"white",
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "white",
     "navigationBarTitleText": "英语小程序",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }
