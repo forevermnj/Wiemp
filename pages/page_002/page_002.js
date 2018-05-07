@@ -1,32 +1,13 @@
-// pages/page_001/page_001.js
+// pages/page_002/page_002.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    words_account: '280',
-    task: 'done' //done, not_yet
-  },
-
-  exercise: function (event) {
-    wx.navigateTo({
-      url: '../page_002/page_002'
-    })
-  },
-
-  linkto: function (event) {
-    if (event.target.id == "wronglist") {
-      wx.navigateTo({
-        url: '../page_101/page_101'
-      })
-    }
-    else if (event.target.id == "learncalender") {
-      wx.navigateTo({
-        url: '../page_101/page_101'
-      })
-    }
-
+    wordlist: ["Financial", "daily", "exercise", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    totalaccount: 20,
+    index: 1
   },
 
   /**
