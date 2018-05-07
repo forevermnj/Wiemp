@@ -26,13 +26,19 @@ Page({
         url: '../page_101/page_101'
       })
     }
-
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //set local storage when user first time access app of one day. 
+    //The checking is not implemented yet.
+
+    wx.setStorage({
+      key: "finishedaccount",
+      data: "250" //the number should get from backend
+    });
 
   },
 
@@ -40,7 +46,16 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    //get word account from local storage if user access the app at same day
+    var that = this;
+    wx.getStorage({
+      key: 'finishedaccount',
+      success: function (res) {
+        that.setData({
+          words_account: res.data
+        })
+      }
+    });
   },
 
   /**
