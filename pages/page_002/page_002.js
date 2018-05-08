@@ -7,7 +7,49 @@ Page({
   data: {
     wordlist: ["Financial", "daily", "exercise", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
     totalaccount: 20,
-    index: 1
+    wordindex: 0,
+    startx: 0
+  },
+
+  //手指滑动开始
+  mytouchstart: function (event) {
+    this.setData({
+      startx: event.touches[0].pageX
+    });
+  },
+
+  //手指滑动
+  mytouchmove: function (event) {
+  },
+
+  //手指滑动开始
+  mytouchend: function (event) {
+    var distancex = event.changedTouches[0].pageX - this.data.startx;
+    var i = this.data.wordindex;
+
+    if (distancex < 0) {//move forward
+      if (i >= this.data.wordlist.length - 1) {
+        console.log();
+        this.setData({
+          wordindex: 0
+        })
+      } else {
+        this.setData({
+          wordindex: this.data.wordindex + 1
+        })
+      }
+
+    } else { // move back
+      if (i <= 0) {
+        this.setData({
+          wordindex: this.data.wordlist.length - 1
+        })
+      } else {
+        this.setData({
+          wordindex: this.data.wordindex - 1
+        })
+      }
+    }
   },
 
   /**

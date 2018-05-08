@@ -1,9 +1,9 @@
 <!--pages/page_002/page_002.wxml-->
-<view>
+<view catchtouchstart='mytouchstart' catchtouchmove='mytouchmove' catchtouchend='mytouchend'>
   <view class='main'>
     <view>
       <view class='englishword'>
-        <text>{{wordlist[index]}}</text>
+        <text>{{wordlist[wordindex]}}</text>
       </view>
     </view>
     <view>
@@ -13,6 +13,6 @@
     </view>
   </view>
   <view class='footer'>
-    <text>{{index}}/{{totalaccount}}</text>
+    <text>{{wordindex+1}}/{{totalaccount}}</text>
   </view>
 </view>
