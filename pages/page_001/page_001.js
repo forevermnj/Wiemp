@@ -32,30 +32,46 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //set local storage when user first time access app of one day. 
-    //The checking is not implemented yet.
-
+    //set local storage when user finished their exercise. 
+    //The set process put here temporarily, should move to right place then. 
     wx.setStorage({
       key: "finishedaccount",
-      data: "250" //the number should get from backend
+      data: "250" //250 is a example, it should get from backend
     });
+    wx.setStorage({
+      key: 'finishedaccountdate',
+      data: (new Date()).toDateString()
+    })
 
+    //get word account from local storage if user accessed the app at same day
+    var refer = this;
+    wx.getStorage({
+      key: 'finishedaccountdate',
+      success: function(res) {
+        if (res.data == (new Date()).toDateString()) {//if user accessed the app at same day 
+          wx.getStorage({
+            key: 'finishedaccount',
+            success: function (res) {
+              refer.setData({
+                words_account: res.data
+              })
+            }
+          });
+        }else{
+          //get the word number from BE api
+          refer.setData({
+            words_account: 'numberfromBE'//it is a example, it should get from backend
+          })
+        }
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    //get word account from local storage if user access the app at same day
-    var that = this;
-    wx.getStorage({
-      key: 'finishedaccount',
-      success: function (res) {
-        that.setData({
-          words_account: res.data
-        })
-      }
-    });
+
   },
 
   /**
