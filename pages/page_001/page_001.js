@@ -15,17 +15,16 @@ Page({
     })
   },
 
-  linkto: function (event) {
-    if (event.target.id == "wronglist") {
-      wx.navigateTo({
-        url: '../page_101/page_101'
-      })
-    }
-    else if (event.target.id == "learncalender") {
-      wx.navigateTo({
-        url: '../page_101/page_101'
-      })
-    }
+  linktowordlist: function (event) {
+    wx.navigateTo({
+      url: '../page_003/page_003'
+    })
+  },
+
+  linktocalendar: function (event) {
+    wx.navigateTo({
+      url: '../page_004/page_004'
+    })
   },
 
   /**
@@ -47,7 +46,7 @@ Page({
     var refer = this;
     wx.getStorage({
       key: 'finishedaccountdate',
-      success: function(res) {
+      success: function (res) {
         if (res.data == (new Date()).toDateString()) {//if user accessed the app at same day 
           wx.getStorage({
             key: 'finishedaccount',
@@ -57,7 +56,7 @@ Page({
               })
             }
           });
-        }else{
+        } else {
           //get the word number from BE api
           refer.setData({
             words_account: 'numberfromBE'//it is a example, it should get from backend
