@@ -1,0 +1,22 @@
+<!--pages/page_003/page_003.wxml-->
+<view>
+  <view class='topstyle'>
+    <view class='accountstyle'>
+      <text>单词总数:{{wordlist.length}}</text>
+    </view>
+    <view class='buttonalign'>
+      <button class="button1" bindtap='changeorder'>{{buttonname}}</button>
+    </view>
+  </view>
+
+  <scroll-view scroll-y>
+    <view wx:for="{{wordlist}}" wx:key="unique" class="style1">
+      <view>
+        <text>{{item.word}}</text>
+        <text class="distanceofword">/{{item.pronunc}}/</text>
+      </view>
+      <view>{{item.trans}}</view>
+    </view>
+  </scroll-view>
+
+</view>

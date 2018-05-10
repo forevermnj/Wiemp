@@ -1,0 +1,45 @@
+/* pages/page_003/page_003.wxss */
+
+.topstyle {
+  width: 100%;
+  
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid lightgray;
+  background-color: rgb(227, 248, 235);
+  display: flex;
+  flex-direction: row;
+}
+
+.accountstyle {
+  font-size: 16px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+}
+
+.buttonalign {
+  position: absolute;
+  right: 10px;
+}
+
+.button1 {
+  font-size: 14px;
+  border-color: darkgreen;
+  background-color: transparent;
+}
+
+.scrollstyle{
+  height: 91%;
+}
+
+.style1 {
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid lightgray;
+}
+
+.distanceofword {
+  padding-left: 20px;
+}
