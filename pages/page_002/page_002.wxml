@@ -1,18 +1,37 @@
 <!--pages/page_002/page_002.wxml-->
-<view>
-  <view class='main'>
+<view bindtouchstart='mytouchstart' bindtouchmove='mytouchmove' bindtouchend='mytouchend'>
+  <scroll-view class='main' scroll-y="true">
     <view>
       <view class='englishword'>
-        <text>{{wordlist[index]}}</text>
+        <text>{{wordlist[wordindex]}}</text>
       </view>
     </view>
     <view>
-      <view class='message'>
-        <text>点击显示释义</text>
-      </view>
+
+      <block wx:if="{{pagestyle=='simple'}}">
+        <view class='simplestyle' bindtap='todetail'>
+          <text>点击显示释义</text>
+        </view>
+      </block>
+      <block wx:if="{{pagestyle=='complex'}}">
+        <view class="detailcontent">
+          <view class='simplestyle' bindtap='tosimplestyle'>
+            <text>精简模式</text>
+          </view>
+          <view>
+            英{{wordlistdetail[wordindex].pronounce[0]}}
+            <image class='image1' src='../image/page_002/1.png'></image>
+            美{{wordlistdetail[wordindex].pronounce[1]}}
+            <image class='image1' src='../image/page_002/1.png'></image>
+            <view wx:for="{{wordlistdetail[wordindex].detail.translation}}">
+              {{item}}
+            </view>
+          </view>
+        </view>
+      </block>
     </view>
-  </view>
+  </scroll-view>
   <view class='footer'>
-    <text>{{index}}/{{totalaccount}}</text>
+    <text>{{wordindex+1}}/{{totalaccount}}</text>
   </view>
 </view>
