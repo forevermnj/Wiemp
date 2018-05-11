@@ -7,11 +7,11 @@
   <view>
     <view class="selected_date">
       <view bindtap="preMonth">
-        <image class="select_icon" src="../images/left.png"></image>
+        <image class="select_icon" src="../image/left.png"></image>
       </view>
       <view class="text_center">{{curYear+'-'+curMonth}}</view>
-      <view style="text-align:right;" bindtap="nextMonth">
-        <image class="select_icon" src="../images/right.png"></image>
+      <view style="" bindtap="nextMonth">
+        <image class="select_icon" src="../imags/right.png"></image>
       </view>
     </view>
     <view class="calendar_panel">
