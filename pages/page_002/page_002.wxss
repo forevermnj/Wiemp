@@ -30,6 +30,12 @@
   vertical-align: middle;
 }
 
+.translation {
+  text-align: left;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 .footer {
   font-size: 14px;
   position: absolute;
