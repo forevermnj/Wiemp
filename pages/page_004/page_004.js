@@ -5,11 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    days: 14,
+    colora: '#43cf7c',
+    colorb: '#c7c7c7',
+    colorc: '#ffc300',
+    actiondatelist: ["2018年5月1日", "2018年5月2日", "2018年5月3日", "2018年5月8日", "2018年5月9日"],
     selectedDate: '',//选中的几月几号
     selectedWeek: '',//选中的星期几
-    curYear: 2017,//当前年份
-    curMonth: 0,//当前月份
+    curYear: 2018,//当前年份
+    curMonth: 4,//当前月份
     daysCountArr: [// 保存各个月份的长度，平年
       31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
     ],
@@ -49,7 +52,7 @@ Page({
     this.setData({
       curYear: y,
       curMonth: mon,
-      selectedDate: y + '-' + mon + '-' + d,
+      selectedDate: y + '年' + mon + '月' + d + '日',
       selectedWeek: this.data.weekArr[i]
     });
 
@@ -77,22 +80,26 @@ Page({
         weekIndex++;
         dateList[weekIndex] = [];
       }
+      var oneday = y + '年' + (mon + 1) + '月' + (i + 1) + '日';
+      var tf = vm.isactiondate(vm.data.actiondatelist, oneday) ? 'a' : 'r'; //a:'action_date',r:'remaining' 
       // 如果是第一行，则将该行日期倒序，以便配合样式居右显示
       if (weekIndex == 0) {
         dateList[weekIndex].unshift({
-          value: y + '-' + (mon + 1) + '-' + (i + 1),
+          value: oneday,
           date: i + 1,
-          week: week
+          week: week,
+          flag: tf 
         });
       } else {
         dateList[weekIndex].push({
-          value: y + '-' + (mon + 1) + '-' + (i + 1),
+          value: oneday,
           date: i + 1,
-          week: week
+          week: week,
+          flag: tf
         });
       }
     }
-    // console.log('本月日期', dateList);
+    //console.log('本月日期', dateList);
     vm.setData({
       dateList: dateList
     });
@@ -105,6 +112,14 @@ Page({
       selectedWeek: vm.data.weekArr[e.currentTarget.dataset.date.week]
     });
   },
+
+  isactiondate: function (/*<array>*/dataarray, oneday) {
+    for (var i = 0; i < dataarray.length; i++) {
+      if (dataarray[i] == oneday) return true;
+    }
+    return false;
+  },
+
   preMonth: function () {
     // 上个月
     var vm = this;
