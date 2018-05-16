@@ -23,7 +23,10 @@
             <image class='image1' src='../image/page_002/1.png'></image>
             美{{wordlistdetail[wordindex].pronounce[1]}}
             <image class='image1' src='../image/page_002/1.png'></image>
-            <view wx:for="{{wordlistdetail[wordindex].detail.translation}}">
+            <view class='translation' wx:for="{{worddetail.translation}}" wx:key="unique" >
+              {{item}}
+            </view>
+            <view class='translation' wx:for="{{worddetail.sentence}}" wx:key="unique">
               {{item}}
             </view>
           </view>

@@ -1,2 +1,49 @@
 <!--pages/page_004/page_004.wxml-->
-<text>pages/page_004/page_004.wxml</text>
+<view class="">
+  <view class="topstyle">
+    <text class="fontstyle1">{{actiondatelist.length}}</text>
+    <text class="fontstyle2">天打卡</text>
+  </view>
+  <view>
+    <view class="selected_date">
+      <view bindtap="preMonth">
+        <image class="select_icon" src="../image/page_004/left.png"></image>
+      </view>
+      <view style="text-align:center;">{{curYear+'-'+curMonth}}</view>
+      <view style="text-align:right;" bindtap="nextMonth">
+        <image class="select_icon" src="../image/page_004/right.png"></image>
+      </view>
+    </view>
+    <view class="">
+      <view class="calendar_box">
+        <view class="weekday_label">日</view>
+        <view class="weekday_label">一</view>
+        <view class="weekday_label">二</view>
+        <view class="weekday_label">三</view>
+        <view class="weekday_label">四</view>
+        <view class="weekday_label">五</view>
+        <view class="weekday_label">六</view>
+      </view>
+      <view class="calendar_box" wx:for="{{dateList}}" wx:for-item="week">
+        <view class="weekday_label" wx:for="{{week}}">
+          <text class="{{item.value==selectedDate?'active_date':item.flag=='a'?'action_date':'remaining_date'}}" bindtap="selectDate" data-date="{{item}}">{{item.date}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="show_box">{{selectedDate}} {{selectedWeek}}</view>
+</view>
+<view class="footerstyle1">
+  <view class="smallgroup">
+    <text class="active_flag" id="color1"></text>
+    <text style='margin-left:12px;'>已打卡</text>
+  </view>
+  <view class="smallgroup">
+    <text class="active_flag" id="color2"></text>
+    <text style='margin-left:12px;'>未打卡</text>
+  </view>
+  <view class="smallgroup">
+    <text class="active_flag" id="color3"></text>
+    <text style='margin-left:12px;'>今天</text>
+  </view>
+</view>

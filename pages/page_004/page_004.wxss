@@ -1,1 +1,131 @@
 /* pages/page_004/page_004.wxss */
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.topstyle {
+  margin-top: 15px;
+  align-content: center;
+  text-align: center;
+}
+
+.selected_date {
+  padding: 20px;
+  overflow: hidden;
+}
+
+.selected_date>view {
+  width: 33.3%;
+  float: left;
+}
+
+.calendar_panel {
+  width: 100%;
+}
+
+.calendar_box {
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+}
+
+.weekday_label {
+  width: 14.28%;
+  float: left;
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  padding: 0 0;
+}
+
+.weekday_label>text {
+  width: 40px;
+  height: 40px;
+  line-height: 50px;
+  display: inline-block;
+}
+
+.select_icon {
+  width: 20px;
+  height: 20px;
+}
+
+.active_date {
+  background: rgb(255, 195, 0);
+  color: #fff;
+  border-radius: 50%;
+}
+.action_date{
+  background: #43cf7c;
+  color: #fff;
+  border-radius: 50%;  
+}
+
+.remaining_date{
+  background: rgb(199, 199, 199);
+  color: #fff;
+  border-radius: 50%;
+}
+
+.active_flag {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+.show_box {
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.calendar_box:nth-child(2) .weekday_label {
+  float: right;
+}
+
+.fontstyle1 {
+  font-size: 50px;
+  color: rgb(255, 87, 51);
+  padding-right: 8px;
+}
+
+.fontstyle2 {
+  font-size: 16px;
+}
+
+.footerstyle1 {
+  font-size: 16px;
+  position: absolute;
+  bottom: 2px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: rgb(249, 249, 249);
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  /*border-color: red;
+  border-style: dashed;*/
+}
+
+.smallgroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#color1 {
+  background: #43cf7c;
+  color: #43cf7c;
+}
+
+#color2 {
+  background: rgb(199, 199, 199);
+  color: rgb(199, 199, 199);
+}
+
+#color3 {
+  background: rgb(255, 195, 0);
+  color: rgb(255, 195, 0);
+}
