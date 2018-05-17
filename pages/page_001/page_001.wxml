@@ -18,16 +18,20 @@
 </view>
 
 <view>
-<!--常用链接1-->
+  <!--常用链接1-->
   <view class='link1' id='wronglist' bindtap='linktowordlist'>
-    <image class='image1' src='../image/page_001/2.png'></image>
-    <text>易错单词</text>
-    <text class='arrow'>></text>
+    <view>
+      <image class='image1' src='../image/page_001/2.png'></image>
+      <text>易错单词</text>
+    </view>
+    <image class='arrow' src='../image/page_001/right.png'></image>
   </view>
   <!--常用链接2-->
   <view class='link1' id='learncalender' bindtap='linktocalendar'>
-    <image class='image1' src='../image/page_001/3.png'></image>
-    <text>学习日历</text>
-    <text class='arrow'>></text>
+    <view>
+      <image class='image1' src='../image/page_001/3.png'></image>
+      <text>学习日历</text>
+    </view>
+    <image class='arrow' src='../image/page_001/right.png'></image>
   </view>
 </view>

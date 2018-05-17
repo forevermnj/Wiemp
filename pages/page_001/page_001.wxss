@@ -34,10 +34,11 @@
 
 .link1 {
   font-size: 18px;
-  padding-left: 20px;
-  padding-top: 5px;
-  padding-bottom: 5px;
   border-bottom: 1px solid lightgray;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .image1 {
@@ -48,7 +49,7 @@
 }
 
 .arrow {
-  position: absolute;
-  right: 25px;
+  width: 30px;
+  height: 30px;
   padding-top: 10px;
 }
