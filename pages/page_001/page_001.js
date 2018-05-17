@@ -31,6 +31,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    /*
     //set local storage when user finished their exercise. 
     //The set process put here temporarily, should move to right place then. 
     wx.setStorage({
@@ -62,6 +63,34 @@ Page({
             words_account: 'numberfromBE'//it is a example, it should get from backend
           })
         }
+      }
+    })*/
+    var refer = this;
+    //已完成单词
+    wx.request({
+      url: 'https://aisss5ct.qcloud.la/Emp/mobile/bearword/doneWordCount/' + '020b28e556de4352a231650c1637653c',
+      method: 'GET',
+      success: function (resz) {
+        //console.log(resz.data);
+        refer.setData({
+          words_account: resz.data.totaldone
+        })
+      }
+    })
+    //打卡状态
+    wx.request({
+      url: 'https://aisss5ct.qcloud.la/Emp/mobile/bearword/whetherDoneHitCard/' + '020b28e556de4352a231650c1637653c',
+      method: 'GET',
+
+      success: function (resz) {
+        //console.log(resz.data);
+        var taskstatus = 'not_yet';
+        if (resz.data.taskstatus == '1') {
+          taskstatus = 'done'
+        }
+        refer.setData({
+          task: taskstatus
+        })
       }
     })
   },

@@ -1,6 +1,6 @@
 <!--pages/page_002/page_002.wxml-->
-<view bindtouchstart='mytouchstart' bindtouchmove='mytouchmove' bindtouchend='mytouchend'>
-  <scroll-view class='main' scroll-y="true">
+<view>
+  <scroll-view class='main' scroll-y="true" bindtouchstart='mytouchstart' bindtouchmove='mytouchmove' bindtouchend='mytouchend'>
     <view>
       <view class='englishword'>
         <text>{{wordlist[wordindex]}}</text>
@@ -9,25 +9,23 @@
     <view>
 
       <block wx:if="{{pagestyle=='simple'}}">
-        <view class='simplestyle' bindtap='todetail'>
+        <view class='simplestyle' catchtap='changestyle'>
           <text>点击显示释义</text>
         </view>
       </block>
       <block wx:if="{{pagestyle=='complex'}}">
         <view class="detailcontent">
-          <view class='simplestyle' bindtap='tosimplestyle'>
-            <text>精简模式</text>
+          <view class='simplestyle' catchtap='changestyle'>
+            <text>点击回精简模式</text>
           </view>
           <view>
-            英{{wordlistdetail[wordindex].pronounce[0]}}
-            <image class='image1' src='../image/page_002/1.png'></image>
-            美{{wordlistdetail[wordindex].pronounce[1]}}
-            <image class='image1' src='../image/page_002/1.png'></image>
-            <view class='translation' wx:for="{{worddetail.translation}}" wx:key="unique" >
-              {{item}}
+            {{wordlistdetail[wordindex].pronounce}}
+            <image class='image1' src='../image/page_002/1.png' catchtap='speech'></image>
+            <view class='translation'>
+              {{worddetail.translation}}
             </view>
-            <view class='translation' wx:for="{{worddetail.sentence}}" wx:key="unique">
-              {{item}}
+            <view class='translation'>
+              {{worddetail.sentence}}
             </view>
           </view>
         </view>
