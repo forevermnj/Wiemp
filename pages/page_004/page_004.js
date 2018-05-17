@@ -5,10 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    colora: '#43cf7c',
-    colorb: '#c7c7c7',
-    colorc: '#ffc300',
-    actiondatelist: ["2018年5月1日", "2018年5月2日", "2018年5月3日", "2018年5月8日", "2018年5月9日"],
+    actionDateList: ["2018年4月30日", "2018年5月1日", "2018年5月2日", "2018年5月3日"],
     selectedDate: '',//选中的几月几号
     selectedWeek: '',//选中的星期几
     curYear: 2018,//当前年份
@@ -31,6 +28,33 @@ Page({
       frontColor: '#ffffff',
       backgroundColor: '#43CF7C'
     })
+    //retrive exercise record
+    var today = new Date();//当前时间  
+    var y = today.getFullYear();
+    var mon = today.getMonth() + 1;
+    var ym = y + '-' + (mon < 10 ? "0" + mon : mon);
+
+    var refer = this;
+    wx.request({
+      url: 'https://aisss5ct.qcloud.la/Emp/mobile/studycalendar/query/' + '020b28e556de4352a231650c1637653c' + '/' + ym,
+      method: 'GET',
+
+      success: function (resz) {
+        var days = resz.data.length;
+        var tempActionDate = new Array(days);
+        for (var i = 0; i < days; i++) {
+          tempActionDate[i] = resz.data[i].stringDate
+        }
+        //console.log('call BE:');
+        refer.setData({
+          actionDateList: tempActionDate
+        })
+      },
+      complete: function (resz) {
+        refer.getDateList(y, mon-1);
+      }
+    })
+
   },
 
   /**
@@ -49,15 +73,20 @@ Page({
     var mon = today.getMonth() + 1;//月  
     var d = today.getDate();//日  
     var i = today.getDay();//星期  
+    var formatMonth = mon < 10 ? "0" + mon : mon;
+    var formatDay = d < 10 ? "0" + d : d;
+    var oneday = y + '-' + formatMonth + '-' + formatDay;
     this.setData({
       curYear: y,
       curMonth: mon,
-      selectedDate: y + '年' + mon + '月' + d + '日',
+      selectedDate: oneday,
       selectedWeek: this.data.weekArr[i]
     });
 
     this.getDateList(y, mon - 1);
+
   },
+
   getDateList: function (y, mon) {
     var vm = this;
     //如果是否闰年，则2月是29日
@@ -80,15 +109,19 @@ Page({
         weekIndex++;
         dateList[weekIndex] = [];
       }
-      var oneday = y + '年' + (mon + 1) + '月' + (i + 1) + '日';
-      var tf = vm.isactiondate(vm.data.actiondatelist, oneday) ? 'a' : 'r'; //a:'action_date',r:'remaining' 
+      var formatMonth = (mon + 1) < 10 ? "0" + (mon + 1) : (mon + 1);
+      var formatDay = (i + 1) < 10 ? "0" + (i + 1) : (i + 1);
+      var oneday = y + '-' + formatMonth + '-' + formatDay;
+
+      var tf = vm.isactiondate(vm.data.actionDateList, oneday) ? 'a' : 'r'; //a use exercised date style,r for remaining day style
+
       // 如果是第一行，则将该行日期倒序，以便配合样式居右显示
       if (weekIndex == 0) {
         dateList[weekIndex].unshift({
           value: oneday,
           date: i + 1,
           week: week,
-          flag: tf 
+          flag: tf
         });
       } else {
         dateList[weekIndex].push({
@@ -104,6 +137,8 @@ Page({
       dateList: dateList
     });
   },
+
+
   selectDate: function (e) {
     var vm = this;
     // console.log('选中', e.currentTarget.dataset.date.value);
@@ -114,6 +149,7 @@ Page({
   },
 
   isactiondate: function (/*<array>*/dataarray, oneday) {
+
     for (var i = 0; i < dataarray.length; i++) {
       if (dataarray[i] == oneday) return true;
     }
