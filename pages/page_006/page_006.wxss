@@ -1,0 +1,56 @@
+/* pages/page_006/page_006.wxss */
+
+.mainarea {
+  background-color: rgb(227, 248, 235);
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 94%;
+}
+
+.title {
+  margin-top: 20px;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.pron {
+  font-size: 18px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.options {
+  font-size: 18px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+  background-color: white;
+  border-style: solid;
+  border-width: 2px;
+  border-color: lightgreen;
+  border-radius: 5px;
+}
+
+.wrongstyle {
+  background-color: yellow;
+}
+
+.correctstyle {
+  background-color: rgb(227, 248, 235);
+}
+
+.footer {
+  background-color: white;
+  font-size: 14px;
+  position: fixed;
+  left: 0px;
+  top: 94%;
+  width: 100%;
+  height: 6%;
+  text-align: center;
+  margin-top: 2%;
+}

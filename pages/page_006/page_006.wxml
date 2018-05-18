@@ -1,0 +1,19 @@
+<!--pages/page_006/page_006.wxml-->
+<view>
+  <view class="mainarea" bindtouchstart='touchstart' bindtouchmove='touchmove' bindtouchend='touchend'>
+    <scroll-view scroll-y="true">
+      <view class="title">
+        <text>{{wordList[wordIndex].word}}</text>
+      </view>
+      <view class="pron">
+        <text>{{wordList[wordIndex].pronounce}}</text>
+      </view>
+      <view wx:for="{{wordList[wordIndex].options}}" wx:for-item="ops" class="options">
+        <view catchtap='tap' data-optionsindex='{{index}}' class="{{myanswer[wordIndex]!=index?'':myanswer[wordIndex]==wordList[wordIndex].correct?'correctstyle':'wrongstyle'}}">
+          <text>{{ops}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class='footer'>{{wordIndex+1}}/{{wordList.length}}</view>
+</view>
