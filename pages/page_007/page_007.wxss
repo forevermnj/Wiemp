@@ -17,7 +17,10 @@
 
 .scorestyle {
   font-size: 60px;
-  
+}
+
+.margin-style {
+  margin-left: 10px;
 }
 
 .wordaccstyle {
@@ -31,4 +34,14 @@
   border-top: solid 1px;
   width: 100%;
   padding-top: 10px;
+}
+
+.bottomstyle2 {
+  position: absolute;
+  bottom: 20px;
+  border-top: solid 1px;
+  width: 100%;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-around;
 }

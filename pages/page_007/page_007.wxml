@@ -4,7 +4,7 @@
     <block wx:if="{{status=='success'}}">
       <view style="padding-bottom: 60px; font-size: 24px;">
         <icon type="success" size="24"></icon>
-        <text style="margin-left:10px;">打卡成功</text>
+        <text class="margin-style">打卡成功</text>
       </view>
       <view style="font-size: 14px;">
         <text>恭喜您完成今日训练目标</text>
@@ -12,8 +12,8 @@
     </block>
     <block wx:else>
       <view style="padding-bottom: 60px; font-size: 24px;">
-      <icon type="warn" size="24"></icon>
-        <text>打卡失败</text>
+        <icon type="warn" size="24"></icon>
+        <text class="margin-style">打卡失败</text>
       </view>
       <view style="font-size: 14px;">
         <text>您未完成今日训练目标</text>
@@ -24,12 +24,13 @@
     <text class="scorestyle">{{score}}</text>分
   </view>
   <view>
-    <text class="wordaccstyle">{{wordAccount}}</text>/<text style="padding-left: 8px;">{{elapse}}分钟</text>
+    <text class="wordaccstyle">{{wordAccount}}</text>/
+    <text style="padding-left: 8px;">{{elapse}}分钟</text>
   </view>
   <view wx:if="{{status=='success'}}" class="bottomstyle">
     <text>我知道了</text>
   </view>
-  <view wx:else>
+  <view wx:elif="{{status=='failed'}}" class="bottomstyle2">
     <text>取消</text>
     <text>继续</text>
   </view>

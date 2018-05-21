@@ -5,10 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    status: 'success', // success, failed
+    status: 'failed', // success, failed
     score: 100,
     wordAccount: 20,
-    elapse:5
+    elapse: 5
   },
 
   /**
