@@ -1,0 +1,36 @@
+<!--pages/page_007/page_007.wxml-->
+<view class="dialog">
+  <view class='topstyle'>
+    <block wx:if="{{status=='success'}}">
+      <view style="padding-bottom: 60px; font-size: 24px;">
+        <icon type="success" size="24"></icon>
+        <text style="margin-left:10px;">打卡成功</text>
+      </view>
+      <view style="font-size: 14px;">
+        <text>恭喜您完成今日训练目标</text>
+      </view>
+    </block>
+    <block wx:else>
+      <view style="padding-bottom: 60px; font-size: 24px;">
+      <icon type="warn" size="24"></icon>
+        <text>打卡失败</text>
+      </view>
+      <view style="font-size: 14px;">
+        <text>您未完成今日训练目标</text>
+      </view>
+    </block>
+  </view>
+  <view style="padding-bottom: 20px;">
+    <text class="scorestyle">{{score}}</text>分
+  </view>
+  <view>
+    <text class="wordaccstyle">{{wordAccount}}</text>/<text style="padding-left: 8px;">{{elapse}}分钟</text>
+  </view>
+  <view wx:if="{{status=='success'}}" class="bottomstyle">
+    <text>我知道了</text>
+  </view>
+  <view wx:else>
+    <text>取消</text>
+    <text>继续</text>
+  </view>
+</view>
