@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    totalaccount: 20,
+    totalaccount: 10,
     wordindex: 0,
     startx: 0,
     pagestyle: 'simple', //simple|complex
@@ -55,8 +55,11 @@ Page({
     //update word index
     var refer = this;
     if (distancex < 0) {//left move
-      if (wi >= this.data.wordlist.length - 1) {
-        wi = 0;
+      if (wi >= this.data.wordlist.length - 1) {//  trigger exercise page when user move left on last word
+        //wi = 0;
+        wx.navigateTo({
+          url: '../page_006/page_006',
+        })
       } else {
         wi++;
       }
@@ -68,6 +71,9 @@ Page({
       }
     }
     if (distancex != 0) {
+      refer.setData({
+        wordindex: wi
+      })
       //get detail of current word
       if (this.data.pagestyle == 'complex') {
         console.log("call backend, pagestyle == 'complex'");
@@ -83,14 +89,9 @@ Page({
               sentence: resz.data.sentence
             }
             refer.setData({
-              wordindex: wi,
               worddetail: resp
             })
           }
-        })
-      } else {
-        refer.setData({
-          wordindex: wi
         })
       }
     }
@@ -115,7 +116,9 @@ Page({
     if (this.data.pagestyle == 'simple') {
       var resp = null;
       var refer = this;
-
+      refer.setData({
+        pagestyle: 'complex'
+      })
       wx.request({
         url: 'https://aisss5ct.qcloud.la/Emp/mobile/bearword/mean/' + refer.data.wordidlist[refer.data.wordindex],
         method: 'GET',
@@ -128,7 +131,6 @@ Page({
           }
 
           refer.setData({
-            pagestyle: 'complex',
             worddetail: resp
           })
         }

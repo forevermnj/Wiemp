@@ -1,5 +1,5 @@
 <!--pages/page_006/page_006.wxml-->
-<view>
+<view style="display:{{showDialog?'none':'block'}}">
   <view class="mainarea" bindtouchstart='touchstart' bindtouchmove='touchmove' bindtouchend='touchend'>
     <scroll-view scroll-y="true">
       <view class="title">
@@ -8,12 +8,49 @@
       <view class="pron">
         <text>{{wordList[wordIndex].pronounce}}</text>
       </view>
-      <view wx:for="{{wordList[wordIndex].options}}" wx:for-item="ops" class="options">
-        <view catchtap='tap' data-optionsindex='{{index}}' class="{{myanswer[wordIndex]!=index?'':myanswer[wordIndex]==wordList[wordIndex].correct?'correctstyle':'wrongstyle'}}">
+      <view wx:for="{{wordList[wordIndex].options}}" wx:for-item="ops" class="options" wx:key="unique">
+        <view catchtap='chooseAnswer' data-optionsindex='{{index}}' class="{{myanswer[wordIndex]!=index?'':myanswer[wordIndex]==wordList[wordIndex].correct?'correctstyle':'wrongstyle'}}">
           <text>{{ops}}</text>
         </view>
       </view>
     </scroll-view>
   </view>
   <view class='footer'>{{wordIndex+1}}/{{wordList.length}}</view>
+</view>
+<!--dialog-->
+<view class="dialog" style='display:{{showDialog?"block":"none"}};'>
+  <view class='topstyle'>
+    <block wx:if="{{status=='success'}}">
+      <view style="padding-bottom: 60px; font-size: 24px;">
+        <icon type="success" size="24"></icon>
+        <text class="margin-style">打卡成功</text>
+      </view>
+      <view style="font-size: 14px;">
+        <text>恭喜您完成今日训练目标</text>
+      </view>
+    </block>
+    <block wx:else>
+      <view style="padding-bottom: 60px; font-size: 24px;">
+        <icon type="warn" size="24"></icon>
+        <text class="margin-style">打卡失败</text>
+      </view>
+      <view style="font-size: 14px;">
+        <text>您未完成今日训练目标</text>
+      </view>
+    </block>
+  </view>
+  <view style="padding-bottom: 20px;">
+    <text class="scorestyle">{{score}}</text>分
+  </view>
+  <view>
+    <text class="wordaccstyle">{{wordAccount}}</text>/
+    <text style="padding-left: 8px;">{{elapse}}</text>
+  </view>
+  <view wx:if="{{status=='success'}}" class="bottomstyle" catchtap='iknow'>
+    <text>我知道了</text>
+  </view>
+  <view wx:elif="{{status=='failed'}}" class="bottomstyle2" catchtap='iknow'>
+    <text>取消</text>
+    <text>继续</text>
+  </view>
 </view>

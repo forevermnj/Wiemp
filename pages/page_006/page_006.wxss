@@ -32,7 +32,7 @@
   border-style: solid;
   border-width: 2px;
   border-color: lightgreen;
-  border-radius: 5px;
+  border-radius: 5px;  
 }
 
 .wrongstyle {
@@ -53,4 +53,53 @@
   height: 6%;
   text-align: center;
   margin-top: 2%;
+}
+
+
+.dialog {
+  width: 75%;
+  height: 75%;
+  background-color: rgb(67, 207, 124);
+  color: white;
+  position: absolute;
+  top: 12.5%;
+  left: 12.5%;
+  text-align: center;
+  opacity: 0.7;
+  overflow: hidden;
+}
+
+.topstyle {
+  padding-top: 40px;
+}
+
+.scorestyle {
+  font-size: 60px;
+}
+
+.margin-style {
+  margin-left: 10px;
+}
+
+.wordaccstyle {
+  font-size: 30px;
+  padding-right: 10px;
+}
+
+.bottomstyle {
+  position: absolute;
+  bottom: 20px;
+  border-top: solid 1px;
+  width: 100%;
+  padding-top: 10px;
+}
+
+.bottomstyle2 {
+  position: absolute;
+  bottom: 20px;
+  border-top: solid 1px;
+  width: 100%;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-around;
 }

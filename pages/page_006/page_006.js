@@ -32,12 +32,16 @@ Page({
         correct: '2'
       }
     ],
-    ratio: 90
+    status: 'failed', // success, failed
+    score: 0,
+    wordAccount: 2,
+    startTime: '',
+    elapse: '', //less than 1 minute show second
+    showDialog: false
   },
 
   touchstart: function (e) {
 
-    //console.log(e);
     this.setData({
       startx: e.touches[0].pageX
     })
@@ -46,36 +50,62 @@ Page({
 
   },
   touchend: function (e) {
-
-    //console.log(e);
     var distancex = e.changedTouches[0].pageX - this.data.startx;
     var wi = this.data.wordIndex;
 
     //update word index
-    var refer = this;
-    if (distancex != 0) {
-      if (distancex < 0) {  //move lefet
-        if (wi >= this.data.wordList.length - 1) {
-          wi = 0;
-        } else {
-          wi++;
-        }
-      }
-      else if (distancex > 0) { // move right
-        if (wi <= 0) {
-          wi = this.data.wordList.length - 1;
-        } else {
-          wi--;
-        }
-      }
+    if (distancex < 0 && this.data.myanswer[this.data.wordIndex] != "-1") {  //allow move left only
+      if (wi >= this.data.wordList.length - 1) {  //popup result
+        var rate = this.ratio();
+        var percent = Math.round(rate * 100);
+        var date2 = new Date();
 
-      this.setData({
-        wordIndex: wi
-      })
+        var elapseTime = (date2.getTime() - this.data.startTime.getTime()) / 1000;
+        var elapseStr = "";
+        if (elapseTime < 60) {
+          elapseStr = Math.round(elapseTime) + "秒";
+        } else {
+          elapseStr = Math.round(elapseTime / 60) + "分钟";
+        }
+
+        //console.log(rate + "|" + elapseTime);
+        if (rate >= 0.9) {
+          this.setData({
+            score: percent,
+            showDialog: true,
+            status: 'success',
+            elapse: elapseStr
+          })
+        } else {
+          this.setData({
+            score: percent,
+            showDialog: true,
+            status: 'failed',
+            elapse: elapseStr
+          })
+        }
+      } else {
+        wi++;
+        this.setData({
+          wordIndex: wi
+        })
+      }
     }
   },
-  tap: function (e) {
 
+  ratio: function () {
+    var count = 0;
+    var wordCount = this.data.wordList.length;
+    for (var i = 0; i < wordCount; i++) {
+      if (this.data.wordList[i].correct == this.data.myanswer[i]) {
+        count++;
+      }
+    }
+    return count / wordCount;
+  },
+
+  //choose the right answer
+  chooseAnswer: function (e) {
     var aswArray = this.data.myanswer;
     if (aswArray[this.data.wordIndex] == "-1") {  //only allow user to select once
       aswArray[this.data.wordIndex] = e.currentTarget.dataset.optionsindex;
@@ -85,6 +115,12 @@ Page({
     }
     //console.log(this.data);
   },
+
+  iknow: function () {
+    wx.navigateTo({
+      url: '../page_001/page_001',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -93,7 +129,9 @@ Page({
     var emptyarray = new Array(count);
     for (var i = 0; i < count; i++) emptyarray[i] = "-1";
     this.setData({
-      myanswer: emptyarray
+      myanswer: emptyarray,
+      startTime: new Date(),
+      wordAccount: count
     })
   },
 
