@@ -16,24 +16,7 @@ Page({
       translation: 'adj.  财政的; 财务的; 金融的; 有钱的;',
       sentence: '1. The enquiry dug deeper into the alleged financial misdeeds of his government.'
     },
-    wordlistdetail: [
-      {
-        pronounce: '[faɪˈnænʃ(ə)l]',
-        translation: 'adj.  财政的; 财务的; 金融的; 有钱的;',
-        sentence: '1. The enquiry dug deeper into the alleged financial misdeeds of his government.'
-      },
-      {
-        pronounce: '[ˈdeli]',
-        translation: 'adj.  每日的，日常的; 一日的; 每日一次的; 每个工作日的;',
-        sentence: '1. Daily facial exercises help her to retain the skin\'s elasticity.'
 
-      }, {}, {}, {}, {}, {}, {}, {}, {
-        pronounce: '[ˈsʌnˌdeɪ]',
-        translation: 'n.星期日，星期天; 每逢星期日出版的报纸; 星期日报; [人名] 森迪;',
-        sentence: '1. On Sunday Cohen lay around the house all day. '
-
-      }
-    ]
   },
 
   //手指滑动开始
@@ -51,39 +34,40 @@ Page({
   mytouchend: function (event) {
     var distancex = event.changedTouches[0].pageX - this.data.startx;
     var wi = this.data.wordindex;
-
     //update word index
     var refer = this;
-    if (distancex < 0) {//left move
-      if (wi >= this.data.wordlist.length - 1) {//  trigger exercise page when user move left on last word
-        //wi = 0;
-        wx.navigateTo({
-          url: '../page_006/page_006',
-        })
-      } else {
-        wi++;
+    if (distancex != 0) { //filter out the tap event
+      if (distancex < 0) {  //left move
+        //console.log(wi);
+        if (wi >= this.data.wordlist.length - 1) {
+          //trigger exercise page when user move left on last word
+          wx.redirectTo({
+            url: '../page_006/page_006',
+          })
+        } else {
+          wi++;
+        }
+      } else if (distancex > 0) { // move right
+        if (wi <= 0) {
+          wi = this.data.wordlist.length - 1;
+        } else {
+          wi--;
+        }
       }
-    } else if (distancex > 0) { // move right
-      if (wi <= 0) {
-        wi = this.data.wordlist.length - 1;
-      } else {
-        wi--;
-      }
-    }
-    if (distancex != 0) {
+
       refer.setData({
         wordindex: wi
       })
       //get detail of current word
       if (this.data.pagestyle == 'complex') {
-        console.log("call backend, pagestyle == 'complex'");
-        var resp = null;
+        //console.log("call backend, pagestyle == 'complex'");
+        var wid = this.data.wordidlist[wi];
         wx.request({
-          url: 'https://aisss5ct.qcloud.la/Emp/mobile/bearword/mean/' + this.data.wordidlist[wi],
+          url: 'https://aisss5ct.qcloud.la/Emp/mobile/bearword/mean/' + wid,
           method: 'GET',
 
           success: function (resz) {
-            resp = {
+            var resp = {
               pronounce: resz.data.symbol,
               translation: resz.data.interpretation,
               sentence: resz.data.sentence
@@ -100,8 +84,9 @@ Page({
   //单词读音
   speech: function () {
     var refer = this;
+    var word = refer.data.wordlist[refer.data.wordindex];
     wx.request({
-      url: 'https://aisss5ct.qcloud.la/Emp/mobile/word/pronunciation/' + refer.data.wordlist[refer.data.wordindex],
+      url: 'https://aisss5ct.qcloud.la/Emp/mobile/word/pronunciation/' + word,
       method: 'GET',
       success: function (res) {
         const backgroundAudioManager = wx.getBackgroundAudioManager()
@@ -112,24 +97,21 @@ Page({
 
   //显示详细释义
   changestyle: function (event) {
-
     if (this.data.pagestyle == 'simple') {
-      var resp = null;
       var refer = this;
       refer.setData({
         pagestyle: 'complex'
       })
+      var wid = refer.data.wordidlist[refer.data.wordindex];
       wx.request({
-        url: 'https://aisss5ct.qcloud.la/Emp/mobile/bearword/mean/' + refer.data.wordidlist[refer.data.wordindex],
+        url: 'https://aisss5ct.qcloud.la/Emp/mobile/bearword/mean/' + wid,
         method: 'GET',
-
         success: function (resz) {
-          resp = {
+          var resp = {
             pronounce: resz.data.symbol,
-            translation: [resz.data.interpretation],
-            sentence: [resz.data.sentence],
+            translation: resz.data.interpretation,
+            sentence: resz.data.sentence
           }
-
           refer.setData({
             worddetail: resp
           })
@@ -147,8 +129,9 @@ Page({
   */
   onLoad: function (options) {
     var refer = this;
+    var uid = '020b28e556de4352a231650c1637653c';
     wx.request({
-      url: 'https://aisss5ct.qcloud.la/Emp/mobile/bearword/query/020b28e556de4352a231650c1637653c',
+      url: 'https://aisss5ct.qcloud.la/Emp/mobile/bearword/query/' + uid,
       method: 'GET',
 
       success: function (resz) {
