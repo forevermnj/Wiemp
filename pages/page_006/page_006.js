@@ -51,7 +51,7 @@ Page({
   touchend: function (e) {
     var distancex = e.changedTouches[0].pageX - this.data.startx;
     var wi = this.data.wordIndex;
-    console.log('touchend')
+    //console.log('touchend')
     //update word index
     if (distancex < 0 && this.data.myanswer[this.data.wordIndex] != "-1") {  //allow move left only
       if (wi >= this.data.wordList.length - 1) {  //popup result when last word
@@ -104,8 +104,8 @@ Page({
   //choose the right answer
   chooseAnswer: function (e) {
     var distancex = e.changedTouches[0].pageX - this.data.startx;
-    console.log(distancex);
-    console.log('choose answer');
+    
+    //console.log('choose answer');
     var aswArray = this.data.myanswer;
     if (aswArray[this.data.wordIndex] == "-1") {  //only allow user to select once
       aswArray[this.data.wordIndex] = e.currentTarget.dataset.optionsindex;
@@ -119,7 +119,7 @@ Page({
     // console.log('mask');
   },
   iknow: function () {
-    console.log('iknow');
+    
     wx.navigateTo({
       url: '../page_001/page_001',
     })
@@ -129,12 +129,27 @@ Page({
    */
   onLoad: function (options) {
     var count = 2;  // it should be BE result 
-    var emptyarray = new Array(count);
-    for (var i = 0; i < count; i++) emptyarray[i] = "-1";
-    this.setData({
-      myanswer: emptyarray,
-      startTime: new Date(),
-      wordAccount: count
+    var uid = '020b28e556de4352a231650c1637653c';
+    var refer = this;
+    wx.request({
+      url: 'https://aisss5ct.qcloud.la/Emp/mobile/wordexam/query/' + uid,
+      method: 'GET',
+      success: function (res) {
+        count = res.data.total
+        refer.setData({
+          wordAccount: res.data.total,
+          wordList: res.data.rows
+        })
+        var emptyarray = new Array(count);
+        for (var i = 0; i < count; i++) emptyarray[i] = "-1";
+        refer.setData({
+          myanswer: emptyarray,
+          startTime: new Date()
+        })
+      },
+      fail: function(res){
+        console.log(res)
+      }
     })
   },
 
