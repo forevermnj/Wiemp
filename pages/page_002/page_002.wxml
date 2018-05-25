@@ -7,7 +7,6 @@
       </view>
     </view>
     <view>
-
       <block wx:if="{{pagestyle=='simple'}}">
         <view class='simplestyle' catchtap='changestyle'>
           <text>点击显示释义</text>
@@ -19,7 +18,7 @@
             <text>点击回精简模式</text>
           </view>
           <view>
-            {{wordlistdetail[wordindex].pronounce}}
+            {{worddetail.pronounce}}
             <image class='image1' src='../image/page_002/1.png' catchtap='speech'></image>
             <view class='translation'>
               {{worddetail.translation}}
