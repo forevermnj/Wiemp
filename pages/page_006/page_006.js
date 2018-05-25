@@ -41,7 +41,6 @@ Page({
   },
 
   touchstart: function (e) {
-
     this.setData({
       startx: e.touches[0].pageX
     })
@@ -52,10 +51,10 @@ Page({
   touchend: function (e) {
     var distancex = e.changedTouches[0].pageX - this.data.startx;
     var wi = this.data.wordIndex;
-
+    console.log('touchend')
     //update word index
     if (distancex < 0 && this.data.myanswer[this.data.wordIndex] != "-1") {  //allow move left only
-      if (wi >= this.data.wordList.length - 1) {  //popup result
+      if (wi >= this.data.wordList.length - 1) {  //popup result when last word
         var rate = this.ratio();
         var percent = Math.round(rate * 100);
         var date2 = new Date();
@@ -67,24 +66,22 @@ Page({
         } else {
           elapseStr = Math.round(elapseTime / 60) + "分钟";
         }
-
+        this.setData({
+          score: percent,
+          showDialog: true,
+          elapse: elapseStr
+        })
         //console.log(rate + "|" + elapseTime);
         if (rate >= 0.9) {
           this.setData({
-            score: percent,
-            showDialog: true,
-            status: 'success',
-            elapse: elapseStr
+            status: 'success'
           })
         } else {
           this.setData({
-            score: percent,
-            showDialog: true,
-            status: 'failed',
-            elapse: elapseStr
+            status: 'failed'
           })
         }
-      } else {
+      } else {  //next word
         wi++;
         this.setData({
           wordIndex: wi
@@ -106,6 +103,9 @@ Page({
 
   //choose the right answer
   chooseAnswer: function (e) {
+    var distancex = e.changedTouches[0].pageX - this.data.startx;
+    console.log(distancex);
+    console.log('choose answer');
     var aswArray = this.data.myanswer;
     if (aswArray[this.data.wordIndex] == "-1") {  //only allow user to select once
       aswArray[this.data.wordIndex] = e.currentTarget.dataset.optionsindex;
@@ -113,10 +113,13 @@ Page({
         myanswer: aswArray
       })
     }
-    //console.log(this.data);
   },
-
+  mask: function () {
+    // do nothing than mask the tap event
+    // console.log('mask');
+  },
   iknow: function () {
+    console.log('iknow');
     wx.navigateTo({
       url: '../page_001/page_001',
     })
