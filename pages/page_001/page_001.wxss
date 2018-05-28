@@ -1,5 +1,5 @@
 .mainpagetop {
-  height: 220px;
+  height: 240px;
   background-color: rgb(67, 207, 124);
   text-align: center;
   color: white;
@@ -53,3 +53,4 @@
   height: 30px;
   padding-top: 10px;
 }
+

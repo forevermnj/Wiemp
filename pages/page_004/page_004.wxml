@@ -1,8 +1,9 @@
 <!--pages/page_004/page_004.wxml-->
 <view class="">
   <view class="topstyle">
-    <text class="fontstyle1">{{actionDateList.length}}</text>
-    <text class="fontstyle2">天打卡</text>
+    <text class="fontstyle2">
+    已打卡<text class="fontstyle1">{{actionDateList.length}}</text>天
+    </text>
   </view>
   <view>
     <view class="selected_date">

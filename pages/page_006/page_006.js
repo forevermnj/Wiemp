@@ -13,23 +13,12 @@ Page({
         word: "dub",
         pronounce: "[dʌb]",
         options: [
-          'abbr.  Dutch 荷兰的; 荷兰人（的）; 荷兰语（的）; 荷兰式的;',
-          'vt.（以剑触肩）封…为爵士; 授予称号; 起绰号; 配音，转录; vi.击鼓;',
-          'n.  鸭子，野鸭; 鸭肉; （表示友好的称呼）乖乖; （板球）零分; vt.& vi.  躲避，回避; 潜入; 忽然低下头（或弯下腰）; 迅速行进; ',
-          'n.（美）钱，元; 雄鹿; 花花公子; vt.& vi.（马等）猛然弓背跃起; 抵制; 猛然震荡;'
+          'abbr.  Dutch 荷兰的',
+          'vt.（以剑触肩）封…为爵士',
+          'n.  鸭子',
+          'n.（美）钱，元'
         ],
         correct: '1'
-      },
-      {
-        word: "phycology",
-        pronounce: "[faɪ'kɒlədʒɪ]",
-        options: [
-          "adj.  自然（界）的; 身体的; 物质的; 自然规律的; n.  身体检查，体格检查;",
-          "n.  心理学; 心理特点; 心理状态; 心理影响;",
-          "n.  藻类学;",
-          "n.  精神，心灵; 情绪; 勇气; 精髓; v.  神秘地带走;"
-        ],
-        correct: '2'
       }
     ],
     status: 'failed', // success, failed
@@ -41,6 +30,7 @@ Page({
   },
 
   touchstart: function (e) {
+    //console.log("dd"+e.touches[0].pageX);
     this.setData({
       startx: e.touches[0].pageX
     })
@@ -107,7 +97,9 @@ Page({
     
     //console.log('choose answer');
     var aswArray = this.data.myanswer;
+    //如果用户还没有选择答案
     if (aswArray[this.data.wordIndex] == "-1") {  //only allow user to select once
+      //标记指定下标单词已被用户选择
       aswArray[this.data.wordIndex] = e.currentTarget.dataset.optionsindex;
       this.setData({
         myanswer: aswArray
@@ -119,7 +111,6 @@ Page({
     // console.log('mask');
   },
   iknow: function () {
-    
     wx.navigateTo({
       url: '../page_001/page_001',
     })
@@ -135,16 +126,21 @@ Page({
       url: 'https://aisss5ct.qcloud.la/Emp/mobile/wordexam/query/' + uid,
       method: 'GET',
       success: function (res) {
+        //返回单词总数
         count = res.data.total
+        //页面数据设置
         refer.setData({
           wordAccount: res.data.total,
           wordList: res.data.rows
         })
+        //创建一个空数组
         var emptyarray = new Array(count);
+        //给创建的空数组赋值
         for (var i = 0; i < count; i++) emptyarray[i] = "-1";
+        //页面数据设置
         refer.setData({
           myanswer: emptyarray,
-          startTime: new Date()
+          startTime: new Date()//开始考试时间
         })
       },
       fail: function(res){

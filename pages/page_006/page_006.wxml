@@ -9,11 +9,14 @@
       <view class="pron">
         <text>{{wordList[wordIndex].pronounce}}</text>
       </view>
+
+      <!--考试选项-->
       <view wx:for="{{wordList[wordIndex].options}}" wx:for-item="opts" class="options" wx:key="unique">
         <view catchtap='chooseAnswer' data-optionsindex='{{index}}' class="{{myanswer[wordIndex]!=index?'':myanswer[wordIndex]==wordList[wordIndex].correct?'correctstyle':'wrongstyle'}}">
           <text>{{opts}}</text>
         </view>
       </view>
+
     </scroll-view>
   </view>
   <view class='footer'>{{wordIndex+1}}/{{wordList.length}}</view>
