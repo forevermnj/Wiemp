@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    word:"",
     startx: 0,
     wordIndex: 0,
     myanswer: [],
@@ -28,7 +29,21 @@ Page({
     elapse: '', //less than 1 minute show second
     showDialog: false
   },
-
+  //单词读音
+  speech: function (e) {
+    var refer = this;
+    //console.log(this.data.word.word);
+    var words = refer.data.wordList[refer.data.wordIndex];
+    console.log("aaaaaaaaa"+words);
+    wx.request({
+      url: 'https://aisss5ct.qcloud.la/Emp/mobile/word/pronunciation/' + this.data.word.word,
+      method: 'GET',
+      success: function (res) {
+        const backgroundAudioManager = wx.getBackgroundAudioManager()
+        backgroundAudioManager.src = res.data
+      }
+    })
+  },
   touchstart: function (e) {
     //console.log("dd"+e.touches[0].pageX);
     this.setData({
@@ -74,7 +89,8 @@ Page({
       } else {  //next word
         wi++;
         this.setData({
-          wordIndex: wi
+          wordIndex: wi,
+          word:this.data.wordList[wi]
         })
       }
     }

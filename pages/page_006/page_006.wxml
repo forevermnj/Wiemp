@@ -10,6 +10,14 @@
         <text>{{wordList[wordIndex].pronounce}}</text>
       </view>
 
+
+      <view class='style2'>
+      <image class='image1' src='../image/page_002/1.png' catchtap='speech'></image>
+      </view>
+      <view class='style1'>
+     
+      </view>
+
       <!--考试选项-->
       <view wx:for="{{wordList[wordIndex].options}}" wx:for-item="opts" class="options" wx:key="unique">
         <view catchtap='chooseAnswer' data-optionsindex='{{index}}' class="{{myanswer[wordIndex]!=index?'':myanswer[wordIndex]==wordList[wordIndex].correct?'correctstyle':'wrongstyle'}}">
