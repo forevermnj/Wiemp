@@ -2,7 +2,7 @@
 <!--test page-->
 <view style="opacity:{{showDialog?0.3:1}}">
   <view class="mainarea" bindtouchstart='touchstart' bindtouchmove='touchmove' bindtouchend='touchend'>
-    <scroll-view scroll-y="true">
+    <scroll-view scroll-y="true" scroll-with-animation="true">
       <view class="title">
         <text>{{wordList[wordIndex].word}}</text>
       </view>

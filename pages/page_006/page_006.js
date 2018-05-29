@@ -5,38 +5,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    word:"",
     startx: 0,
     wordIndex: 0,
     myanswer: [],
-    wordList: [
-      {
-        word: "dub",
-        pronounce: "[dʌb]",
-        options: [
-          'abbr.  Dutch 荷兰的',
-          'vt.（以剑触肩）封…为爵士',
-          'n.  鸭子',
-          'n.（美）钱，元'
-        ],
-        correct: '1'
-      }
-    ],
+    wordList: [],
     status: 'failed', // success, failed
     score: 0,
-    wordAccount: 2,
+    wordAccount: 0,
     startTime: '',
     elapse: '', //less than 1 minute show second
     showDialog: false
+    //wi:0
   },
   //单词读音
   speech: function (e) {
+    //console.log(this.data.wordIndex);
     var refer = this;
-    //console.log(this.data.word.word);
-    var words = refer.data.wordList[refer.data.wordIndex];
-    console.log("aaaaaaaaa"+words);
+    let words = refer.data.wordList[refer.data.wordIndex].word;
     wx.request({
-      url: 'https://aisss5ct.qcloud.la/Emp/mobile/word/pronunciation/' + this.data.word.word,
+      url: 'https://aisss5ct.qcloud.la/Emp/mobile/word/pronunciation/' + words,
       method: 'GET',
       success: function (res) {
         const backgroundAudioManager = wx.getBackgroundAudioManager()
@@ -45,7 +32,6 @@ Page({
     })
   },
   touchstart: function (e) {
-    //console.log("dd"+e.touches[0].pageX);
     this.setData({
       startx: e.touches[0].pageX
     })
@@ -54,45 +40,16 @@ Page({
 
   },
   touchend: function (e) {
+    /***************************************************
+     * 如果用户没有选择答案,并且不是向左滑动，则不做任何反应
+     ***************************************************/
     var distancex = e.changedTouches[0].pageX - this.data.startx;
-    var wi = this.data.wordIndex;
-    //console.log('touchend')
     //update word index
     if (distancex < 0 && this.data.myanswer[this.data.wordIndex] != "-1") {  //allow move left only
-      if (wi >= this.data.wordList.length - 1) {  //popup result when last word
-        var rate = this.ratio();
-        var percent = Math.round(rate * 100);
-        var date2 = new Date();
-
-        var elapseTime = (date2.getTime() - this.data.startTime.getTime()) / 1000;
-        var elapseStr = "";
-        if (elapseTime < 60) {
-          elapseStr = Math.round(elapseTime) + "秒";
-        } else {
-          elapseStr = Math.round(elapseTime / 60) + "分钟";
-        }
-        this.setData({
-          score: percent,
-          showDialog: true,
-          elapse: elapseStr
-        })
-        //console.log(rate + "|" + elapseTime);
-        if (rate >= 0.9) {
-          this.setData({
-            status: 'success'
-          })
-        } else {
-          this.setData({
-            status: 'failed'
-          })
-        }
-      } else {  //next word
-        wi++;
-        this.setData({
-          wordIndex: wi,
-          word:this.data.wordList[wi]
-        })
-      }
+      //改变单词下标
+      this.setData({
+        wordIndex: this.data.wordIndex + 1
+      })
     }
   },
 
@@ -109,9 +66,51 @@ Page({
 
   //choose the right answer
   chooseAnswer: function (e) {
-    var distancex = e.changedTouches[0].pageX - this.data.startx;
-    
-    //console.log('choose answer');
+    /****************************************
+     * 实时计算考试分数，以及所用时间
+     ****************************************/
+    if (this.data.wordIndex >= this.data.wordList.length - 1) {  //popup result when last word
+      var rate = this.ratio();
+      var percent = Math.round(rate * 100);
+      var date2 = new Date();
+
+      var elapseTime = (date2.getTime() - this.data.startTime.getTime()) / 1000;
+      var elapseStr = "";
+      if (elapseTime < 60) {
+        elapseStr = Math.round(elapseTime) + "秒";
+      } else {
+        elapseStr = Math.round(elapseTime / 60) + "分钟";
+      }
+      this.setData({
+        score: percent,
+        showDialog: true,
+        elapse: elapseStr
+      })
+      //console.log(rate + "|" + elapseTime);
+      if (rate >= 0.9) {
+        this.setData({
+          status: 'success'
+        })
+      } else {
+        this.setData({
+          status: 'failed'
+        })
+      }
+    }
+
+    /************************************************
+     * 如果选择正确，则自动跳转下一个单词,正确单词下标为0
+     *************************************************/
+    if (e.currentTarget.dataset.optionsindex=='0'){
+      //改变单词下标
+      this.setData({
+        wordIndex: this.data.wordIndex + 1
+      })
+    }
+
+    /*************************************************
+     * 存贮对于指定单词，用户所选择的释义下标
+     *************************************************/
     var aswArray = this.data.myanswer;
     //如果用户还没有选择答案
     if (aswArray[this.data.wordIndex] == "-1") {  //only allow user to select once
@@ -158,6 +157,7 @@ Page({
           myanswer: emptyarray,
           startTime: new Date()//开始考试时间
         })
+        
       },
       fail: function(res){
         console.log(res)
