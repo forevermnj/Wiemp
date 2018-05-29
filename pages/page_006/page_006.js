@@ -14,13 +14,16 @@ Page({
     wordAccount: 0,
     startTime: '',
     elapse: '', //less than 1 minute show second
-    showDialog: false
-    //wi:0
+    showDialog: false,
+    imgwordurl: '../image/page_002/2.png',
   },
   //单词读音
   speech: function (e) {
     //console.log(this.data.wordIndex);
     var refer = this;
+    refer.setData({
+      imgwordurl: '../image/page_002/3.gif'
+    });
     let words = refer.data.wordList[refer.data.wordIndex].word;
     wx.request({
       url: 'https://aisss5ct.qcloud.la/Emp/mobile/word/pronunciation/' + words,
@@ -29,6 +32,13 @@ Page({
         const backgroundAudioManager = wx.getBackgroundAudioManager()
         backgroundAudioManager.src = res.data
       }
+    });
+    //监听播放停止
+    wx.onBackgroundAudioStop(function () {
+      //console.log('onBackgroundAudioStop')
+      refer.setData({
+        imgwordurl: '../image/page_002/2.png'
+      });
     })
   },
   touchstart: function (e) {

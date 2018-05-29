@@ -12,7 +12,7 @@
 
 
       <view class='style2'>
-      <image class='image1' src='../image/page_002/1.png' catchtap='speech'></image>
+      <image class='image1' src='{{imgwordurl}}' catchtap='speech'></image>
       </view>
       <view class='style1'>
      

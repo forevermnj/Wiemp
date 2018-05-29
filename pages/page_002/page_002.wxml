@@ -19,12 +19,12 @@
           </view>
           <view>
             {{worddetail.pronounce}}
-            <image class='image1' src='../image/page_002/1.png' catchtap='speech'></image>
+            <image class='image1' src='{{imgwordurl}}' catchtap='speech'></image>
             <view class='translation'>
               {{worddetail.translation}}
             </view>
-            <view class='translation'>
-              {{worddetail.sentence}}
+            <view class='translation2'>
+              <image class='image1' src='{{imgsentenceurl}}' catchtap='speech2'></image> {{worddetail.sentence}}
             </view>
           </view>
         </view>
