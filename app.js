@@ -12,6 +12,7 @@ App({
           //调用获取用户信息接口
           wx.getUserInfo({
             success: function (resu) {
+              
               //console.log({ encryptedData: resu.encryptedData, iv: resu.iv, code: res.code })
               //解密用户信息
               wx.request({
@@ -27,7 +28,11 @@ App({
                 },
                 success: function (resz) {
                   util.showSuccess('加载成功');
-                  console.log(resz);
+                  //console.log(resz.data.userInfo.openId);
+                  wx.setStorage({
+                    key: "openId",
+                    data: resz.data.userInfo.openId
+                  });
                   //关闭当前页面，跳转到page_001页面
                   wx.navigateTo({
                     url: '../page_001/page_001',

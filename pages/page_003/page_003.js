@@ -7,74 +7,33 @@ Page({
   data: {
     sortorder: "descend", //ascend|descend
     buttonname: "时间倒序", //时间顺序|时间倒序
-    wordlist: [ //后台数据需按照时间倒序排序
-      {
-        word: "monochrome",
-        pronunc: "ˈmɑnəkroʊm",
-        trans: "adj.  单色的，黑白的;"
-      }, {
-        word: "monochrometer",
-        pronunc: "mɒnoʊ'krɒmɪtə",
-        trans: "n.  单色仪[器]，单色光镜，单能化器;"
-      }, {
-        word: "monochrome band",
-        pronunc: "ˈmɑnəˌkrom bænd",
-        trans: "黑白波段，单色波段;"
-      }, {
-        word: "monochrome film",
-        pronunc: "ˈmɑnəˌkrom fɪlm",
-        trans: "单色胶卷;"
-      }, {
-        word: "monochrome scale",
-        pronunc: "ˈmɑnəˌkrom skel",
-        trans: "单色刻度盘，黑白标度;"
-      },
-      {
-        word: "monochrome",
-        pronunc: "ˈmɑnəkroʊm",
-        trans: "adj.  单色的，黑白的;"
-      }, {
-        word: "monochrometer",
-        pronunc: "mɒnoʊ'krɒmɪtə",
-        trans: "n.  单色仪[器]，单色光镜，单能化器;"
-      }, {
-        word: "monochrome band",
-        pronunc: "ˈmɑnəˌkrom bænd",
-        trans: "黑白波段，单色波段;"
-      }, {
-        word: "monochrome film",
-        pronunc: "ˈmɑnəˌkrom fɪlm",
-        trans: "单色胶卷;"
-      }, {
-        word: "monochrome scale",
-        pronunc: "ˈmɑnəˌkrom skel",
-        trans: "单色刻度盘，黑白标度;"
-      },
-      {
-        word: "monochrome",
-        pronunc: "ˈmɑnəkroʊm",
-        trans: "adj.  单色的，黑白的;"
-      }, {
-        word: "monochrometer",
-        pronunc: "mɒnoʊ'krɒmɪtə",
-        trans: "n.  单色仪[器]，单色光镜，单能化器;"
-      }, {
-        word: "monochrome band",
-        pronunc: "ˈmɑnəˌkrom bænd",
-        trans: "黑白波段，单色波段;"
-      }, {
-        word: "monochrome film",
-        pronunc: "ˈmɑnəˌkrom fɪlm",
-        trans: "单色胶卷;"
-      }, {
-        word: "monochrome scale",
-        pronunc: "ˈmɑnəˌkrom skel",
-        trans: "单色刻度盘，黑白标度;"
-      }
-
-    ]
+    wordlist: []//后台数据需按照时间倒序排序
   },
-
+  //example.js
+  submitInfo: function (e) {
+    console.log(e.detail.formId);
+    var value1 = wx.getStorageSync('openId');
+    wx.request({
+      url: 'https://aisss5ct.qcloud.la/Emp/mobile/templete/message',
+      method: 'POST',
+      header: {
+        "Content-Type": "application/json"
+      },
+      data: {
+        touser: value1,
+        template_id: 'GLLVC6wsdPwZtACiSuqGiCuw1n8372dDeVxRpKn-oJk',
+        form_id: e.detail.formId
+      },
+      success: function (resz) {
+        //util.showSuccess('加载成功');
+        console.log(resz);
+        //关闭当前页面，跳转到page_001页面
+        wx.navigateTo({
+          //url: '../page_001/page_001',
+        })
+      }
+    })
+  },
   changeorder: function () {
     var original = this.data.wordlist;
     var arraylength = original.length;
@@ -104,12 +63,24 @@ Page({
     * 生命周期函数--监听页面加载
     */
   onLoad: function (options) {
+    var refer = this;
     wx.setNavigationBarTitle({
       title: '易错单词'
     })
     wx.setNavigationBarColor({
       frontColor: '#ffffff',
       backgroundColor: '#43CF7C'
+    })
+    var uid = '020b28e556de4352a231650c1637653c';
+    wx.request({
+      url: 'https://aisss5ct.qcloud.la/Emp/mobile/easymistake/query/' + uid,
+      method: 'GET',
+      success: function (res) {
+        console.log(res.data.rows);
+        refer.setData({
+          wordlist: res.data.rows
+        });
+      }
     })
 
   },
