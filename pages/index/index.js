@@ -1,4 +1,5 @@
 //index.js
+var util = require('../../utils/util.js');
 Page({
   data: {
    
@@ -11,5 +12,10 @@ Page({
   },
   onLoad: function () {
      
+  },
+  clogin: function(){
+    wx.navigateTo({
+      url: '../page_005/page_005',
+    })
   }
 })

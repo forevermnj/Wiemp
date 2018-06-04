@@ -3,7 +3,7 @@ var util = require('/utils/util.js');
 App({
   //当小程序启动时执行
   onLaunch: function () {
-    util.showBusy('加载中');
+    //util.showBusy('加载中');
     //登录
     wx.login({
       success: res => {
@@ -12,7 +12,7 @@ App({
           //调用获取用户信息接口
           wx.getUserInfo({
             success: function (resu) {
-              
+
               //console.log({ encryptedData: resu.encryptedData, iv: resu.iv, code: res.code })
               //解密用户信息
               wx.request({
@@ -27,16 +27,13 @@ App({
                   iv: resu.iv
                 },
                 success: function (resz) {
-                  util.showSuccess('加载成功');
+                  //util.showSuccess('加载成功');
                   //console.log(resz.data.userInfo.openId);
                   wx.setStorage({
                     key: "openId",
                     data: resz.data.userInfo.openId
                   });
-                  //关闭当前页面，跳转到page_001页面
-                  wx.navigateTo({
-                    url: '../page_001/page_001',
-                  })
+                  
                 }
               })
             },

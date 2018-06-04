@@ -1,16 +1,15 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/page_003/page_003",
-    
-    "pages/page_006/page_006",
     "pages/page_001/page_001",
     "pages/page_002/page_002",
-    "pages/page_101/page_101",
-    "pages/logs/logs",
+    "pages/page_003/page_003",
     "pages/page_004/page_004",
-   
-    "pages/page_007/page_007"
+    "pages/page_005/page_005",
+    "pages/page_006/page_006",
+    "pages/page_007/page_007",
+    "pages/page_101/page_101",
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",

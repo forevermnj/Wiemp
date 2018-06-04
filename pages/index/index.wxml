@@ -12,5 +12,9 @@
    </view>
    <text class='style3'>专业银行英语学习平台</text>
   </view>
+
+  <view class='style6'>
+    <button bindtap='clogin' class='style5'>登录</button>
+  </view>
   
 </view>

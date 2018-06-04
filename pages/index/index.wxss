@@ -21,3 +21,13 @@
   align-items: center;
   margin-top: 100px;
 }
+
+.style5{
+  background-color:green;
+  color:white;
+  width:200pt;
+}
+
+.style6{
+  margin-top: 35pt;
+}
