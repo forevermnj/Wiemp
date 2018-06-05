@@ -1,5 +1,6 @@
 //app.js
 var util = require('/utils/util.js');
+
 App({
   //当小程序启动时执行
   onLaunch: function () {
@@ -28,12 +29,11 @@ App({
                 },
                 success: function (resz) {
                   //util.showSuccess('加载成功');
-                  //console.log(resz.data.userInfo.openId);
+                  //将openid存入缓存中
                   wx.setStorage({
                     key: "openId",
                     data: resz.data.userInfo.openId
                   });
-                  
                 }
               })
             },
@@ -49,6 +49,7 @@ App({
     })
   },
   globalData: {
-   
+    serverUrl:'https://aisss5ct.qcloud.la',
+    uid:'020b28e556de4352a231650c1637653c'//测试用户ID
   }
 })

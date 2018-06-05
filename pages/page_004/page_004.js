@@ -1,4 +1,5 @@
-// pages/page_004/page_004.js
+
+var app = getApp();
 Page({
 
   /**
@@ -35,8 +36,9 @@ Page({
     var ym = y + '-' + (mon < 10 ? "0" + mon : mon);
 
     var refer = this;
+    var uid = wx.getStorageSync('uid');
     wx.request({
-      url: 'https://aisss5ct.qcloud.la/Emp/mobile/studycalendar/query/' + '020b28e556de4352a231650c1637653c' + '/' + ym,
+      url: app.globalData.serverUrl + '/Emp/mobile/studycalendar/query/' + uid + '/' + ym,
       method: 'GET',
 
       success: function (resz) {

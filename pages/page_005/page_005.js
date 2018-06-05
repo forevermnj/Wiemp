@@ -1,5 +1,6 @@
 
 var util = require('../../utils/util.js');
+var app = getApp();
 Page({
 
   /**
@@ -31,24 +32,35 @@ Page({
     })
   },
   clogin: function (){
+    var openId = wx.getStorageSync('openId');
     util.showBusy('加载中');
     var refer = this;
     wx.request({
-      url: 'https://aisss5ct.qcloud.la/Emp/mobile/login/login2',
+      url: app.globalData.serverUrl+'/Emp/mobile/login/login2',
       method: 'POST',
       header: {
         "Content-Type": "application/json"
       },
       data: {
         code: refer.data.code,
-        tel: refer.data.tel
+        tel: refer.data.tel,
+        openid: openId
       },
       success: function (res) {
-        util.showSuccess('加载成功');
-        //关闭当前页面，跳转到page_001页面
-        wx.navigateTo({
-          url: '../page_001/page_001',
-        })
+        if (res.data.result=='0'){
+          //将用户ID存入缓存中
+          wx.setStorage({
+            key: "uid",
+            data: res.data.uid
+          });
+          util.showSuccess('加载成功');
+          //关闭当前页面，跳转到page_001页面
+          wx.navigateTo({
+            url: '../page_001/page_001',
+          })
+        }else{
+          util.showSuccess('登录失败');
+        }
       }
     })
   },

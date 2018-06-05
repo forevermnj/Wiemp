@@ -1,4 +1,5 @@
-//page_001.js
+
+var app = getApp();
 Page({
   data: {
     word: 'Good'
@@ -9,7 +10,7 @@ Page({
   //单词发声
   speech:function(){
     wx.request({
-      url: 'https://aisss5ct.qcloud.la/Emp/mobile/word/pronunciation/'+this.data.word,
+      url: app.globalData.serverUrl+'/Emp/mobile/word/pronunciation/'+this.data.word,
       method: 'GET',
       success: function (res) {
         //console.log(res.data);

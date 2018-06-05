@@ -1,4 +1,5 @@
-// pages/page_002/page_002.js
+
+var app = getApp();
 Page({
 
   /**
@@ -64,7 +65,7 @@ Page({
         //console.log("call backend, pagestyle == 'complex'");
         var wid = this.data.wordidlist[wi];
         wx.request({
-          url: 'https://aisss5ct.qcloud.la/Emp/mobile/bearword/mean/' + wid,
+          url: app.globalData.serverUrl+'/Emp/mobile/bearword/mean/' + wid,
           method: 'GET',
 
           success: function (resz) {
@@ -90,7 +91,7 @@ Page({
     });
     var word = refer.data.wordlist[refer.data.wordindex];
     wx.request({
-      url: 'https://aisss5ct.qcloud.la/Emp/mobile/word/pronunciation/' + word,
+      url: app.globalData.serverUrl+'/Emp/mobile/word/pronunciation/' + word,
       method: 'GET',
       success: function (res) {
         const backgroundAudioManager = wx.getBackgroundAudioManager()
@@ -113,7 +114,7 @@ Page({
     });
     var word = refer.data.worddetail.sentence;
     wx.request({
-      url: 'https://aisss5ct.qcloud.la/Emp/mobile/word/pronunciation/' + word,
+      url: app.globalData.serverUrl+'/Emp/mobile/word/pronunciation/' + word,
       method: 'GET',
       success: function (res) {
         const backgroundAudioManager = wx.getBackgroundAudioManager()
@@ -140,7 +141,7 @@ Page({
       })
       var wid = refer.data.wordidlist[refer.data.wordindex];
       wx.request({
-        url: 'https://aisss5ct.qcloud.la/Emp/mobile/bearword/mean/' + wid,
+        url: app.globalData.serverUrl+'/Emp/mobile/bearword/mean/' + wid,
         method: 'GET',
         success: function (resz) {
           var resp = {
@@ -178,9 +179,9 @@ Page({
           return
     }
     var refer = this;
-    var uid = '020b28e556de4352a231650c1637653c';
+    var uid = wx.getStorageSync('uid');
     wx.request({
-      url: 'https://aisss5ct.qcloud.la/Emp/mobile/bearword/query/' + uid,
+      url: app.globalData.serverUrl+'/Emp/mobile/bearword/query/' + uid,
       method: 'GET',
 
       success: function (resz) {

@@ -1,4 +1,5 @@
-// pages/page_001/page_001.js
+
+var app = getApp();
 Page({
 
   /**
@@ -31,11 +32,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var uid = wx.getStorageSync('uid');
     var refer = this;
     //已完成单词
-    var uid = '020b28e556de4352a231650c1637653c';
     wx.request({
-      url: 'https://aisss5ct.qcloud.la/Emp/mobile/bearword/doneWordCount/' + uid,
+      url: app.globalData.serverUrl+'/Emp/mobile/bearword/doneWordCount/' + uid,
       method: 'GET',
       success: function (resz) {
         //console.log(resz.data);
@@ -46,7 +47,7 @@ Page({
     })
     //打卡状态
     wx.request({
-      url: 'https://aisss5ct.qcloud.la/Emp/mobile/bearword/whetherDoneHitCard/' + uid,
+      url: app.globalData.serverUrl+'/Emp/mobile/bearword/whetherDoneHitCard/' + uid,
       method: 'GET',
       success: function (resz) {
         //console.log(resz.data);

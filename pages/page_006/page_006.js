@@ -1,4 +1,5 @@
-// pages/page_006/page_006.js
+
+var app = getApp();
 Page({
 
   /**
@@ -26,7 +27,7 @@ Page({
     });
     let words = refer.data.wordList[refer.data.wordIndex].word;
     wx.request({
-      url: 'https://aisss5ct.qcloud.la/Emp/mobile/word/pronunciation/' + words,
+      url: app.globalData.serverUrl+'/Emp/mobile/word/pronunciation/' + words,
       method: 'GET',
       success: function (res) {
         const backgroundAudioManager = wx.getBackgroundAudioManager()
@@ -145,10 +146,10 @@ Page({
    */
   onLoad: function (options) {
     var count = 2;  // it should be BE result 
-    var uid = '020b28e556de4352a231650c1637653c';
+    var uid = wx.getStorageSync('uid');
     var refer = this;
     wx.request({
-      url: 'https://aisss5ct.qcloud.la/Emp/mobile/wordexam/query/' + uid,
+      url: app.globalData.serverUrl+'/Emp/mobile/wordexam/query/' + uid,
       method: 'GET',
       success: function (res) {
         //返回单词总数

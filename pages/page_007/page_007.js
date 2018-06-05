@@ -1,4 +1,5 @@
-// pages/page_007/page_007.js
+
+var app = getApp();
 Page({
 
   /**

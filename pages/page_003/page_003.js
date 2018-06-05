@@ -1,4 +1,5 @@
-// pages/page_003/page_003.js
+
+var app = getApp();
 Page({
 
   /**
@@ -14,7 +15,7 @@ Page({
     console.log(e.detail.formId);
     var value1 = wx.getStorageSync('openId');
     wx.request({
-      url: 'https://aisss5ct.qcloud.la/Emp/mobile/templete/message',
+      url: app.globalData.serverUrl+'/Emp/mobile/templete/message',
       method: 'POST',
       header: {
         "Content-Type": "application/json"
@@ -71,9 +72,9 @@ Page({
       frontColor: '#ffffff',
       backgroundColor: '#43CF7C'
     })
-    var uid = '020b28e556de4352a231650c1637653c';
+    var uid = wx.getStorageSync('uid');
     wx.request({
-      url: 'https://aisss5ct.qcloud.la/Emp/mobile/easymistake/query/' + uid,
+      url: app.globalData.serverUrl+'/Emp/mobile/easymistake/query/' + uid,
       method: 'GET',
       success: function (res) {
         console.log(res.data.rows);
