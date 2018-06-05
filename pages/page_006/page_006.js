@@ -99,8 +99,27 @@ Page({
       })
       //console.log(rate + "|" + elapseTime);
       if (rate >= 0.9) {
+        //console.log("调用打卡接口");
         this.setData({
           status: 'success'
+        })
+        /**
+         * 考试通过，调用打卡接口
+         */
+        var uid = wx.getStorageSync('uid');
+        //console.log(uid);
+        wx.request({
+          url: app.globalData.serverUrl +'/Emp/mobile/hitcard/hit',
+          method: 'POST',
+          header: {
+            "Content-Type": "application/json"
+          },
+          data: {
+            userId: uid
+          },
+          success: function (res) {
+            
+          }
         })
       } else {
         this.setData({
