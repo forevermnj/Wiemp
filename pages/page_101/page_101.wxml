@@ -1,18 +1,27 @@
-<!--绑定手指滑动事件-->
-<view bindtouchstart='slidStart' bindtouchmove='slidAfter' bindtouchend='slidEnd'  class="container">
 
-   <!--显示单词-->
-   <view>
-     <text class="style1">{{word}}</text>
-   </view>
+
+<!--
+
+/***********************************************************
+
+此页面为测试页面
+
+************************************************************
+
+
+
+-->
+
+
+
+
+
+
+
+
+<!--绑定手指滑动事件-->
+<view class="container">
+
+  <video src="http://1256238026.vod2.myqcloud.com/c462668avodtransgzp1256238026/20528bae7447398156442708235/v.f30.mp4"></video>
    
-   <!--底层按钮-->
-   <view class="style2" style="display:flex;">
-     <view class="style3">
-      <button hover-class='style4'>提示</button>
-     </view>
-     <view class="style5">
-      <button bindtap='speech' hover-class="style6">语音</button>
-     </view> 
-   </view>
 </view>

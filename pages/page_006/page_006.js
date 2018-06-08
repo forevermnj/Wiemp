@@ -118,7 +118,33 @@ Page({
             userId: uid
           },
           success: function (res) {
-            
+            console.log('考试打卡成功');
+            var ids = wx.getStorageSync('twordrecordid');
+            /**
+             * 考试打卡成功将单词考试状态修改为:考试通过
+             */
+            wx.request({
+              url: app.globalData.serverUrl + '/Emp/mobile/wordexam/examPass',
+              method: 'POST',
+              header: {
+                "Content-Type": "application/json"
+              },
+              data: {
+                ids: ids
+              },
+              success: function (res) {
+                 /**
+                  * 移除相关缓存数据
+                  */
+                wx.removeStorageSync('twordrecordid');
+                wx.removeStorageSync('wordidlist');
+                wx.removeStorageSync('wordlist');
+                wx.removeStorageSync('totalaccount');
+              }
+            })
+
+
+
           }
         })
       } else {
@@ -178,6 +204,19 @@ Page({
           wordAccount: res.data.total,
           wordList: res.data.rows
         })
+        var temp='';
+        for(var k=0;k<res.data.rows.length;k++){
+            temp = temp + res.data.rows[k].id+",";
+        }
+        //console.log('dddddddddd'+temp);
+        /**
+         * 将用户单词记录表中的主键存入缓存
+         */
+        wx.setStorage({
+          key: "twordrecordid",
+          data: temp
+        });
+        
         //创建一个空数组
         var emptyarray = new Array(count);
         //给创建的空数组赋值
