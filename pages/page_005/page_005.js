@@ -33,6 +33,7 @@ Page({
   },
   clogin: function (){
     var openId = wx.getStorageSync('openId');
+    var nickName = wx.getStorageSync('nickName');
     util.showBusy('加载中');
     var refer = this;
     wx.request({
@@ -44,7 +45,8 @@ Page({
       data: {
         code: refer.data.code,
         tel: refer.data.tel,
-        openid: openId
+        openid: openId,
+        nickName: nickName
       },
       success: function (res) {
         if (res.data.result=='0'){

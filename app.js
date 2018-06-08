@@ -34,6 +34,11 @@ App({
                     key: "openId",
                     data: resz.data.userInfo.openId
                   });
+                  //将用户昵称存入缓存中
+                  wx.setStorage({
+                    key:'nickName',
+                    data:resz.data.userInfo.nickName
+                  });
                 }
               })
             },
