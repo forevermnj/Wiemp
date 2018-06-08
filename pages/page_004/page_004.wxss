@@ -26,10 +26,11 @@
 }
 
 .calendar_box {
-  width: 100%;
+  width: 85%;
   background: #fff;
   overflow: hidden;
   margin-bottom: 5px;
+  margin-left: 20px;
 }
 
 .weekday_label {
@@ -55,18 +56,18 @@
 
 .active_date {
   background: rgb(255, 195, 0);
-  color: #fff;
+  color:white;
   border-radius: 50%;
 }
 .action_date{
   background: #43cf7c;
-  color: #fff;
+  color:white;
   border-radius: 50%;  
 }
 
 .remaining_date{
   background: rgb(199, 199, 199);
-  color: #fff;
+  color:black;
   border-radius: 50%;
 }
 
