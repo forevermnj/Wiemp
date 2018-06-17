@@ -17,7 +17,7 @@ App({
               //console.log({ encryptedData: resu.encryptedData, iv: resu.iv, code: res.code })
               //解密用户信息
               wx.request({
-                url: 'https://aisss5ct.qcloud.la/Emp/mobile/login/login',
+                url: 'https://www.learnzp.com/Emp/mobile/login/login',
                 method: 'POST',
                 header: {
                   "Content-Type": "application/json"
@@ -54,7 +54,7 @@ App({
     })
   },
   globalData: {
-    serverUrl:'https://aisss5ct.qcloud.la',
+    serverUrl:'https://www.learnzp.com',
     uid:'020b28e556de4352a231650c1637653c'//测试用户ID
   }
 })

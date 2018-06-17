@@ -30,8 +30,10 @@ Page({
       url: app.globalData.serverUrl+'/Emp/mobile/word/pronunciation/' + words,
       method: 'GET',
       success: function (res) {
-        const backgroundAudioManager = wx.getBackgroundAudioManager()
-        backgroundAudioManager.src = res.data
+        var tempFilePath = res.data;
+        wx.playBackgroundAudio({
+          dataUrl: tempFilePath
+        });
       }
     });
     //监听播放停止

@@ -10,9 +10,10 @@
   </view>
 
   <scroll-view scroll-y>
+  <!--
   <form bindsubmit="submitInfo" report-submit='true' >
      <button form-type="submit" type="default" size="mini">提交</button>
-  </form>
+  </form>-->
     <view wx:for="{{wordlist}}" wx:key="unique" class="style1">
       <view>
         <text>{{item.word}}</text>
