@@ -13,7 +13,6 @@ App({
           //调用获取用户信息接口
           wx.getUserInfo({
             success: function (resu) {
-
               //console.log({ encryptedData: resu.encryptedData, iv: resu.iv, code: res.code })
               //解密用户信息
               wx.request({
@@ -42,9 +41,40 @@ App({
                 }
               })
             },
-            fail: function () {
-              util.showModel('请求失败', error);
-              console.log('获取用户信息失败')
+            fail: function (error) {
+              //util.showModel('请求失败', error);
+              console.log('获取用户信息失败');
+              getApp().globalData.authorizeUserInfoFlag = false;
+              //console.log("设置" + getApp().globalData.authorizeUserInfoFlag);
+              wx.getSetting({
+                success(res) {
+                  if (!res.authSetting['scope.userInfo']) {
+                    console.log("调用授权");
+                    wx.authorize({
+                      scope: 'scope.userInfo',
+                      success() {
+                        // 用户已经同意小程序获取昵称，头像信息
+                        getApp().globalData.authorizeUserInfoFlag = true;
+                      },
+                      fail(){
+                        getApp().globalData.authorizeUserInfoFlag = false;
+                        wx.showModal({
+                          title: '警告',
+                          content: '您点击了拒绝授权,将无法正常显示个人信息,点击确定重新获取授权。',
+                          success: function (res) {
+                            if (res.confirm) {
+                              console.log("重新授权");
+                            }
+                          }
+                        })
+
+                        
+                             
+                      }
+                    })
+                  }
+                }
+              })
             }
           })
         } else {
@@ -55,6 +85,7 @@ App({
   },
   globalData: {
     serverUrl:'https://www.learnzp.com',
+    authorizeUserInfoFlag:true,
     uid:'020b28e556de4352a231650c1637653c'//测试用户ID
   }
 })

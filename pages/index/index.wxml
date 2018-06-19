@@ -19,6 +19,11 @@
 
   <view class='style6'>
     <button bindtap='clogin' class='style5'>登录</button>
+
+    <view wx:if="{{!authorizeUserInfoFlag}}">
+      <button plain='true' open-type='getUserInfo' class='style5'>授权获取昵称       </button>
+    </view>
+    
   </view>
   
 </view>

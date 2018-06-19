@@ -1,9 +1,10 @@
 //index.js
 var util = require('../../utils/util.js');
+var app = getApp();
 
 Page({
   data: {
-   
+    authorizeUserInfoFlag:false
   },
   //事件处理函数
   bindViewTap: function() {
@@ -22,6 +23,12 @@ Page({
 
     //清理本地缓存
     wx.clearStorage();
+
+    var refer = this;
+    refer.setData({
+      authorizeUserInfoFlag: app.globalData.authorizeUserInfoFlag
+    });
+    //console.log("首页"+app.globalData.authorizeUserInfoFlag);
 
   },
   clogin: function(){
