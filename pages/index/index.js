@@ -12,7 +12,17 @@ Page({
     })
   },
   onLoad: function () {
-    
+    /**
+     * 移除指定缓存数据
+     */
+    wx.removeStorageSync("wordidlist");
+    wx.removeStorageSync("wordlist");
+    wx.removeStorageSync("totalaccount");
+    wx.removeStorageSync("uid");
+
+    //清理本地缓存
+    wx.clearStorage();
+
   },
   clogin: function(){
     wx.navigateTo({
