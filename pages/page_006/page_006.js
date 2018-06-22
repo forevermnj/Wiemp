@@ -164,6 +164,14 @@ Page({
       this.setData({
         wordIndex: this.data.wordIndex + 1
       })
+    }else{
+      wx.request({
+        url: app.globalData.serverUrl + '/Emp/mobile/easymistake/edit/' + this.data.wordList[this.data.wordIndex].id,
+        method: 'GET',
+        success: function (res) {
+         
+        }
+      })
     }
 
     /*************************************************

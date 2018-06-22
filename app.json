@@ -14,8 +14,8 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor":"white",
-    "navigationBarTitleText": "英语在线学习",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor":"#43CF7C",
+    "navigationBarTitleText": "EasyLearnEnglish",
+    "navigationBarTextStyle": "#ffffff"
   }
 }
