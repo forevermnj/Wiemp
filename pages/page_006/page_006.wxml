@@ -1,5 +1,4 @@
 <!--pages/page_006/page_006.wxml-->
-<!--test page-->
 <view style="opacity:{{showDialog?0.3:1}}">
   <view class="mainarea" bindtouchstart='touchstart' bindtouchmove='touchmove' bindtouchend='touchend'>
     <scroll-view scroll-y="true" scroll-with-animation="true">
@@ -10,7 +9,6 @@
         <text>{{wordList[wordIndex].pronounce}}</text>
       </view>
 
-
       <view class='style2'>
       <image class='image1' src='{{imgwordurl}}' catchtap='speech'></image>
       </view>
@@ -20,8 +18,10 @@
 
       <!--考试选项-->
       <view wx:for="{{wordList[wordIndex].options}}" wx:for-item="opts" class="options" wx:key="unique">
-        <view catchtap='chooseAnswer' data-optionsindex='{{index}}' class="{{myanswer[wordIndex]!=index?'':myanswer[wordIndex]==wordList[wordIndex].correct?'correctstyle':'wrongstyle'}}">
+        <view catchtap='chooseAnswer' data-optionsindex='{{index}}' class="">
           <text>{{opts}}</text>
+          <icon wx:if="{{myanswer[wordIndex]!=index?'':(flag1=='0'?'':(myanswer[wordIndex]!=wordList[wordIndex].correct))}}" type="cancel" size='20' color='red'/>
+          <icon wx:if="{{myanswer[wordIndex]!=index?'':(flag1=='0'?'':(myanswer[wordIndex]==wordList[wordIndex].correct))}}" type="success_no_circle" size='18' color='green'/>
         </view>
       </view>
 

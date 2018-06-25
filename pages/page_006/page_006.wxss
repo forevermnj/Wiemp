@@ -1,5 +1,3 @@
-/* pages/page_006/page_006.wxss */
-
 .mainarea {
   background-color: rgb(227, 248, 235);
   position: absolute;
@@ -30,7 +28,7 @@
   padding: 5px;
   background-color: white;
   border-style: solid;
-  border-width: 2px;
+  border-width: 1px;
   border-color: lightgreen;
   border-radius: 5px;  
 }
@@ -117,6 +115,10 @@
 .style2{
   margin-top: 5px;
   margin-left: 170px;
+}
+
+.style3{
+  background-color: red;
 }
 
 .image1 {

@@ -15,7 +15,7 @@
 
   <!--提交-->
   <view>
-   <button bindtap='clogin' class='style4'>登录</button>
+   <button open-type='getUserInfo' bindtap='clogin' class='style4'>登录</button>
   </view>
   
 </view>

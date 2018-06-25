@@ -22,12 +22,8 @@
   margin-top: 100px;
 }
 
-.style5{
-  background-color:green;
-  color:white;
-  width:200pt;
-}
-
-.style6{
-  margin-top: 35pt;
+.style7{
+  margin-top: 5pt;
+  margin-right: 5pt;
+  margin-left: 200pt;
 }

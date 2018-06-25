@@ -1,10 +1,12 @@
 //index.js
 var util = require('../../utils/util.js');
+var timer = require('../../utils/wxTimer.js');
 var app = getApp();
 
 Page({
   data: {
-    authorizeUserInfoFlag:false
+    authorizeUserInfoFlag:false,
+    wxTimerList: {}
   },
   //事件处理函数
   bindViewTap: function() {
@@ -28,7 +30,15 @@ Page({
     refer.setData({
       authorizeUserInfoFlag: app.globalData.authorizeUserInfoFlag
     });
-    //console.log("首页"+app.globalData.authorizeUserInfoFlag);
+    var wxTimer = new timer({
+      beginTime: "00:00:03",
+      complete: function () {
+        wx.navigateTo({
+          url: '../page_005/page_005',
+        })
+      }
+    })
+    wxTimer.start(refer);
 
   },
   clogin: function(){

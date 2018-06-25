@@ -14,8 +14,8 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor":"#43CF7C",
+    "navigationBarBackgroundColor":"white",
     "navigationBarTitleText": "EasyLearnEnglish",
-    "navigationBarTextStyle": "#ffffff"
+    "navigationBarTextStyle": "black"
   }
 }

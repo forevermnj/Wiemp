@@ -1,4 +1,9 @@
 <!--index.wxml-->
+<view class='style7'>
+    <button bindtap='clogin' class='style5'>
+      <text>{{wxTimerSecond}}</text>
+    </button>
+</view>
 <view class="container">
   <view class="style4">
    <view style="display:flex;">
@@ -6,24 +11,14 @@
        <image style='width:20px;height:20px'        src='../image/index/1.png'></image>
      </view>
      <view>
-
-
-
-     
-       <text class='style2'>
+  
+      <text class='style2'>
       <image style='width:20px;height:20px'    src='../image/index/1.png'></image>30天英语打卡</text>
      </view>
    </view>
    <text class='style3'>专业银行英语学习平台</text>
   </view>
 
-  <view class='style6'>
-    <button bindtap='clogin' class='style5'>登录</button>
-
-    <view wx:if="{{!authorizeUserInfoFlag}}">
-      <button plain='true' open-type='getUserInfo' class='style5'>授权获取昵称       </button>
-    </view>
-    
-  </view>
+  
   
 </view>

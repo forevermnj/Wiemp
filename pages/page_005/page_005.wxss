@@ -13,14 +13,15 @@
 
 .style2{
   font-size: 34pt;
-  color: #43cf7c;
+  /*color: #43cf7c;*/
+  color:green;
 }
 
 .style3{
   font-size: 14pt;
-  border-bottom-style:solid;
+  border-bottom-style:ridge;
   border-bottom-color:green;
-  
+  border-width: 1pt;
 }
 
 .style4{

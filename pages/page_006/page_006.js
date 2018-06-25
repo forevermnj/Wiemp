@@ -10,17 +10,17 @@ Page({
     wordIndex: 0,
     myanswer: [],
     wordList: [],
-    status: 'failed', // success, failed
+    status: 'failed',
     score: 0,
     wordAccount: 0,
     startTime: '',
     elapse: '', //less than 1 minute show second
     showDialog: false,
     imgwordurl: '../image/page_002/2.png',
+    flag1:'0'//标记用户是否作答
   },
   //单词读音
   speech: function (e) {
-    //console.log(this.data.wordIndex);
     var refer = this;
     refer.setData({
       imgwordurl: '../image/page_002/3.gif'
@@ -38,7 +38,6 @@ Page({
     });
     //监听播放停止
     wx.onBackgroundAudioStop(function () {
-      //console.log('onBackgroundAudioStop')
       refer.setData({
         imgwordurl: '../image/page_002/2.png'
       });
@@ -53,15 +52,18 @@ Page({
 
   },
   touchend: function (e) {
+    var refer = this;
+    
+    
     /***************************************************
      * 如果用户没有选择答案,并且不是向左滑动，则不做任何反应
      ***************************************************/
-    var distancex = e.changedTouches[0].pageX - this.data.startx;
-    //update word index
-    if (distancex < 0 && this.data.myanswer[this.data.wordIndex] != "-1") {  //allow move left only
+    var distancex = e.changedTouches[0].pageX - refer.data.startx;
+    if (distancex < 0 && refer.data.myanswer[refer.data.wordIndex] != "-1") {
       //改变单词下标
       this.setData({
-        wordIndex: this.data.wordIndex + 1
+        wordIndex: this.data.wordIndex + 1,
+        flag1:'0'
       })
     }
   },
@@ -79,6 +81,13 @@ Page({
 
   //choose the right answer
   chooseAnswer: function (e) {
+    /**
+     * 标记用户已经作答
+     */
+    this.setData({
+      flag1:'1'
+    })
+
     /****************************************
      * 实时计算考试分数，以及所用时间
      ****************************************/
@@ -99,17 +108,16 @@ Page({
         showDialog: true,
         elapse: elapseStr
       })
-      //console.log(rate + "|" + elapseTime);
+      
       if (rate >= 0.9) {
-        //console.log("调用打卡接口");
         this.setData({
           status: 'success'
         })
+        //获取用户ID
+        var uid = wx.getStorageSync('uid');
         /**
          * 考试通过，调用打卡接口
          */
-        var uid = wx.getStorageSync('uid');
-        //console.log(uid);
         wx.request({
           url: app.globalData.serverUrl +'/Emp/mobile/hitcard/hit',
           method: 'POST',
@@ -120,7 +128,7 @@ Page({
             userId: uid
           },
           success: function (res) {
-            console.log('考试打卡成功');
+            //获取用户单词记录表的主键
             var ids = wx.getStorageSync('twordrecordid');
             /**
              * 考试打卡成功将单词考试状态修改为:考试通过
@@ -158,11 +166,13 @@ Page({
 
     /************************************************
      * 如果选择正确，则自动跳转下一个单词,正确单词下标为0
+     * 自动跳转暂时取消
      *************************************************/
-    if (e.currentTarget.dataset.optionsindex=='0'){
+    if (e.currentTarget.dataset.optionsindex == '0' && this.data.flag1 == '0')    {
       //改变单词下标
       this.setData({
-        wordIndex: this.data.wordIndex + 1
+        wordIndex: this.data.wordIndex + 1,
+        flag1:'0'
       })
     }else{
       wx.request({
@@ -179,8 +189,8 @@ Page({
      *************************************************/
     var aswArray = this.data.myanswer;
     //如果用户还没有选择答案
-    if (aswArray[this.data.wordIndex] == "-1") {  //only allow user to select once
-      //标记指定下标单词已被用户选择
+    if (aswArray[this.data.wordIndex] == "-1") {
+      //标记指定下标单词的释义已被用户所选择，数组存贮用户所选择的答案的下标
       aswArray[this.data.wordIndex] = e.currentTarget.dataset.optionsindex;
       this.setData({
         myanswer: aswArray
@@ -188,8 +198,7 @@ Page({
     }
   },
   mask: function () {
-    // do nothing than mask the tap event
-    // console.log('mask');
+    
   },
   iknow: function () {
     wx.navigateTo({
@@ -200,25 +209,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var count = 2;  // it should be BE result 
+    var count = "";
+    //获取用户ID 
     var uid = wx.getStorageSync('uid');
     var refer = this;
+    //请求开始考试接口
     wx.request({
       url: app.globalData.serverUrl+'/Emp/mobile/wordexam/query/' + uid,
       method: 'GET',
       success: function (res) {
         //返回单词总数
-        count = res.data.total
+        count = res.data.total;
         //页面数据设置
         refer.setData({
           wordAccount: res.data.total,
           wordList: res.data.rows
         })
+
+        /**
+         * 组装用户单词记录表主键数据
+         */
         var temp='';
         for(var k=0;k<res.data.rows.length;k++){
             temp = temp + res.data.rows[k].id+",";
         }
-        //console.log('dddddddddd'+temp);
         /**
          * 将用户单词记录表中的主键存入缓存
          */
@@ -227,7 +241,7 @@ Page({
           data: temp
         });
         
-        //创建一个空数组
+        //根据开始考试接口返回的单词总数,创建一个空数组
         var emptyarray = new Array(count);
         //给创建的空数组赋值
         for (var i = 0; i < count; i++) emptyarray[i] = "-1";
