@@ -88,6 +88,19 @@ Page({
       flag1:'1'
     })
 
+    /*************************************************
+     * 存贮对于指定单词，用户所选择的释义下标
+     *************************************************/
+    var aswArray = this.data.myanswer;
+    //如果用户还没有选择答案
+    if (aswArray[this.data.wordIndex] == "-1") {
+      //标记指定下标单词的释义已被用户所选择，数组存贮用户所选择的答案的下标
+      aswArray[this.data.wordIndex] = e.currentTarget.dataset.optionsindex;
+      this.setData({
+        myanswer: aswArray
+      })
+    }
+
     /****************************************
      * 实时计算考试分数，以及所用时间
      ****************************************/
@@ -190,18 +203,7 @@ Page({
       })
     }
 
-    /*************************************************
-     * 存贮对于指定单词，用户所选择的释义下标
-     *************************************************/
-    var aswArray = this.data.myanswer;
-    //如果用户还没有选择答案
-    if (aswArray[this.data.wordIndex] == "-1") {
-      //标记指定下标单词的释义已被用户所选择，数组存贮用户所选择的答案的下标
-      aswArray[this.data.wordIndex] = e.currentTarget.dataset.optionsindex;
-      this.setData({
-        myanswer: aswArray
-      })
-    }
+    
   },
   mask: function () {
     

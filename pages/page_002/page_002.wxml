@@ -24,7 +24,7 @@
               {{worddetail.translation}}
             </view>
             <view class='translation2'>
-              <image class='image1' src='{{imgsentenceurl}}' catchtap='speech2'></image> {{worddetail.sentence}}
+              <!--<image class='image1' src='{{imgsentenceurl}}' catchtap='speech2'></image>--> {{worddetail.sentence}}
             </view>
           </view>
         </view>
