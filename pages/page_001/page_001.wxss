@@ -16,6 +16,18 @@
   font-size: 14px;
 }
 
+.style2 {
+  background-color:green;
+  width: 200px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: green;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  border-radius: 22px;
+  color: white;
+}
+
 .style3 {
   font-size: 60px;
 }

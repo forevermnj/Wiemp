@@ -6,11 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    words_account: '280',
-    task: 'done' //done, not_yet
+    words_account: '0',
+    task: 'done', //done, not_yet
+    flag1: false
   },
 
   exercise: function (event) {
+    var refer = this;
+    refer.setData({
+      flag1:true
+    })
     wx.navigateTo({
       url: '../page_002/page_002'
     })
@@ -73,7 +78,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var refer = this;
+    refer.setData({
+      flag1: false
+    })
   },
 
   /**
