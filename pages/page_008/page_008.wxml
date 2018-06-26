@@ -1,0 +1,4 @@
+<view class="container">
+  <icon type="success" size="80" color="green"/>
+  <text class='style1'>您已通过全部单词的考试!</text>
+</view>

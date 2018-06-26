@@ -16,9 +16,22 @@ Page({
     refer.setData({
       flag1:true
     })
-    wx.navigateTo({
-      url: '../page_002/page_002'
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/wordexam/isAllPass/' + wx.getStorageSync('uid'),
+      method: 'GET',
+      success: function (res) {
+         if(res.data){
+           wx.navigateTo({
+             url: '../page_002/page_002'
+           })
+         }else{
+           wx.navigateTo({
+             url: '../page_008/page_008'
+           })
+         }
+      }
     })
+   
   },
 
   linktowordlist: function (event) {
