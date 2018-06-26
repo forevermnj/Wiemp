@@ -34,7 +34,7 @@ Page({
   clogin: function (){
     var openId = wx.getStorageSync('openId');
     var nickName = wx.getStorageSync('nickName');
-    util.showBusy('加载中');
+    util.showBusy('登录中...');
     var refer = this;
     wx.request({
       url: app.globalData.serverUrl+'/Emp/mobile/login/login2',

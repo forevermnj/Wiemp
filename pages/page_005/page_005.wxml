@@ -3,7 +3,9 @@
   
 
   <!--登录-->
-  <view class='style2'>登录</view>
+  <view class='style2'>
+    <image class='style7' src='../image/page_005/top.png'></image>
+  </view>
 
   <!--输入-->
   <view class='style5'>
@@ -16,6 +18,12 @@
   <!--提交-->
   <view>
    <button open-type='getUserInfo' bindtap='clogin' class='style4'>登录</button>
+  </view>
+
+  <view>
+    <text>
+      ©2017-2018 Capacity Center
+    </text>
   </view>
   
 </view>

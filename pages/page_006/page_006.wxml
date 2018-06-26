@@ -20,8 +20,8 @@
       <view wx:for="{{wordList[wordIndex].options}}" wx:for-item="opts" class="options" wx:key="unique">
         <view catchtap='chooseAnswer' data-optionsindex='{{index}}' class="">
           <text>{{opts}}</text>
-          <icon wx:if="{{myanswer[wordIndex]!=index?'':(flag1=='0'?'':(myanswer[wordIndex]!=wordList[wordIndex].correct))}}" type="cancel" size='20' color='red'/>
-          <icon wx:if="{{myanswer[wordIndex]!=index?'':(flag1=='0'?'':(myanswer[wordIndex]==wordList[wordIndex].correct))}}" type="success_no_circle" size='18' color='green'/>
+          <icon wx:if="{{myanswer[wordIndex]!=index?'':(flag1=='0'?'':(myanswer[wordIndex]!=wordList[wordIndex].correct))}}" type="cancel" size='24' color='red'/>
+          <icon wx:if="{{myanswer[wordIndex]!=index?'':(flag1=='0'?'':(myanswer[wordIndex]==wordList[wordIndex].correct))}}" type="success_no_circle" size='24' color='green'/>
         </view>
       </view>
 

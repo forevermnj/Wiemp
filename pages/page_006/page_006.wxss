@@ -121,6 +121,10 @@
   background-color: red;
 }
 
+.style4{
+  margin-top: 50px;
+}
+
 .image1 {
   width: 30px;
   height: 30px;

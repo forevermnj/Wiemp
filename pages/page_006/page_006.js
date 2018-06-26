@@ -168,13 +168,19 @@ Page({
      * 如果选择正确，则自动跳转下一个单词,正确单词下标为0
      * 自动跳转暂时取消
      *************************************************/
-    if (e.currentTarget.dataset.optionsindex == '0' && this.data.flag1 == '0')    {
+    if (e.currentTarget.dataset.optionsindex == '0')    {
+      wx.playBackgroundAudio({
+        dataUrl: app.globalData.serverUrl + '/Emp/mp3/correct.mp3'
+      });
       //改变单词下标
-      this.setData({
+      /*this.setData({
         wordIndex: this.data.wordIndex + 1,
         flag1:'0'
-      })
+      })*/
     }else{
+      wx.playBackgroundAudio({
+        dataUrl: app.globalData.serverUrl + '/Emp/mp3/error.mp3'
+      });
       wx.request({
         url: app.globalData.serverUrl + '/Emp/mobile/easymistake/edit/' + this.data.wordList[this.data.wordIndex].id,
         method: 'GET',
