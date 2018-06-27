@@ -22,6 +22,15 @@
   margin-top: 100px;
 }
 
+.style5{
+  border-color:brown;
+  background-color:gainsboro;
+  border-radius: 5pt;
+  height: 30pt;
+  text-align: center;
+  vertical-align:text-bottom;
+}
+
 .style7{
   margin-top: 5pt;
   margin-right: 5pt;

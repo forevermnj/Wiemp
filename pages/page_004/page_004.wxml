@@ -28,7 +28,7 @@
         </view>
         <view class="calendar_box" wx:for="{{dateList}}" wx:for-item="week">
           <view class="weekday_label" wx:for="{{week}}">
-            <text class="{{item.flag=='a'?'action_date':'remaining_date'}}" data-date="{{item}}">{{item.date}}</text>
+            <text class="{{item.value==selectedDate?'active_date':item.flag=='a'?'action_date':'remaining_date'}}" data-date="{{item}}">{{item.date}}</text>
           </view>
         </view>
       </view>

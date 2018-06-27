@@ -85,7 +85,28 @@ Page({
     })
 
   },
-
+  viewDetail: function(e){
+    let temp = e.currentTarget.dataset.text;
+    let ew = temp.split(",");
+    app.globalData.easyError = ew[0];
+    app.globalData.easyErrorId = ew[1];
+    wx.navigateTo({
+      url: '../page_009/page_009',
+    })
+  },
+  delEasyErrorWord:function(e){
+    let temp = e.currentTarget.dataset.text;
+    let ew = temp.split(",");
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/wordexam/delEasyErrorWord/' + ew[2],
+      method: 'GET',
+      success: function (res) {
+        wx.navigateTo({
+          url: '../page_003/page_003',
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

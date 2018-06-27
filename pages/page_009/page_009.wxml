@@ -1,9 +1,9 @@
 <!--pages/page_002/page_002.wxml-->
 <view>
-  <scroll-view class='main' scroll-y="true" bindtouchstart='mytouchstart' bindtouchmove='mytouchmove' bindtouchend='mytouchend'>
+  <view class='main'>
     <view>
       <view class='englishword'>
-        <text>{{wordlist[wordindex]}}</text>
+        <text>{{word}}</text>
       </view>
     </view>
     <view>
@@ -24,14 +24,12 @@
               {{worddetail.translation}}
             </view>
             <view class='translation2'>
-              <image class='image1' src='{{imgsentenceurl}}' catchtap='speech2'></image> {{worddetail.sentence}}
+             <image class='image1' src='{{imgsentenceurl}}' catchtap='speech2'></image>{{worddetail.sentence}}
             </view>
           </view>
         </view>
       </block>
     </view>
-  </scroll-view>
-  <view class='footer'>
-    <text>{{wordindex+1}}/{{totalaccount}}</text>
   </view>
+  
 </view>

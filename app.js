@@ -86,6 +86,8 @@ App({
   globalData: {
     serverUrl:'https://www.learnzp.com',
     authorizeUserInfoFlag:true,
+    easyError:'',
+    easyErrorId: '',
     uid:'020b28e556de4352a231650c1637653c'//测试用户ID
   }
 })

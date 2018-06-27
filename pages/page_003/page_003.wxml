@@ -15,11 +15,11 @@
      <button form-type="submit" type="default" size="mini">提交</button>
   </form>-->
     <view wx:for="{{wordlist}}" wx:key="unique" class="style1">
-      <view>
+      <view bindtouchend='delEasyErrorWord' data-text="{{item.word+','+item.wordId+','+item.id}}" catchtap='viewDetail'>
         <text>{{item.word}}</text>
         <text class="distanceofword">/{{item.smpoly}}/</text>
       </view>
-      <view>{{item.means}}</view>
+      <view bindtouchend='delEasyErrorWord' data-text="{{item.word+','+item.wordId+','+item.id}}" catchtap='viewDetail'>{{item.means}}</view>
     </view>
   </scroll-view>
 

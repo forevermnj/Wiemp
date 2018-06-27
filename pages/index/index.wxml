@@ -1,8 +1,6 @@
 <!--index.wxml-->
 <view class='style7'>
-    <button bindtap='clogin' class='style5'>
-      <text>{{wxTimerSecond}}</text>
-    </button>
+   <view class='style5' bindtap='clogin'>跳过{{wxTimerSecond}}s</view>
 </view>
 <view class="container">
   <view class="style4">
