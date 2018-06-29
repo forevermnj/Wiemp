@@ -14,7 +14,7 @@
 .style2{
   /*font-size: 34pt;
   /*color: #43cf7c;*/
-  margin-top: 0px;
+  margin-top: 0rpx;
   color:green;
 }
 
@@ -44,4 +44,8 @@
 .style7{
   width:  83px;
   height: 88px;
+}
+
+.style8{
+  margin-top: 50px;
 }

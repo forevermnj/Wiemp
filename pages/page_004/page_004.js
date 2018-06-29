@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    actionDateList: ["2018年4月30日", "2018年5月1日", "2018年5月2日", "2018年5月3日"],
+    actionDateList: ["2018年4月30日", "2018年5月3日"],
     selectedDate: '',//选中的几月几号
     selectedWeek: '',//选中的星期几
     curYear: 2018,//当前年份
@@ -14,6 +14,9 @@ Page({
     daysCountArr: [// 保存各个月份的长度，平年
       31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
     ],
+    userTaskStartDate: '',
+    userTaskEndDate:'',
+    flag1:true,
     weekArr: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
     dateList: []
   },
@@ -51,6 +54,26 @@ Page({
         refer.setData({
           actionDateList: tempActionDate
         })
+
+        /**
+         * 请求用户任务的开始日期和结束日期
+         */
+        wx.request({
+          url: app.globalData.serverUrl + '/Emp/mobile/studycalendar/queryDate/' + uid,
+          method: 'GET',
+
+          success: function (res) {
+            refer.setData({
+              userTaskStartDate: res.data.startDate,
+              userTaskEndDate: res.data.endDate
+            })
+          },
+          complete: function (res) {
+           
+          }
+        })
+
+
       },
       complete: function (resz) {
         refer.getDateList(y, mon-1);
@@ -115,6 +138,7 @@ Page({
       var formatDay = (i + 1) < 10 ? "0" + (i + 1) : (i + 1);
       var oneday = y + '-' + formatMonth + '-' + formatDay;
 
+      //var tf = vm.isactiondate(vm.data.actionDateList, oneday) ? 'a' : 'r'; //a use exercised date style,r for remaining day style
       var tf = vm.isactiondate(vm.data.actionDateList, oneday) ? 'a' : 'r'; //a use exercised date style,r for remaining day style
 
       // 如果是第一行，则将该行日期倒序，以便配合样式居右显示
@@ -171,6 +195,34 @@ Page({
       curMonth: curMonth
     });
 
+    let utd = vm.data.userTaskStartDate.split('-');
+    let ued = vm.data.userTaskEndDate.split('-');
+
+    /**
+     * 不是当年的
+     */
+    if (curYear!=utd[0]){
+      
+    }else{
+      let temput = utd[1];
+      let temputd = temput.substring(1, 2);
+
+      let tempt = ued[1];
+      let tempt2 = tempt.substring(1, 2);
+      //false 时页面变为白色
+      if (temputd > curMonth){
+         vm.setData({
+           flag1:false
+         })
+      } else {
+        if (tempt2 >= curMonth){
+          vm.setData({
+            flag1: true
+          })
+        }
+      }
+    }
+
     vm.getDateList(curYear, curMonth - 1);
   },
   nextMonth: function () {
@@ -185,6 +237,32 @@ Page({
       curYear: curYear,
       curMonth: curMonth
     });
+    let utd = vm.data.userTaskStartDate.split('-');
+    let ued = vm.data.userTaskEndDate.split('-');
+    /**
+    * 不是当年的
+    */
+    if (curYear != ued[0]) {
+
+    } else {
+      let temput = ued[1];
+      let temputd = temput.substring(1, 2);
+      
+      let tempt = utd[1];
+      let tempt2 = tempt.substring(1, 2);
+      if (temputd < curMonth) {
+        vm.setData({
+          flag1: false
+        })
+      }else{
+        if (tempt2 <= curMonth){
+          vm.setData({
+            flag1: true
+          })
+        }
+        
+      }
+    }
 
     vm.getDateList(curYear, curMonth - 1);
   }

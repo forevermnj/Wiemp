@@ -79,7 +79,6 @@ Page({
         url: app.globalData.serverUrl + '/Emp/mobile/bearword/mean/' + wid,
         method: 'GET',
         success: function (resz) {
-          console.log(resz);
           var resp = {
             pronounce: resz.data.symbol,
             translation: resz.data.interpretation,

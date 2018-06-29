@@ -19,11 +19,6 @@
   <view>
    <button open-type='getUserInfo' bindtap='clogin' class='style4'>登录</button>
   </view>
-
-  <view>
-    <text>
-      ©2017-2018 Capacity Center
-    </text>
-  </view>
+  <text class='style8'>©2017-2018 Capacity Center</text>
   
 </view>

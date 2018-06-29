@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    startx: 0,
     sortorder: "descend", //ascend|descend
     buttonname: "时间倒序", //时间顺序|时间倒序
     wordlist: []//后台数据需按照时间倒序排序
@@ -77,7 +78,6 @@ Page({
       url: app.globalData.serverUrl+'/Emp/mobile/easymistake/query/' + uid,
       method: 'GET',
       success: function (res) {
-        console.log(res.data.rows);
         refer.setData({
           wordlist: res.data.rows
         });
@@ -85,27 +85,46 @@ Page({
     })
 
   },
+  //手指滑动开始
+  mytouchstart: function (event) {
+    this.setData({
+      startx: event.touches[0].pageX
+    });
+  },
+  mytouchend: function (e) {
+    let refer = this;
+    let distancex = e.changedTouches[0].pageX - refer.data.startx;
+    let temp2 = e.currentTarget.dataset.text;
+    let ew2 = temp2.split(",");
+    if (distancex < 0) {
+      wx.request({
+        url: app.globalData.serverUrl + '/Emp/mobile/wordexam/delEasyErrorWord/' + ew2[2],
+        method: 'GET',
+        success: function (res) {
+          let uid = wx.getStorageSync('uid');
+          wx.request({
+            url: app.globalData.serverUrl + '/Emp/mobile/easymistake/query/' + uid,
+            method: 'GET',
+            success: function (res) {
+              refer.setData({
+                wordlist: res.data.rows
+              });
+            }
+          })
+        }
+      })
+    }
+  },
   viewDetail: function(e){
     let temp = e.currentTarget.dataset.text;
     let ew = temp.split(",");
     app.globalData.easyError = ew[0];
     app.globalData.easyErrorId = ew[1];
-    wx.navigateTo({
-      url: '../page_009/page_009',
-    })
-  },
-  delEasyErrorWord:function(e){
-    let temp = e.currentTarget.dataset.text;
-    let ew = temp.split(",");
-    wx.request({
-      url: app.globalData.serverUrl + '/Emp/mobile/wordexam/delEasyErrorWord/' + ew[2],
-      method: 'GET',
-      success: function (res) {
-        wx.navigateTo({
-          url: '../page_003/page_003',
-        })
-      }
-    })
+    console.log(e.changedTouches[0].pageX);
+    wx.redirectTo({
+        url: '../page_009/page_009',
+    });
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

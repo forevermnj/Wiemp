@@ -6,7 +6,8 @@ var app = getApp();
 Page({
   data: {
     authorizeUserInfoFlag:false,
-    wxTimerList: {}
+    wxTimerList: {},
+    intervarID:''
   },
   //事件处理函数
   bindViewTap: function() {
@@ -30,18 +31,11 @@ Page({
     refer.setData({
       authorizeUserInfoFlag: app.globalData.authorizeUserInfoFlag
     });
-    var wxTimer = new timer({
-      beginTime: "00:00:03",
-      complete: function () {
-        wx.navigateTo({
-          url: '../page_005/page_005',
-        })
-      }
-    })
-    wxTimer.start(refer);
-
   },
   clogin: function(){
+    let refer = this;
+    console.log(refer.data.intervarID);
+    clearInterval(refer.data.intervarID);
     wx.navigateTo({
       url: '../page_005/page_005',
     })
@@ -50,15 +44,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var refer = this;
+    let refer = this;
+    
     var wxTimer = new timer({
-      beginTime: "00:00:03",
+      beginTime: "00:00:02",
       complete: function () {
+        refer.setData({
+          intervarID: wxTimer.intervarID
+        });
         wx.navigateTo({
           url: '../page_005/page_005',
-        })
+        });
       }
-    })
+    });
     wxTimer.start(refer);
+    console.log(wxTimer.intervarID);
   }
 })

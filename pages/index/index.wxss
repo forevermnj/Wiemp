@@ -1,7 +1,7 @@
 /**index.wxss**/
 .style1{
-  margin-top: 9px;
-  margin-right: 5px;
+  margin-top: 9rpx;
+  margin-right: 5rpx;
 }
 
 .style2{
@@ -10,7 +10,7 @@
 
 .style3{
   font-size: 16px;
-  margin-top: 8px;
+  margin-top: 8rpx;
   letter-spacing: 3px;
   color: #4c4b4b;
 }
@@ -19,16 +19,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 130rpx;
 }
 
 .style5{
   border-color:brown;
   background-color:gainsboro;
-  border-radius: 5pt;
-  height: 30pt;
+  border-radius: 5px;
+  height: 40px;
   text-align: center;
   vertical-align:text-bottom;
+  line-height:80rpx;
 }
 
 .style7{
