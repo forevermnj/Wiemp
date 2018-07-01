@@ -7,15 +7,10 @@ Page({
    */
   data: {
     words_account: '0',
-    task: 'done', //done, not_yet
-    flag1: false
+    task: 'done' //done, not_yet
   },
 
   exercise: function (event) {
-    var refer = this;
-    refer.setData({
-      flag1:true
-    })
     wx.request({
       url: app.globalData.serverUrl + '/Emp/mobile/wordexam/isAllPass/' + wx.getStorageSync('uid'),
       method: 'GET',
@@ -91,10 +86,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var refer = this;
-    refer.setData({
-      flag1: false
-    })
+    
   },
 
   /**

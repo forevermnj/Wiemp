@@ -33,9 +33,9 @@ Page({
     });
   },
   clogin: function(){
-    let refer = this;
-    console.log(refer.data.intervarID);
-    clearInterval(refer.data.intervarID);
+    // let refer = this;
+    // console.log(refer.data.intervarID);
+    // clearInterval(refer.data.intervarID);
     wx.navigateTo({
       url: '../page_005/page_005',
     })
@@ -49,15 +49,15 @@ Page({
     var wxTimer = new timer({
       beginTime: "00:00:02",
       complete: function () {
-        refer.setData({
-          intervarID: wxTimer.intervarID
-        });
+        // refer.setData({
+        //   intervarID: wxTimer.intervarID
+        // });
         wx.navigateTo({
           url: '../page_005/page_005',
         });
       }
     });
     wxTimer.start(refer);
-    console.log(wxTimer.intervarID);
+    //console.log(wxTimer.intervarID);
   }
 })

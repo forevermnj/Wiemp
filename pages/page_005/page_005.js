@@ -56,9 +56,8 @@ Page({
             data: res.data.uid
           });
           util.showSuccess('加载成功');
-          //关闭当前页面，跳转到page_001页面
           wx.navigateTo({
-            url: '../page_001/page_001',
+            url: '../page_010/page_010',
           })
         }else{
           util.showSuccess('登录失败');

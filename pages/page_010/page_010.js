@@ -54,5 +54,10 @@ Page({
         title: '敬请期待'
       }
     ]
+  },
+  clickImg:function(){
+    wx.navigateTo({
+      url: '../page_001/page_001',
+    })
   }
 })

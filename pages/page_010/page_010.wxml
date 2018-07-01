@@ -1,32 +1,32 @@
 <view class='.zhud'>
 
 <scroll-view class='style1'>
-<view class='style3'>英语类 <text class='style2'>查看全部></text></view>
+<view class='style3'>英语类 <text class='style2'></text></view>
 <scroll-view class="recommend_scroll_x_box" scroll-x="true">
   <view class="recommend_hot_box" wx:for="{{list1}}">
-    <image src="{{item.pic}}" class="recommend_hot_image"></image>
+    <image catchtap='clickImg' src="{{item.pic}}" class="recommend_hot_image"></image>
     <view class="title text_center">{{item.title}}</view>
   </view>
 </scroll-view>
 </scroll-view>
 
 <scroll-view class='style1'>
-<view class='style3'>MuseSoft类<text class='style2'>查看全部></text></view>
+<view class='style3'>技术类<text class='style2'></text></view>
 <scroll-view class="recommend_scroll_x_box" scroll-x="true">
   
   <view class="recommend_hot_box" wx:for="{{list2}}">
-    <image src="{{item.pic}}" class="recommend_hot_image"></image>
+    <image catchtap='clickImg' src="{{item.pic}}" class="recommend_hot_image"></image>
     <view class="title text_center">{{item.title}}</view>
   </view>
 </scroll-view>
 </scroll-view>
 
 <scroll-view class='style1'>
-<view class='style3'>通用类<text class='style2'>查看全部></text></view>
+<view class='style3'>通用类<text class='style2'></text></view>
 <scroll-view class="recommend_scroll_x_box" scroll-x="true">
   
   <view class="recommend_hot_box" wx:for="{{list3}}">
-    <image src="{{item.pic}}" class="recommend_hot_image"></image>
+    <image catchtap='clickImg' src="{{item.pic}}" class="recommend_hot_image"></image>
     <view class="title text_center">{{item.title}}</view>
   </view>
 </scroll-view>
