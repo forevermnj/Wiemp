@@ -38,6 +38,11 @@ App({
                     key:'nickName',
                     data:resz.data.userInfo.nickName
                   });
+                  //将用户头像存入缓存中
+                  wx.setStorage({
+                    key: 'headImage',
+                    data: resz.data.userInfo.avatarUrl
+                  });
                 }
               })
             },
