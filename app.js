@@ -4,7 +4,6 @@ var util = require('/utils/util.js');
 App({
   //当小程序启动时执行
   onLaunch: function () {
-    //util.showBusy('加载中');
     //登录
     wx.login({
       success: res => {
@@ -27,7 +26,6 @@ App({
                   iv: resu.iv
                 },
                 success: function (resz) {
-                  //util.showSuccess('加载成功');
                   //将openid存入缓存中
                   wx.setStorage({
                     key: "openId",
@@ -35,8 +33,8 @@ App({
                   });
                   //将用户昵称存入缓存中
                   wx.setStorage({
-                    key:'nickName',
-                    data:resz.data.userInfo.nickName
+                    key: 'nickName',
+                    data: resz.data.userInfo.nickName
                   });
                   //将用户头像存入缓存中
                   wx.setStorage({
@@ -47,39 +45,7 @@ App({
               })
             },
             fail: function (error) {
-              //util.showModel('请求失败', error);
-              console.log('获取用户信息失败');
-              getApp().globalData.authorizeUserInfoFlag = false;
-              //console.log("设置" + getApp().globalData.authorizeUserInfoFlag);
-              wx.getSetting({
-                success(res) {
-                  if (!res.authSetting['scope.userInfo']) {
-                    console.log("调用授权");
-                    wx.authorize({
-                      scope: 'scope.userInfo',
-                      success() {
-                        // 用户已经同意小程序获取昵称，头像信息
-                        getApp().globalData.authorizeUserInfoFlag = true;
-                      },
-                      fail(){
-                        getApp().globalData.authorizeUserInfoFlag = false;
-                        wx.showModal({
-                          title: '警告',
-                          content: '您点击了拒绝授权,将无法正常显示个人信息,点击确定重新获取授权。',
-                          success: function (res) {
-                            if (res.confirm) {
-                              console.log("重新授权");
-                            }
-                          }
-                        })
 
-                        
-                             
-                      }
-                    })
-                  }
-                }
-              })
             }
           })
         } else {
@@ -89,8 +55,7 @@ App({
     })
   },
   globalData: {
-    serverUrl:'https://www.learnzp.com',
-    authorizeUserInfoFlag:true,
+    serverUrl:'https://www.learnzp.com',//服务器地址
     easyError:'',
     easyErrorId: '',
     uid:'020b28e556de4352a231650c1637653c'//测试用户ID

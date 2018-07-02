@@ -63,22 +63,51 @@ Page({
           method: 'GET',
 
           success: function (res) {
+            
             refer.setData({
               userTaskStartDate: res.data.startDate,
               userTaskEndDate: res.data.endDate
-            })
+            });
+            var utd = res.data.startDate.split('-');
+            var ued = res.data.endDate.split('-');
+            
+            /**
+             * 不是当年的
+             */
+            if (y != utd[0]) {
+              refer.setData({
+                flag1: false
+              });
+            } else {
+              let temput = utd[1];
+              let temputd = temput.substring(1, 2);
+
+              let tempt = ued[1];
+              let tempt2 = tempt.substring(1, 2);
+              //false 时页面变为白色
+              if (temputd > mon) {
+                refer.setData({
+                  flag1: false
+                });
+              } else {
+                if (tempt2 < mon) {
+                  refer.setData({
+                    flag1: false
+                  });
+                }
+              }
+            }
           },
           complete: function (res) {
-           
+            
           }
-        })
-
-
+        });
       },
       complete: function (resz) {
         refer.getDateList(y, mon-1);
       }
-    })
+    });
+    
 
   },
 
@@ -195,6 +224,31 @@ Page({
       curMonth: curMonth
     });
 
+    var refer = this;
+    var uid = wx.getStorageSync('uid');
+    var y = curYear;
+    var mon = curMonth;
+    var ym = y + '-' + (mon < 10 ? "0" + mon : mon);
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/studycalendar/query/' + uid + '/' + ym,
+      method: 'GET',
+
+      success: function (resz) {
+        var days = resz.data.length;
+        var tempActionDate = new Array(days);
+        for (var i = 0; i < days; i++) {
+          tempActionDate[i] = resz.data[i].stringDate
+        }
+        //console.log('call BE:');
+        refer.setData({
+          actionDateList: tempActionDate
+        });
+      },
+      complete: function (resz) {
+        refer.getDateList(y, mon - 1);
+      }
+    });
+
     let utd = vm.data.userTaskStartDate.split('-');
     let ued = vm.data.userTaskEndDate.split('-');
 
@@ -202,7 +256,9 @@ Page({
      * 不是当年的
      */
     if (curYear!=utd[0]){
-      
+      refer.setData({
+        flag1: false
+      });
     }else{
       let temput = utd[1];
       let temputd = temput.substring(1, 2);
@@ -237,13 +293,42 @@ Page({
       curYear: curYear,
       curMonth: curMonth
     });
+
+    var refer = this;
+    var uid = wx.getStorageSync('uid');
+    var y = curYear;
+    var mon = curMonth;
+    var ym = y + '-' + (mon < 10 ? "0" + mon : mon);
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/studycalendar/query/' + uid + '/' + ym,
+      method: 'GET',
+
+      success: function (resz) {
+        var days = resz.data.length;
+        var tempActionDate = new Array(days);
+        for (var i = 0; i < days; i++) {
+          tempActionDate[i] = resz.data[i].stringDate
+        }
+        //console.log('call BE:');
+        refer.setData({
+          actionDateList: tempActionDate
+        });
+      },
+      complete: function (resz) {
+        refer.getDateList(y, mon - 1);
+      }
+    });
+
+
     let utd = vm.data.userTaskStartDate.split('-');
     let ued = vm.data.userTaskEndDate.split('-');
     /**
     * 不是当年的
     */
     if (curYear != ued[0]) {
-
+      refer.setData({
+        flag1: false
+      });
     } else {
       let temput = ued[1];
       let temputd = temput.substring(1, 2);

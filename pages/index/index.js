@@ -5,7 +5,6 @@ var app = getApp();
 
 Page({
   data: {
-    authorizeUserInfoFlag:false,
     wxTimerList: {},
     intervarID:''
   },
@@ -26,16 +25,8 @@ Page({
 
     //清理本地缓存
     wx.clearStorage();
-
-    var refer = this;
-    refer.setData({
-      authorizeUserInfoFlag: app.globalData.authorizeUserInfoFlag
-    });
   },
   clogin: function(){
-    // let refer = this;
-    // console.log(refer.data.intervarID);
-    // clearInterval(refer.data.intervarID);
     wx.navigateTo({
       url: '../page_005/page_005',
     })
@@ -45,19 +36,14 @@ Page({
    */
   onShow: function () {
     let refer = this;
-    
     var wxTimer = new timer({
       beginTime: "00:00:02",
       complete: function () {
-        // refer.setData({
-        //   intervarID: wxTimer.intervarID
-        // });
         wx.navigateTo({
           url: '../page_005/page_005',
         });
       }
     });
     wxTimer.start(refer);
-    //console.log(wxTimer.intervarID);
   }
 })

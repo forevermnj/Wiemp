@@ -15,7 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    
   },
   //获取用户输入的手机号
   telInput: function (e) {
@@ -37,7 +37,7 @@ Page({
     util.showBusy('登录中...');
     var refer = this;
     wx.request({
-      url: app.globalData.serverUrl+'/Emp/mobile/login/login2',
+      url: app.globalData.serverUrl + '/Emp/mobile/login/login2',
       method: 'POST',
       header: {
         "Content-Type": "application/json"
@@ -49,7 +49,7 @@ Page({
         nickName: nickName
       },
       success: function (res) {
-        if (res.data.result=='0'){
+        if (res.data.result == '0') {
           //将用户ID存入缓存中
           wx.setStorage({
             key: "uid",
@@ -59,7 +59,7 @@ Page({
           wx.navigateTo({
             url: '../page_010/page_010',
           })
-        }else{
+        } else {
           util.showSuccess('登录失败');
         }
       }
