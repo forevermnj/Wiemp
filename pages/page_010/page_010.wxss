@@ -97,11 +97,11 @@
 
 .style5{
   border: 1px solid rgba(0, 0, 0, .1);
-  border-color:lavender;
+  border-color:green;
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color:#FFF;
+  background-color:#fff;
   border-radius: 5px;
 }
 
