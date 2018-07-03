@@ -6,7 +6,8 @@ var app = getApp();
 Page({
   data: {
     wxTimerList: {},
-    intervarID:''
+    intervarID:'',
+    downCount:''
   },
   //事件处理函数
   bindViewTap: function() {
@@ -27,6 +28,9 @@ Page({
     wx.clearStorage();
   },
   clogin: function(){
+    let refer = this;
+    //当点击跳过时停止倒计时
+    clearInterval(refer.data.downCount.intervarID);
     wx.navigateTo({
       url: '../page_005/page_005',
     })
@@ -45,5 +49,9 @@ Page({
       }
     });
     wxTimer.start(refer);
+
+    refer.setData({
+      downCount:wxTimer
+    })
   }
 })
