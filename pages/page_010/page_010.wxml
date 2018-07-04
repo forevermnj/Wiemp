@@ -1,10 +1,6 @@
 <scroll-view class='.zhud' scroll-y="true">
-<view class='style5'>
-<image class='style4' src='{{headImage}}'></image>
-<text class='style6'>{{nickName}}</text>
-</view>
 
-<scroll-view class='style1'>
+<scroll-view class='style1' scroll-x="true">
 <view class='style3'>英语类</view>
 <scroll-view class="recommend_scroll_x_box" scroll-x="true">
   <view class="recommend_hot_box" wx:for="{{list1}}">
@@ -14,21 +10,21 @@
 </scroll-view>
 </scroll-view>
 
-<scroll-view class='style1'>
+<scroll-view class='style1' scroll-x="true">
 <view class='style3'>技术类</view>
 <scroll-view class="recommend_scroll_x_box" scroll-x="true">
   <view class="recommend_hot_box" wx:for="{{list2}}">
-    <image catchtap='clickImg' src="{{item.pic}}" class="recommend_hot_image"></image>
+    <image src="{{item.pic}}" class="recommend_hot_image"></image>
     <view class="title text_center">{{item.title}}</view>
   </view>
 </scroll-view>
 </scroll-view>
 
-<scroll-view class='style1'>
+<scroll-view class='style1' scroll-x="true">
 <view class='style3'>通用类</view>
 <scroll-view class="recommend_scroll_x_box" scroll-x="true">
   <view class="recommend_hot_box" wx:for="{{list3}}">
-    <image catchtap='clickImg' src="{{item.pic}}" class="recommend_hot_image"></image>
+    <image src="{{item.pic}}" class="recommend_hot_image"></image>
     <view class="title text_center">{{item.title}}</view>
   </view>
 </scroll-view>

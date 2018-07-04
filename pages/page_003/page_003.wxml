@@ -14,13 +14,18 @@
   <form bindsubmit="submitInfo" report-submit='true' >
      <button form-type="submit" type="default" size="mini">提交</button>
   </form>-->
-    <view hover-class='style2' wx:for="{{wordlist}}" wx:key="unique" class="style1">
-      <view bindtouchstart='mytouchstart' bindtouchend='mytouchend' data-text="{{item.word+','+item.wordId+','+item.id}}" catchtap='viewDetail'>
-        <text>{{item.word}}</text>
-        <text class="distanceofword">/{{item.smpoly}}/</text>
+    
+    <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{wordlist}}" wx:key="unique">
+      <view class='content' data-text="{{item.word+','+item.wordId+','+item.id}}" catchtap='viewDetail'>
+        <text class='style4'>{{item.word}}</text>
+        <text class="distanceofword">/{{item.smpoly}}/\n{{item.means}}</text>
       </view>
-      <view bindtouchstart='mytouchstart' bindtouchend='mytouchend' data-text="{{item.word+','+item.wordId+','+item.id}}" catchtap='viewDetail'>{{item.means}}</view>
+      <!--<view data-text="{{item.word+','+item.wordId+','+item.id}}" catchtap='viewDetail'>{{item.means}}</view>-->
+      <view data-text="{{item.word+','+item.wordId+','+item.id}}" class="del" catchtap="del" data-index="{{index}}">删除</view>
     </view>
+    
   </scroll-view>
+
+  
 
 </view>

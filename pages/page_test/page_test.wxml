@@ -1,35 +1,6 @@
-<view class='.zhud'>
-
-<scroll-view class='style1'>
-<view class='style3'>英语类 <text class='style2'>查看全部></text></view>
-<scroll-view class="recommend_scroll_x_box" scroll-x="true">
-  <view class="recommend_hot_box" wx:for="{{list1}}">
-    <image src="{{item.pic}}" class="recommend_hot_image"></image>
-    <view class="title text_center">{{item.title}}</view>
-  </view>
-</scroll-view>
-</scroll-view>
-
-<scroll-view class='style1'>
-<view class='style3'>MuseSoft类<text class='style2'>查看全部></text></view>
-<scroll-view class="recommend_scroll_x_box" scroll-x="true">
-  
-  <view class="recommend_hot_box" wx:for="{{list2}}">
-    <image src="{{item.pic}}" class="recommend_hot_image"></image>
-    <view class="title text_center">{{item.title}}</view>
-  </view>
-</scroll-view>
-</scroll-view>
-
-<scroll-view class='style1'>
-<view class='style3'>通用类<text class='style2'>查看全部></text></view>
-<scroll-view class="recommend_scroll_x_box" scroll-x="true">
-  
-  <view class="recommend_hot_box" wx:for="{{list3}}">
-    <image src="{{item.pic}}" class="recommend_hot_image"></image>
-    <view class="title text_center">{{item.title}}</view>
-  </view>
-</scroll-view>
-</scroll-view>
-
+<view class="container">
+ <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{items}}" wx:key="">
+  <view class="content">{{item.content}}</view>
+  <view class="del" catchtap="del" data-index="{{index}}">删除</view>
+ </view>
 </view>

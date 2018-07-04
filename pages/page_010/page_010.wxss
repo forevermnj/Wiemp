@@ -4,7 +4,7 @@
   height: 350rpx;
   padding: 0rpx 0;
   white-space: nowrap;
-  display: flex;
+  display: inline-blcok;
   border-width: 1px;
   border-color: green;
   border-style:solid;
@@ -57,7 +57,8 @@
   top: 0px;
   width: 100%;
   height: 100%;
-  display: flex;
+  display: inline-blcok;
+  white-space:nowrap;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
@@ -71,6 +72,8 @@
 
 .style1{
   margin-right: 25px;
+  display: inline-blcok;
+  white-space:nowrap;
 }
 
 .style2{

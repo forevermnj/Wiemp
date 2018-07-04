@@ -47,3 +47,59 @@
 .style2{
   background-color:#e2f7ea;
 }
+
+.style3{
+  white-space: nowrap;
+  display: inline-blcok;
+}
+
+.style4{
+  font-size: 20px;
+}
+
+
+
+.touch-item {
+ font-size: 14px;
+ display: flex;
+ justify-content: space-between;
+ border-bottom:1px solid #ccc;
+ width: 100%;
+ overflow: hidden;
+
+ padding-left: 10px;
+ padding-top: 5px;
+ padding-bottom: 5px;
+}
+.content {
+ width: 100%;
+ padding-left: 5px;
+ padding-top: 5px;
+ padding-bottom: 3px;
+ padding-right: 10px;
+ line-height: 22px;
+ margin-right:0;
+ -webkit-transition: all 0.4s;
+ transition: all 0.4s;
+ -webkit-transform: translateX(90px);
+ transform: translateX(90px);
+ margin-left: -90px
+}
+.del {
+ background-color: orangered;
+ width: 90px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ color: #fff;
+ -webkit-transform: translateX(90px);
+ transform: translateX(90px);
+ -webkit-transition: all 0.4s;
+ transition: all 0.4s;
+}
+.touch-move-active .content,
+.touch-move-active .del {
+ -webkit-transform: translateX(0);
+ transform: translateX(0);
+}
