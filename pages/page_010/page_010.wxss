@@ -11,6 +11,7 @@
   border-bottom-style:none;
   border-left-style:none;
   border-right-style:none;
+  
 }
 
 ::-webkit-scrollbar {
@@ -74,6 +75,7 @@
   margin-right: 25px;
   display: inline-blcok;
   white-space:nowrap;
+  margin-top: 20px;
 }
 
 .style2{
@@ -86,7 +88,6 @@
 .style3{
   font-size: 15px;
   margin-bottom: 5px;
-  margin-top: 5px;
 }
 
 .style4{
