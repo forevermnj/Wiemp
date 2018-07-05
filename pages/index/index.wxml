@@ -6,17 +6,17 @@
   <view class="style4">
    <view style="display:flex;">
      <view class="style1">
-       <image style='width:20px;height:20px'        src='../image/index/1.png'></image>
+       <image style='width:20px;height:20px' src='../image/index/1.png'></image>
      </view>
      <view>
   
       <text class='style2'>
-      <image style='width:20px;height:20px'    src='../image/index/1.png'></image>30天英语打卡</text>
+      <image style='width:20px;height:20px' src='../image/index/1.png'></image>Capacity Centre</text>
      </view>
    </view>
-   <text class='style3'>专业银行英语学习平台</text>
+   
   </view>
 
-  
+  <text class='style3'>Professional Competency Enhancement Platform</text>
   
 </view>

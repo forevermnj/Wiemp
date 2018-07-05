@@ -6,7 +6,7 @@ Page({
     countTimer: null // 设置 定时器 初始为null
   },
   onLoad: function () {
-    
+
   },
   drawProgressbg: function () {
     // 使用 wx.createContext 获取绘图上下文 context
@@ -44,12 +44,12 @@ Page({
   countInterval: function () {
     // 设置倒计时 定时器 每100毫秒执行一次，计数器count+1 ,耗时6秒绘一圈
     this.countTimer = setInterval(() => {
-      if (this.data.count <= 60) {
+      if (app.globalData.examFlag == false) {
         /* 绘制彩色圆环进度条  
         注意此处 传参 step 取值范围是0到2，
         所以 计数器 最大值 60 对应 2 做处理，计数器count=60的时候step=2
         */
-        this.drawCircle(this.data.count / (60 / 2))
+        this.drawCircle(this.data.count / (100 / 2))
         this.data.count++;
       } else {
         this.setData({

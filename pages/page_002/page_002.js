@@ -51,7 +51,8 @@ Page({
         }
       } else if (distancex > 0) { // move right
         if (wi <= 0) {
-          wi = this.data.wordlist.length - 1;
+          //wi = this.data.wordlist.length - 1;
+          wi = 0;
         } else {
           wi--;
         }

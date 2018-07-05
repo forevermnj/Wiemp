@@ -1,5 +1,6 @@
 
 var app = getApp();
+var util = require('../../utils/util.js');
 Page({
 
   /**
@@ -217,6 +218,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    util.showBusy('数据加载中...');
     var count = "";
     //获取用户ID 
     var uid = wx.getStorageSync('uid');
@@ -226,6 +228,17 @@ Page({
       url: app.globalData.serverUrl+'/Emp/mobile/wordexam/query/' + uid,
       method: 'GET',
       success: function (res) {
+        /*console.log('状态码'+res.statusCode);
+        if (res.statusCode!=200){
+          console.log('加载中');
+          wx.redirectTo({
+            url: '../page_011/page_011',
+          })
+        }
+        if (res.statusCode==200){
+          app.globalData.examFlag = true;
+        }*/
+
         //返回单词总数
         count = res.data.total;
         //页面数据设置
@@ -260,24 +273,28 @@ Page({
         })
         
       },
+      complete:function(){
+        util.showSuccess('加载成功');
+      },
       fail: function(res){
         console.log(res)
       }
-    })
+    });
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**
