@@ -98,15 +98,21 @@
 }
 
 .footerstyle1 {
-  font-size: 16px;
   position: absolute;
-  bottom: 2px;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   background-color: rgb(249, 249, 249);
   width: 100%;
   display: flex;
   justify-content: space-around;
+  border:1px;
+  border-color:gray;
+  border-style:solid;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  
   /*border-color: red;
   border-style: dashed;*/
 }
@@ -130,4 +136,22 @@
 #color3 {
   background: rgb(255, 195, 0);
   color: rgb(255, 195, 0);
+}
+
+.tabbar1{
+  width: 20px;
+  height: 20px;
+}
+
+.tabbar2{
+  font-size: 10px;
+  margin-left:1px;
+}
+
+.footerstyle2 {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  /*border-color: red;
+  border-style: dashed;*/
 }

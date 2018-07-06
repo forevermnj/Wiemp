@@ -1,5 +1,6 @@
 
 var app = getApp();
+var util = require('../../utils/util.js');
 Page({
 
   /**
@@ -19,11 +20,11 @@ Page({
       method: 'GET',
       success: function (res) {
          if(res.data){
-           wx.navigateTo({
+           wx.redirectTo({
              url: '../page_002/page_002'
            })
          }else{
-           wx.navigateTo({
+           wx.redirectTo({
              url: '../page_008/page_008'
            })
          }
@@ -33,13 +34,13 @@ Page({
   },
 
   linktowordlist: function (event) {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../page_003/page_003'
     })
   },
 
   linktocalendar: function (event) {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../page_004/page_004'
     })
   },
@@ -48,6 +49,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    util.showBusy('加载中...');
+
     var uid = wx.getStorageSync('uid');
     var refer = this;
     //已完成单词
@@ -82,7 +85,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    util.showSuccess('加载成功');
   },
 
   /**
@@ -103,7 +106,9 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    // wx.redirectTo({
+    //   url: '../page_010/page_010',
+    // });
   },
 
   /**
@@ -134,7 +139,7 @@ Page({
       loginimg: '../image/tabbar/3.png'
     });
     wx.redirectTo({
-      url: '../index/index',
+      url: '../page_010/page_010',
     });
   },
   toCatagary: function () {

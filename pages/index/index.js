@@ -11,7 +11,7 @@ Page({
   },
   //事件处理函数
   bindViewTap: function() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../logs/logs'
     })
   },
@@ -31,7 +31,7 @@ Page({
     let refer = this;
     //当点击跳过时停止倒计时
     clearInterval(refer.data.downCount.intervarID);
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../page_005/page_005',
     })
   },
@@ -43,7 +43,7 @@ Page({
     var wxTimer = new timer({
       beginTime: "00:00:02",
       complete: function () {
-        wx.navigateTo({
+        wx.redirectTo({
           url: '../page_005/page_005',
         });
       }

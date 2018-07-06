@@ -56,7 +56,7 @@ Page({
             data: res.data.uid
           });
           util.showSuccess('加载成功');
-          wx.navigateTo({
+          wx.redirectTo({
             url: '../page_010/page_010',
           })
         } else {

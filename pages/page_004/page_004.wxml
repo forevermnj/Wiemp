@@ -1,5 +1,5 @@
 <!--pages/page_004/page_004.wxml-->
-<view class="">
+<scroll-view scroll-y="true" style='height:100%'>
   <view class="topstyle">
     <text class="fontstyle2">
     已打卡<text class="fontstyle1">{{actionDateList.length}}</text>天
@@ -34,8 +34,8 @@
       </view>
     </view>
     <view class="show_box">{{selectedDate}} {{selectedWeek}}</view>
-  </view>
-  <view class="footerstyle1">
+
+     <view class="footerstyle2">
     <view class="smallgroup">
       <text class="active_flag" id="color1"></text>
       <text style='margin-left:12px;'>已打卡</text>
@@ -49,3 +49,22 @@
       <text style='margin-left:12px;'>今天</text>
     </view>
   </view>
+  </scroll-view>
+ 
+
+
+  <!--底部导航条-->
+<view class="footerstyle1">
+    <view bindtap='toIndex'>
+      <image bindtap='toIndex' class='tabbar1' src='{{indeximg}}'></image>
+      <view bindtap='toIndex' class='tabbar2'>首页</view>
+    </view>
+    <view bindtap='toCatagary'>
+      <image bindtap='toCatagary' class='tabbar1' src='{{catagaryimg}}'></image>
+      <view bindtap='toCatagary' class='tabbar2'>分类</view>
+    </view>
+    <view bindtap='toLogin'>
+      <image bindtap='toLogin' class='tabbar1' src='{{loginimg}}'></image>
+      <view bindtap='toLogin' class='tabbar2'>登录</view>
+    </view>
+</view>

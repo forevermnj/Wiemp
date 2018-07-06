@@ -342,7 +342,7 @@ Page({
       loginimg: '../image/tabbar/3.png'
     });
     wx.redirectTo({
-      url: '../index/index',
+      url: '../page_010/page_010',
     });
   },
   toCatagary: function () {

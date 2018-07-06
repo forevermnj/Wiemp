@@ -17,6 +17,9 @@ Page({
     userTaskStartDate: '',
     userTaskEndDate:'',
     flag1:true,
+    indeximg: '../image/tabbar/2.png',
+    catagaryimg: '../image/tabbar/5.png',
+    loginimg: '../image/tabbar/3.png',
     weekArr: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
     dateList: []
   },
@@ -350,5 +353,38 @@ Page({
     }
 
     vm.getDateList(curYear, curMonth - 1);
+  },
+  toIndex: function () {
+    let refer = this;
+    refer.setData({
+      indeximg: '../image/tabbar/1.png',
+      catagaryimg: '../image/tabbar/5.png',
+      loginimg: '../image/tabbar/3.png'
+    });
+    wx.redirectTo({
+      url: '../page_010/page_010',
+    });
+  },
+  toCatagary: function () {
+    let refer = this;
+    refer.setData({
+      catagaryimg: '../image/tabbar/6.png',
+      indeximg: '../image/tabbar/2.png',
+      loginimg: '../image/tabbar/3.png'
+    });
+    wx.redirectTo({
+      url: '../page_010/page_010',
+    });
+  },
+  toLogin: function () {
+    let refer = this;
+    refer.setData({
+      catagaryimg: '../image/tabbar/5.png',
+      indeximg: '../image/tabbar/2.png',
+      loginimg: '../image/tabbar/4.png'
+    });
+    wx.redirectTo({
+      url: '../page_005/page_005',
+    });
   }
 })

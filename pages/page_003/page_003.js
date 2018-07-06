@@ -71,7 +71,7 @@ Page({
     app.globalData.easyError = ew[0];
     app.globalData.easyErrorId = ew[1];
     console.log(e.changedTouches[0].pageX);
-    wx.navigateTo({
+    wx.redirectTo({
         url: '../page_009/page_009',
     });
     
