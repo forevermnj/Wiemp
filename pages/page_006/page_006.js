@@ -17,6 +17,9 @@ Page({
     startTime: '',
     elapse: '', //less than 1 minute show second
     showDialog: false,
+    indeximg: '../image/tabbar/2.png',
+    catagaryimg: '../image/tabbar/5.png',
+    loginimg: '../image/tabbar/3.png',
     imgwordurl: '../image/page_002/2.png',
     flag1:'0'//标记用户是否作答
   },
@@ -210,7 +213,7 @@ Page({
     
   },
   iknow: function () {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../page_001/page_001',
     })
   },
@@ -330,5 +333,38 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  toIndex: function () {
+    let refer = this;
+    refer.setData({
+      indeximg: '../image/tabbar/1.png',
+      catagaryimg: '../image/tabbar/5.png',
+      loginimg: '../image/tabbar/3.png'
+    });
+    wx.redirectTo({
+      url: '../index/index',
+    });
+  },
+  toCatagary: function () {
+    let refer = this;
+    refer.setData({
+      catagaryimg: '../image/tabbar/6.png',
+      indeximg: '../image/tabbar/2.png',
+      loginimg: '../image/tabbar/3.png'
+    });
+    wx.redirectTo({
+      url: '../page_010/page_010',
+    });
+  },
+  toLogin: function () {
+    let refer = this;
+    refer.setData({
+      catagaryimg: '../image/tabbar/5.png',
+      indeximg: '../image/tabbar/2.png',
+      loginimg: '../image/tabbar/4.png'
+    });
+    wx.redirectTo({
+      url: '../page_005/page_005',
+    });
   }
 })

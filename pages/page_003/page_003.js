@@ -11,6 +11,9 @@ Page({
     startY: 0,
     sortorder: "descend", //ascend|descend
     buttonname: "时间倒序", //时间顺序|时间倒序
+    indeximg: '../image/tabbar/2.png',
+    catagaryimg: '../image/tabbar/5.png',
+    loginimg: '../image/tabbar/3.png',
     wordlist: []//后台数据需按照时间倒序排序
   },
   changeorder: function () {
@@ -195,5 +198,29 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  toIndex: function () {
+    let refer = this;
+    refer.setData({
+      indeximg: '../image/tabbar/1.png',
+      catagaryimg: '../image/tabbar/5.png',
+      loginimg: '../image/tabbar/3.png'
+    })
+  },
+  toCatagary: function () {
+    let refer = this;
+    refer.setData({
+      catagaryimg: '../image/tabbar/6.png',
+      indeximg: '../image/tabbar/2.png',
+      loginimg: '../image/tabbar/3.png'
+    })
+  },
+  toLogin: function () {
+    let refer = this;
+    refer.setData({
+      catagaryimg: '../image/tabbar/5.png',
+      indeximg: '../image/tabbar/2.png',
+      loginimg: '../image/tabbar/4.png'
+    })
   }
 })

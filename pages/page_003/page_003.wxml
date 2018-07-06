@@ -9,13 +9,14 @@
     </view>
   </view>
 
+  <scroll-view>
   <scroll-view scroll-y>
   <!--
   <form bindsubmit="submitInfo" report-submit='true' >
      <button form-type="submit" type="default" size="mini">提交</button>
   </form>-->
     
-    <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{wordlist}}" wx:key="unique">
+    <view hover-class='style5' class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{wordlist}}" wx:key="unique">
       <view class='content' data-text="{{item.word+','+item.wordId+','+item.id}}" catchtap='viewDetail'>
         <text class='style4'>{{item.word}}</text>
         <text class="distanceofword">/{{item.smpoly}}/\n{{item.means}}</text>
@@ -25,7 +26,8 @@
     </view>
     
   </scroll-view>
-
+  </scroll-view>
   
 
 </view>
+

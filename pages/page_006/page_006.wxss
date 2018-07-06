@@ -42,11 +42,10 @@
 }
 
 .footer {
-  background-color: white;
   font-size: 14px;
   position: fixed;
   left: 0px;
-  top: 94%;
+  top: 84%;
   width: 100%;
   height: 6%;
   text-align: center;
@@ -96,6 +95,8 @@
   border-top: solid 1px;
   width: 100%;
   padding-top: 10px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .bottomstyle2 {
@@ -129,4 +130,69 @@
   width: 30px;
   height: 30px;
   vertical-align: middle;
+}
+
+.style5{
+  background: transparent;
+  width: 80px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  border-radius: 22px;
+  color: white;
+}
+
+.style6{
+  background-color:greenyellow;
+}
+
+.style7{
+  background-color: green;
+  border-color:green;
+}
+
+.style8{
+  background: transparent;
+  width: 200px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  border-radius: 22px;
+  color: white;
+}
+
+
+.footerstyle1 {
+  position: absolute;
+  bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: rgb(249, 249, 249);
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border:1px;
+  border-color:gray;
+  border-style:solid;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  /*border-color: red;
+  border-style: dashed;*/
+}
+
+
+
+.tabbar1{
+  width: 20px;
+  height: 20px;
+}
+
+.tabbar2{
+  font-size: 10px;
+  margin-left:1px;
 }

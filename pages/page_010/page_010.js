@@ -1,3 +1,4 @@
+var app = getApp();
 Page({
   data: {
     list1: [
@@ -43,7 +44,11 @@ Page({
       }
     ],
     headImage: wx.getStorageSync('headImage'),
-    nickName: wx.getStorageSync('nickName')
+    nickName: wx.getStorageSync('nickName'),
+    indeximg:'../image/tabbar/2.png',
+    catagaryimg:'../image/tabbar/5.png',
+    loginimg:'../image/tabbar/3.png'
+   
   },
   clickImg:function(){
     wx.navigateTo({
@@ -52,5 +57,39 @@ Page({
   },
   onPullDownRefresh:function(){
     
+  },
+  onLoad: function () {
+    
+  },
+  toIndex:function(){
+     let refer = this;
+     refer.setData({
+       indeximg:'../image/tabbar/1.png',
+       catagaryimg: '../image/tabbar/5.png',
+       loginimg: '../image/tabbar/3.png'
+     });
+     wx.redirectTo({
+       url: '../index/index',
+     });
+  },
+  toCatagary: function () {
+    let refer = this;
+    refer.setData({
+      catagaryimg: '../image/tabbar/6.png',
+      indeximg: '../image/tabbar/2.png',
+      loginimg: '../image/tabbar/3.png'
+    });
+    
+  },
+  toLogin:function(){
+    let refer = this;
+    refer.setData({
+      catagaryimg: '../image/tabbar/5.png',
+      indeximg: '../image/tabbar/2.png',
+      loginimg:'../image/tabbar/4.png'
+    });
+    wx.redirectTo({
+      url: '../page_005/page_005',
+    });
   }
 })
