@@ -63,4 +63,8 @@
       <image bindtap='toBearWord' class='tabbar1' src='{{bearwordimg}}'></image>
       <view bindtap='toBearWord' class='tabbar2'>单词</view>
     </view>
+    <view>
+      <image class='tabbar1' src='{{dateimg}}'></image>
+      <view class='tabbar2'>日历</view>
+    </view>
 </view>

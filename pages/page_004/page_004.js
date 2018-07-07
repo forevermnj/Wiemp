@@ -21,6 +21,7 @@ Page({
     catagaryimg: '../image/tabbar/5.png',
     loginimg: '../image/tabbar/3.png',
     bearwordimg: '../image/tabbar/7.png',
+    dateimg:'../image/tabbar/12.png',
     weekArr: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
     dateList: []
   },
