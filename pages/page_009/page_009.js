@@ -18,7 +18,9 @@ Page({
     imgsentenceurl: '../image/page_002/2.png',
     indeximg: '../image/tabbar/2.png',
     catagaryimg: '../image/tabbar/5.png',
-    loginimg: '../image/tabbar/3.png'
+    loginimg: '../image/tabbar/3.png',
+    bearwordimg: '../image/tabbar/7.png',
+    easyerror:'../image/tabbar/9.png'
   },
   //单词读音
   speech: function () {
@@ -163,33 +165,33 @@ Page({
     let refer = this;
     refer.setData({
       indeximg: '../image/tabbar/1.png',
-      catagaryimg: '../image/tabbar/5.png',
-      loginimg: '../image/tabbar/3.png'
+      bearwordimg: '../image/tabbar/7.png',
+      easyerror: '../image/tabbar/9.png'
     });
     wx.redirectTo({
       url: '../page_010/page_010',
     });
   },
-  toCatagary: function () {
+  toBearWord: function () {
     let refer = this;
     refer.setData({
-      catagaryimg: '../image/tabbar/6.png',
+      bearwordimg: '../image/tabbar/8.png',
       indeximg: '../image/tabbar/2.png',
-      loginimg: '../image/tabbar/3.png'
+      easyerror: '../image/tabbar/9.png'
     });
     wx.redirectTo({
-      url: '../page_010/page_010',
+      url: '../page_001/page_001',
     });
   },
-  toLogin: function () {
+  toEasyMistake: function () {
     let refer = this;
     refer.setData({
-      catagaryimg: '../image/tabbar/5.png',
+      bearwordimg: '../image/tabbar/7.png',
       indeximg: '../image/tabbar/2.png',
-      loginimg: '../image/tabbar/4.png'
+      easyerror:'../image/tabbar/10.png'
     });
     wx.redirectTo({
-      url: '../page_005/page_005',
+      url: '../page_003/page_003',
     });
   }
 })

@@ -1,4 +1,5 @@
 <!--pages/page_003/page_003.wxml-->
+<scroll-view class='.zhud' scroll-y="true">
 <view>
   <view class='topstyle'>
     <view class='accountstyle'>
@@ -9,8 +10,7 @@
     </view>
   </view>
 
-  <scroll-view>
-  <scroll-view scroll-y>
+  
   <!--
   <form bindsubmit="submitInfo" report-submit='true' >
      <button form-type="submit" type="default" size="mini">提交</button>
@@ -25,9 +25,25 @@
       <view data-text="{{item.word+','+item.wordId+','+item.id}}" class="del" catchtap="del" data-index="{{index}}">删除</view>
     </view>
     
-  </scroll-view>
-  </scroll-view>
+ 
   
 
 </view>
+</scroll-view>
 
+
+<!--底部导航条-->
+<view class="footerstyle1">
+    <view bindtap='toIndex' class="smallgroup">
+      <image bindtap='toIndex' class='tabbar1' src='{{indeximg}}'></image>
+      <view bindtap='toIndex' class='tabbar2'>首页</view>
+    </view>
+    <view bindtap='toBearWord' class="smallgroup">
+      <image bindtap='toBearWord' class='tabbar1' src='{{bearwordimg}}'></image>
+      <view bindtap='toBearWord' class='tabbar2'>单词</view>
+    </view>
+    <view class="smallgroup">
+      <image class='tabbar1' src='{{easyerror}}'></image>
+      <view class='tabbar2'>易错</view>
+    </view>
+</view>

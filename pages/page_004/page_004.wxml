@@ -59,12 +59,8 @@
       <image bindtap='toIndex' class='tabbar1' src='{{indeximg}}'></image>
       <view bindtap='toIndex' class='tabbar2'>首页</view>
     </view>
-    <view bindtap='toCatagary'>
-      <image bindtap='toCatagary' class='tabbar1' src='{{catagaryimg}}'></image>
-      <view bindtap='toCatagary' class='tabbar2'>分类</view>
-    </view>
-    <view bindtap='toLogin'>
-      <image bindtap='toLogin' class='tabbar1' src='{{loginimg}}'></image>
-      <view bindtap='toLogin' class='tabbar2'>登录</view>
+    <view bindtap='toBearWord'>
+      <image bindtap='toBearWord' class='tabbar1' src='{{bearwordimg}}'></image>
+      <view bindtap='toBearWord' class='tabbar2'>单词</view>
     </view>
 </view>

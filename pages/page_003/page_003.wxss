@@ -139,3 +139,19 @@
   font-size: 10px;
   margin-left:1px;
 }
+
+
+.zhud{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  display: inline-blcok;
+  white-space:nowrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-bottom: 50px;
+}

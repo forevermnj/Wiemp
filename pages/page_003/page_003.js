@@ -1,5 +1,6 @@
 
 var app = getApp();
+var util = require('../../utils/util.js');
 Page({
 
   /**
@@ -14,6 +15,8 @@ Page({
     indeximg: '../image/tabbar/2.png',
     catagaryimg: '../image/tabbar/5.png',
     loginimg: '../image/tabbar/3.png',
+    bearwordimg: '../image/tabbar/7.png',
+    easyerror: '../image/tabbar/10.png',
     wordlist: []//后台数据需按照时间倒序排序
   },
   changeorder: function () {
@@ -45,6 +48,7 @@ Page({
     * 生命周期函数--监听页面加载
     */
   onLoad: function (options) {
+    util.showBusy('加载中...');
     var refer = this;
     wx.setNavigationBarTitle({
       title: '易错单词'
@@ -80,7 +84,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    util.showSuccess('加载成功');
   },
   //手指触摸动作开始 记录起点X坐标
   touchstart: function (e) {
@@ -203,24 +207,20 @@ Page({
     let refer = this;
     refer.setData({
       indeximg: '../image/tabbar/1.png',
-      catagaryimg: '../image/tabbar/5.png',
-      loginimg: '../image/tabbar/3.png'
-    })
+      bearwordimg: '../image/tabbar/7.png'
+    });
+    wx.redirectTo({
+      url: '../page_010/page_010',
+    });
   },
-  toCatagary: function () {
+  toBearWord: function () {
     let refer = this;
     refer.setData({
-      catagaryimg: '../image/tabbar/6.png',
-      indeximg: '../image/tabbar/2.png',
-      loginimg: '../image/tabbar/3.png'
-    })
-  },
-  toLogin: function () {
-    let refer = this;
-    refer.setData({
-      catagaryimg: '../image/tabbar/5.png',
-      indeximg: '../image/tabbar/2.png',
-      loginimg: '../image/tabbar/4.png'
-    })
+      bearwordimg: '../image/tabbar/8.png',
+      indeximg: '../image/tabbar/2.png'
+    });
+    wx.redirectTo({
+      url: '../page_001/page_001',
+    });
   }
 })

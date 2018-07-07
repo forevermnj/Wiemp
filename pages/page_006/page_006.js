@@ -21,6 +21,7 @@ Page({
     catagaryimg: '../image/tabbar/5.png',
     loginimg: '../image/tabbar/3.png',
     imgwordurl: '../image/page_002/2.png',
+    bearwordimg: '../image/tabbar/7.png',
     flag1:'0'//标记用户是否作答
   },
   //单词读音
@@ -338,33 +339,20 @@ Page({
     let refer = this;
     refer.setData({
       indeximg: '../image/tabbar/1.png',
-      catagaryimg: '../image/tabbar/5.png',
-      loginimg: '../image/tabbar/3.png'
+      bearwordimg: '../image/tabbar/7.png'
     });
     wx.redirectTo({
       url: '../page_010/page_010',
     });
   },
-  toCatagary: function () {
+  toBearWord: function () {
     let refer = this;
     refer.setData({
-      catagaryimg: '../image/tabbar/6.png',
-      indeximg: '../image/tabbar/2.png',
-      loginimg: '../image/tabbar/3.png'
+      bearwordimg: '../image/tabbar/8.png',
+      indeximg: '../image/tabbar/2.png'
     });
     wx.redirectTo({
-      url: '../page_010/page_010',
-    });
-  },
-  toLogin: function () {
-    let refer = this;
-    refer.setData({
-      catagaryimg: '../image/tabbar/5.png',
-      indeximg: '../image/tabbar/2.png',
-      loginimg: '../image/tabbar/4.png'
-    });
-    wx.redirectTo({
-      url: '../page_005/page_005',
+      url: '../page_001/page_001',
     });
   }
 })

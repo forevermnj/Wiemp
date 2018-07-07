@@ -11,6 +11,7 @@ Page({
     indeximg: '../image/tabbar/2.png',
     catagaryimg: '../image/tabbar/5.png',
     loginimg: '../image/tabbar/3.png',
+    bearwordimg: '../image/tabbar/8.png',
     task: 'done' //done, not_yet
   },
 
@@ -135,33 +136,10 @@ Page({
     let refer = this;
     refer.setData({
       indeximg: '../image/tabbar/1.png',
-      catagaryimg: '../image/tabbar/5.png',
-      loginimg: '../image/tabbar/3.png'
+      bearwordimg: '../image/tabbar/7.png'
     });
     wx.redirectTo({
       url: '../page_010/page_010',
-    });
-  },
-  toCatagary: function () {
-    let refer = this;
-    refer.setData({
-      catagaryimg: '../image/tabbar/6.png',
-      indeximg: '../image/tabbar/2.png',
-      loginimg: '../image/tabbar/3.png'
-    });
-    wx.redirectTo({
-      url: '../page_010/page_010',
-    });
-  },
-  toLogin: function () {
-    let refer = this;
-    refer.setData({
-      catagaryimg: '../image/tabbar/5.png',
-      indeximg: '../image/tabbar/2.png',
-      loginimg: '../image/tabbar/4.png'
-    });
-    wx.redirectTo({
-      url: '../page_005/page_005',
     });
   }
 })

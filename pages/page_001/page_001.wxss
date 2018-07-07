@@ -98,6 +98,6 @@
 
 .tabbar2{
   font-size: 10px;
-  margin-left:1px;
+  margin-left:0px;
 }
 
