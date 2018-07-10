@@ -15,7 +15,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
+    /**
+     * 移除指定缓存数据
+     */
+    wx.removeStorageSync("wordidlist");
+    wx.removeStorageSync("wordlist");
+    wx.removeStorageSync("totalaccount");
+    wx.removeStorageSync("uid");
+
+    //清理本地缓存
+    wx.clearStorage();
   },
   //获取用户输入的手机号
   telInput: function (e) {

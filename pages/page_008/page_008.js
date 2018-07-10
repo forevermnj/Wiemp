@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-   
+    indeximg: '../image/tabbar/2.png',
+    bearwordimg: '../image/tabbar/7.png'
   },
 
   /**
@@ -63,5 +64,25 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  toIndex: function () {
+    let refer = this;
+    refer.setData({
+      indeximg: '../image/tabbar/1.png',
+      bearwordimg: '../image/tabbar/7.png'
+    });
+    wx.redirectTo({
+      url: '../page_010/page_010',
+    });
+  },
+  toBearWord: function () {
+    let refer = this;
+    refer.setData({
+      bearwordimg: '../image/tabbar/8.png',
+      indeximg: '../image/tabbar/2.png'
+    });
+    wx.redirectTo({
+      url: '../page_001/page_001',
+    });
   }
 })

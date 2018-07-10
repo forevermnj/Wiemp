@@ -2,3 +2,15 @@
   <icon type="success" size="80" color="green"/>
   <text class='style1'>您已通过全部单词的考试!</text>
 </view>
+
+<!--底部导航条-->
+<view class="footerstyle1">
+    <view bindtap='toIndex' class="smallgroup">
+      <image bindtap='toIndex' class='tabbar1' src='{{indeximg}}'></image>
+      <view bindtap='toIndex' class='tabbar2'>首页</view>
+    </view>
+    <view bindtap='toBearWord' class="smallgroup">
+      <image bindtap='toBearWord' class='tabbar1' src='{{bearwordimg}}'></image>
+      <view bindtap='toBearWord' class='tabbar2'>单词</view>
+    </view>
+</view>
