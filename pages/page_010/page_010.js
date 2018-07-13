@@ -56,6 +56,11 @@ Page({
       url: '../page_001/page_001',
     })
   },
+  clickImg2: function () {
+    wx.redirectTo({
+      url: '../page_011/page_011',
+    })
+  },
   onPullDownRefresh:function(){
     
   },
