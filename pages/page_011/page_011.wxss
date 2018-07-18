@@ -10,7 +10,7 @@
   justify-content: space-between;
   padding: 0rpx 0;
   box-sizing: border-box;
-  background-image:url(https://www.learnzp.com/Emp/image/login/background.png);
+  background-image:url(https://www.learnzp.com/Emp/mobile/page_011/5.png);
   background-size:100% 50%;
   background-repeat: no-repeat;
 }
@@ -73,16 +73,7 @@
   margin-left: 10px;
 }
 
-.style10{
-  font-size: 15px;
-  font-family:Georgia, 'Times New Roman', Times, serif;
-  color:red;
-}
 
-.style11{
-  margin-top:90px;
-  margin-left: 10px;
-}
 
 .footerstyle1 {
   position: absolute;

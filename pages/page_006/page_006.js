@@ -188,7 +188,7 @@ Page({
      *************************************************/
     if (e.currentTarget.dataset.optionsindex == '0')    {
       wx.playBackgroundAudio({
-        dataUrl: app.globalData.serverUrl + '/Emp/mp3/correct.mp3'
+        dataUrl: app.globalData.serverUrl + '/Emp/mobile/mp3/correct.mp3'
       });
       //改变单词下标
       /*this.setData({
@@ -197,7 +197,7 @@ Page({
       })*/
     }else{
       wx.playBackgroundAudio({
-        dataUrl: app.globalData.serverUrl + '/Emp/mp3/error.mp3'
+        dataUrl: app.globalData.serverUrl + '/Emp/mobile/mp3/error.mp3'
       });
       wx.request({
         url: app.globalData.serverUrl + '/Emp/mobile/easymistake/edit/' + this.data.wordList[this.data.wordIndex].id,

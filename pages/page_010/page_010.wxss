@@ -68,7 +68,7 @@
   padding-left: 10px;
   padding-bottom: 30px;
   box-sizing: border-box;
-  background-color: #e2f7ea;
+  background-color: white;
 }
 
 .style1{

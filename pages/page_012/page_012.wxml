@@ -3,24 +3,24 @@
   <view class='style2'>
 
     <view class='style9'>
-     <image class='style3' src='../image/tabbar/13.png'></image>
+     <image class='style3' src='https://www.learnzp.com/Emp/mobile/page_012/1.png'></image>
     </view>
     
     <view class='style6'>
 
-      <view class='style9'>
-       <image class='style10' src='../image/tabbar/16.png'></image>
+      <view bindtap='toPrevious' class='style9'>
+       <image bindtap='toPrevious' class='style10' src='../image/tabbar/16.png'></image>
       </view>
 
-      <view class='style7'>
-        <image class='style4' src='../image/tabbar/18.gif'></image>
+      <view bindtap='speech' class="{{speechFlag!=true?'style7':'style11'}}">
+        <image bindtap='speech' class='style4' src='{{speechImg}}'></image>
       </view>
       <view class='style8'>
         <image class='style5' src='../image/tabbar/15.png'></image>
       </view>
 
-      <view class='style9'>
-       <image class='style10' src='../image/tabbar/17.png'></image>
+      <view bindtap='toNext' class='style9'>
+       <image bindtap='toNext' class='style10' src='../image/tabbar/17.png'></image>
       </view>
     </view>
   </view>

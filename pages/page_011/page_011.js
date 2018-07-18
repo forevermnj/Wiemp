@@ -4,14 +4,17 @@ Page({
   data: {
     list2: [
       {
-        pic: '../image/page_010/6.png',
-        title: 'mule'
+        pic: app.globalData.serverUrl+'/Emp/mobile/page_011/1.png',
+        title: 'Listening'
       }, {
-        pic: '../image/page_010/7.png',
-        title: 'aws'
+        pic: app.globalData.serverUrl +'/Emp/mobile/page_011/2.png',
+        title: 'Speaking'
       }, {
-        pic: '../image/page_010/8.png',
-        title: 'expect'
+        pic: app.globalData.serverUrl +'/Emp/mobile/page_011/3.png',
+        title: 'Meeting'
+      }, {
+        pic: app.globalData.serverUrl +'/Emp/mobile/page_011/4.png',
+        title: 'Vocabulary'
       }
     ],
     headImage: wx.getStorageSync('headImage'),
@@ -22,7 +25,7 @@ Page({
   },
   clickImg: function () {
     wx.redirectTo({
-      url: '../page_001/page_001',
+      url: '../page_012/page_012',
     })
   },
   onPullDownRefresh: function () {

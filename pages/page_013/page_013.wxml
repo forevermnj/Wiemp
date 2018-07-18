@@ -1,0 +1,37 @@
+<view class='style1'>
+
+  <view class='style2'>
+     <view class='style4'>
+       <image class='style3' src='https://www.learnzp.com/Emp/mobile/page_012/1.png'></image>
+     </view>
+     <view bindtap='speech' class="{{speechFlag!=true?'style8':'style10'}}">
+       <image bindtap='speech' class='style7' src='{{speeImgInit}}'></image>
+     </view>
+     
+     <view class='style5'>
+       <view wx:if='{{correct!=2}}' animation="{{animationData1}}" bindtap='choose1' class='style6'>
+          {{chooseData1}}
+       </view>
+       <view wx:if='{{correct!=2}}' animation="{{animationData2}}" bindtap='choose2' class='style6'>
+          {{chooseData2}}
+       </view>
+       <view animation="{{animationData3}}" bindtap='choose3' class="{{correctFlag!=true?'style6':'style9'}}">
+          {{chooseData3}}
+       </view>
+     </view>
+     
+  </view>
+
+</view>
+
+<!--底部导航条-->
+<view class="footerstyle1">
+    <view bindtap='toIndex' class="smallgroup">
+      <image bindtap='toIndex' class='tabbar1' src='{{indeximg}}'></image>
+      <view bindtap='toIndex' class='tabbar2'>首页</view>
+    </view>
+    <view bindtap='toCatagary' class="smallgroup">
+      <image bindtap='toCatagary' class='tabbar1' src='{{catagaryimg}}'></image>
+      <view bindtap='toCatagary' class='tabbar2'>分类</view>
+    </view>
+</view>

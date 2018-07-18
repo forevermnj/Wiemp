@@ -14,7 +14,7 @@
 }
 
 .style2{
-  margin-top: 120px;
+  margin-top: 50px;
   width: 100%;
   border-color: white;
   border-width: 0px;
@@ -29,76 +29,95 @@
 }
 
 .style4{
-  width: 34px;
-  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
 }
 
 .style5{
-  width: 34px;
-  height: 34px;
+  color:white;
+  margin-top: 40px;
 }
 
 .style6{
- width: 100%;
- margin-top: 90px;
- border-color: white;
- border-width: 0px;
- border-style:solid;
- border-bottom: 50px;
- display: flex;
- flex-direction: row;
- justify-content: space-around;
+  border-width: 1px;
+  border-style: solid;
+  margin-top: 10px;
+  background-color: #354255;
+  border-color: #354255;
+  padding: 16px;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  border-radius: 6px;
 }
 
 .style7{
-  border: 1px;
-  border-style: solid;
-  border-color: white;
-  width: 54px;
-  height: 54px;
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-  border-radius: 50px; 
-  background-color: white;
+  width: 32px;
+  height: 32px;
 }
 
 .style8{
-  border: 1px;
+  border-width: 1px;
   border-style: solid;
-  border-color: white;
-  width: 54px;
-  height: 54px;
+  border-color: #354255;
   display: flex;
   align-items: center;
-  justify-content: center;  
-  border-radius: 50px; 
-  
+  justify-content: center;
+  margin-top: 15px;
+  width: 72px;
+  height: 42px;
+  margin-left: 140px; 
+  border-radius: 25px; 
 }
 
 .style9{
+  border-width: 1px;
+  border-style: solid;
+  margin-top: 10px;
+  background-color: #43D45B;
+  border-color: #43D45B;
+  padding: 16px;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 15px;
   display: flex;
   align-items: center;
   justify-content: center;  
+  border-radius: 6px;
 }
 
 .style10{
-  width: 34px;
-  height: 34px;
-}
-
-.style11{
-  border: 1px;
+  border-width: 1px;
   border-style: solid;
-  border-color: white;
-  width: 54px;
-  height: 54px;
+  border-color: #354255;
   display: flex;
   align-items: center;
-  justify-content: center; 
-  border-radius: 50px; 
-  background-color: #1B2B42;
+  justify-content: center;
+  margin-top: 15px;
+  width: 72px;
+  height: 42px;
+  margin-left: 140px; 
+  border-radius: 25px; 
+  background-color: white;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .footerstyle1 {
@@ -131,5 +150,3 @@
   font-size: 10px;
   margin-left:1px;
 }
-
-
