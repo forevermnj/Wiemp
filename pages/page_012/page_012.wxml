@@ -1,0 +1,44 @@
+<view class='style1'>
+
+  <view class='style2'>
+
+    <view class='style9'>
+     <image class='style3' src='../image/tabbar/13.png'></image>
+    </view>
+    
+    <view class='style6'>
+
+      <view class='style9'>
+       <image class='style10' src='../image/tabbar/16.png'></image>
+      </view>
+
+      <view class='style7'>
+        <image class='style4' src='../image/tabbar/18.gif'></image>
+      </view>
+      <view class='style8'>
+        <image class='style5' src='../image/tabbar/15.png'></image>
+      </view>
+
+      <view class='style9'>
+       <image class='style10' src='../image/tabbar/17.png'></image>
+      </view>
+    </view>
+  </view>
+
+ 
+    
+  
+
+</view>
+
+<!--底部导航条-->
+<view class="footerstyle1">
+    <view bindtap='toIndex' class="smallgroup">
+      <image bindtap='toIndex' class='tabbar1' src='{{indeximg}}'></image>
+      <view bindtap='toIndex' class='tabbar2'>首页</view>
+    </view>
+    <view bindtap='toCatagary' class="smallgroup">
+      <image bindtap='toCatagary' class='tabbar1' src='{{catagaryimg}}'></image>
+      <view bindtap='toCatagary' class='tabbar2'>分类</view>
+    </view>
+</view>

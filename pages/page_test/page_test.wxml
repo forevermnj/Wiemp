@@ -1,19 +1,23 @@
 <view class='style1'>
+
 <scroll-view>
-  <view class='style6'>
-    <view class='style4'>MuleSoft</view>
-    <view class='style5'>完成关卡0/4</view>
-  </view>
+  <view class='style4'>MuleSoft</view>
+  <view class='style5'>完成关卡0/5</view>
   <scroll-view class="style2" scroll-x="true">
     <view class="style3" wx:for="{{list2}}">
          <view class='style7'>
            <image class='style8' src='../image/page_010/12.png'></image>
          </view>
-         <view class='style9'>课程一介绍\n重点知识点</view>
+         <view class='style9'>课程一介绍</view>
+         <view class='style11'>
+           <view class='style10'>知识重点</view>
+           <view class='style10'>了解mulesoft</view>
+         </view>
+         
+         
     </view>
   </scroll-view>
 </scroll-view>
-
 </view>
 
 <!--底部导航条-->
