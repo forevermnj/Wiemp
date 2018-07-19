@@ -24,13 +24,15 @@
 }
 
 .style5{
-  border-color:brown;
-  background-color:gainsboro;
+  border-color:#404040;
+  background-color:#000;
   border-radius: 5px;
   height: 40px;
   text-align: center;
   vertical-align:text-bottom;
   line-height:80rpx;
+  color: white;
+  opacity:0.6;
 }
 
 .style7{

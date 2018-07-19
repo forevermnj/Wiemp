@@ -8,7 +8,7 @@ Page({
     headImage: wx.getStorageSync('headImage'),
     nickName: wx.getStorageSync('nickName'),
     indeximg: '../image/tabbar/2.png',
-    catagaryimg: '../image/tabbar/5.png',
+    previousImg: '../image/tabbar/13.png',
     animationData1: {},
     animationData2: {},
     animationData3: {},
@@ -99,7 +99,7 @@ Page({
      var refer = this;
      //创建动画
      let animation = wx.createAnimation({
-          duration: 1000,
+          duration: 500,
           timingFunction: "ease",
           delay: 0
      });
@@ -115,7 +115,7 @@ Page({
           refer.setData({
               animationData1: animation.export()
           })
-     }.bind(refer), 1000);
+     }.bind(refer), 500);
 
   },
   choose2: function (e) {
@@ -123,7 +123,7 @@ Page({
     var refer = this;
     //创建动画
     let animation = wx.createAnimation({
-      duration: 1000,
+      duration: 500,
       timingFunction: "ease",
       delay: 0
     });
@@ -139,7 +139,7 @@ Page({
       refer.setData({
         animationData2: animation.export()
       })
-    }.bind(refer), 1000);
+    }.bind(refer), 500);
 
   },
   choose3: function (e) {
@@ -151,7 +151,7 @@ Page({
     })
     //创建动画
     let animation = wx.createAnimation({
-      duration: 1000,
+      duration: 500,
       timingFunction: "ease",
       delay: 0
     });
@@ -167,7 +167,7 @@ Page({
       refer.setData({
         animationData3: animation.export()
       })
-    }.bind(refer), 1000);
+    }.bind(refer), 500);
 
   },
   toIndex: function () {
@@ -180,14 +180,13 @@ Page({
       url: '../page_010/page_010',
     });
   },
-  toCatagary: function () {
+  toPrevious: function () {
     let refer = this;
     refer.setData({
-      catagaryimg: '../image/tabbar/6.png',
       indeximg: '../image/tabbar/2.png'
     });
     wx.redirectTo({
-      url: '../page_010/page_010',
+      url: '../page_012/page_012',
     });
   }
 })

@@ -37,8 +37,8 @@
       <image bindtap='toIndex' class='tabbar1' src='{{indeximg}}'></image>
       <view bindtap='toIndex' class='tabbar2'>首页</view>
     </view>
-    <view bindtap='toCatagary' class="smallgroup">
-      <image bindtap='toCatagary' class='tabbar1' src='{{catagaryimg}}'></image>
-      <view bindtap='toCatagary' class='tabbar2'>分类</view>
+    <view bindtap='toPrevious' class="smallgroup">
+      <image bindtap='toPrevious' class='tabbar1' src='{{previousImg}}'></image>
+      <view bindtap='toPrevious' class='tabbar2'>上级</view>
     </view>
 </view>

@@ -5,7 +5,7 @@ Page({
     headImage: wx.getStorageSync('headImage'),
     nickName: wx.getStorageSync('nickName'),
     indeximg: '../image/tabbar/2.png',
-    catagaryimg: '../image/tabbar/5.png',
+    previousImg: '../image/tabbar/13.png',
     speechImg:'../image/tabbar/18.gif',
     speechFlag:false
   },
@@ -107,17 +107,6 @@ Page({
     let refer = this;
     refer.setData({
       indeximg: '../image/tabbar/1.png',
-      catagaryimg: '../image/tabbar/5.png'
-    });
-    wx.redirectTo({
-      url: '../page_010/page_010',
-    });
-  },
-  toCatagary: function () {
-    let refer = this;
-    refer.setData({
-      catagaryimg: '../image/tabbar/6.png',
-      indeximg: '../image/tabbar/2.png'
     });
     wx.redirectTo({
       url: '../page_010/page_010',

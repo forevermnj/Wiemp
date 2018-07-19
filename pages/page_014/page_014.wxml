@@ -1,0 +1,30 @@
+<view class='style1'>
+
+  <view class='style2'>
+     <view class='style3'>
+       <image class='style4' src='https://www.learnzp.com/Emp/mobile/page_012/1.png'></image>
+     </view>
+     <view class='style5'>
+       She hasn't <text class='style6'>空</text>   a  vacation  <text class='style6'>空</text>    more than 2 years
+     </view>
+     <view class='style7'>
+      <view class='style8'>since</view>
+      <view class='style8'>has</view>
+      <view class='style8'>for</view>
+      <view class='style8'>had</view>
+     </view>
+  </view>
+ 
+</view>
+
+<!--底部导航条-->
+<view class="footerstyle1">
+    <view bindtap='toIndex' class="smallgroup">
+      <image bindtap='toIndex' class='tabbar1' src='{{indeximg}}'></image>
+      <view bindtap='toIndex' class='tabbar2'>首页</view>
+    </view>
+    <view bindtap='toCatagary' class="smallgroup">
+      <image bindtap='toCatagary' class='tabbar1' src='{{catagaryimg}}'></image>
+      <view bindtap='toCatagary' class='tabbar2'>分类</view>
+    </view>
+</view>

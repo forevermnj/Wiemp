@@ -5,43 +5,43 @@ Page({
     list1: [
       {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/1.png',
-        title: 'sweet words'
+        title: 'SweetWords'
       }, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/2.png',
-        title: 'mongo reading'
+        title: 'MongoReading'
       }, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/3.png',
-        title: 'stand up meeting'
+        title: 'StandUpMeeting'
       }, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/4.png',
-        title: 'stand up meeting'
+        title: 'StandUpMeeting'
       }, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/5.png',
-        title: 'Professional literacy'
+        title: 'Professionalliteracy'
       }
     ],
     list2: [
       {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/6.png',
-        title: 'mule'
+        title: 'Mule'
       }, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/7.png',
-        title: 'aws'
+        title: 'Aws'
       }, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/8.png',
-        title: 'expect'
+        title: 'Expect'
       }, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/9.png',
-        title: 'stand Up'
+        title: 'StandUp'
       }, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/10.png',
-        title: 'mulesoft'
+        title: 'MuleSoft'
       }
     ],
     list3: [
       {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/11.png',
-        title: 'expect'
+        title: 'Expect'
       }
     ],
     headImage: wx.getStorageSync('headImage'),
