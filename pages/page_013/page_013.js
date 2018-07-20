@@ -97,6 +97,12 @@ Page({
   choose1:function(e){
     //console.log(e.currentTarget.dataset.optionsindex);
      var refer = this;
+
+     var tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
+     wx.playBackgroundAudio({
+       dataUrl: tempFilePath
+     });
+
      //创建动画
      let animation = wx.createAnimation({
           duration: 500,
@@ -121,6 +127,12 @@ Page({
   choose2: function (e) {
     //console.log(e.currentTarget.dataset.optionsindex);
     var refer = this;
+    //wx.stopBackgroundAudio();
+    var tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
+    wx.playBackgroundAudio({
+      dataUrl: tempFilePath
+    });
+
     //创建动画
     let animation = wx.createAnimation({
       duration: 500,
@@ -145,6 +157,12 @@ Page({
   choose3: function (e) {
     //console.log(e.currentTarget.dataset.optionsindex);
     var refer = this;
+
+    var tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
+    wx.playBackgroundAudio({
+      dataUrl: tempFilePath
+    });
+
     refer.setData({
       correct:2,
       correctFlag:true
