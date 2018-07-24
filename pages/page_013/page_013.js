@@ -98,14 +98,15 @@ Page({
     //console.log(e.currentTarget.dataset.optionsindex);
      var refer = this;
 
-     var tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
+     let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
+     console.log(tempFilePath);
      wx.playBackgroundAudio({
        dataUrl: tempFilePath
      });
 
      //创建动画
      let animation = wx.createAnimation({
-          duration: 500,
+          duration: 400,
           timingFunction: "ease",
           delay: 0
      });
@@ -121,7 +122,7 @@ Page({
           refer.setData({
               animationData1: animation.export()
           })
-     }.bind(refer), 500);
+     }.bind(refer), 400);
 
   },
   choose2: function (e) {
@@ -135,7 +136,7 @@ Page({
 
     //创建动画
     let animation = wx.createAnimation({
-      duration: 500,
+      duration: 400,
       timingFunction: "ease",
       delay: 0
     });
@@ -151,7 +152,7 @@ Page({
       refer.setData({
         animationData2: animation.export()
       })
-    }.bind(refer), 500);
+    }.bind(refer), 400);
 
   },
   choose3: function (e) {
@@ -186,6 +187,12 @@ Page({
         animationData3: animation.export()
       })
     }.bind(refer), 500);
+
+    setTimeout(function () {
+      wx.redirectTo({
+        url: '../page_014/page_014',
+      });
+    }.bind(refer), 1300);
 
   },
   toIndex: function () {
