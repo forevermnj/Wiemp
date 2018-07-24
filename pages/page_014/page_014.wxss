@@ -167,6 +167,38 @@
   align-items: center;
 }
 
+.style14{
+  border-width: 1px;
+  border-style: solid;
+  border-color: #7CD322;
+  margin-right: 5px;
+  margin-left: 5px;
+  width: 40px;
+  background-color: #7CD322;
+  margin-top: 0px;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.style15{
+  border-width: 1px;
+  border-style: solid;
+  border-color:red;
+  margin-right: 5px;
+  margin-left: 5px;
+  width: 40px;
+  background-color:red;
+  margin-top: 0px;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 
 
