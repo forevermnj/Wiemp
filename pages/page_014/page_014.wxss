@@ -213,7 +213,7 @@
   display: flex;
   justify-content: space-around;
   border:1px;
-  border-color:gray;
+  border-color:#D8D8D8;
   border-style:solid;
   border-left: none;
   border-right: none;
