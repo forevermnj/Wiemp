@@ -21,12 +21,60 @@ Page({
     nickName: wx.getStorageSync('nickName'),
     indeximg: '../image/tabbar/2.png',
     catagaryimg: '../image/tabbar/5.png',
-
+    bgimg: app.globalData.serverUrl +'/Emp/mobile/page_011/5.png',
+    startIndex:0,
+    endIndex:0,
+    bgimg2:[
+      {urlimg:app.globalData.serverUrl + '/Emp/mobile/page_011/6.png'},
+      {urlimg:app.globalData.serverUrl + '/Emp/mobile/page_011/7.png'},
+      {urlimg:app.globalData.serverUrl + '/Emp/mobile/page_011/8.png'}
+    ],
+    sindex:0
   },
   clickImg: function () {
     wx.redirectTo({
       url: '../page_012/page_012',
     })
+  },
+  touchstart:function(e){
+    let refer = this;
+    refer.setData({
+      startIndex: e.changedTouches[0].pageX
+    })
+    
+  },
+  touchend:function(e){
+    let refer = this;
+    console.log(refer.data.sindex);
+    refer.setData({
+      endIndex: e.changedTouches[0].pageX
+    })
+   
+    if ((refer.data.endIndex - refer.data.startIndex) < 0 && refer.data.sindex<=2){
+        refer.setData({
+          bgimg: refer.data.bgimg2[refer.data.sindex].urlimg,
+          sindex: refer.data.sindex + 1
+        })
+        if (refer.data.sindex==3){
+            refer.setData({
+              sindex:2
+            })
+        }
+    } 
+    if ((refer.data.endIndex - refer.data.startIndex) > 0 && refer.data.sindex >= 0){
+      
+      refer.setData({
+        bgimg: refer.data.bgimg2[refer.data.sindex].urlimg,
+        sindex: refer.data.sindex - 1
+      })
+      
+    }
+    if (refer.data.sindex == -1) {
+      refer.setData({
+        bgimg: app.globalData.serverUrl + '/Emp/mobile/page_011/5.png',
+        sindex:0
+      })
+    }
   },
   onPullDownRefresh: function () {
 

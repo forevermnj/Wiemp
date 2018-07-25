@@ -4,10 +4,11 @@
      <view class='style4'>
        <image class='style3' src='https://www.learnzp.com/Emp/mobile/page_012/1.png'></image>
      </view>
-     <view bindtap='speech' class="{{speechFlag!=true?'style8':'style10'}}">
+     <view class='style4'>
+      <view bindtap='speech' class="{{speechFlag!=true?'style8':'style10'}}">
        <image bindtap='speech' class='style7' src='{{speeImgInit}}'></image>
+      </view>
      </view>
-     
      <view class='style5'>
        <view wx:if='{{correct!=2}}' animation="{{animationData1}}" bindtap='choose1' class='style6'>
           {{chooseData1}}

@@ -10,7 +10,7 @@
   justify-content: space-between;
   padding: 0rpx 0;
   box-sizing: border-box;
-  background-color: #1B2B42;
+  background-color: #a7c1bf;
 }
 
 .style2{

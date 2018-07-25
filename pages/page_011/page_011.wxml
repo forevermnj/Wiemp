@@ -1,18 +1,23 @@
-<view class='style1'>
+<scroll-view class='style1' style="background-image: url({{bgimg}})">
 
-<scroll-view>
+<scroll-view class='style11'>
   <view class='style4'>Listening</view>
   <view class='style5'>完成关卡0/5</view>
   <scroll-view class="style2" scroll-x="true">
-    <view class="style3" wx:for="{{list2}}">
+    <view bindtouchstart='touchstart' bindtouchend='touchend' catchtap='clickImg' class="style3" wx:for="{{list2}}">
          <view catchtap='clickImg' class='style7'>
            <image catchtap='clickImg' class='style8' src='{{item.pic}}'></image>
          </view>
-         <view class='style9'>{{item.title}}</view>
+         <view catchtap='clickImg' class='style9'>{{item.title}}</view>
     </view>
   </scroll-view>
 </scroll-view>
+<view class='style10'>
+  继续学习
 </view>
+</scroll-view>
+
+
 
 <!--底部导航条-->
 <view class="footerstyle1">

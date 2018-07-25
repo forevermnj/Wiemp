@@ -10,7 +10,7 @@
   justify-content: space-between;
   padding: 0rpx 0;
   box-sizing: border-box;
-  background-color: #1B2B42;
+  background-color: #a7c1bf;
 }
 
 .style2{
@@ -70,7 +70,6 @@
   margin-top: 15px;
   width: 72px;
   height: 42px;
-  margin-left: 140px; 
   border-radius: 25px; 
 }
 
@@ -100,7 +99,6 @@
   margin-top: 15px;
   width: 72px;
   height: 42px;
-  margin-left: 140px; 
   border-radius: 25px; 
   background-color: white;
 }
