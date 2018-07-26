@@ -58,13 +58,13 @@
 .style7{
   color:white;
   position: absolute;
-  bottom: 125px;
+  bottom: 115px;
   border-width: 1px;
   border-style: solid;
   height: 70px;
   width: 100%;
-  background-color: #161D25;
-  border-color: #161D25;
+  background-color: #1B2B42;
+  border-color: #1B2B42;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -120,7 +120,7 @@
 }
 
 .style11{
-  background-color: #161D27;
+  background-color: #1B2B42;
   border-color: #454C56;
   color:#454C56;
   border-width: 1px;
@@ -142,7 +142,7 @@
   bottom: 51px;
   border-width: 1px;
   border-style: solid;
-  height: 70px;
+  height: 60px;
   width: 100%;
   background-color: #7CD322;
   border-color: #7CD322;
@@ -160,8 +160,8 @@
   border-style: solid;
   height: 70px;
   width: 100%;
-  background-color: #161D25;
-  border-color: #161D25;
+  background-color: #1B2B42;
+  border-color: #1B2B42;
   display: flex;
   flex-direction: row;
   align-items: center;
