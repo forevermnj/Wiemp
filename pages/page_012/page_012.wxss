@@ -97,7 +97,7 @@
   align-items: center;
   justify-content: center; 
   border-radius: 50px; 
-  background-color: #1B2B42;
+  
 }
 
 

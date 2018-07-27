@@ -376,6 +376,17 @@ Page({
   },
   check:function(){
     let refer = this;
+    if (refer.data.chooseData[0] == 'since' && refer.data.chooseData[1] == 'had'){
+      let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
+      wx.playBackgroundAudio({
+        dataUrl: tempFilePath
+      });
+      setTimeout(function () {
+        wx.redirectTo({
+          url: '../page_015/page_015',
+        });
+      }.bind(refer), 500);
+    }
     if (refer.data.chooseData[0] == 'since') {
          refer.setData({
            checkFlag1:true
