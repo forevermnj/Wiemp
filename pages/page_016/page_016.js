@@ -18,10 +18,9 @@ Page({
     nickName: wx.getStorageSync('nickName'),
     indeximg: '../image/tabbar/2.png',
     previousImg: '../image/tabbar/13.png',
+    recordimg:'../image/tabbar/15.png',
     flag1:false,
-    flag2:false,
-    flag3:false
-
+    recordurl:''
   },
   clickImg: function () {
     wx.redirectTo({
@@ -81,20 +80,45 @@ Page({
   onShareAppMessage: function () {
 
   },
-  toRight:function(){
-     let refer = this;
-     refer.setData({
-       flag2:true
-     });
-     let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
-     wx.playBackgroundAudio({
-       dataUrl: tempFilePath
-     });
-    setTimeout(function () {
-      wx.redirectTo({
-        url: '../page_016/page_016',
-      });
-    }.bind(refer), 500);
+  toRecordEnd:function(){
+    let refer = this;
+    //结束录音  
+    wx.stopRecord();
+    refer.setData({
+      recordimg: '../image/tabbar/15.png',
+      flag1: false
+    })
+  },
+  toRecordStart:function(){
+    let refer = this;
+    refer.setData({
+      recordimg:'../image/tabbar/19.gif',
+      flag1:true
+    })
+    //  发起授权
+    wx.authorize({
+      scope: 'scope.record',
+      success() {
+        //let recordManager = wx.getRecorderManager();
+        wx.startRecord({
+          success: function (res) {
+            console.log('录音');
+            var tempFilePath = res.tempFilePath;
+            wx.playVoice({
+              filePath: tempFilePath,
+              complete: function () {
+              }
+            })
+          },
+        })
+    
+      }, fail() {
+        resolve(1)
+      }
+    })
+
+
+    
   },
   toIndex: function () {
     let refer = this;
@@ -112,7 +136,7 @@ Page({
       indeximg: '../image/tabbar/2.png'
     });
     wx.redirectTo({
-      url: '../page_014/page_014',
+      url: '../page_015/page_015',
     });
   }
 })

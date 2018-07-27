@@ -11,8 +11,9 @@
   justify-content: space-between;
   padding: 0rpx 0;
   box-sizing: border-box;
-  background-size:100% 35%;
+  background-size:100% 40%;
   background-repeat: no-repeat;
+  background-color: #f3f3f3;
 }
 
 .style2{
@@ -33,21 +34,22 @@
   display: inline-block;
   border-width: 1px;
   border-style: solid;
-  border-radius: 5px;
-  border-color:gainsboro;
+  border-radius: 20px;
+  border-color:white;
+  background-color: white;
 }
 
 .style4{
   font-size: 20pt;
-  color:black;
+  color:white;
   margin-left: 20px;
   font-family:Arial;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 .style5{
   font-size: 15pt;
-  color:green;
+  color:white;
   margin-left: 20px;
   font-family: '微软雅黑';
 }
@@ -57,22 +59,23 @@
 }
 
 .style7{
-  height: 130px;
+  height: 140px;
   
 }
 
 .style8{
   width: 500rpx;
   height: 130px;
-  border-radius: 5px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .style9{
   font-size: 22pt;
-  color: green;
+  color: #60c858;
   font-family:Arial;
   margin-left: 10px;
-  margin-top: 30px;
+  margin-top: 5px;
 }
 
 .style10{
@@ -94,6 +97,10 @@
 .style11{
   white-space: nowrap;
   display: inline-blcok;
+  border-width: 0px;
+  border-style: solid;
+  position: absolute;
+  bottom: 110px;
 }
 
 
