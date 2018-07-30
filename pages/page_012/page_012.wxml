@@ -13,9 +13,9 @@
       </view>
 
       <view bindtap='speech' class="{{speechFlag!=true?'style7':'style11'}}">
-        <image bindtap='speech' class='style4' src='{{speechImg}}'></image>
+        <image bindtap='speech' class="{{speechFlag!=true?'style12':'style4'}}" src='{{speechImg}}'></image>
       </view>
-      <view class='style8'>
+      <view wx:if="{{speechFlag}}" class='style8'>
         <image class='style5' src='../image/tabbar/15.png'></image>
       </view>
 

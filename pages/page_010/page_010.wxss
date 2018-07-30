@@ -41,6 +41,7 @@
 
 .title {
   font-size: 26rpx;
+  font-family:Arial;
 }
 
 .desc {
@@ -96,7 +97,7 @@
   margin-bottom: 5px;
   margin-left: 10px;
   margin-top: 7px;
-  font-family:'Times New Roman', Times, serif;
+  font-family:'Arial';
   border-width: 0px;
   border-style: solid;
   margin-right: 10px;
@@ -135,8 +136,9 @@
 }
 
 .style7{
-  font-size: 15px;
-  color:#757575;
+  font-size: 13px;
+  color:black;
+  font-family:Arial;
 }
 
 .style8{

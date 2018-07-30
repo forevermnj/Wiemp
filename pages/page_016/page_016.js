@@ -20,7 +20,9 @@ Page({
     previousImg: '../image/tabbar/13.png',
     recordimg:'../image/tabbar/15.png',
     flag1:false,
-    recordurl:''
+    flag2:false,
+    recordurl:'',
+    timestart:''
   },
   clickImg: function () {
     wx.redirectTo({
@@ -80,38 +82,54 @@ Page({
   onShareAppMessage: function () {
 
   },
-  toRecordEnd:function(){
+  toRecordEnd:function(e){
     let refer = this;
-    //结束录音  
+    console.log(e.timeStamp);
+    
+    if ((e.timeStamp - refer.data.timestart)<300){
+      wx.stopRecord();
+      refer.setData({
+        recordimg: '../image/tabbar/15.png',
+        flag1: false,
+        flag2:true
+      })
+      return
+    }
+    
     wx.stopRecord();
     refer.setData({
       recordimg: '../image/tabbar/15.png',
       flag1: false
     })
   },
-  toRecordStart:function(){
+  toRecordStart:function(e){
+    console.log(e.timeStamp);
     let refer = this;
     refer.setData({
       recordimg:'../image/tabbar/19.gif',
-      flag1:true
+      flag1:true,
+      flag2:false,
+      timestart: e.timeStamp
     })
     //  发起授权
     wx.authorize({
       scope: 'scope.record',
       success() {
-        //let recordManager = wx.getRecorderManager();
         wx.startRecord({
-          success: function (res) {
-            console.log('录音');
+            success: function (res) {
             var tempFilePath = res.tempFilePath;
+            //console.log('录音结束'+tempFilePath);
             wx.playVoice({
               filePath: tempFilePath,
               complete: function () {
               }
             })
           },
+          fail: function (res) {
+            //录音失败
+          }
         })
-    
+
       }, fail() {
         resolve(1)
       }

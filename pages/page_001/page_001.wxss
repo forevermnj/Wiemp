@@ -1,6 +1,6 @@
 .mainpagetop {
   height: 240px;
-  background-color: rgb(67, 207, 124);
+  background-color: #44cf7c;
   text-align: center;
   color: white;
   display: flex;

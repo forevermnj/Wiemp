@@ -15,27 +15,27 @@ Page({
       }, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/4.png',
         title: 'StandUpMeeting'
-      }, {
+      }/*, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/5.png',
         title: 'Professionalliteracy'
-      }
+      }*/
     ],
     list2: [
       {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/6.png',
-        title: 'Mule'
+        title: 'MuleSoft'
       }, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/7.png',
         title: 'Aws'
-      }, {
+      },/* {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/8.png',
         title: 'Expect'
-      }, {
+      }, */{
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/9.png',
-        title: 'StandUp'
+        title: 'SpringBoot'
       }, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/10.png',
-        title: 'MuleSoft'
+        title: 'NodeJS'
       }
     ],
     list3: [

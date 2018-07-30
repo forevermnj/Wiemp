@@ -3,7 +3,7 @@
 <view class='style8'>
   <image class='style9' src='https://www.learnzp.com/Emp/mobile/page_010/12.png'></image>
   <view class='style10'>
-   <view>口语力</view>
+   <view>Power</view>
    <view class='style11'>20</view>
    <view>累计打卡0天</view>
   </view>
@@ -12,8 +12,8 @@
 
 <scroll-view class='style1'>
 <view class='style3'>
- <view>英语类</view>
- <view class='style7'>查看全部      ></view>
+ <view>English</view>
+ <view class='style7'>View ALL      ></view>
 </view>
 <scroll-view class="recommend_scroll_x_box" scroll-x="true">
   <view class="recommend_hot_box" wx:for="{{list1}}">
@@ -25,8 +25,8 @@
 
 <scroll-view class='style1'>
 <view class='style3'>
- <view>技术类</view>
- <view class='style7'>查看全部      ></view>
+ <view>Technical</view>
+ <view class='style7'>View ALL      ></view>
 </view>
 <scroll-view class="recommend_scroll_x_box" scroll-x="true">
   <view class="recommend_hot_box" wx:for="{{list2}}">
@@ -38,8 +38,8 @@
 
 <scroll-view class='style1'>
 <view class='style3'>
-<view>通用类</view>
-<view class='style7'>查看全部      ></view>
+<view>Generic</view>
+<view class='style7'>View ALL      ></view>
 </view>
 <scroll-view class="recommend_scroll_x_box" scroll-x="true">
   <view class="recommend_hot_box" wx:for="{{list3}}">

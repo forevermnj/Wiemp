@@ -2,6 +2,8 @@
   <view catchtouchstart='toRecordStart' catchtouchend='toRecordEnd' class="{{flag1?'style4':'style2'}}">
     <image bindtap='toRecord' class='style3' src="{{recordimg}}"></image>
   </view>
+
+  <view class='style5' wx:if="{{flag2}}">时间太短没听清</view>
 </view>
 
 <!--底部导航条-->

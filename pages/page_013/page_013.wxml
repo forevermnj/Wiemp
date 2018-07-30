@@ -6,7 +6,7 @@
      </view>
      <view class='style4'>
       <view bindtap='speech' class="{{speechFlag!=true?'style8':'style10'}}">
-       <image bindtap='speech' class='style7' src='{{speeImgInit}}'></image>
+       <image bindtap='speech' class="{{speechFlag?'style11':'style7'}}" src='{{speeImgInit}}'></image>
       </view>
      </view>
      <view class='style5'>
