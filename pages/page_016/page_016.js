@@ -22,7 +22,8 @@ Page({
     flag1:false,
     flag2:false,
     recordurl:'',
-    timestart:''
+    timestart:'',
+    recoresult:''
   },
   clickImg: function () {
     wx.redirectTo({
@@ -84,7 +85,7 @@ Page({
   },
   toRecordEnd:function(e){
     let refer = this;
-    console.log(e.timeStamp);
+    //console.log(e.timeStamp);
     
     if ((e.timeStamp - refer.data.timestart)<300){
       wx.stopRecord();
@@ -95,40 +96,80 @@ Page({
       })
       return
     }
-    
-    wx.stopRecord();
+    const recorderManager = wx.getRecorderManager();
+    recorderManager.stop();
+    recorderManager.onStop((res) => {
+      this.tempFilePath = res.tempFilePath;
+      console.log('停止录音', res.tempFilePath);
+      const { tempFilePath } = res
+
+      console.log("语音识别");
+      wx.uploadFile({
+        url: app.globalData.serverUrl +'/Emp/mobile/speech/recognition',
+        filePath: res.tempFilePath,
+        name: 'file',
+        formData: {
+          'user': 'test'
+        },
+        success: function (res) {
+          console.log(res); console.log(res.data);
+          //let refer = this;
+          refer.setData({
+            recoresult:res.data
+          })
+        },
+        fail: function () {
+          console.log("语音识别失败");
+        }
+      })
+
+     
+    })
     refer.setData({
       recordimg: '../image/tabbar/15.png',
       flag1: false
     })
   },
   toRecordStart:function(e){
-    console.log(e.timeStamp);
+    //console.log(e.timeStamp);
     let refer = this;
     refer.setData({
       recordimg:'../image/tabbar/19.gif',
       flag1:true,
       flag2:false,
-      timestart: e.timeStamp
+      timestart: e.timeStamp,
+      recoresult:''
     })
     //  发起授权
     wx.authorize({
       scope: 'scope.record',
       success() {
-        wx.startRecord({
-            success: function (res) {
-            var tempFilePath = res.tempFilePath;
-            //console.log('录音结束'+tempFilePath);
-            wx.playVoice({
-              filePath: tempFilePath,
-              complete: function () {
-              }
-            })
-          },
-          fail: function (res) {
-            //录音失败
-          }
-        })
+        const recorderManager = wx.getRecorderManager();
+        const options = {
+          duration: 10000, //指定录音的时长，单位 ms
+          sampleRate: 16000,//采样率
+          numberOfChannels: 1,//录音通道数
+          encodeBitRate: 64000,//编码码率
+          format: 'mp3',//音频格式，有效值 aac/mp3
+          frameSize: 50//指定帧大小，单位 KB
+        }
+        recorderManager.start(options);
+
+       
+        // wx.startRecord({
+        //   success: function (res) {
+        //     var tempFilePath = res.tempFilePath;
+        //     console.log('录音结束'+tempFilePath);
+        //     wx.playVoice({
+        //       filePath: tempFilePath,
+        //       complete: function () {
+        //       }
+        //     })
+        //   },
+        //   fail: function (res) {
+        //     //录音失败
+        //   }
+        // })
 
       }, fail() {
         resolve(1)

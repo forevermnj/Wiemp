@@ -34,22 +34,27 @@
 }
 
 .style4{
-  border-width: 1px;
+  border-width: 0px;
   border-style:solid;
   margin-top: 180px;
-  width: 100px;
-  height: 100px;
+  width: 128px;
+  height: 128px;
   display: flex;
-  align-items: center;
-  justify-content: center; 
-  border-color:white;
+  flex-direction: row;
+  justify-content: center;
+  
   border-radius: 80px;
-  background-color: white;
+  
 }
 
 .style5{
   margin-top: 10px;
   color:red;
+}
+
+.style6{
+  width: 128px;
+  height: 128px;
 }
 
 
