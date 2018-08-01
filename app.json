@@ -1,6 +1,6 @@
 {
   "pages": [
-   
+    
     "pages/index/index",
     "pages/page_001/page_001",
     "pages/page_002/page_002",
@@ -23,7 +23,7 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor":"white",
+    "navigationBarBackgroundColor": "white",
     "navigationBarTitleText": "pbox",
     "navigationBarTextStyle": "black"
   }

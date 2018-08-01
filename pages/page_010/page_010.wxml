@@ -5,7 +5,7 @@
   <view class='style10'>
    <view>Power</view>
    <view class='style11'>20</view>
-   <view>累计打卡0天</view>
+   <view>A total of 0 days</view>
   </view>
   
 </view>
@@ -56,14 +56,14 @@
 <view class="footerstyle1">
     <view bindtap='toIndex' class="smallgroup">
       <image bindtap='toIndex' class='tabbar1' src='{{indeximg}}'></image>
-      <view bindtap='toIndex' class='tabbar2'>首页</view>
+      <view bindtap='toIndex' class='tabbar2'>Home</view>
     </view>
     <view bindtap='toCatagary' class="smallgroup">
       <image bindtap='toCatagary' class='tabbar1' src='{{catagaryimg}}'></image>
-      <view bindtap='toCatagary' class='tabbar2'>分类</view>
+      <view bindtap='toCatagary' class='tabbar2'>Category</view>
     </view>
     <view bindtap='toLogin' class="smallgroup">
       <image bindtap='toLogin' class='tabbar1' src='{{loginimg}}'></image>
-      <view bindtap='toLogin' class='tabbar2'>登录</view>
+      <view bindtap='toLogin' class='tabbar2'>Login On</view>
     </view>
 </view>

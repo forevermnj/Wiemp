@@ -1,10 +1,40 @@
 <view class='style1'>
+
+  <view>
+    <image class="{{flag3?'style8':'style7'}}" src='{{tempurl}}'   ></image>
+    <view wx:if="{{flag3}}" class='style9'>
+     
+
+     <view class='style10'>
+      <text class="{{cflag0?'style12':'style13'}}" decode="{{true}}">{{example[0]}}&nbsp;</text>
+      <text class="{{cflag1?'style12':'style13'}}" decode="{{true}}">{{example[1]}}&nbsp;</text>
+      <text class="{{cflag2?'style12':'style13'}}" decode="{{true}}">{{example[2]}}&nbsp;</text>
+      <text class="{{cflag3?'style12':'style13'}}" decode="{{true}}">{{example[3]}}&nbsp;</text>
+      <text class="{{cflag4?'style12':'style13'}}" decode="{{true}}">{{example[4]}}&nbsp;</text>
+      <text class="{{cflag5?'style12':'style13'}}" decode="{{true}}">{{example[5]}}</text>
+     </view>
+
+     <view class='style11'>
+      <text class="{{cflag6?'style12':'style13'}}" decode="{{true}}">{{example[6]}}&nbsp;</text>
+      <text class="{{cflag7?'style12':'style13'}}" decode="{{true}}">{{example[7]}}&nbsp;</text>
+      <text class="{{cflag8?'style12':'style13'}}" decode="{{true}}">{{example[8]}}&nbsp;</text>
+      <text class="{{cflag9?'style12':'style13'}}" decode="{{true}}">{{example[9]}}&nbsp;</text>
+      <text class="{{cflag10?'style12':'style13'}}" decode="{{true}}">{{example[10]}}&nbsp;</text>
+      <text class="{{cflag11?'style12':'style13'}}" decode="{{true}}">{{example[11]}}&nbsp;</text>
+     </view>
+     
+    </view>
+    
+  </view>
+
+
+
   <view catchtouchstart='toRecordStart' catchtouchend='toRecordEnd' class="{{flag1?'style4':'style2'}}">
     <image bindtap='toRecord' class="{{flag1?'style6':'style3'}}" src="{{recordimg}}"></image>
   </view>
 
   <view class='style5' wx:if="{{flag2}}">时间太短没听清</view>
-  <view>{{recoresult}}</view>
+  
 </view>
 
 <!--底部导航条-->

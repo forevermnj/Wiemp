@@ -2,28 +2,31 @@ var app = getApp();
 var util = require('../../utils/util.js');
 Page({
   data: {
-    list2: [
-      {
-        pic: '../image/page_010/6.png',
-        title: 'mule'
-      }, {
-        pic: '../image/page_010/7.png',
-        title: 'aws'
-      }, {
-        pic: '../image/page_010/8.png',
-        title: 'expect'
-      }
-    ],
     headImage: wx.getStorageSync('headImage'),
     nickName: wx.getStorageSync('nickName'),
     indeximg: '../image/tabbar/2.png',
     previousImg: '../image/tabbar/13.png',
-    recordimg:'../image/tabbar/15.png',
+    recordimg:'../image/tabbar/20.gif',
     flag1:false,
     flag2:false,
+    flag3:false,
     recordurl:'',
     timestart:'',
-    recoresult:''
+    cflag0:false,
+    cflag1:false,
+    cflag2:false,
+    cflag3:false,
+    cflag4:false,
+    cflag5:false,
+    cflag6:false,
+    cflag7:false,
+    cflag8:false,
+    cflag9:false,
+    cflag10:false,
+    cflag11:false,
+    example:['when','he','spoke','to','people','most','of','them','just','looked','at','him'],
+    resultExample:[],
+    tempurl: app.globalData.serverUrl+'/Emp/mobile/page_016/1.png'
   },
   clickImg: function () {
     wx.redirectTo({
@@ -113,10 +116,83 @@ Page({
         },
         success: function (res) {
           console.log(res); console.log(res.data);
+          let tem =new Array();
+          tem = res.data.split(' ');
+          console.log(tem);
+          refer.data.resultExample = tem;
           //let refer = this;
           refer.setData({
-            recoresult:res.data
+            //recoresult:res.data,
+            resultExample: tem,
+            tempurl: app.globalData.serverUrl + '/Emp/mobile/page_016/2.png',
+            flag3:true
           })
+          for (let i = 0; i < refer.data.example.length;i++){
+              for(let k=0;k<tem.length;k++){
+                   if(tem[k]==refer.data.example[i]){
+                       if (i == 0){
+                          refer.setData({
+                            cflag0:true
+                          })
+                       }
+                       if (i == 1) {
+                         refer.setData({
+                           cflag1: true
+                         })
+                       }
+                       if (i == 2) {
+                         refer.setData({
+                           cflag2: true
+                         })
+                       }
+                       if (i == 3) {
+                         refer.setData({
+                           cflag3: true
+                         })
+                       }
+                       if (i == 4) {
+                         refer.setData({
+                           cflag4: true
+                         })
+                       }
+                       if (i == 5) {
+                         refer.setData({
+                           cflag5: true
+                         })
+                       }
+                       if (i == 6) {
+                         refer.setData({
+                           cflag6: true
+                         })
+                       }
+                       if (i == 7) {
+                         refer.setData({
+                           cflag7: true
+                         })
+                       }
+                       if (i == 8) {
+                         refer.setData({
+                           cflag8: true
+                         })
+                       }
+                       if (i == 9) {
+                         refer.setData({
+                           cflag9: true
+                         })
+                       }
+                       if (i == 10) {
+                         refer.setData({
+                           cflag10: true
+                         })
+                       }
+                       if (i == 11) {
+                         refer.setData({
+                           cflag11: true
+                         })
+                       }
+                   }
+              }
+          }
         },
         fail: function () {
           console.log("语音识别失败");
@@ -126,7 +202,7 @@ Page({
      
     })
     refer.setData({
-      recordimg: '../image/tabbar/15.png',
+      recordimg: '../image/tabbar/20.gif',
       flag1: false
     })
   },
@@ -155,21 +231,6 @@ Page({
         }
         recorderManager.start(options);
 
-       
-        // wx.startRecord({
-        //   success: function (res) {
-        //     var tempFilePath = res.tempFilePath;
-        //     console.log('录音结束'+tempFilePath);
-        //     wx.playVoice({
-        //       filePath: tempFilePath,
-        //       complete: function () {
-        //       }
-        //     })
-        //   },
-        //   fail: function (res) {
-        //     //录音失败
-        //   }
-        // })
 
       }, fail() {
         resolve(1)
