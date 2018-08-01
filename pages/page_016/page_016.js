@@ -24,6 +24,8 @@ Page({
     cflag9:false,
     cflag10:false,
     cflag11:false,
+    score:0,
+    scoreIndex:0,
     example:['when','he','spoke','to','people','most','of','them','just','looked','at','him'],
     resultExample:[],
     tempurl: app.globalData.serverUrl+'/Emp/mobile/page_016/1.png'
@@ -132,66 +134,95 @@ Page({
                    if(tem[k]==refer.data.example[i]){
                        if (i == 0){
                           refer.setData({
-                            cflag0:true
+                            cflag0:true,
+                            scoreIndex: scoreIndex+1
                           })
                        }
                        if (i == 1) {
                          refer.setData({
-                           cflag1: true
+                           cflag1: true,
+                           scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 2) {
                          refer.setData({
-                           cflag2: true
+                           cflag2: true,
+                           scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 3) {
                          refer.setData({
-                           cflag3: true
+                           cflag3: true,
+                           scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 4) {
                          refer.setData({
-                           cflag4: true
+                           cflag4: true,
+                           scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 5) {
                          refer.setData({
-                           cflag5: true
+                           cflag5: true,
+                           scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 6) {
                          refer.setData({
-                           cflag6: true
+                           cflag6: true,
+                           scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 7) {
                          refer.setData({
-                           cflag7: true
+                           cflag7: true,
+                           scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 8) {
                          refer.setData({
-                           cflag8: true
+                           cflag8: true,
+                           scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 9) {
                          refer.setData({
-                           cflag9: true
+                           cflag9: true,
+                           scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 10) {
                          refer.setData({
-                           cflag10: true
+                           cflag10: true,
+                           scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 11) {
                          refer.setData({
-                           cflag11: true
+                           cflag11: true,
+                           scoreIndex: scoreIndex + 1
                          })
                        }
                    }
               }
+          }
+
+          let temp_score = refer.data.scoreIndex / 11;
+          refer.setData({
+            score:temp_score
+          })
+          if (temp_score<0.6){
+            let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
+            console.log(tempFilePath);
+            wx.playBackgroundAudio({
+              dataUrl: tempFilePath
+            });
+          }else{
+            let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
+            wx.playBackgroundAudio({
+              dataUrl: tempFilePath
+            });
           }
         },
         fail: function () {

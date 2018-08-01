@@ -110,6 +110,35 @@
   color:red;
 }
 
+.style14{
+  background-color: #41D65B;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  margin-top: 185px;
+  margin-left: 200px;
+}
+
+.style15{
+  background-color: red;
+  border-color: red;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  margin-top: 185px;
+  margin-left: 200px;
+}
+
 
 
 .footerstyle1 {
