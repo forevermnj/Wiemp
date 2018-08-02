@@ -95,7 +95,7 @@ Page({
     if ((e.timeStamp - refer.data.timestart)<300){
       wx.stopRecord();
       refer.setData({
-        recordimg: '../image/tabbar/15.png',
+        recordimg: '../image/tabbar/20.gif',
         flag1: false,
         flag2:true
       })
@@ -132,87 +132,88 @@ Page({
           for (let i = 0; i < refer.data.example.length;i++){
               for(let k=0;k<tem.length;k++){
                    if(tem[k]==refer.data.example[i]){
+                     refer.data.scoreIndex = refer.data.scoreIndex+1;
                        if (i == 0){
                           refer.setData({
                             cflag0:true,
-                            scoreIndex: scoreIndex+1
+                            //scoreIndex: scoreIndex+1
                           })
                        }
                        if (i == 1) {
                          refer.setData({
                            cflag1: true,
-                           scoreIndex: scoreIndex + 1
+                           //scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 2) {
                          refer.setData({
                            cflag2: true,
-                           scoreIndex: scoreIndex + 1
+                           //scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 3) {
                          refer.setData({
                            cflag3: true,
-                           scoreIndex: scoreIndex + 1
+                           //scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 4) {
                          refer.setData({
                            cflag4: true,
-                           scoreIndex: scoreIndex + 1
+                           //scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 5) {
                          refer.setData({
                            cflag5: true,
-                           scoreIndex: scoreIndex + 1
+                           //scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 6) {
                          refer.setData({
                            cflag6: true,
-                           scoreIndex: scoreIndex + 1
+                           //scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 7) {
                          refer.setData({
                            cflag7: true,
-                           scoreIndex: scoreIndex + 1
+                           //scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 8) {
                          refer.setData({
                            cflag8: true,
-                           scoreIndex: scoreIndex + 1
+                           //scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 9) {
                          refer.setData({
                            cflag9: true,
-                           scoreIndex: scoreIndex + 1
+                           //scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 10) {
                          refer.setData({
                            cflag10: true,
-                           scoreIndex: scoreIndex + 1
+                           //scoreIndex: scoreIndex + 1
                          })
                        }
                        if (i == 11) {
                          refer.setData({
                            cflag11: true,
-                           scoreIndex: scoreIndex + 1
+                           //scoreIndex: scoreIndex + 1
                          })
                        }
                    }
               }
           }
 
-          let temp_score = refer.data.scoreIndex / 11;
+          let temp_score = refer.data.scoreIndex / 12;
           refer.setData({
-            score:temp_score
+            score: Math.round(temp_score * 100)
           })
-          if (temp_score<0.6){
+          if (temp_score<0.5){
             let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
             console.log(tempFilePath);
             wx.playBackgroundAudio({
@@ -245,7 +246,8 @@ Page({
       flag1:true,
       flag2:false,
       timestart: e.timeStamp,
-      recoresult:''
+      recoresult:'',
+      scoreIndex:0
     })
     //  发起授权
     wx.authorize({
