@@ -224,6 +224,11 @@ Page({
             wx.playBackgroundAudio({
               dataUrl: tempFilePath
             });
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '../page_016/page_016',
+              });
+            }.bind(refer), 1000);
           }
         },
         fail: function () {

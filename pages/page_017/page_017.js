@@ -1,23 +1,23 @@
 var app = getApp();
 var x, y, x1, y1, x2, y2, index, currindex, n, yy;
 var arr1 =
- [
-   {content: 'Global warming is the result of an increase in carbon gases in our atmosphere.', id: 1 }, 
-   {content: 'As a result,sea levels are rising and weather patterns are changing. ', id: 2 },
-   {content: 'These gases trap heat from the sun,so the Earth is getting warmer.', id: 3 }, 
-   { content: 'In addition,we humans are destroying the habitats of many plants and animals.', id: 4 }
-];
+  [
+    { content: 'Global warming is the result of an increase in carbon gases in our atmosphere.', id: 1 },
+    { content: 'As a result,sea levels are rising and weather patterns are changing. ', id: 2 },
+    { content: 'These gases trap heat from the sun,so the Earth is getting warmer.', id: 3 },
+    { content: 'In addition,we humans are destroying the habitats of many plants and animals.', id: 4 }
+  ];
 Page({
   data: {
     mainx: 0,
     indeximg: '../image/tabbar/2.png',
     previousImg: '../image/tabbar/13.png',
     content: [
-      {content: 'Global warming is the result of an increase in carbon gases in our atmosphere.', id: 1 }, 
-      {content: 'As a result,sea levels are rising and weather patterns are changing. ', id: 2 }, 
-      {content: 'These gases trap heat from the sun,so the Earth is getting warmer.', id: 3 }, 
-      {content: 'In addition,we humans are destroying the habitats of many plants and animals.', id: 4 }
-      ],
+      { content: 'Global warming is the result of an increase in carbon gases in our atmosphere.', id: 1 },
+      { content: 'As a result,sea levels are rising and weather patterns are changing. ', id: 2 },
+      { content: 'These gases trap heat from the sun,so the Earth is getting warmer.', id: 3 },
+      { content: 'In addition,we humans are destroying the habitats of many plants and animals.', id: 4 }
+    ],
     start: { x: 0, y: 0 }
   },
   toIndex: function () {

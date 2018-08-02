@@ -108,6 +108,21 @@
   height: 100px;
 }
 
+.style12{
+  border-width: 1px;
+  border-style: solid;
+  margin-top: 10px;
+  background-color:red;
+  border-color: red;
+  padding: 16px;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  border-radius: 6px;
+}
 
 
 

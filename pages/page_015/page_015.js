@@ -2,25 +2,15 @@ var app = getApp();
 var util = require('../../utils/util.js');
 Page({
   data: {
-    list2: [
-      {
-        pic: '../image/page_010/6.png',
-        title: 'mule'
-      }, {
-        pic: '../image/page_010/7.png',
-        title: 'aws'
-      }, {
-        pic: '../image/page_010/8.png',
-        title: 'expect'
-      }
-    ],
     headImage: wx.getStorageSync('headImage'),
     nickName: wx.getStorageSync('nickName'),
     indeximg: '../image/tabbar/2.png',
     previousImg: '../image/tabbar/13.png',
     flag1:false,
     flag2:false,
-    flag3:false
+    flag3:false,
+    animationData1: {},
+    animationData2: {}
 
   },
   clickImg: function () {
@@ -79,6 +69,71 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+
+  },
+  choose1: function (e) {
+    //console.log(e.currentTarget.dataset.optionsindex);
+    var refer = this;
+
+    let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
+    console.log(tempFilePath);
+    wx.playBackgroundAudio({
+      dataUrl: tempFilePath
+    });
+
+    //创建动画
+    let animation = wx.createAnimation({
+      duration: 400,
+      timingFunction: "ease",
+      delay: 0
+    });
+    //Y轴偏移
+    animation.backgroundColor("red");
+    animation.opacity(1).translateY(-40).step();
+    //导出动画
+    refer.setData({
+      animationData1: animation.export()
+    });
+    //1秒之后恢复
+    setTimeout(function () {
+      animation.backgroundColor("#334053");
+      animation.opacity(1).translateY(0).step();
+      refer.setData({
+        animationData1: animation.export()
+      })
+    }.bind(refer), 400);
+
+  },
+  choose2: function (e) {
+    //console.log(e.currentTarget.dataset.optionsindex);
+    var refer = this;
+    //wx.stopBackgroundAudio();
+    var tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
+    wx.playBackgroundAudio({
+      dataUrl: tempFilePath
+    });
+
+    //创建动画
+    let animation = wx.createAnimation({
+      duration: 400,
+      timingFunction: "ease",
+      delay: 0
+    });
+    //Y轴偏移
+    animation.backgroundColor("red");
+    animation.opacity(1).translateY(-40).step();
+    //导出动画
+    refer.setData({
+      animationData2: animation.export()
+    });
+    //1秒之后恢复
+    setTimeout(function () {
+      animation.backgroundColor("#334053");
+      animation.opacity(1).translateY(0).step();
+      refer.setData({
+        animationData2: animation.export()
+      })
+    }.bind(refer), 400);
 
   },
   toRight:function(){

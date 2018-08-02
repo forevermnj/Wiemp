@@ -14,6 +14,7 @@ Page({
     animationData3: {},
     correct:-1,
     correctFlag:false,
+    chooseFlag3:false,
     speeImgInit:'../image/tabbar/14.png',
     speechFlag:false
   },
@@ -111,13 +112,16 @@ Page({
           delay: 0
      });
      //Y轴偏移
+     animation.backgroundColor("red");
      animation.opacity(1).translateY(-40).step();
+   
      //导出动画
      refer.setData({
           animationData1: animation.export()
      });
      //1秒之后恢复
      setTimeout(function () {
+          animation.backgroundColor("#354255");
           animation.opacity(1).translateY(0).step();
           refer.setData({
               animationData1: animation.export()
@@ -141,6 +145,7 @@ Page({
       delay: 0
     });
     //Y轴偏移
+    animation.backgroundColor("red");
     animation.opacity(1).translateY(-40).step();
     //导出动画
     refer.setData({
@@ -148,6 +153,7 @@ Page({
     });
     //1秒之后恢复
     setTimeout(function () {
+      animation.backgroundColor("#354255");
       animation.opacity(1).translateY(0).step();
       refer.setData({
         animationData2: animation.export()

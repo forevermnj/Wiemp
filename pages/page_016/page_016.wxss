@@ -16,18 +16,16 @@
 }
 
 .style2{
-  position: absolute;
+  
   border-width: 0px;
   border-style:solid;
-  margin-top: 180px;
+  margin-top: 10px;
   width: 128px;
   height: 128px;
-  display: flex;
-  align-items: center;
-  justify-content: center; 
+  margin-bottom: 30px;
   border-color:white;
   border-radius: 80px;
-  bottom: 100px;
+ 
 }
 
 .style3{
@@ -36,17 +34,15 @@
 }
 
 .style4{
-  position: absolute;
+  
   border-width: 0px;
   border-style:solid;
-  margin-top: 180px;
+  margin-top: 10px;
   width: 128px;
   height: 128px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  margin-bottom: 30px;
   border-radius: 80px;
-  bottom: 100px;
+  
 }
 
 .style5{
@@ -137,6 +133,19 @@
   position: absolute;
   margin-top: 185px;
   margin-left: 200px;
+}
+
+.style16{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-width: 0px;
+  border-style: solid;
+  border-color: red;
+  width: 60%;
+  height: 300px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 

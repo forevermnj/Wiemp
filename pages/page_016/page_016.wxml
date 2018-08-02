@@ -28,13 +28,15 @@
     
   </view>
 
-
-
-  <view catchtouchstart='toRecordStart' catchtouchend='toRecordEnd' class="{{flag1?'style4':'style2'}}">
+<view class='style5' wx:if="{{flag2}}">时间太短没听清</view>
+ <view class='style16'>
+ <view catchtouchstart='toRecordStart' catchtouchend='toRecordEnd' class="{{flag1?'style4':'style2'}}">
     <image bindtap='toRecord' class="{{flag1?'style6':'style3'}}" src="{{recordimg}}"></image>
   </view>
+ </view>
+  
 
-  <view class='style5' wx:if="{{flag2}}">时间太短没听清</view>
+  
   
 </view>
 

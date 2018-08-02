@@ -7,9 +7,9 @@
        <image class='style5' src='../image/tabbar/14.png'></image>
   </view>
   <view class='style6'>
-    <view wx:if="{{flag2==false}}" class='style7'><text class='style8'>A</text></view>
+    <view bindtap='choose1' animation="{{animationData1}}" wx:if="{{flag2==false}}" class='style7'><text class='style8'>A</text></view>
     <view bindtap='toRight' class="{{flag2?'style9':'style7'}}"><text class='style8'>B</text></view>
-    <view wx:if="{{flag2==false}}" class='style7'><text class='style8'>C</text></view>
+    <view bindtap='choose2' animation="{{animationData2}}" wx:if="{{flag2==false}}" class='style7'><text class='style8'>C</text></view>
   </view>
 </view>
 

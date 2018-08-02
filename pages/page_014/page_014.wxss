@@ -58,7 +58,7 @@
 .style7{
   color:white;
   position: absolute;
-  bottom: 115px;
+  bottom: 110px;
   border-width: 1px;
   border-style: solid;
   height: 70px;
@@ -139,7 +139,7 @@
 .style12{
   color:white;
   position: absolute;
-  bottom: 51px;
+  bottom: 45px;
   border-width: 1px;
   border-style: solid;
   height: 60px;
@@ -155,7 +155,7 @@
 .style13{
   color:white;
   position: absolute;
-  bottom: 51px;
+  bottom: 45px;
   border-width: 1px;
   border-style: solid;
   height: 70px;
