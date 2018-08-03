@@ -226,9 +226,9 @@ Page({
             });
             setTimeout(function () {
               wx.redirectTo({
-                url: '../page_016/page_016',
+                url: '../page_017/page_017',
               });
-            }.bind(refer), 1000);
+            }.bind(refer), 2000);
           }
         },
         fail: function () {
