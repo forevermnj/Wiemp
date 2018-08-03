@@ -39,6 +39,11 @@ Page({
       wx.playBackgroundAudio({
         dataUrl: tempFilePath
       });
+      setTimeout(function () {
+        wx.redirectTo({
+          url: '../page_018/page_018',
+        });
+      }.bind(refer), 1000);
     }else{
       let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
       console.log(tempFilePath);
