@@ -19,10 +19,10 @@
     "pages/page_015/page_015",
     "pages/page_016/page_016",
     "pages/page_017/page_017",
-    
+    "pages/page_018/page_018",
+    "pages/page_019/page_019",
     "pages/page_test/page_test",
-    "pages/logs/logs",
-    "pages/page_018"
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",
