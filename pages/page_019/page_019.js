@@ -19,7 +19,8 @@ Page({
     resRigFlag:false,
     resErrFlag:false,
     indeximg: '../image/tabbar/2.png',
-    previousImg: '../image/tabbar/13.png'
+    previousImg: '../image/tabbar/13.png',
+    animationData1: {}
   },
 
   toIndex: function () {
@@ -52,29 +53,88 @@ Page({
   toMoveEnd:function(e){
     let refer = this;
     if ((e.changedTouches[0].pageX - refer.data.startIndex)<0){
-        if (refer.data.imgindex<2){
-          refer.setData({
-            imgindex: refer.data.imgindex + 1
-          })
-        }else{
+
+      //创建动画
+      let animation = wx.createAnimation({
+        duration: 400,
+        timingFunction: "ease",
+        delay: 0
+      });
+      //Y轴偏移
+      animation.opacity(0.5).rotate(-60);
+      animation.opacity(0.5).scaleX(0.5);
+      animation.opacity(0.5).scaleY(0.5);
+      animation.opacity(0.5).translateY(-40).step();
+
+      //导出动画
+      refer.setData({
+        animationData1: animation.export()
+      });
+      //1秒之后恢复
+      setTimeout(function () {
+        animation.opacity(1).rotate(0);
+        animation.opacity(1).scaleX(1);
+        animation.opacity(1).scaleY(1);
+        animation.opacity(1).translateY(0).step();
+        refer.setData({
+          animationData1: animation.export()
+        })
+      }.bind(refer), 400);
+
+
+      setTimeout(function () {
+        refer.toCorrect();
+      }.bind(refer), 800);
+      
+        // if (refer.data.imgindex<2){
+        //   refer.setData({
+        //     imgindex: refer.data.imgindex + 1
+        //   })
+        // }else{
          
-        }
+        // }
         
     }
     if ((e.changedTouches[0].pageX - refer.data.startIndex) > 0){
-      if (refer.data.imgindex >0) {
-        refer.setData({
-          imgindex: refer.data.imgindex - 1
-        })
-      } else {
+     
+      //创建动画
+      let animation = wx.createAnimation({
+        duration: 400,
+        timingFunction: "ease",
+        delay: 0
+      });
+      //Y轴偏移
+      animation.opacity(0.5).rotate(60);
+      animation.opacity(0.5).scaleX(0.5);
+      animation.opacity(0.5).scaleY(0.5);
+      animation.opacity(0.5).translateY(-40).step();
 
-      }
+      //导出动画
+      refer.setData({
+        animationData1: animation.export()
+      });
+      //1秒之后恢复
+      setTimeout(function () {
+        animation.opacity(1).rotate(0);
+        animation.opacity(1).scaleX(1);
+        animation.opacity(1).scaleY(1);
+        animation.opacity(1).translateY(0).step();
+        refer.setData({
+          animationData1: animation.export()
+        })
+      }.bind(refer), 400);
+
+      setTimeout(function () {
+        refer.toError();
+      }.bind(refer), 800);
+
+
     }
   },
 
   toCorrect:function(){
     let refer = this;
-    if (refer.data.imgindex==2){
+    
       console.log('正确');
       refer.setData({
         resRigFlag:true,
@@ -84,21 +144,21 @@ Page({
       wx.playBackgroundAudio({
         dataUrl: tempFilePath
       });
-    }else{
-      refer.setData({
-        resErrFlag: true,
-        cflag: false
-      });
-      let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
-      console.log(tempFilePath);
-      wx.playBackgroundAudio({
-        dataUrl: tempFilePath
-      });
-    }
+   
   },
 
   toError:function(){
+    let refer = this;
     console.log('错误');
+    refer.setData({
+      resErrFlag: true,
+      cflag: false
+    });
+    let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
+    console.log(tempFilePath);
+    wx.playBackgroundAudio({
+      dataUrl: tempFilePath
+    });
   },
   /**
    * 生命周期函数--监听页面加载
