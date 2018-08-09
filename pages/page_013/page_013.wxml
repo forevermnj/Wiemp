@@ -1,4 +1,4 @@
-<view class='style1'>
+<scroll-view scroll-y="true" class='style1'>
 
   <view class='style2'>
      <view class='style4'>
@@ -23,7 +23,7 @@
      
   </view>
 
-</view>
+</scroll-view>
 
 <!--底部导航条-->
 <view class="footerstyle1">

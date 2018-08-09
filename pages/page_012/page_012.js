@@ -1,5 +1,6 @@
 var app = getApp();
 var util = require('../../utils/util.js');
+var imageUtil = require('../../utils/imageUtil.js');
 Page({
   data: {
     headImage: wx.getStorageSync('headImage'),
@@ -7,15 +8,40 @@ Page({
     indeximg: '../image/tabbar/2.png',
     previousImg: '../image/tabbar/13.png',
     speechImg:'../image/tabbar/18.gif',
-    speechFlag:false
+    speechFlag:false,
+    backImg:[
+      { url: app.globalData.serverUrl + '/Emp/mobile/page_012/1.png'},
+      { url: app.globalData.serverUrl + '/Emp/mobile/page_012/2.png' },
+      { url: app.globalData.serverUrl + '/Emp/mobile/page_012/3.png' },
+      { url: app.globalData.serverUrl + '/Emp/mobile/page_012/4.png' },
+      { url: app.globalData.serverUrl + '/Emp/mobile/page_012/5.png' },
+      { url: app.globalData.serverUrl + '/Emp/mobile/page_012/6.png' },
+      { url: app.globalData.serverUrl + '/Emp/mobile/page_012/7.png' }
+
+    ],
+    backImgIndex:0,
+    imagewidth: 0,//缩放后的宽
+    imageheight: 0//缩放后的高
+  },
+  imageLoad: function (e) {
+    var imageSize = imageUtil.imageUtil(e)
+    this.setData({
+      imagewidth: imageSize.imageWidth,
+      imageheight: imageSize.imageHeight
+    })
   },
   onLoad: function () {
     util.showBusy('加载中...');
+    
     let refer = this;
+    console.log(refer.data.backImgIndex);
     var tempFilePath = app.globalData.serverUrl +'/Emp/mobile/mp3/1.mp3';
     wx.playBackgroundAudio({
       dataUrl: tempFilePath
     });
+    refer.setData({
+      backImgIndex:0
+    })
     //监听播放停止
     wx.onBackgroundAudioStop(function () {
       //console.log('onBackgroundAudioStop')
@@ -23,7 +49,42 @@ Page({
         speechImg: '../image/tabbar/14.png',
         speechFlag:true
       });
-    })
+    });
+
+    setTimeout(function () {
+      refer.addBackImgIndex();
+    }.bind(refer), 2000);
+  },
+  addBackImgIndex:function(){
+
+    let refer = this;
+    if (refer.data.backImgIndex >=6 && refer.data.backImgIndex>0){
+      console.log('减');
+      refer.reduceBackImgIndex();
+      return
+    }
+    refer.setData({
+      backImgIndex: refer.data.backImgIndex + 1
+    });
+    setTimeout(function () {
+      refer.addBackImgIndex();
+    }.bind(refer), 2000);
+  },
+  reduceBackImgIndex:function(){
+    let refer = this;
+    if (refer.data.backImgIndex<=0){
+      console.log('加');
+      refer.addBackImgIndex();
+      return
+    }
+    
+    refer.setData({
+      backImgIndex: refer.data.backImgIndex - 1
+    });
+    setTimeout(function () {
+      refer.reduceBackImgIndex();
+    }.bind(refer), 2000);
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

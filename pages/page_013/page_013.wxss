@@ -11,6 +11,8 @@
   padding: 0rpx 0;
   box-sizing: border-box;
   background-color: #a7c1bf;
+  border-width: 0px;
+  border-style: solid;
 }
 
 .style2{
@@ -23,8 +25,8 @@
 }
 
 .style3{
-  width: 191px;
-  height: 128px;
+  width: 300px;
+  height: 205px;
   border-radius: 5px;
 }
 
@@ -37,6 +39,9 @@
 .style5{
   color:white;
   margin-top: 40px;
+  border-width: 0px;
+  border-style: solid;
+  margin-bottom: 50px;
 }
 
 .style6{
