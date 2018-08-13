@@ -23,7 +23,9 @@ Page({
     backMp3Index: 0,
     tflag: false,
     speechImg: '../image/tabbar/18.gif',
-    speechFlag: false
+    speechFlag: false,
+    indeximg: '../image/tabbar/2.png',
+    previousImg: '../image/tabbar/13.png'
   },
 
   /**
@@ -68,6 +70,25 @@ Page({
         url: '../page_013/page_013',
       });
     }
+  },
+  toIndex: function () {
+    let refer = this;
+    refer.setData({
+      indeximg: '../image/tabbar/1.png',
+      catagaryimg: '../image/tabbar/5.png'
+    });
+    wx.redirectTo({
+      url: '../page_010/page_010',
+    });
+  },
+  toPrevious: function () {
+    let refer = this;
+    refer.setData({
+      indeximg: '../image/tabbar/2.png'
+    });
+    wx.redirectTo({
+      url: '../page_012/page_012',
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
