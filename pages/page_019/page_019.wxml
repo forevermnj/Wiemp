@@ -14,7 +14,7 @@
       </view>
      </view>
      
-     <view animation="{{animationData1}}" catchtouchstart='toMoveStart' catchtouchend='toMoveEnd' class='style7'>
+     <view animation="{{animationData1}}" catchtouchstart='toMoveStart' catchtouchmove='toMoveEnd' catchtouchend='' class='style7'>
       <image catchtouchstart='toMoveStart' catchtouchend='toMoveEnd' class='style4' src="{{cimgs[imgindex].url}}"></image>
      </view>
   </view>

@@ -14,14 +14,21 @@ Page({
       { url: app.globalData.serverUrl + '/Emp/mobile/page_012/2.png' },
       { url: app.globalData.serverUrl + '/Emp/mobile/page_012/3.png' },
       { url: app.globalData.serverUrl + '/Emp/mobile/page_012/4.png' },
-      { url: app.globalData.serverUrl + '/Emp/mobile/page_012/5.png' },
-      { url: app.globalData.serverUrl + '/Emp/mobile/page_012/6.png' },
-      { url: app.globalData.serverUrl + '/Emp/mobile/page_012/7.png' }
-
+      { url: app.globalData.serverUrl + '/Emp/mobile/page_012/5.png' }
+     
+    ],
+    backMp3:[
+      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/1.mp3'},
+      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/2.mp3'},
+      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/3.mp3'},
+      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/4.mp3'},
+      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/5.mp3'}
     ],
     backImgIndex:0,
+    backMp3Index:0,
     imagewidth: 0,//缩放后的宽
-    imageheight: 0//缩放后的高
+    imageheight: 0,//缩放后的高
+    tflag:false
   },
   imageLoad: function (e) {
     var imageSize = imageUtil.imageUtil(e)
@@ -32,59 +39,47 @@ Page({
   },
   onLoad: function () {
     util.showBusy('加载中...');
-    
     let refer = this;
-    console.log(refer.data.backImgIndex);
-    var tempFilePath = app.globalData.serverUrl +'/Emp/mobile/mp3/1.mp3';
-    wx.playBackgroundAudio({
-      dataUrl: tempFilePath
-    });
     refer.setData({
       backImgIndex:0
-    })
-    //监听播放停止
-    wx.onBackgroundAudioStop(function () {
-      //console.log('onBackgroundAudioStop')
-      refer.setData({
-        speechImg: '../image/tabbar/14.png',
-        speechFlag:true
-      });
     });
-
-    setTimeout(function () {
-      refer.addBackImgIndex();
-    }.bind(refer), 2000);
+    refer.toPlay();
+  },
+  toPlay:function(){
+    
+    let refer = this;
+    if (refer.data.backImgIndex <=4){
+      let tempFilePath = refer.data.backMp3[refer.data.backMp3Index].url;
+      wx.playBackgroundAudio({
+        dataUrl: tempFilePath
+      });
+      if(refer.data.tflag == false){
+        //监听播放停止
+        wx.onBackgroundAudioStop(function () {
+          refer.setData({
+            backImgIndex: refer.data.backImgIndex + 1,
+            backMp3Index: refer.data.backMp3Index + 1
+          });
+          if (refer.data.tflag == false){
+            refer.toPlay();
+          }
+          
+        });
+      }
+      
+    }else{
+      console.log('toPlay--跳转页面');
+      refer.setData({
+        tflag:true
+      })
+      wx.redirectTo({
+        url: '../page_013/page_013',
+      });
+    }
   },
   addBackImgIndex:function(){
-
     let refer = this;
-    if (refer.data.backImgIndex >=6 && refer.data.backImgIndex>0){
-      console.log('减');
-      refer.reduceBackImgIndex();
-      return
-    }
-    refer.setData({
-      backImgIndex: refer.data.backImgIndex + 1
-    });
-    setTimeout(function () {
-      refer.addBackImgIndex();
-    }.bind(refer), 2000);
-  },
-  reduceBackImgIndex:function(){
-    let refer = this;
-    if (refer.data.backImgIndex<=0){
-      console.log('加');
-      refer.addBackImgIndex();
-      return
-    }
-    
-    refer.setData({
-      backImgIndex: refer.data.backImgIndex - 1
-    });
-    setTimeout(function () {
-      refer.reduceBackImgIndex();
-    }.bind(refer), 2000);
-    
+    refer.toPlay();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -155,6 +150,11 @@ Page({
     }
   },
   toNext:function(){
+    let refer = this;
+    refer.setData({
+      backImgIndex:5,
+      tflag: true
+    })
     wx.redirectTo({
       url: '../page_013/page_013',
     });

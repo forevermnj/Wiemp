@@ -21,7 +21,8 @@ Page({
     resErrFlag:false,
     indeximg: '../image/tabbar/2.png',
     previousImg: '../image/tabbar/13.png',
-    animationData1: {}
+    animationData1: {},
+    leftStep:2
   },
 
   toIndex: function () {
@@ -53,47 +54,47 @@ Page({
 
   toMoveEnd:function(e){
     let refer = this;
+    refer.setData({
+      leftStep:refer.data.leftStep+2
+    })
     if ((e.changedTouches[0].pageX - refer.data.startIndex)<0){
-
+      console.log('偏移'+refer.data.leftStep);
       //创建动画
       let animation = wx.createAnimation({
-        duration: 400,
+        
         timingFunction: "ease",
         delay: 0
       });
       //Y轴偏移
-      animation.opacity(0.5).rotate(-60);
-      animation.opacity(0.5).scaleX(0.5);
-      animation.opacity(0.5).scaleY(0.5);
-      animation.opacity(0.5).translateY(-40).step();
+      animation.opacity(1).rotate(-refer.data.leftStep);
+      animation.opacity(1).scaleX(1);
+      animation.opacity(1).scaleY(1);
+      animation.opacity(1).translateY(0).step();
 
       //导出动画
       refer.setData({
         animationData1: animation.export()
       });
-      //1秒之后恢复
-      setTimeout(function () {
-        animation.opacity(1).rotate(0);
-        animation.opacity(1).scaleX(1);
-        animation.opacity(1).scaleY(1);
-        animation.opacity(1).translateY(0).step();
-        refer.setData({
-          animationData1: animation.export()
-        })
-      }.bind(refer), 400);
-
-
-      setTimeout(function () {
-        refer.toCorrect();
-      }.bind(refer), 800);
       
-        // if (refer.data.imgindex<2){
-        //   refer.setData({
-        //     imgindex: refer.data.imgindex + 1
-        //   })
-        // }else{
-         
-        // }
+      // //1秒之后恢复
+      // setTimeout(function () {
+      //   animation.opacity(1).rotate(0);
+      //   animation.opacity(1).scaleX(1);
+      //   animation.opacity(1).scaleY(1);
+      //   animation.opacity(1).translateY(0).step();
+      //   refer.setData({
+      //     animationData1: animation.export()
+      //   })
+      // }.bind(refer), 400);
+      if(refer.data.leftStep>=100){
+        refer.toCorrect();
+      }
+
+      // setTimeout(function () {
+      //   refer.toCorrect();
+      // }.bind(refer), 800);
+      
+        
         
     }
     if ((e.changedTouches[0].pageX - refer.data.startIndex) > 0){
@@ -105,29 +106,33 @@ Page({
         delay: 0
       });
       //Y轴偏移
-      animation.opacity(0.5).rotate(60);
-      animation.opacity(0.5).scaleX(0.5);
-      animation.opacity(0.5).scaleY(0.5);
-      animation.opacity(0.5).translateY(-40).step();
+      animation.opacity(1).rotate(-refer.data.leftStep);
+      animation.opacity(1).scaleX(1);
+      animation.opacity(1).scaleY(1);
+      animation.opacity(1).translateY(0).step();
 
       //导出动画
       refer.setData({
         animationData1: animation.export()
       });
-      //1秒之后恢复
-      setTimeout(function () {
-        animation.opacity(1).rotate(0);
-        animation.opacity(1).scaleX(1);
-        animation.opacity(1).scaleY(1);
-        animation.opacity(1).translateY(0).step();
-        refer.setData({
-          animationData1: animation.export()
-        })
-      }.bind(refer), 400);
 
-      setTimeout(function () {
+      if (refer.data.leftStep >= 100) {
         refer.toError();
-      }.bind(refer), 800);
+      }
+      //1秒之后恢复
+      // setTimeout(function () {
+      //   animation.opacity(1).rotate(0);
+      //   animation.opacity(1).scaleX(1);
+      //   animation.opacity(1).scaleY(1);
+      //   animation.opacity(1).translateY(0).step();
+      //   refer.setData({
+      //     animationData1: animation.export()
+      //   })
+      // }.bind(refer), 400);
+
+      // setTimeout(function () {
+      //   refer.toError();
+      // }.bind(refer), 800);
 
 
     }
