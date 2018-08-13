@@ -151,17 +151,29 @@ Page({
       backImgIndex:5,
       tflag: true
     })
+    wx.stopBackgroundAudio();
     wx.redirectTo({
       url: '../page_013/page_013',
     });
   },
   toPrevious:function(){
+    let refer = this;
+    refer.setData({
+      backImgIndex: 5,
+      tflag: true
+    })
+    wx.stopBackgroundAudio();
     wx.redirectTo({
       url: '../page_011/page_011',
     });
   },
   toIndex: function () {
     let refer = this;
+    refer.setData({
+      backImgIndex: 5,
+      tflag: true
+    })
+    wx.stopBackgroundAudio();
     refer.setData({
       indeximg: '../image/tabbar/1.png',
     });

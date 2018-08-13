@@ -74,6 +74,11 @@ Page({
   toIndex: function () {
     let refer = this;
     refer.setData({
+      backImgIndex: 5,
+      tflag: true
+    })
+    wx.stopBackgroundAudio();
+    refer.setData({
       indeximg: '../image/tabbar/1.png',
       catagaryimg: '../image/tabbar/5.png'
     });
