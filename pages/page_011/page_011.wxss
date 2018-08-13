@@ -32,10 +32,11 @@
   margin-right: 50rpx;
   margin-top: 10px;
   display: inline-block;
-  border-width: 1px;
+  border-width: 0px;
   border-style: solid;
   border-radius: 20px;
-  border-color:white;
+  border-color:transparent;
+  box-shadow: 0px 0px 0px red;
   background-color: white;
 }
 
@@ -101,6 +102,12 @@
   border-style: solid;
   position: absolute;
   bottom: 110px;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
 }
 
 
