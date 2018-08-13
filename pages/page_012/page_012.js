@@ -1,6 +1,6 @@
 var app = getApp();
 var util = require('../../utils/util.js');
-var imageUtil = require('../../utils/imageUtil.js');
+
 Page({
   data: {
     headImage: wx.getStorageSync('headImage'),
@@ -73,13 +73,9 @@ Page({
         tflag:true
       })
       wx.redirectTo({
-        url: '../page_013/page_013',
+        url: '../page_020/page_020',
       });
     }
-  },
-  addBackImgIndex:function(){
-    let refer = this;
-    refer.toPlay();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -1,0 +1,97 @@
+.style1{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: #a7c1bf;
+  border-width: 0px;
+  border-style: solid;
+  padding: 100rpx 0;
+  
+}
+
+.style2{
+  margin-top: 10px;
+  width: 80%;
+  height: 41.2%;
+  border-color: white;
+  border-width: 0px;
+  border-style: solid;
+  
+}
+
+.style3{
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.style4{
+  width: 34px;
+  height: 34px;
+}
+
+.style5{
+  width: 34px;
+  height: 34px;
+}
+
+.style6{
+ width: 100%;
+ margin-top: 20%;
+ border-color: red;
+ border-width: 0px;
+ border-style:solid;
+ display: flex;
+ flex-direction: row;
+ justify-content: space-around;
+}
+
+.style7{
+  border: 0px;
+  border-style: solid;
+  border-color: white;
+  width: 184px;
+  height: 184px;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  border-radius: 50px; 
+  
+}
+
+.style8{
+  border: 1px;
+  border-style: solid;
+  border-color: white;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  border-radius: 50px; 
+  
+}
+
+.style11{
+  border: 1px;
+  border-style: solid;
+  border-color: white;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  border-radius: 50px; 
+  
+}
+
+.style12{
+  width: 164px;
+  height: 164px;
+}
