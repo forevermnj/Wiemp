@@ -2,23 +2,58 @@
 
   <view class='style2'>
      <view class='style4'>
+      <image class='style3' src='https://www.learnzp.com/Emp/mobile/page_012/1.png'></image>
+     </view>
+     <view class='style13'>
+      <view>
+       {{chooseData[chooseDataIndex].choicepro}}
+      </view>
+     </view>
+     <!--
+     <view class='style4'>
        <image class='style3' src='https://www.learnzp.com/Emp/mobile/page_012/1.png'></image>
      </view>
      <view class='style4'>
       <view bindtap='speech' class="{{speechFlag!=true?'style8':'style10'}}">
        <image bindtap='speech' class="{{speechFlag?'style11':'style7'}}" src='{{speeImgInit}}'></image>
       </view>
-     </view>
+     </view>-->
+
+     
      <view class='style5'>
-       <view wx:if='{{correct!=2}}' animation="{{animationData1}}" bindtap='choose1' class='style6'>
-          {{chooseData1}}
+       <block wx:if="{{nochooseflag==-1}}">
+          <view data-hi="{{[chooseData[chooseDataIndex].choiceanw[0].flag,chooseData[chooseDataIndex].choiceanw[0].num]}}" animation="{{chooseDataNum!=chooseData[chooseDataIndex].choiceanw[0].num?'':(correct!=2?animationErrorData:animationCorrectData)}}" bindtap='choose' class="{{(chooseData[chooseDataIndex].choiceanw[0].flag!=true || nochooseflag==-1)?'style6':'style9'}}">
+          {{chooseData[chooseDataIndex].choiceanw[0].anw}}
        </view>
-       <view wx:if='{{correct!=2}}' animation="{{animationData2}}" bindtap='choose2' class='style6'>
-          {{chooseData2}}
+       </block>
+       <block wx:elif="{{nochooseflag==0 && chooseData[chooseDataIndex].choiceanw[0].flag}}">
+          <view data-hi="{{[chooseData[chooseDataIndex].choiceanw[0].flag,chooseData[chooseDataIndex].choiceanw[0].num]}}" animation="{{chooseDataNum!=chooseData[chooseDataIndex].choiceanw[0].num?'':(chooseDataFlag!=true?animationErrorData:animationCorrectData)}}" bindtap='choose' class="{{(chooseData[chooseDataIndex].choiceanw[0].flag!=true)?'style6':'style9'}}">
+          {{chooseData[chooseDataIndex].choiceanw[0].anw}}
        </view>
-       <view animation="{{animationData3}}" bindtap='choose3' class="{{correctFlag!=true?'style6':'style9'}}">
-          {{chooseData3}}
+       </block>
+
+       <block wx:if="{{nochooseflag==-1}}">
+          <view data-hi="{{[chooseData[chooseDataIndex].choiceanw[1].flag,chooseData[chooseDataIndex].choiceanw[1].num]}}" animation="{{chooseDataNum!=chooseData[chooseDataIndex].choiceanw[1].num?'':(correct!=2?animationErrorData:animationCorrectData)}}" bindtap='choose' class="{{(chooseData[chooseDataIndex].choiceanw[1].flag!=true || nochooseflag==-1)?'style6':'style9'}}">
+          {{chooseData[chooseDataIndex].choiceanw[1].anw}}
        </view>
+       </block>
+       <block wx:elif="{{nochooseflag==0 && chooseData[chooseDataIndex].choiceanw[1].flag}}">
+          <view data-hi="{{[chooseData[chooseDataIndex].choiceanw[1].flag,chooseData[chooseDataIndex].choiceanw[1].num]}}" animation="{{chooseDataNum!=chooseData[chooseDataIndex].choiceanw[1].num?'':(chooseDataFlag!=true?animationErrorData:animationCorrectData)}}" bindtap='choose' class="{{(chooseData[chooseDataIndex].choiceanw[1].flag!=true)?'style6':'style9'}}">
+          {{chooseData[chooseDataIndex].choiceanw[1].anw}}
+       </view>
+       </block>
+
+       <block wx:if="{{nochooseflag==-1}}">
+          <view data-hi="{{[chooseData[chooseDataIndex].choiceanw[2].flag,chooseData[chooseDataIndex].choiceanw[2].num]}}" animation="{{chooseDataNum!=chooseData[chooseDataIndex].choiceanw[2].num?'':(correct!=2?animationErrorData:animationCorrectData)}}" bindtap='choose' class="{{(chooseData[chooseDataIndex].choiceanw[2].flag!=true || nochooseflag==-1)?'style6':'style9'}}">
+          {{chooseData[chooseDataIndex].choiceanw[2].anw}}
+       </view>
+       </block>
+       <block wx:elif="{{nochooseflag==0 && chooseData[chooseDataIndex].choiceanw[2].flag}}">
+          <view data-hi="{{[chooseData[chooseDataIndex].choiceanw[2].flag,chooseData[chooseDataIndex].choiceanw[2].num]}}" animation="{{chooseDataNum!=chooseData[chooseDataIndex].choiceanw[2].num?'':(chooseDataFlag!=true?animationErrorData:animationCorrectData)}}" bindtap='choose' class="{{(chooseData[chooseDataIndex].choiceanw[2].flag!=true)?'style6':'style9'}}">
+          {{chooseData[chooseDataIndex].choiceanw[2].anw}}
+       </view>
+       </block>
+       
      </view>
      
   </view>

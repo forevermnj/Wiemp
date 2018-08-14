@@ -2,19 +2,31 @@ var app = getApp();
 var util = require('../../utils/util.js');
 Page({
   data: {
-    chooseData1:'She is visiting a friend',
-    chooseData2:'She has not taken any vacations',
-    chooseData3:'it is been more than 2 years',
+    nochooseflag:-1,
+    chooseDataFlag:false,
+    chooseDataNum:0,
+    chooseDataIndex:0,
+    chooseData:[
+      {
+        choicepro:'For the following descriptions of stand up meeting, which one is correct?',choiceanw:[
+          {anw:'It can monitor who is late today',flag:false,num:0},
+          { anw: 'It can form discipline, belongings and spirit among team members', flag: true, num: 1},
+          { anw: 'It can help us solve our personal problems', flag: false, num: 2}
+      ]},
+      {
+        choicepro:'Why is the stand-up meeting so fast?',choiceanw:[
+          { anw: 'Because attendees are less than other meetings', flag: false, num: 0},
+          { anw: 'Because there is no word to say', flag: false, num: 1},
+          { anw: 'Because it is a kind of scrum meeting', flag: true, num: 2}
+      ]}
+    ],
     headImage: wx.getStorageSync('headImage'),
     nickName: wx.getStorageSync('nickName'),
     indeximg: '../image/tabbar/2.png',
     previousImg: '../image/tabbar/13.png',
-    animationData1: {},
-    animationData2: {},
-    animationData3: {},
-    correct:-1,
-    correctFlag:false,
-    chooseFlag3:false,
+    animationErrorData: {},
+    animationCorrectData: {},
+    correctFlag:-1,
     speeImgInit:'../image/tabbar/14.png',
     speechFlag:false
   },
@@ -88,92 +100,14 @@ Page({
      });
      //监听播放停止
      wx.onBackgroundAudioStop(function () {
-       //console.log('onBackgroundAudioStop')
        refer.setData({
          speeImgInit: '../image/tabbar/14.png',
          speechFlag: false
        });
      })
   },
-  choose1:function(e){
-    //console.log(e.currentTarget.dataset.optionsindex);
-     var refer = this;
-
-     let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
-     console.log(tempFilePath);
-     wx.playBackgroundAudio({
-       dataUrl: tempFilePath
-     });
-
-     //创建动画
-     let animation = wx.createAnimation({
-          duration: 400,
-          timingFunction: "ease",
-          delay: 0
-     });
-     //Y轴偏移
-     animation.backgroundColor("red");
-     animation.opacity(1).translateY(-40).step();
-   
-     //导出动画
-     refer.setData({
-          animationData1: animation.export()
-     });
-     //1秒之后恢复
-     setTimeout(function () {
-          animation.backgroundColor("#354255");
-          animation.opacity(1).translateY(0).step();
-          refer.setData({
-              animationData1: animation.export()
-          })
-     }.bind(refer), 400);
-
-  },
-  choose2: function (e) {
-    //console.log(e.currentTarget.dataset.optionsindex);
-    var refer = this;
-    //wx.stopBackgroundAudio();
-    var tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
-    wx.playBackgroundAudio({
-      dataUrl: tempFilePath
-    });
-
-    //创建动画
-    let animation = wx.createAnimation({
-      duration: 400,
-      timingFunction: "ease",
-      delay: 0
-    });
-    //Y轴偏移
-    animation.backgroundColor("red");
-    animation.opacity(1).translateY(-40).step();
-    //导出动画
-    refer.setData({
-      animationData2: animation.export()
-    });
-    //1秒之后恢复
-    setTimeout(function () {
-      animation.backgroundColor("#354255");
-      animation.opacity(1).translateY(0).step();
-      refer.setData({
-        animationData2: animation.export()
-      })
-    }.bind(refer), 400);
-
-  },
-  choose3: function (e) {
-    //console.log(e.currentTarget.dataset.optionsindex);
-    var refer = this;
-
-    var tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
-    wx.playBackgroundAudio({
-      dataUrl: tempFilePath
-    });
-
-    refer.setData({
-      correct:2,
-      correctFlag:true
-    })
+  toCreateCorrectAnimation:function(){
+    let refer = this;
     //创建动画
     let animation = wx.createAnimation({
       duration: 500,
@@ -184,22 +118,95 @@ Page({
     animation.opacity(1).translateY(-40).step();
     //导出动画
     refer.setData({
-      animationData3: animation.export()
+      animationCorrectData: animation.export()
     });
     //1秒之后恢复
     setTimeout(function () {
       animation.opacity(1).translateY(0).step();
       refer.setData({
-        animationData3: animation.export()
+        animationCorrectData: animation.export()
       })
     }.bind(refer), 500);
-
-    setTimeout(function () {
-      wx.redirectTo({
-        url: '../page_014/page_014',
+    if (refer.data.chooseDataIndex ==1) {
+      refer.setData({
+        nochooseflag: 0
       });
-    }.bind(refer), 1300);
+      setTimeout(function () {
+        wx.redirectTo({
+          url: '../page_014/page_014',
+        });
+      }.bind(refer), 1300);
+    }else{
+      refer.setData({
+        nochooseflag: 0
+      });
+      setTimeout(function () {
+        console.log('开始递增');
+        refer.setData({
+          chooseDataIndex: refer.data.chooseDataIndex + 1,
+          nochooseflag: -1
+        })
+      }.bind(refer), 1300);
+      
+    }
+    
+  },
+  toCreateErrorAnimation:function(){
+    let refer = this;
+    //创建动画
+    let animation = wx.createAnimation({
+      duration: 400,
+      timingFunction: "ease",
+      delay: 0
+    });
+    //Y轴偏移
+    animation.backgroundColor("red");
+    animation.opacity(1).translateY(-40).step();
 
+    //导出动画
+    refer.setData({
+      animationErrorData: animation.export()
+    });
+    //1秒之后恢复
+    setTimeout(function () {
+      animation.backgroundColor("#354255");
+      animation.opacity(1).translateY(0).step();
+      refer.setData({
+        animationErrorData: animation.export()
+      })
+    }.bind(refer), 400);
+  },
+  choose: function (e) {
+    let refer = this;
+    let csv = e.currentTarget.dataset.hi[0];
+    let numflag = e.currentTarget.dataset.hi[1];
+    refer.setData({
+      chooseDataNum: numflag
+    });
+    
+    //如果选择正确
+    if (csv) {
+      let refer = this;
+      let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
+      wx.playBackgroundAudio({
+        dataUrl: tempFilePath
+      });
+      refer.setData({
+        chooseDataFlag:true
+      })
+      refer.toCreateCorrectAnimation();
+      
+    }else{
+      let refer = this;
+      refer.setData({
+        nochooseflag: -1
+      })
+      let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
+      wx.playBackgroundAudio({
+        dataUrl: tempFilePath
+      });
+      refer.toCreateErrorAnimation();
+    }
   },
   toIndex: function () {
     let refer = this;
