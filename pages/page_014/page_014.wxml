@@ -1,20 +1,29 @@
 <view class='style1'>
 
   <view class='style2'>
+
      <view class='style3'>
        <image class='style4' src='https://www.learnzp.com/Emp/mobile/page_012/1.png'></image>
      </view>
+
      <view class='style5'>
-       She hasn't <view data-hi="{{chooseData[0]}}" bindtap='v1' class="{{checkFlag1?'style14':(check_errorFlag1?'style15':(flag1?'style10':'style9'))}}">{{chooseData[0]}}</view>a  vacation 
-       <view data-hi="{{chooseData[1]}}" bindtap='v2' class="{{checkFlag2?'style14':(check_errorFlag2?'style15':(flag2?'style10':'style9'))}}">{{chooseData[1]}}</view> more than 2 year
+       <block wx:for="{{data[dataIndex].tit}}">
+          {{item}}
+       </block>
      </view>
-     <view class="{{flag3==true?'style7':'style13'}}">
-      <view data-hi="0" class="{{flag[0]?'style11':'style8'}}" bindtap='c1'>since</view>
-      <view data-hi="1" class="{{flag[1]?'style11':'style8'}}" bindtap='c2'>has</view>
-      <view data-hi="2" class="{{flag[2]?'style11':'style8'}}" bindtap='c3'>for</view>
-      <view data-hi="3" class="{{flag[3]?'style11':'style8'}}" bindtap='c4'>had</view>
+
+     
+     <view class="{{flag1==true?'style7':'style13'}}">
+      <view wx:for="{{anwdata[anwdataIndex].tit}}">
+        <view data-hi="{{item}}" class="{{(item==chooseResult[0] ||item==chooseResult[1])?'style11':'style8'}}" catchtap='chooseAnswer'>{{item}}</view>
+      </view>
      </view>
-     <view bindtap='check' wx:if="{{flag3}}" class='style12'>submit</view>
+     
+
+     <view bindtap='check' wx:if="{{flag1}}" class='style12'>
+        submit
+     </view>
+     
   </view>
  
 </view>

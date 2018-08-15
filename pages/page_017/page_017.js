@@ -2,10 +2,10 @@ var app = getApp();
 var x, y, x1, y1, x2, y2, index, currindex, n, yy;
 var arr1 =
   [
-    { content: 'Global warming is the result of an increase in carbon gases in our atmosphere.', id: 1 ,key:1},
-    { content: 'As a result,sea levels are rising and weather patterns are changing. ', id: 2, key: 2},
-    { content: 'These gases trap heat from the sun,so the Earth is getting warmer.', id: 3, key: 3},
-    { content: 'In addition,we humans are destroying the habitats of many plants and animals.', id: 4, key: 4}
+    { content: 'There is no apparent leader or subordinate, everyone can measure with the corner of eyes to judge if others are interested in our topics when we make a circle.', id: 2, key: 2 },
+    { content: 'Last but not least, we should hold the stand-up meeting in a fixed, public place to ensure team belongings can be built and team spirit can be shown.', id: 4, key: 4 },
+    { content: 'When we stand up to conduct the meeting, it will turn out to be much faster and more efficient than a sitting way', id: 1, key: 1 },
+    { content: 'How to to form the meeting habit and discipline? To fix the stand up meeting time in 15 minutes, so that staff can assemble together to communicate efficiently.', id: 3, key: 3 }
   ];
 Page({
   data: {
@@ -13,10 +13,11 @@ Page({
     indeximg: '../image/tabbar/2.png',
     previousImg: '../image/tabbar/13.png',
     content: [
-      { content: 'Global warming is the result of an increase in carbon gases in our atmosphere.', id: 1, key: 1},
-      { content: 'As a result,sea levels are rising and weather patterns are changing. ', id: 2, key: 2},
-      { content: 'These gases trap heat from the sun,so the Earth is getting warmer.', id: 3, key: 3},
-      { content: 'In addition,we humans are destroying the habitats of many plants and animals.', id: 4, key: 4}
+      { content: 'There is no apparent leader or subordinate, everyone can measure with the corner of eyes to judge if others are interested in our topics when we make a circle.', id: 2, key: 2 },
+      { content: 'Last but not least, we should hold the stand-up meeting in a fixed, public place to ensure team belongings can be built and team spirit can be shown.', id: 4, key: 4 },
+      { content: 'When we stand up to conduct the meeting, it will turn out to be much faster and more efficient than a sitting way', id: 1, key: 1},
+      { content: 'How to to form the meeting habit and discipline? To fix the stand up meeting time in 15 minutes, so that staff can assemble together to communicate efficiently.', id: 3, key: 3},
+      
     ],
     start: { x: 0, y: 0 },
     correctFlag:false
@@ -26,10 +27,10 @@ Page({
      //console.log('提交');
      //console.log(refer.data.content);
     if (
-      refer.data.content[0].key==4 &&
-      refer.data.content[1].key==1 &&
-      refer.data.content[2].key==2 &&
-      refer.data.content[3].key==3
+      refer.data.content[0].key==1 &&
+      refer.data.content[1].key==2 &&
+      refer.data.content[2].key==3 &&
+      refer.data.content[3].key==4
       ){
          //排序正确
          refer.setData({
@@ -98,11 +99,11 @@ Page({
       var nx = this.data.content.length;
       n = 1;
       for (var k = 2; k < nx; k++) {
-        if (y2 > (82 * (k - 1) + k * 2 - 26)) {
+        if (y2 > (92 * (k - 1) + k * 2 - 26)) {
           n = k;
         }
       }
-      if (y2 > (82 * (nx - 1) + nx * 2 - 26)) {
+      if (y2 > (92 * (nx - 1) + nx * 2 - 26)) {
         n = nx;
       }
       //console.log(arr);

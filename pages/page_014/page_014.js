@@ -2,34 +2,148 @@ var app = getApp();
 var util = require('../../utils/util.js');
 Page({
   data: {
-    chooseData:['',''],
-    chooseIndex:0,
-    answerData: [{ txt: 'since' }, { txt: 'has' }, { txt: 'for' }, { txt: 'had'}],
-    answerIndex:0,
-    headImage: wx.getStorageSync('headImage'),
-    nickName: wx.getStorageSync('nickName'),
-    indeximg: '../image/tabbar/2.png',
-    previousImg: '../image/tabbar/13.png',
+    anwdataIndex:0,
+    anwdata:[
+      { 
+        tit: ['with', 'to', '/','by'],
+        correct1:'with',
+        correct2:'to'
+      },
+      { 
+        tit: ['leader', 'subordinate','teacher', 'student', 'boss', 'employee'],
+        correct1:'leader',
+        correct2:'subordinate'
+      }
+    ],
+    dataIndex:0,
+    data:[
+      {tit:[
+        'We can measure',
+        '______',
+        'the corner of eyes ',
+        '______',
+        'judge others when stand in a circle'
+      ],
+      emptyposition:[1,3]
+      },
+      {tit:[
+        'There is no apparent',
+        '______',
+        'or',
+        '______',
+        'in the meeting'
+      ],
+      emptyposition: [1, 3]
+      }
+    ],
+    chooseResult:[],
+    emptypositionIndex:0,
     flag1:false,
-    flag2:false,
-    flag3:false,
-    flag:[false,false,false,false],
-    checkFlag1:false,
-    checkFlag2:false,
-    check_errorFlag1:false,
-    check_errorFlag2:false
-
+    temp:[],
+    indeximg: '../image/tabbar/2.png',
+    previousImg: '../image/tabbar/13.png'
   },
   clickImg: function () {
     wx.redirectTo({
       url: '../page_001/page_001',
     })
   },
+  check:function(e){
+      let refer = this;
+
+      if(refer.data.anwdata[refer.data.anwdataIndex].correct1==refer.data.chooseResult[0] && refer.data.anwdata[refer.data.anwdataIndex].correct2==refer.data.chooseResult[1]
+      ){
+        console.log('选择正确'+refer.data.dataIndex);
+        let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
+        wx.playBackgroundAudio({
+          dataUrl: tempFilePath
+        });
+        if (refer.data.dataIndex==1){
+          wx.redirectTo({
+            url: '../page_015/page_015',
+          });
+        }
+        refer.setData({
+          anwdataIndex:refer.data.anwdataIndex+1,
+          dataIndex:refer.data.dataIndex+1,
+          emptypositionIndex:0,
+          chooseResult:[]
+        })
+      }else{
+        console.log('选择错误');
+      }
+  },
+  chooseAnswer:function(e){
+    let refer = this;
+    let csv = e.currentTarget.dataset.hi;
+    let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
+    wx.playBackgroundAudio({
+      dataUrl: tempFilePath
+    });
+    if (refer.data.chooseResult.length==2){
+      console.log('选择完成' + refer.data.chooseResult);
+      refer.setData({
+        flag1:true
+      });
+    }else{
+      refer.data.chooseResult.push(csv);
+      if (refer.data.chooseResult.length == 2) {
+        refer.setData({
+          flag1: true
+        });
+      }
+      //替换空内容
+      refer.data.data[refer.data.dataIndex].tit.splice(refer.data.data[refer.data.dataIndex].emptyposition[refer.data.emptypositionIndex], 1, csv);
+
+      console.log(refer.data.data[refer.data.dataIndex].tit);
+      if (refer.data.dataIndex<1){
+        refer.setData({
+          emptypositionIndex: refer.data.emptypositionIndex + 1,
+          chooseResult: refer.data.chooseResult,
+          data: [
+            { tit: refer.data.data[refer.data.dataIndex].tit, emptyposition: [1, 3] },
+            { tit: refer.data.data[refer.data.dataIndex + 1].tit, emptyposition: [1, 3] }
+          ]
+        });
+      }else{
+        refer.setData({
+          emptypositionIndex: refer.data.emptypositionIndex + 1,
+          chooseResult: refer.data.chooseResult,
+          data: [
+            { tit: refer.data.data[0].tit, emptyposition: [1, 3] },
+            { tit: refer.data.data[1].tit, emptyposition: [1, 3] }
+          ]
+        });
+      }
+      
+    }
+  },
+  toIndex: function () {
+    let refer = this;
+    refer.setData({
+      indeximg: '../image/tabbar/1.png',
+      catagaryimg: '../image/tabbar/5.png'
+    });
+    wx.redirectTo({
+      url: '../page_010/page_010',
+    });
+  },
+  toPrevious: function () {
+    let refer = this;
+    refer.setData({
+      indeximg: '../image/tabbar/2.png'
+    });
+    wx.redirectTo({
+      url: '../page_013/page_013',
+    });
+  },
   onPullDownRefresh: function () {
 
   },
   onLoad: function () {
     util.showBusy('加载中...');
+    let refer = this;
+    refer.data.temp = refer.data.data[refer.data.dataIndex].tit;
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -77,335 +191,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  v1:function(e){
-     let refer = this;
-     let temp = refer.data.chooseData[1];
-     let csv = e.currentTarget.dataset.hi;
-     let selected = -1;
-     for(var i=0;i<refer.data.answerData.length;i++){
-          if(refer.data.answerData[i].txt == csv){
-            selected = i;
-            break;
-          }
-     }
-     refer.setData({
-       checkFlag1:false,
-       check_errorFlag1:false,
-       flag1:false,
-       chooseData: ['', temp],
-       chooseIndex:0
-     })
-     if (refer.data.chooseData[0] == '' && refer.data.chooseData[1] == ''){
-        refer.setData({
-          chooseIndex:0
-        })
-     }
-     if (refer.data.chooseData[0] == '' || refer.data.chooseData[1] == '') {
-      refer.setData({
-        flag3: false
-      })
-     }
-     if(selected !=-1){
-         let temparray = new Array(4);
-         for(let k=0;k<4;k++){
-             if(selected == k){
-               temparray[k] = false;
-             }else{
-               temparray[k] = refer.data.flag[k];
-             }
-         }
-         refer.setData({
-           flag: temparray
-         })
-     }
-  },
-  v2:function(e){
-     let refer = this;
-     let temp = refer.data.chooseData[0];
-     let csv = e.currentTarget.dataset.hi;
-     let selected = -1;
-     for (var i = 0; i < refer.data.answerData.length; i++) {
-      if (refer.data.answerData[i].txt == csv) {
-        selected = i;
-        break;
-      }
-     }
-     refer.setData({
-       checkFlag2:false,
-       check_errorFlag2:false,
-       flag2:false,
-       chooseData: [temp, ''],
-       chooseIndex: 1
-     })
-    if (refer.data.chooseData[0] == '' && refer.data.chooseData[1] == '') {
-      refer.setData({
-        chooseIndex: 0
-      })
-    }
-    if (refer.data.chooseData[0] == '' || refer.data.chooseData[1] == '') {
-      refer.setData({
-        flag3: false
-      })
-    }
-    if (selected != -1) {
-      let temparray = new Array(4);
-      for (let k = 0; k < 4; k++) {
-        if (selected == k) {
-          temparray[k] = false;
-        } else {
-          temparray[k] = refer.data.flag[k];
-        }
-      }
-      refer.setData({
-        flag: temparray
-      })
-    }
-  },
-  c1:function(e){
-    let refer = this;
-    //选择的下标
-    let cho = e.currentTarget.dataset.hi;
-    let cindex = refer.data.chooseIndex;
-    console.log('asd'+cindex);
-    if (refer.data.chooseData[0] != '' && refer.data.chooseData[1]!=''){
-        console.log('填写完成1'+cho);
-        //已填空完成
-        refer.setData({
-          flag3:true
-        })
-    }else{
-      let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
-      //console.log(tempFilePath);
-      wx.playBackgroundAudio({
-        dataUrl: tempFilePath
-      });
-      let temp1 = refer.data.flag[1];
-      let temp2 = refer.data.flag[2];
-      let temp3 = refer.data.flag[3];
-      if (cindex==0){
-        let ctemp = refer.data.chooseData[1];
-        refer.setData({
-          chooseData: [refer.data.answerData[cho].txt, ctemp],
-          chooseIndex: refer.data.chooseIndex + 1,
-          flag1:true,
-          flag: [true, temp1, temp2, temp3]
-        })
-      }else{
-        let temp = refer.data.chooseData[0];
-        refer.setData({
-          chooseData: [temp, refer.data.answerData[cho].txt], 
-          chooseIndex: refer.data.chooseIndex + 1,
-          flag2: true,
-          flag: [true, temp1, temp2, temp3]
-         
-        })
-      }
-
-      if (refer.data.chooseData[0] != '' && refer.data.chooseData[1] != '') {
-        //console.log('填写完成');
-        //已填空完成
-        refer.setData({
-          flag3: true
-        })
-      }
-      
-    }
-     
-  },
-  c2: function (e) {
-    let refer = this;
-    //选择的下标
-    let cho = e.currentTarget.dataset.hi;
-    let cindex = refer.data.chooseIndex;
-    //console.log(cindex);
-    if (refer.data.chooseData[0] != '' && refer.data.chooseData[1] != '') {
-      console.log('填写完成2' + cho);
-      //已填空完成
-      refer.setData({
-        flag3: true
-      })
-    } else {
-      let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
-      //console.log(tempFilePath);
-      wx.playBackgroundAudio({
-        dataUrl: tempFilePath
-      });
-      let temp0 = refer.data.flag[0];
-      let temp2 = refer.data.flag[2];
-      let temp3 = refer.data.flag[3];
-      if (cindex == 0) {
-        let ctemp = refer.data.chooseData[1];
-        refer.setData({
-          chooseData: [refer.data.answerData[cho].txt, ctemp],
-          chooseIndex: refer.data.chooseIndex + 1,
-          flag1: true,
-          flag: [temp0, true, temp2, temp3]
-        })
-      } else {
-        let temp = refer.data.chooseData[0];
-        refer.setData({
-          chooseData: [temp, refer.data.answerData[cho].txt],
-          chooseIndex: refer.data.chooseIndex + 1,
-          flag2: true,
-          flag: [temp0, true, temp2, temp3]
-        })
-      }
-      if (refer.data.chooseData[0] != '' && refer.data.chooseData[1] != '') {
-        //console.log('填写完成');
-        //已填空完成
-        refer.setData({
-          flag3: true
-        })
-      }
-    }
-  },
-  c3: function (e) {
-    let refer = this;
-    //选择的下标
-    let cho = e.currentTarget.dataset.hi;
-    let cindex = refer.data.chooseIndex;
-    //console.log(cindex);
-    if (refer.data.chooseData[0] != '' && refer.data.chooseData[1] != '') {
-      console.log('填写完成3' + cho);
-      //已填空完成
-      refer.setData({
-        flag3: true
-      })
-    } else {
-      let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
-      //console.log(tempFilePath);
-      wx.playBackgroundAudio({
-        dataUrl: tempFilePath
-      });
-      let temp0 = refer.data.flag[0];
-      let temp1 = refer.data.flag[1];
-      let temp3 = refer.data.flag[3];
-      if (cindex == 0) {
-        let ctemp = refer.data.chooseData[1];
-        refer.setData({
-          chooseData: [refer.data.answerData[cho].txt, ctemp],
-          chooseIndex: refer.data.chooseIndex + 1,
-          flag1: true,
-          flag: [temp0, temp1, true, temp3]
-        })
-      } else {
-        let temp = refer.data.chooseData[0];
-        refer.setData({
-          chooseData: [temp, refer.data.answerData[cho].txt],
-          chooseIndex: refer.data.chooseIndex + 1,
-          flag2: true,
-          flag: [temp0, temp1, true, temp3]
-        })
-      }
-      if (refer.data.chooseData[0] != '' && refer.data.chooseData[1] != '') {
-        //console.log('填写完成');
-        //已填空完成
-        refer.setData({
-          flag3: true
-        })
-      }
-    }
-  },
-  c4: function (e) {
-    let refer = this;
-    //选择的下标
-    let cho = e.currentTarget.dataset.hi;
-    let cindex = refer.data.chooseIndex;
-    //console.log(cindex);
-    if (refer.data.chooseData[0] != '' && refer.data.chooseData[1] != '') {
-      console.log('填写完成4' + cho);
-      //已填空完成
-      refer.setData({
-        flag3: true
-      })
-    } else {
-      let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
-      //console.log(tempFilePath);
-      wx.playBackgroundAudio({
-        dataUrl: tempFilePath
-      });
-      let temp0 = refer.data.flag[0];
-      let temp1 = refer.data.flag[1];
-      let temp2 = refer.data.flag[2];
-      if (cindex == 0) {
-        let ctemp = refer.data.chooseData[1];
-        refer.setData({
-          chooseData: [refer.data.answerData[cho].txt, ctemp],
-          chooseIndex: refer.data.chooseIndex + 1,
-          flag1: true,
-          flag: [temp0, temp1, temp2, true]
-        })
-      } else {
-        let temp = refer.data.chooseData[0];
-        //console.log(cho);
-        refer.setData({
-          chooseData: [temp, refer.data.answerData[cho].txt],
-          chooseIndex: refer.data.chooseIndex + 1,
-          flag2: true,
-          flag: [temp0, temp1, temp2, true]
-        })
-      }
-      if (refer.data.chooseData[0] != '' && refer.data.chooseData[1] != '') {
-        //console.log('填写完成');
-        //已填空完成
-        refer.setData({
-          flag3: true
-        })
-      }
-    }
-  },
-  toIndex: function () {
-    let refer = this;
-    refer.setData({
-      indeximg: '../image/tabbar/1.png',
-      catagaryimg: '../image/tabbar/5.png'
-    });
-    wx.redirectTo({
-      url: '../page_010/page_010',
-    });
-  },
-  toPrevious: function () {
-    let refer = this;
-    refer.setData({
-      indeximg: '../image/tabbar/2.png'
-    });
-    wx.redirectTo({
-      url: '../page_013/page_013',
-    });
-  },
-  check:function(){
-    let refer = this;
-    if (refer.data.chooseData[0] == 'since' && refer.data.chooseData[1] == 'had'){
-      let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
-      wx.playBackgroundAudio({
-        dataUrl: tempFilePath
-      });
-      setTimeout(function () {
-        wx.redirectTo({
-          url: '../page_015/page_015',
-        });
-      }.bind(refer), 500);
-    }
-    if (refer.data.chooseData[0] == 'since') {
-         refer.setData({
-           checkFlag1:true
-         })
-    }else{
-      refer.setData({
-        check_errorFlag1: true
-      })
-      
-    }
-    if (refer.data.chooseData[1] == 'had') {
-      refer.setData({
-        checkFlag2: true
-      })
-    }else{
-      refer.setData({
-        check_errorFlag2: true
-      })
-    }
-    
   }
 })
