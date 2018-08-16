@@ -57,8 +57,9 @@
 
 .style7{
   width: 268px;
-  height: 258px;
-  border-radius: 8px;
+  height: 198px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   margin-top: 10px;
 }
 
@@ -84,12 +85,15 @@
   flex-direction:column;
   font-size: 15px;
   
-  
 }
 
 .style10{
-  margin-top: 20px;
-  margin-left: 20px;
+  margin:10px;
+  border-style: solid;
+  border-width: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .style11{
@@ -146,6 +150,15 @@
   height: 300px;
   margin-left: 20px;
   margin-right: 20px;
+}
+
+.style17{
+  border-style: solid;
+  border-width: 1px;
+  border-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 

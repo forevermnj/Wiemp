@@ -3,8 +3,6 @@ var util = require('../../utils/util.js');
 
 Page({
   data: {
-    headImage: wx.getStorageSync('headImage'),
-    nickName: wx.getStorageSync('nickName'),
     indeximg: '../image/tabbar/2.png',
     previousImg: '../image/tabbar/13.png',
     speechImg:'../image/tabbar/18.gif',
@@ -15,7 +13,6 @@ Page({
       { url: app.globalData.serverUrl + '/Emp/mobile/page_012/3.png' },
       { url: app.globalData.serverUrl + '/Emp/mobile/page_012/4.png' },
       { url: app.globalData.serverUrl + '/Emp/mobile/page_012/5.png' }
-     
     ],
     backMp3:[
       { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/1.mp3'},
@@ -53,9 +50,10 @@ Page({
       wx.playBackgroundAudio({
         dataUrl: tempFilePath
       });
-      if(refer.data.tflag == false){
+      if (refer.data.tflag == false){
         //监听播放停止
         wx.onBackgroundAudioStop(function () {
+          console.log('播放停止');
           refer.setData({
             backImgIndex: refer.data.backImgIndex + 1,
             backMp3Index: refer.data.backMp3Index + 1
@@ -73,9 +71,76 @@ Page({
         tflag:true
       })
       wx.redirectTo({
-        url: '../page_020/page_020',
+        url: '../page_013/page_013',
       });
     }
+  },
+  speech:function(){
+    let refer = this;
+    if (refer.data.speechFlag){
+      refer.setData({
+        speechImg: '../image/tabbar/18.gif',
+        speechFlag: false
+      });
+      var tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/1.mp3';
+      wx.playBackgroundAudio({
+        dataUrl: tempFilePath
+      });
+      //监听播放停止
+      wx.onBackgroundAudioStop(function () {
+        //console.log('onBackgroundAudioStop')
+        refer.setData({
+          speechImg: '../image/tabbar/14.png',
+          speechFlag: true
+        });
+      })
+    }
+  },
+  toNext:function(){
+    let refer = this;
+    console.log(refer.data.backImgIndex);
+    if (refer.data.backImgIndex==4){
+      wx.stopBackgroundAudio();
+      refer.setData({
+        tflag: true
+      })
+      wx.redirectTo({
+         url: '../page_013/page_013',
+      });
+    }
+    refer.setData({
+      backImgIndex: refer.data.backImgIndex + 1,
+      backMp3Index: refer.data.backMp3Index + 1,
+      tflag: true,
+      noautoflag: true
+    });
+    refer.toPlay();
+    
+  },
+  toPrevious:function(){
+    let refer = this;
+    refer.setData({
+      backImgIndex: refer.data.backImgIndex - 1,
+      backMp3Index: refer.data.backMp3Index - 1,
+      tflag: true,
+      noautoflag: true
+    });
+    refer.toPlay();
+    
+  },
+  toIndex: function () {
+    let refer = this;
+    refer.setData({
+      backImgIndex: 5,
+      tflag: true
+    })
+    wx.stopBackgroundAudio();
+    refer.setData({
+      indeximg: '../image/tabbar/1.png',
+    });
+    wx.redirectTo({
+      url: '../page_010/page_010',
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -123,62 +188,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  speech:function(){
-    let refer = this;
-    if (refer.data.speechFlag){
-      refer.setData({
-        speechImg: '../image/tabbar/18.gif',
-        speechFlag: false
-      });
-      var tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/1.mp3';
-      wx.playBackgroundAudio({
-        dataUrl: tempFilePath
-      });
-      //监听播放停止
-      wx.onBackgroundAudioStop(function () {
-        //console.log('onBackgroundAudioStop')
-        refer.setData({
-          speechImg: '../image/tabbar/14.png',
-          speechFlag: true
-        });
-      })
-    }
-  },
-  toNext:function(){
-    let refer = this;
-    refer.setData({
-      backImgIndex:5,
-      tflag: true
-    })
-    wx.stopBackgroundAudio();
-    wx.redirectTo({
-      url: '../page_013/page_013',
-    });
-  },
-  toPrevious:function(){
-    let refer = this;
-    refer.setData({
-      backImgIndex: 5,
-      tflag: true
-    })
-    wx.stopBackgroundAudio();
-    wx.redirectTo({
-      url: '../page_011/page_011',
-    });
-  },
-  toIndex: function () {
-    let refer = this;
-    refer.setData({
-      backImgIndex: 5,
-      tflag: true
-    })
-    wx.stopBackgroundAudio();
-    refer.setData({
-      indeximg: '../image/tabbar/1.png',
-    });
-    wx.redirectTo({
-      url: '../page_010/page_010',
-    });
   }
 })

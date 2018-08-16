@@ -42,7 +42,7 @@ Page({
       });
       setTimeout(function () {
         wx.redirectTo({
-          url: '../page_018/page_018',
+          url: '../page_020/page_020',
         });
       }.bind(refer), 1000);
     }else{

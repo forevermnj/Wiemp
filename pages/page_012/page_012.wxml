@@ -5,8 +5,8 @@
   </view>
 
   <view class='style6'>
-      <view bindtap='toPrevious' class='style9'>
-       <image bindtap='toPrevious' class='style10' src='../image/tabbar/16.png'></image>
+      <view catchtap='toPrevious' class='style9'>
+       <image wx:if="{{backImgIndex>=1}}" catchtap='toPrevious' class='style10' src='../image/tabbar/16.png'></image>
       </view>
 
       <view bindtap='speech' class="{{speechFlag!=true?'style7':'style11'}}">
@@ -17,8 +17,8 @@
         <image class='style5' src='../image/tabbar/15.png'></image>
       </view>
 
-      <view bindtap='toNext' class='style9'>
-       <image bindtap='toNext' class='style10' src='../image/tabbar/17.png'></image>
+      <view catchtap='toNext' class='style9'>
+       <image catchtap='toNext' class='style10' src='../image/tabbar/17.png'></image>
       </view>
   </view>
     
