@@ -15,6 +15,26 @@ Page({
         correct2:'subordinate'
       }
     ],
+    datainit: [{
+      tit: [
+        'We can measure',
+        '______',
+        'the corner of eyes ',
+        '______',
+        'judge others when stand in a circle'
+      ],
+      emptyposition: [1, 3]
+    },
+      {
+        tit: [
+          'There is no apparent',
+          '______',
+          'or',
+          '______',
+          'in the meeting'
+        ],
+        emptyposition: [1, 3]
+      }],
     dataIndex:0,
     data:[
       {tit:[
@@ -69,8 +89,18 @@ Page({
           emptypositionIndex:0,
           chooseResult:[]
         })
-      }else{
-        console.log('选择错误');
+      } else {
+        let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
+        wx.playBackgroundAudio({
+          dataUrl: tempFilePath
+        });
+        refer.setData({
+          chooseResult: [],
+          data:refer.data.datainit,
+          emptypositionIndex:0,
+          flag1: false
+        });
+        //console.log(refer.data.data[refer.data.dataIndex]);
       }
   },
   chooseAnswer:function(e){
@@ -80,12 +110,14 @@ Page({
     wx.playBackgroundAudio({
       dataUrl: tempFilePath
     });
+    
     if (refer.data.chooseResult.length==2){
-      console.log('选择完成' + refer.data.chooseResult);
+      //console.log('选择完成' + refer.data.chooseResult);
       refer.setData({
         flag1:true
       });
     }else{
+     
       refer.data.chooseResult.push(csv);
       if (refer.data.chooseResult.length == 2) {
         refer.setData({
@@ -95,8 +127,8 @@ Page({
       //替换空内容
       refer.data.data[refer.data.dataIndex].tit.splice(refer.data.data[refer.data.dataIndex].emptyposition[refer.data.emptypositionIndex], 1, csv);
 
-      console.log(refer.data.data[refer.data.dataIndex].tit);
-      if (refer.data.dataIndex<1){
+      //console.log(refer.data.data[refer.data.dataIndex].tit);
+      if (refer.data.dataIndex < 1) {
         refer.setData({
           emptypositionIndex: refer.data.emptypositionIndex + 1,
           chooseResult: refer.data.chooseResult,
@@ -105,7 +137,7 @@ Page({
             { tit: refer.data.data[refer.data.dataIndex + 1].tit, emptyposition: [1, 3] }
           ]
         });
-      }else{
+      } else {
         refer.setData({
           emptypositionIndex: refer.data.emptypositionIndex + 1,
           chooseResult: refer.data.chooseResult,
