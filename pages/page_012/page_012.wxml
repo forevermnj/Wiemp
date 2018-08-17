@@ -1,12 +1,12 @@
 <view class='style1'>
 
   <view class='style2'>
-    <image class='style3' src="{{backImg[backImgIndex].url}}"></image>
+    <image class='style3' src="{{backImg[backImgIndex].img[imgIndex]}}"></image>
   </view>
 
   <view class='style6'>
       <view catchtap='toPrevious' class='style9'>
-       <image wx:if="{{backImgIndex>=1}}" catchtap='toPrevious' class='style10' src='../image/tabbar/16.png'></image>
+       <image wx:if="{{imgIndex>=1}}" catchtap='toPrevious' class='style10' src='../image/tabbar/16.png'></image>
       </view>
 
       <view bindtap='speech' class="{{speechFlag!=true?'style7':'style11'}}">

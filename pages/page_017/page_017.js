@@ -36,15 +36,18 @@ Page({
          refer.setData({
            correctFlag:true
          });
-      let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
+      let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/page_017/1.mp3';
       wx.playBackgroundAudio({
         dataUrl: tempFilePath
       });
-      setTimeout(function () {
+      wx.onBackgroundAudioStop(function () {
+        app.globalData.backImgIndex = app.globalData.backImgIndex+1;
+        app.globalData.backMp3Index = app.globalData.backMp3Index+1;
         wx.redirectTo({
-          url: '../page_020/page_020',
+          url: '../page_012/page_012',
         });
-      }.bind(refer), 1000);
+      });
+      
     }else{
       let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
       console.log(tempFilePath);

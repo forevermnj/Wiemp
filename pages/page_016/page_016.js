@@ -74,11 +74,33 @@ Page({
             score: Math.round(temp_score * 100)
           })
           if (temp_score<0.1){
-            let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
-            console.log(tempFilePath);
+            // let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
+            // console.log(tempFilePath);
+            // wx.playBackgroundAudio({
+            //   dataUrl: tempFilePath
+            // });
+            let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
             wx.playBackgroundAudio({
               dataUrl: tempFilePath
             });
+
+            if (refer.data.rdataIndex == 1) {
+              setTimeout(function () {
+                wx.redirectTo({
+                  url: '../page_017/page_017',
+                });
+              }.bind(refer), 2000);
+            } else {
+              setTimeout(function () {
+                refer.setData({
+                  rdataIndex: refer.data.rdataIndex + 1,
+                  resultExample: [],
+                  score: 0,
+                  flag3: false
+                });
+              }.bind(refer), 2000);
+            }
+            
           }else{
             let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
             wx.playBackgroundAudio({

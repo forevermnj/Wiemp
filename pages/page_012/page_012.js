@@ -8,45 +8,62 @@ Page({
     speechImg:'../image/tabbar/18.gif',
     speechFlag:false,
     backImg:[
-      { url: app.globalData.serverUrl + '/Emp/mobile/page_012/1.png'},
-      { url: app.globalData.serverUrl + '/Emp/mobile/page_012/2.png' },
-      { url: app.globalData.serverUrl + '/Emp/mobile/page_012/3.png' },
-      { url: app.globalData.serverUrl + '/Emp/mobile/page_012/4.png' },
-      { url: app.globalData.serverUrl + '/Emp/mobile/page_012/5.png' }
+      { 
+        img: 
+        [
+          app.globalData.serverUrl + '/Emp/mobile/page_012/1.png',               app.globalData.serverUrl + '/Emp/mobile/page_012/2.png',               app.globalData.serverUrl + '/Emp/mobile/page_012/3.png',               app.globalData.serverUrl + '/Emp/mobile/page_012/4.png',               app.globalData.serverUrl + '/Emp/mobile/page_012/5.png'
+        ]
+      },
+      { 
+        img:
+        [
+          app.globalData.serverUrl + '/Emp/mobile/page_020/1.png',
+          app.globalData.serverUrl + '/Emp/mobile/page_020/2.png',
+          app.globalData.serverUrl + '/Emp/mobile/page_020/3.png',
+          app.globalData.serverUrl + '/Emp/mobile/page_020/4.png'
+        ]
+      }
     ],
     backMp3:[
-      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/1.mp3'},
-      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/2.mp3'},
-      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/3.mp3'},
-      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/4.mp3'},
-      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/5.mp3'}
+      {
+        mp3:
+        [
+          app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/1.mp3',
+          app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/2.mp3',
+          app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/3.mp3',
+          app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/4.mp3',
+          app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/5.mp3'
+        ]
+      },
+      { mp3:
+        [
+          app.globalData.serverUrl + '/Emp/mobile/mp3/page_020/1.mp3',
+          app.globalData.serverUrl + '/Emp/mobile/mp3/page_020/2.mp3',
+          app.globalData.serverUrl + '/Emp/mobile/mp3/page_020/3.mp3',
+          app.globalData.serverUrl + '/Emp/mobile/mp3/page_020/4.mp3'
+        ]
+      }
     ],
-    backImgIndex:0,
-    backMp3Index:0,
-    imagewidth: 0,//缩放后的宽
-    imageheight: 0,//缩放后的高
+    backImgIndex: app.globalData.backImgIndex,
+    imgIndex:0,
+    backMp3Index: app.globalData.backMp3Index,
+    mp3Index:0,
     tflag:false
-  },
-  imageLoad: function (e) {
-    var imageSize = imageUtil.imageUtil(e)
-    this.setData({
-      imagewidth: imageSize.imageWidth,
-      imageheight: imageSize.imageHeight
-    })
   },
   onLoad: function () {
     util.showBusy('加载中...');
     let refer = this;
     refer.setData({
-      backImgIndex:0
+      backImgIndex: app.globalData.backImgIndex,
+      backMp3Index: app.globalData.backMp3Index
     });
     refer.toPlay();
   },
   toPlay:function(){
     
     let refer = this;
-    if (refer.data.backImgIndex <=4){
-      let tempFilePath = refer.data.backMp3[refer.data.backMp3Index].url;
+    if (refer.data.imgIndex <= refer.data.backImg[refer.data.backImgIndex].img.length-1){
+      let tempFilePath = refer.data.backMp3[refer.data.backMp3Index].mp3[refer.data.mp3Index];
       wx.playBackgroundAudio({
         dataUrl: tempFilePath
       });
@@ -55,8 +72,11 @@ Page({
         wx.onBackgroundAudioStop(function () {
           console.log('播放停止');
           refer.setData({
-            backImgIndex: refer.data.backImgIndex + 1,
-            backMp3Index: refer.data.backMp3Index + 1
+            // backImgIndex: refer.data.backImgIndex + 1,
+            // backMp3Index: refer.data.backMp3Index + 1,
+            imgIndex:refer.data.imgIndex+1,
+            mp3Index:refer.data.mp3Index+1
+
           });
           if (refer.data.tflag == false){
             console.log('再次播放');
@@ -100,7 +120,7 @@ Page({
   toNext:function(){
     let refer = this;
     console.log(refer.data.backImgIndex);
-    if (refer.data.backImgIndex==4){
+    if (refer.data.imgIndex == refer.data.backImg[refer.data.backImgIndex].img.length - 1){
       wx.stopBackgroundAudio();
       refer.setData({
         tflag: true
@@ -110,18 +130,22 @@ Page({
       });
     }
     refer.setData({
-      backImgIndex: refer.data.backImgIndex + 1,
-      backMp3Index: refer.data.backMp3Index + 1
+      // backImgIndex: refer.data.backImgIndex + 1,
+      // backMp3Index: refer.data.backMp3Index + 1,
+      imgIndex: refer.data.imgIndex + 1,
+      mp3Index: refer.data.mp3Index + 1
     });
     refer.toPlay();
     
   },
   toPrevious:function(){
     let refer = this;
-    if (refer.data.backImgIndex>=1){
+    if (refer.data.imgIndex>=1){
       refer.setData({
-        backImgIndex: refer.data.backImgIndex - 1,
-        backMp3Index: refer.data.backMp3Index - 1
+        // backImgIndex: refer.data.backImgIndex - 1,
+        // backMp3Index: refer.data.backMp3Index - 1,
+        imgIndex: refer.data.imgIndex - 1,
+        mp3Index: refer.data.mp3Index - 1
       });
       refer.toPlay();
     }
