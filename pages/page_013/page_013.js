@@ -10,20 +10,62 @@ Page({
     nochooseflag:-1,
     chooseDataFlag:false,
     chooseDataNum:0,
-    chooseDataIndex:0,
+    chooseDataIndex: app.globalData.chooseDataIndex,
     chooseData:[
       {
-        choicepro:'For the following descriptions of stand up meeting, which one is correct?',choiceanw:[
+        choicepro:'For the following descriptions of stand up meeting, which one is correct?',
+        choiceanw:
+        [
           {anw:'It can monitor who is late today',flag:false,num:0},
-          { anw: 'It can form discipline, belongings and spirit among team members', flag: true, num: 1},
-          { anw: 'It can help us solve our personal problems', flag: false, num: 2}
-      ]},
+          {anw:'It can form discipline, belongings and spirit among team members', flag: true, num: 1},
+          {anw:'It can help us solve our personal problems', flag: false, num: 2}
+        ]
+      },
       {
-        choicepro:'Why is the stand-up meeting so fast?',choiceanw:[
-          { anw: 'Because attendees are less than other meetings', flag: false, num: 0},
-          { anw: 'Because there is no word to say', flag: false, num: 1},
-          { anw: 'Because it is a kind of scrum meeting', flag: true, num: 2}
-      ]}
+        choicepro:'Why is the stand-up meeting so fast?',
+        choiceanw:
+        [
+          {anw:'Because attendees are less than other meetings', flag: false, num: 0},
+          {anw: 'Because there is no word to say', flag: false, num: 1},
+          {anw:'Because it is a kind of scrum meeting', flag: true, num: 2}
+        ]
+      },
+      { 
+        choicepro:'	How many questions will the host ask in stand up meeting?',
+        choiceanw:
+        [
+          {anw:'Two',flag:false,num:0},
+          {anw:'Three',flag:true,num:1},
+          {anw:'Four',flag:false,num:2}
+        ]
+      },
+      {
+        choicepro:'Which task will Paul do today?',
+        choiceanw:
+        [
+          {anw:'He will finish the preparation about MRS release',flag:false,num:0},
+          {anw:'He will send mail to Bernard to seek help for the third party confirmation',flag:false,num:1},
+          {anw:'He will work on passing the request parameters to the interface search code',flag:true,num:2}
+        ]
+      },
+      {
+        choicepro:'What mistake did Alice make?',
+        choiceanw:
+        [
+          {anw:'She did not help Linda solve problem after meeting',flag:false,num:0},
+          {anw:'She talked too many details of her project experience in meeting',flag:true,num:1},
+          {anw:'She was used to showing herself in stand up meeting on purpose',flag:false,num:2}
+        ]
+      },
+      {
+        choicepro:'Why did the host interrupt Alice?',
+        choiceanw:
+        [
+          {anw:'Because Alice told something wrong',flag:false,num:0},
+          {anw:'Because the host did not have any patience',flag:false,num:1},
+          {anw:'Because stand up meeting time is limited',flag:true,num:2}
+        ]
+      }
     ],
     indeximg: '../image/tabbar/2.png',
     previousImg: '../image/tabbar/13.png',
@@ -43,6 +85,11 @@ Page({
   },
   onLoad: function () {
     util.showBusy('加载中...');
+    let refer = this;
+    refer.setData({
+      chooseDataIndex: app.globalData.chooseDataIndex
+    });
+    console.log('aaaaaaaaaaaaa' + app.globalData.chooseDataIndex);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -130,10 +177,12 @@ Page({
         animationCorrectData: animation.export()
       })
     }.bind(refer), 500);
-    if (refer.data.chooseDataIndex ==1) {
+    if (refer.data.chooseDataIndex == 1 || refer.data.chooseDataIndex==5)
+     {
       refer.setData({
         nochooseflag: 0
       });
+      app.globalData.chooseDataIndex = app.globalData.chooseDataIndex + 1;
       setTimeout(function () {
         wx.redirectTo({
           url: '../page_014/page_014',
@@ -149,7 +198,8 @@ Page({
           chooseDataIndex: refer.data.chooseDataIndex + 1,
           mp3dataIndex:refer.data.mp3dataIndex + 1,
           nochooseflag: -1
-        })
+        });
+        app.globalData.chooseDataIndex=app.globalData.chooseDataIndex + 1;
       }.bind(refer), 1300);
       
     }
