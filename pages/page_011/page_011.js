@@ -81,6 +81,13 @@ Page({
   },
   onLoad: function () {
     util.showBusy('加载中...');
+    app.globalData.backImgIndex = 0;//page_012页面全局参数
+    app.globalData.backMp3Index = 0;//page_012页面全局参数
+    app.globalData.chooseDataIndex = 0;//page_013页面全局参数
+    app.globalData.mp3dataIndex = 0;//page_013页面全局参数
+    app.globalData.dataIndex = 0;//page_014页面全局参数
+    app.globalData.anwdataIndex = 0;//page_014页面全局参数
+    app.globalData.rdataIndex = 0;//page_016页面全局参数
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -5,7 +5,11 @@ Page({
     mp3dataIndex:0,
     mp3data:[
       { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_013/1.mp3'},
-      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_013/2.mp3'}
+      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_013/2.mp3'},
+      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_013/3.mp3'},
+      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_013/4.mp3'},
+      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_013/5.mp3'},
+      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_013/6.mp3'}
     ],
     nochooseflag:-1,
     chooseDataFlag:false,
@@ -87,7 +91,8 @@ Page({
     util.showBusy('加载中...');
     let refer = this;
     refer.setData({
-      chooseDataIndex: app.globalData.chooseDataIndex
+      chooseDataIndex: app.globalData.chooseDataIndex,
+      mp3dataIndex: app.globalData.mp3dataIndex
     });
     console.log('aaaaaaaaaaaaa' + app.globalData.chooseDataIndex);
   },
@@ -183,6 +188,7 @@ Page({
         nochooseflag: 0
       });
       app.globalData.chooseDataIndex = app.globalData.chooseDataIndex + 1;
+      app.globalData.mp3dataIndex = app.globalData.mp3dataIndex + 1;
       setTimeout(function () {
         wx.redirectTo({
           url: '../page_014/page_014',
@@ -200,6 +206,7 @@ Page({
           nochooseflag: -1
         });
         app.globalData.chooseDataIndex=app.globalData.chooseDataIndex + 1;
+        app.globalData.mp3dataIndex = app.globalData.mp3dataIndex+1;
       }.bind(refer), 1300);
       
     }

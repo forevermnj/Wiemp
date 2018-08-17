@@ -61,6 +61,10 @@ App({
     backImgIndex:0,//page_012页面全局参数
     backMp3Index: 0,//page_012页面全局参数
     chooseDataIndex:0,//page_013页面全局参数
+    mp3dataIndex:0,//page_013页面全局参数
+    dataIndex:0,//page_014页面全局参数
+    anwdataIndex:0,//page_014页面全局参数
+    rdataIndex:0,//page_016页面全局参数
     examFlag:false,//单词考试数据加载失败
     uid:'020b28e556de4352a231650c1637653c'//测试用户ID
   }

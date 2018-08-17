@@ -15,7 +15,9 @@ Page({
     rdataIndex:0,
     rdata:[
       { tit: ['Daily', 'scrum', 'meeting', 'will', 'turn', 'out', 'to', 'be', 'much', 'faster', 'and', 'more', 'efficient', 'than', 'a', 'sitting', 'way']},
-      { tit: ['The', 'purpose', 'of', 'fixing', '15', 'minutes', 'is', 'to', 'form', 'the', 'meeting', 'habit', 'and', 'discipline',]}
+      { tit: ['The', 'purpose', 'of', 'fixing', '15', 'minutes', 'is', 'to', 'form', 'the', 'meeting', 'habit', 'and', 'discipline',]},
+      { tit: ['we', 'shall', 'get', 'back', 'on', 'our', 'track', 'to', 'synchronize', 'the', 'work', 'of', 'everyone',]},
+      { tit: ['Could', 'you', 'please', 'spare', 'some', 'of', 'your', 'time', 'to', 'assist', 'Linda', 'with', 'more', 'details', 'after', 'this', 'meeting',]}
     ],
     resultExample:[],
     tempurl: app.globalData.serverUrl+'/Emp/mobile/page_016/1.png'
@@ -83,14 +85,23 @@ Page({
             wx.playBackgroundAudio({
               dataUrl: tempFilePath
             });
-
+            if (refer.data.rdataIndex == 3){
+              app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
+              setTimeout(function () {
+                wx.redirectTo({
+                  url: '../page_011/page_011',
+                });
+              }.bind(refer), 2000);
+            }
             if (refer.data.rdataIndex == 1) {
+              app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
               setTimeout(function () {
                 wx.redirectTo({
                   url: '../page_017/page_017',
                 });
               }.bind(refer), 2000);
             } else {
+              app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
               setTimeout(function () {
                 refer.setData({
                   rdataIndex: refer.data.rdataIndex + 1,
@@ -106,14 +117,23 @@ Page({
             wx.playBackgroundAudio({
               dataUrl: tempFilePath
             });
-            
-            if (refer.data.rdataIndex==1){
+            if (refer.data.rdataIndex == 3) {
+              app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
+              setTimeout(function () {
+                wx.redirectTo({
+                  url: '../page_011/page_011',
+                });
+              }.bind(refer), 2000);
+            }
+            if (refer.data.rdataIndex == 1){
+              app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
               setTimeout(function () {
                 wx.redirectTo({
                   url: '../page_017/page_017',
                 });
               }.bind(refer), 2000);
             }else{
+              app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
               setTimeout(function () {
                 refer.setData({
                   rdataIndex: refer.data.rdataIndex + 1,
@@ -121,6 +141,7 @@ Page({
                   score:0,
                   flag3:false
                 });
+                
               }.bind(refer), 2000);
             }
           }
@@ -171,6 +192,11 @@ Page({
   },
   onLoad: function () {
     util.showBusy('加载中...');
+    let refer = this;
+    refer.setData({
+      rdataIndex: app.globalData.rdataIndex
+    });
+    console.log('kkkkkkkkkkk' + refer.data.rdataIndex);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

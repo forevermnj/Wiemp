@@ -13,6 +13,16 @@ Page({
         tit: ['leader', 'subordinate','teacher', 'student', 'boss', 'employee'],
         correct1:'leader',
         correct2:'subordinate'
+      },
+      {
+        tit: ['obstacles', 'impeding', 'barriers', 'impede', 'problems','stopping'],
+        correct1: 'obstacles',
+        correct2: 'impeding'
+      },
+      {
+        tit: ['on', 'to', 'for', 'of','out'],
+        correct1: 'on',
+        correct2: 'to'
       }
     ],
     datainit: [{
@@ -34,6 +44,26 @@ Page({
           'in the meeting'
         ],
         emptyposition: [1, 3]
+      },
+      {
+        tit: [
+          'What',
+          '______',
+          'are',
+          '______',
+          'your progress?'
+        ],
+        emptyposition: [1, 3]
+      },
+      {
+        tit: [
+          'Today I am working',
+          '______',
+          'passing the request parameters',
+          '______',
+          'the interface search code'
+        ],
+        emptyposition: [1, 3]
       }],
     dataIndex:0,
     data:[
@@ -52,6 +82,24 @@ Page({
         'or',
         '______',
         'in the meeting'
+      ],
+      emptyposition: [1, 3]
+      },
+      {tit:[
+        'What',
+        '______',
+        'are',
+        '______',
+        'your progress?'
+      ],
+      emptyposition: [1, 3]
+      },
+      {tit:[
+        'Today I am working',
+        '______',
+        'passing the request parameters',
+        '______',
+        'the interface search code'
       ],
       emptyposition: [1, 3]
       }
@@ -78,7 +126,7 @@ Page({
         wx.playBackgroundAudio({
           dataUrl: tempFilePath
         });
-        if (refer.data.dataIndex==1){
+        if (refer.data.dataIndex == 1 || refer.data.dataIndex==3){
           wx.redirectTo({
             url: '../page_015/page_015',
           });
@@ -88,7 +136,9 @@ Page({
           dataIndex:refer.data.dataIndex+1,
           emptypositionIndex:0,
           chooseResult:[]
-        })
+        });
+        app.globalData.dataIndex = app.globalData.dataIndex+1;
+        app.globalData.anwdataIndex = app.globalData.anwdataIndex+1;
       } else {
         let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
         wx.playBackgroundAudio({
@@ -100,7 +150,6 @@ Page({
           emptypositionIndex:0,
           flag1: false
         });
-        //console.log(refer.data.data[refer.data.dataIndex]);
       }
   },
   chooseAnswer:function(e){
@@ -110,7 +159,6 @@ Page({
     wx.playBackgroundAudio({
       dataUrl: tempFilePath
     });
-    
     if (refer.data.chooseResult.length==2){
       //console.log('选择完成' + refer.data.chooseResult);
       refer.setData({
@@ -127,8 +175,7 @@ Page({
       //替换空内容
       refer.data.data[refer.data.dataIndex].tit.splice(refer.data.data[refer.data.dataIndex].emptyposition[refer.data.emptypositionIndex], 1, csv);
 
-      //console.log(refer.data.data[refer.data.dataIndex].tit);
-      if (refer.data.dataIndex < 1) {
+      if (refer.data.chooseResult.length < 1) {
         refer.setData({
           emptypositionIndex: refer.data.emptypositionIndex + 1,
           chooseResult: refer.data.chooseResult,
@@ -138,13 +185,18 @@ Page({
           ]
         });
       } else {
+        let data_temp = new Array();
+        for(let n=0;n<refer.data.data.length;n++){
+            if (refer.data.dataIndex==n){
+              data_temp.push({ tit: refer.data.data[refer.data.dataIndex].tit, emptyposition: [1, 3] });
+            }else{
+              data_temp.push(refer.data.data[n]);
+            }
+        }
         refer.setData({
           emptypositionIndex: refer.data.emptypositionIndex + 1,
           chooseResult: refer.data.chooseResult,
-          data: [
-            { tit: refer.data.data[0].tit, emptyposition: [1, 3] },
-            { tit: refer.data.data[1].tit, emptyposition: [1, 3] }
-          ]
+          data: data_temp
         });
       }
       
@@ -176,6 +228,11 @@ Page({
     util.showBusy('加载中...');
     let refer = this;
     refer.data.temp = refer.data.data[refer.data.dataIndex].tit;
+    refer.setData({
+      dataIndex : app.globalData.dataIndex,
+      anwdataIndex : app.globalData.anwdataIndex
+    })
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
