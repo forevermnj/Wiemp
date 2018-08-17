@@ -2,6 +2,11 @@ var app = getApp();
 var util = require('../../utils/util.js');
 Page({
   data: {
+    mp3dataIndex:0,
+    mp3data:[
+      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_013/1.mp3'},
+      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_013/2.mp3'}
+    ],
     nochooseflag:-1,
     chooseDataFlag:false,
     chooseDataNum:0,
@@ -20,8 +25,6 @@ Page({
           { anw: 'Because it is a kind of scrum meeting', flag: true, num: 2}
       ]}
     ],
-    headImage: wx.getStorageSync('headImage'),
-    nickName: wx.getStorageSync('nickName'),
     indeximg: '../image/tabbar/2.png',
     previousImg: '../image/tabbar/13.png',
     animationErrorData: {},
@@ -94,7 +97,7 @@ Page({
        speeImgInit:'../image/tabbar/18.gif',
        speechFlag:true
      });
-     var tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/1.mp3';
+    var tempFilePath = refer.data.mp3data[refer.data.mp3dataIndex].url;
      wx.playBackgroundAudio({
        dataUrl: tempFilePath
      });
@@ -144,6 +147,7 @@ Page({
         console.log('开始递增');
         refer.setData({
           chooseDataIndex: refer.data.chooseDataIndex + 1,
+          mp3dataIndex:refer.data.mp3dataIndex + 1,
           nochooseflag: -1
         })
       }.bind(refer), 1300);

@@ -59,6 +59,7 @@ Page({
             backMp3Index: refer.data.backMp3Index + 1
           });
           if (refer.data.tflag == false){
+            console.log('再次播放');
             refer.toPlay();
           }
           
@@ -110,23 +111,20 @@ Page({
     }
     refer.setData({
       backImgIndex: refer.data.backImgIndex + 1,
-      backMp3Index: refer.data.backMp3Index + 1,
-      tflag: true,
-      noautoflag: true
+      backMp3Index: refer.data.backMp3Index + 1
     });
     refer.toPlay();
     
   },
   toPrevious:function(){
     let refer = this;
-    refer.setData({
-      backImgIndex: refer.data.backImgIndex - 1,
-      backMp3Index: refer.data.backMp3Index - 1,
-      tflag: true,
-      noautoflag: true
-    });
-    refer.toPlay();
-    
+    if (refer.data.backImgIndex>=1){
+      refer.setData({
+        backImgIndex: refer.data.backImgIndex - 1,
+        backMp3Index: refer.data.backMp3Index - 1
+      });
+      refer.toPlay();
+    }
   },
   toIndex: function () {
     let refer = this;

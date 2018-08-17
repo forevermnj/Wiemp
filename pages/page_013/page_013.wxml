@@ -4,7 +4,14 @@
      <view class='style4'>
       <image class='style3' src='https://www.learnzp.com/Emp/mobile/page_012/1.png'></image>
      </view>
-     <view class='style13'>
+
+<view class='style4'>
+      <view catchtap='speech' class="{{speechFlag!=true?'style8':'style10'}}">
+       <image catchtap='speech' class="{{speechFlag?'style11':'style7'}}" src='{{speeImgInit}}'></image>
+      </view>
+     </view>
+
+     <!--<view class='style13'>
       <view>
        {{chooseData[chooseDataIndex].choicepro}}
       </view>

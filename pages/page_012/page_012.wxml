@@ -28,12 +28,12 @@
 
 <!--底部导航条-->
 <view class="footerstyle1">
-    <view bindtap='toIndex' class="smallgroup">
-      <image bindtap='toIndex' class='tabbar1' src='{{indeximg}}'></image>
-      <view bindtap='toIndex' class='tabbar2'>首页</view>
+    <view catchtap='toIndex' class="smallgroup">
+      <image catchtap='toIndex' class='tabbar1' src='{{indeximg}}'></image>
+      <view catchtap='toIndex' class='tabbar2'>首页</view>
     </view>
-    <view bindtap='toPrevious' class="smallgroup">
-      <image bindtap='toPrevious' class='tabbar1' src='{{previousImg}}'></image>
-      <view bindtap='toPrevious' class='tabbar2'>上级</view>
+    <view catchtap='toPrevious' class="smallgroup">
+      <image catchtap='toPrevious' class='tabbar1' src='{{previousImg}}'></image>
+      <view catchtap='toPrevious' class='tabbar2'>上级</view>
     </view>
 </view>
