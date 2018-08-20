@@ -1,6 +1,6 @@
 <view class='style1'>
 
-  <view>
+  <view class='style18'>
     <view wx:if="{{flag3}}" class="{{score>10?'style14':'style15'}}">{{score}}</view>
     <image class="{{flag3?'style8':'style7'}}" src='{{tempurl}}'   ></image>
     <view class='style9'>
