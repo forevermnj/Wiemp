@@ -2,7 +2,7 @@
  <view bindtap="box" class="box" >
 
 
-   <view disable-scroll="true" wx:for="{{content}}" bindtouchmove="move" bindtouchstart="movestart" bindtouchend="moveend" data-index="{{item.id}}" data-main="{{mainx}}" class="main {{mainx == item.id? 'mainmove':(correctFlag?'style7':(item.key==1?'':(item.key==2?'style3':(item.key==3?'style4':(item.key==4?'style5':'')))))}}" style="left:{{start.x}}px; top:{{start.y}}px">
+   <view disable-scroll="true" wx:for="{{content}}" bindtouchmove="move" bindtouchstart="movestart" bindtouchend="moveend" data-index="{{item.id}}" data-main="{{mainx}}" class="main {{mainx == item.id? 'mainmove':(correctFlag?'style7':(item.key==1?'style8':(item.key==2?'style3':(item.key==3?'style4':(item.key==4?'style5':'')))))}}" style="left:{{start.x}}px; top:{{start.y}}px">
    
    {{item.content}}
 

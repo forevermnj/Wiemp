@@ -61,8 +61,8 @@
   margin-right: 10px;
   margin-top: 5px;
   color:#C8D6D9;
-  background-color: #295351;
-  border-color: #597090;
+  background-color: #41bfb7;
+  border-color: #41bfb7;
   font-size: 14px;
   height: 80px;
   display: flex;
@@ -79,8 +79,8 @@
   margin-right: 10px;
   margin-top: 5px;
   color:#C8D6D9;
-  background-color: #564F78;
-  border-color: #597090;
+  background-color: #ef7f29;
+  border-color: #ef7f29;
   font-size: 14px;
   height: 80px;
   display: flex;
@@ -97,8 +97,8 @@
   margin-right: 10px;
   margin-top: 5px;
   color:#C8D6D9;
-  background-color: #474752;
-  border-color: #597090;
+  background-color: #afd136;
+  border-color: #afd136;
   font-size: 14px;
   height: 80px;
   display: flex;
@@ -132,6 +132,24 @@
   color:#C8D6D9;
   background-color: green;
   border-color: green;
+  font-size: 14px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.style8{
+  border-width: 1px;
+  border-style: solid;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+  color:#C8D6D9;
+  background-color: #fac000;
+  border-color: #fac000;
   font-size: 14px;
   height: 80px;
   display: flex;

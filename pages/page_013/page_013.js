@@ -94,7 +94,7 @@ Page({
       chooseDataIndex: app.globalData.chooseDataIndex,
       mp3dataIndex: app.globalData.mp3dataIndex
     });
-    console.log('aaaaaaaaaaaaa' + app.globalData.chooseDataIndex);
+    refer.speech();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -207,6 +207,7 @@ Page({
         });
         app.globalData.chooseDataIndex=app.globalData.chooseDataIndex + 1;
         app.globalData.mp3dataIndex = app.globalData.mp3dataIndex+1;
+        refer.speech();
       }.bind(refer), 1300);
       
     }
