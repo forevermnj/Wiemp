@@ -14,10 +14,83 @@ Page({
     scoreIndex:0,
     rdataIndex:0,
     rdata:[
-      { tit: ['Daily', 'scrum', 'meeting', 'will', 'turn', 'out', 'to', 'be', 'much', 'faster', 'and', 'more', 'efficient', 'than', 'a', 'sitting', 'way']},
-      { tit: ['The', 'purpose', 'of', 'fixing', '15', 'minutes', 'is', 'to', 'form', 'the', 'meeting', 'habit', 'and', 'discipline',]},
-      { tit: ['we', 'shall', 'get', 'back', 'on', 'our', 'track', 'to', 'synchronize', 'the', 'work', 'of', 'everyone',]},
-      { tit: ['Could', 'you', 'please', 'spare', 'some', 'of', 'your', 'time', 'to', 'assist', 'Linda', 'with', 'more', 'details', 'after', 'this', 'meeting',]}
+      { tit: 
+        [
+          { wo: 'Daily', flag: false},
+          { wo: 'scrum', flag: false},
+          { wo: 'meeting', flag: false},
+          { wo: 'will', flag: false},
+          { wo: 'turn', flag: false},
+          { wo: 'out', flag: false},
+          { wo: 'to', flag: false},
+          { wo: 'be', flag: false},
+          { wo: 'much', flag: false},
+          { wo: 'faster', flag: false},
+          { wo: 'and', flag: false},
+          { wo: 'more', flag: false},
+          { wo: 'efficient', flag: false},
+          { wo: 'than', flag: false},
+          { wo: 'a', flag: false},
+          { wo: 'sitting', flag: false},
+          { wo: 'way', flag: false}
+        ]
+      },
+      { tit: 
+          [
+           { wo: 'The', flag: false},
+           { wo: 'purpose', flag: false},
+           { wo: 'of', flag: false},
+           { wo: 'fixing', flag: false},
+           { wo: '15', flag: false},
+           { wo: 'minutes', flag: false},
+           { wo: 'is', flag: false },
+           { wo: 'to', flag: false},
+           { wo: 'form', flag: false},
+           { wo: 'the', flag: false},
+           { wo: 'meeting', flag: false},
+           { wo: 'habit', flag: false},
+           { wo: 'and', flag: false},
+           { wo: 'discipline', flag: false}
+          ]
+      },
+      { tit: 
+         [
+          { wo: 'we', flag: false},
+          { wo: 'shall', flag: false},
+          { wo: 'get', flag: false},
+          { wo: 'back', flag: false},
+          { wo: 'on', flag: false},
+          { wo: 'our', flag: false},
+          { wo: 'track', flag: false},
+          { wo: 'to', flag: false},
+          { wo: 'synchronize', flag: false},
+          { wo: 'the', flag: false},
+          { wo: 'work', flag: false},
+          { wo: 'of', flag: false},
+          { wo: 'everyone', flag: false}
+         ]
+      },
+      { tit:
+          [
+           { wo: 'Could', flag: false},
+           { wo: 'you', flag: false},
+           { wo: 'please', flag: false},
+           { wo: 'spare', flag: false},
+           { wo: 'some', flag: false},
+           { wo: 'of', flag: false},
+           { wo: 'your', flag: false},
+           { wo: 'time', flag: false},
+           { wo: 'to', flag: false},
+           { wo: 'assist', flag: false},
+           { wo: 'Linda', flag: false},
+           { wo: 'with', flag: false},
+           { wo: 'more', flag: false},
+           { wo: 'details', flag: false},
+           { wo: 'after', flag: false},
+           { wo: 'this', flag: false},
+           { wo: 'meeting', flag: false}
+          ]
+       }
     ],
     resultExample:[],
     tempurl: app.globalData.serverUrl+'/Emp/mobile/page_016/1.png'
@@ -66,16 +139,21 @@ Page({
           })
           for (let i = 0; i < refer.data.rdata[refer.data.rdataIndex].tit.length;i++){
               for(let k=0;k<tem.length;k++){
-                if (tem[k] == refer.data.rdata[refer.data.rdataIndex].tit[i]){
+                if (tem[k] == refer.data.rdata[refer.data.rdataIndex].tit[i].wo){
                      refer.data.scoreIndex = refer.data.scoreIndex+1;
+                  refer.data.rdata[refer.data.rdataIndex].tit[i].flag=true;
                 }
               }
           }
+          refer.setData({
+            rdata: refer.data.rdata
+          })
           let temp_score = refer.data.scoreIndex / refer.data.rdata[refer.data.rdataIndex].tit.length;
           refer.setData({
             score: Math.round(temp_score * 100)
           })
           if (temp_score<0.1){
+            //console.log('读错的下标'+error);
             // let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
             // console.log(tempFilePath);
             // wx.playBackgroundAudio({
@@ -91,7 +169,7 @@ Page({
                 wx.redirectTo({
                   url: '../page_011/page_011',
                 });
-              }.bind(refer), 2000);
+              }.bind(refer), 2500);
             }
             if (refer.data.rdataIndex == 1) {
               app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
@@ -99,7 +177,7 @@ Page({
                 wx.redirectTo({
                   url: '../page_017/page_017',
                 });
-              }.bind(refer), 2000);
+              }.bind(refer), 2500);
             } else {
               app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
               setTimeout(function () {
@@ -109,7 +187,7 @@ Page({
                   score: 0,
                   flag3: false
                 });
-              }.bind(refer), 2000);
+              }.bind(refer), 2500);
             }
             
           }else{
@@ -196,7 +274,7 @@ Page({
     refer.setData({
       rdataIndex: app.globalData.rdataIndex
     });
-    console.log('kkkkkkkkkkk' + refer.data.rdataIndex);
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

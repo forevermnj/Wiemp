@@ -3,13 +3,19 @@
   <view class='style18'>
     <view wx:if="{{flag3}}" class="{{score>10?'style14':'style15'}}">{{score}}</view>
     <image class="{{flag3?'style8':'style7'}}" src='{{tempurl}}'   ></image>
+
+    
     <view class='style9'>
      <view class='style10'>
-      <block wx:for="{{rdata[rdataIndex].tit}}">
-       {{item}}
-      </block>
+        <block wx:for="{{rdata[rdataIndex].tit}}">
+           <block>
+             <text data-id="{{index}}" class="{{flag3==false?'':(item.flag?'style12':'style13')}}">{{item.wo}}</text>\n
+           </block>
+        </block>
      </view>
     </view>
+
+    
     
   </view>
 

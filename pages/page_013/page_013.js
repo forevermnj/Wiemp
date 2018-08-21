@@ -31,7 +31,7 @@ Page({
         [
           {anw:'Because attendees are less than other meetings', flag: false, num: 0},
           {anw: 'Because there is no word to say', flag: false, num: 1},
-          {anw:'Because it is a kind of scrum meeting', flag: true, num: 2}
+          {anw:'Because we need to exchange information with each other efficiently', flag: true, num: 2}
         ]
       },
       { 
