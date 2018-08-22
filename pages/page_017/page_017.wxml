@@ -9,7 +9,7 @@
    </view>
  </view>
 
- <view bindtap='toSubmit' class='style6'>submit</view>
+ <view bindtap='toSubmit' class='style6'>Submit</view>
 </view>
 
 <!--底部导航条-->

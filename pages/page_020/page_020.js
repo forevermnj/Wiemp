@@ -6,24 +6,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    backImg: [
-      { url: app.globalData.serverUrl + '/Emp/mobile/page_020/1.png' },
-      { url: app.globalData.serverUrl + '/Emp/mobile/page_020/2.png' },
-      { url: app.globalData.serverUrl + '/Emp/mobile/page_020/3.png' },
-      { url: app.globalData.serverUrl + '/Emp/mobile/page_020/4.png' }
-
-    ],
-    backMp3: [
-      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_020/1.mp3' },
-      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_020/2.mp3' },
-      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_020/3.mp3' },
-      { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_020/4.mp3' }
-    ],
-    backImgIndex: 0,
-    backMp3Index: 0,
-    tflag: false,
-    speechImg: '../image/tabbar/18.gif',
-    speechFlag: false,
     indeximg: '../image/tabbar/2.png',
     previousImg: '../image/tabbar/13.png'
   },
@@ -33,43 +15,16 @@ Page({
    */
   onLoad: function (options) {
     util.showBusy('加载中...');
-    let refer = this;
-    refer.setData({
-      backImgIndex: 0
-    });
-    refer.toPlay();
   },
-  toPlay: function () {
-
-    let refer = this;
-    if (refer.data.backImgIndex <= 3) {
-      let tempFilePath = refer.data.backMp3[refer.data.backMp3Index].url;
-      wx.playBackgroundAudio({
-        dataUrl: tempFilePath
-      });
-      if (refer.data.tflag == false) {
-        //监听播放停止
-        wx.onBackgroundAudioStop(function () {
-          refer.setData({
-            backImgIndex: refer.data.backImgIndex + 1,
-            backMp3Index: refer.data.backMp3Index + 1
-          });
-          if (refer.data.tflag == false) {
-            refer.toPlay();
-          }
-
-        });
-      }
-
-    } else {
-      console.log('toPlay--跳转页面');
-      refer.setData({
-        tflag: true
-      })
-      wx.redirectTo({
-        url: '../page_013/page_013',
-      });
-    }
+  toContinue:function(){
+    wx.redirectTo({
+      url: '../page_011/page_011',
+    });
+  },
+  toCancel:function(){
+    wx.redirectTo({
+      url: '../page_011/page_011',
+    });
   },
   toIndex: function () {
     let refer = this;
@@ -92,7 +47,7 @@ Page({
       indeximg: '../image/tabbar/2.png'
     });
     wx.redirectTo({
-      url: '../page_012/page_012',
+      url: '../page_011/page_011',
     });
   },
   /**

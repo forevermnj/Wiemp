@@ -118,8 +118,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #354255;
-  border-color: #354255;
+  background-color: #7CD322;
+  border-color: #7CD322;
   color:white;
 }
 

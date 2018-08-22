@@ -167,7 +167,7 @@ Page({
               app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
               setTimeout(function () {
                 wx.redirectTo({
-                  url: '../page_011/page_011',
+                  url: '../page_020/page_020',
                 });
               }.bind(refer), 2500);
             }
