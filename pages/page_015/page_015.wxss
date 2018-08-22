@@ -24,12 +24,13 @@
   flex-direction:row;
   align-items: center;
   justify-content:space-between;
-  width: 315px;
+  width: 80%;
+  height: 35%;
 }
 
 .style3{
-  width: 151px;
-  height: 131px;
+  width: 100%;
+  height: 100%;
   border-radius: 5px;
 }
 
@@ -57,11 +58,11 @@
   flex-direction:row;
   align-items: center;
   justify-content:space-around;
-  margin-top: 120px;
+  margin-top:12%;
   border-width: 0px;
   border-style: solid;
-  width: 300px;
-  height: 70px;
+  width: 80%;
+  height: 12%;
 }
 
 .style7{
@@ -107,6 +108,46 @@
   background-color: red;
   border-color: red;
 }
+
+.style11{
+  border-width: 1px;
+  border-style: solid;
+  border-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  width: 72px;
+  height: 42px;
+  border-radius: 25px; 
+}
+
+.style12{
+  border-width: 0px;
+  border-style: solid;
+  border-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  width: 100px;
+  height: 100px;
+  border-radius: 25px; 
+}
+
+.style13{
+  width: 100px;
+  height: 100px;
+}
+
+.style14{
+  width: 32px;
+  height: 32px;
+}
+
+
+
+
 
 .footerstyle1 {
   position: absolute;

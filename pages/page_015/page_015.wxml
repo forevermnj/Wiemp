@@ -1,15 +1,39 @@
 <view class='style1'>
+
   <view class='style2'>
     <image class='style3' src='https://www.learnzp.com/Emp/mobile/page_015/1.png'></image>
-    <image class='style3' src='https://www.learnzp.com/Emp/mobile/page_015/2.png'></image>
   </view>
-  <view class='style4'>
-       <image class='style5' src='../image/tabbar/14.png'></image>
-  </view>
+
+
+<view catchtap='speech' class="{{speechFlag!=true?'style11':'style12'}}">
+       <image catchtap='speech' class="{{speechFlag?'style13':'style14'}}" src='{{speeImgInit}}'></image>
+      </view>
+
+
+
   <view class='style6'>
-    <view bindtap='choose1' animation="{{animationData1}}" wx:if="{{flag2==false}}" class='style7'><text class='style8'>A</text></view>
-    <view bindtap='toRight' class="{{flag2?'style9':'style7'}}"><text class='style8'>B</text></view>
-    <view bindtap='choose2' animation="{{animationData2}}" wx:if="{{flag2==false}}" class='style7'><text class='style8'>C</text></view>
+   <block wx:if="{{nochooseflag==-1}}">
+   <view bindtap='choose' data-hi="{{[mp3data[mp3dataIndex].anw[0].flag,mp3data[mp3dataIndex].anw[0].num]}}" animation="{{chooseDataNum!=mp3data[mp3dataIndex].anw[0].num?'':(mp3data[mp3dataIndex].anw[0].flag?'':animationErrorData)}}" class='style7'><text class='style8'>A</text></view>
+   </block>
+   <block wx:elif="{{nochooseflag==0 && mp3data[mp3dataIndex].anw[0].flag}}">
+   <view bindtap='choose' data-hi="{{[mp3data[mp3dataIndex].anw[0].flag,mp3data[mp3dataIndex].anw[0].num]}}" animation="{{chooseDataNum!=mp3data[mp3dataIndex].anw[0].num?'':(mp3data[mp3dataIndex].anw[0].flag?'':animationErrorData)}}" class="{{mp3data[mp3dataIndex].anw[0].flag?'style9':'style7'}}"><text class='style8'>A</text></view>
+   </block>
+
+   <block wx:if="{{nochooseflag==-1}}">
+   <view bindtap='choose' data-hi="{{[mp3data[mp3dataIndex].anw[1].flag,mp3data[mp3dataIndex].anw[1].num]}}" animation="{{chooseDataNum!=mp3data[mp3dataIndex].anw[1].num?'':(mp3data[mp3dataIndex].anw[1].flag?'':animationErrorData)}}" class="{{flag2?'style9':'style7'}}"><text class='style8'>B</text></view>
+   </block>
+   <block wx:elif="{{nochooseflag==0 && mp3data[mp3dataIndex].anw[1].flag}}">
+   <view bindtap='choose' data-hi="{{[mp3data[mp3dataIndex].anw[1].flag,mp3data[mp3dataIndex].anw[1].num]}}" animation="{{chooseDataNum!=mp3data[mp3dataIndex].anw[1].num?'':(mp3data[mp3dataIndex].anw[1].flag?'':animationErrorData)}}" class="{{mp3data[mp3dataIndex].anw[1].flag?'style9':'style7'}}"><text class='style8'>B</text></view>
+   </block>
+    
+    
+    <block wx:if="{{nochooseflag==-1}}">
+    <view bindtap='choose' data-hi="{{[mp3data[mp3dataIndex].anw[2].flag,mp3data[mp3dataIndex].anw[2].num]}}" animation="{{chooseDataNum!=mp3data[mp3dataIndex].anw[2].num?'':(mp3data[mp3dataIndex].anw[2].flag?'':animationErrorData)}}" class='style7'><text class='style8'>C</text></view>
+    </block>
+    <block wx:elif="{{nochooseflag==0 && mp3data[mp3dataIndex].anw[2].flag}}">
+    <view bindtap='choose' data-hi="{{[mp3data[mp3dataIndex].anw[2].flag,mp3data[mp3dataIndex].anw[2].num]}}" animation="{{chooseDataNum!=mp3data[mp3dataIndex].anw[2].num?'':(mp3data[mp3dataIndex].anw[2].flag?'':animationErrorData)}}" class="{{mp3data[mp3dataIndex].anw[2].flag?'style9':'style7'}}"><text class='style8'>C</text></view>
+    </block>
+    
   </view>
 </view>
 
