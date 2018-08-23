@@ -51,9 +51,66 @@ Page({
    */
   onLoad: function (options) {
     util.showBusy('加载中...');
+    let refer = this;
+    let uid = wx.getStorageSync('uid');
+    let today = new Date();//当前时间  
+    let y = today.getFullYear();
+    let mon = today.getMonth() + 1;
+    let ym = y + '-' + (mon < 10 ? "0" + mon : mon);
+    let rtemp = new Array();
+   /**
+    * 先检查任务是否过期
+    */
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/checkTask/whetherExpire/' + uid,
+      method: 'GET',
+      success: function (resz) {
+        //console.log(resz.data);
+        rtemp = resz.data.endDate.split("-");
+        //console.log(rtemp);
+        //年份过期
+        if (parseInt(rtemp[0]) < parseInt(y)){
+          wx.showModal({
+            title: '提示',
+            content: '您的任务已过期',
+            success: function (res) {
+              if (res.confirm) {
+                wx.redirectTo({
+                  url: '../page_010/page_010',
+                });
+              } else if (res.cancel) {
+                wx.redirectTo({
+                  url: '../page_010/page_010',
+                });
+              }
+            }
+          });
+          return;
+        }
+        if (parseInt(rtemp[1]) < parseInt(mon)){
+          wx.showModal({
+            title: '提示',
+            content: '您的任务已过期',
+            success: function (res) {
+              if (res.confirm) {
+                wx.redirectTo({
+                  url: '../page_010/page_010',
+                });
+              } else if (res.cancel) {
+                wx.redirectTo({
+                  url: '../page_010/page_010',
+                });
+              }
+            }
+          });
+          return;
+        }
+        //月份过期
+      }
+    })
 
-    var uid = wx.getStorageSync('uid');
-    var refer = this;
+
+    
     //已完成单词
     wx.request({
       url: app.globalData.serverUrl+'/Emp/mobile/bearword/doneWordCount/' + uid,

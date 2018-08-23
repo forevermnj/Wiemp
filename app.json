@@ -27,9 +27,11 @@
     "pages/logs/logs"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "white",
+    "navigationBarTextStyle": "black",
     "navigationBarTitleText": "pbox",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#f8f8f8",
+    "backgroundColor": "#f8f8f8",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": true
   }
 }
