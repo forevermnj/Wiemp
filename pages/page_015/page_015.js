@@ -71,7 +71,8 @@ Page({
     util.showBusy('加载中...');
     let refer = this;
     refer.setData({
-      anwIndex:0
+      anwIndex:0,
+      mp3dataIndex:app.globalData.mp3dataIndex2
     })
     refer.speech();
   },
@@ -159,6 +160,7 @@ Page({
     });
     console.log('选择的结果'+csv);
     if(csv){
+      app.globalData.mp3dataIndex2 = app.globalData.mp3dataIndex2+1;
       refer.setData({
         nochooseflag: 0
       })
