@@ -11,7 +11,7 @@
   background-color: #EAEAEA;
   border-width: 0px;
   border-style: solid;
-  padding: 50rpx 0;
+  padding: 10rpx 0;
   
 }
 
@@ -42,7 +42,7 @@
 .style4{
   border-style: solid;
   border-width: 0px;
-  width: 30%;
+  width: 35%;
   border-radius: 5px;
   
 }
@@ -50,17 +50,17 @@
 .style5{
   border-style: solid;
   border-width: 0px;
-  width: 70%;
+  width: 65%;
   border-radius: 5px;
 }
 
 .style6{
   border-style: solid;
-  border-width: 1px;
+  border-width: 0px;
   width: 90%;
   border-radius: 30px;
   margin-left: 10px;
-  border-color: white;
+  border-color: black;
   margin-top: 10px;
 }
 
@@ -72,21 +72,27 @@
 .style8{
   margin-left: 10px;
   color:#606060;
-  font-size: 15px;
+  font-size: 13px;
+  margin-top: 3px;
 }
 
 .style9{
-  
+  border-style: solid;
+  border-width: 0px;
   margin-left: 10px;
   color:#606060;
   font-size: 15px;
   margin-bottom: 5px;
-  margin-top: 20px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  
 }
 
 .style10{
-  width: 32px;
-  height: 32px;
+  width: 16px;
+  height: 16px;
+  margin-top: 8px;
 }
 
 .style11{
@@ -94,6 +100,17 @@
   height: 100%;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+}
+
+.style12{
+  margin-top: 7px;
+}
+
+.style13{
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 15px;
+  border-color: white;
 }
 
 ::-webkit-scrollbar {

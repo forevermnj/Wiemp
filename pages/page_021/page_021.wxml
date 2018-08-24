@@ -8,14 +8,14 @@
        <image class='style11' src='{{item.img}}'></image>
       </view>
       <view class='style5'>
-        <view class='style7'>Meeting</view>
+        <view class='style7'>{{item.tit}}</view>
         <view class='style6'>
-         <progress activeColor="#53CB14" percent="60" stroke-width="10"/>
+         <progress radius="10" activeColor="#53CB14" percent="{{item.process}}" stroke-width="10"/>
         </view>
-        <view class='style8'>completed 60%,average score 83</view>
+        <view class='style8'>{{item.tip}}</view>
         <view class='style9'>
          <image class='style10' src='../image/tabbar/26.png'></image>
-        16/30
+         <text class='style12'>16/30</text>
         </view>
       </view>
       

@@ -9,43 +9,31 @@ Page({
       resdata:[
         { 
           img: app.globalData.serverUrl + '/Emp/mobile/page_021/1.png',
-          con:
-          [
-            'Meeting',
-            '0',
-            'completed 60%,average score 83',
-            '16/30'
-          ] 
+          tit: 'Weekly Report',
+          process: '0',
+          tip: '至今还未闯关，赶紧开始吧!',
+          tt: '16/30'
         },
         {
           img: app.globalData.serverUrl + '/Emp/mobile/page_021/2.png',
-          con:
-            [
-              'Meeting',
-              '0',
-              'completed 60%,average score 83',
-              '16/30'
-            ] 
+          tit: 'Issue Report',
+          process: '60',
+          tip: 'completed 60%,average score 83',
+          tt: '16/30'
         },
         {
           img: app.globalData.serverUrl + '/Emp/mobile/page_021/3.png',
-          con:
-            [
-              'Meeting',
-              '0',
-              'completed 60%,average score 83',
-              '16/30'
-            ] 
+          tit: 'Shown Demo',
+          process: '0',
+          tip: '至今还未闯关，赶紧开始吧!',
+          tt: '16/30'
         },
         {
           img: app.globalData.serverUrl + '/Emp/mobile/page_021/4.png',
-          con:
-            [
-              'Meeting',
-              '0',
-              'completed 60%,average score 83',
-              '16/30'
-            ] 
+          tit: 'Finance Report',
+          process: '0',
+          tip: '至今还未闯关，赶紧开始吧!',
+          tt: '16/30'
         }
       ],
     indeximg: '../image/tabbar/2.png',
