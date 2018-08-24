@@ -160,7 +160,7 @@ Page({
     });
     console.log('选择的结果'+csv);
     if(csv){
-      app.globalData.mp3dataIndex2 = app.globalData.mp3dataIndex2+1;
+      //app.globalData.mp3dataIndex2 = app.globalData.mp3dataIndex2+1;
       refer.setData({
         nochooseflag: 0
       })
@@ -169,6 +169,7 @@ Page({
         dataUrl: tempFilePath
       });
       setTimeout(function () {
+        wx.stopBackgroundAudio();
         wx.redirectTo({
           url: '../page_016/page_016',
         });
@@ -186,6 +187,7 @@ Page({
   },
   toIndex: function () {
     let refer = this;
+    wx.stopBackgroundAudio();
     refer.setData({
       indeximg: '../image/tabbar/1.png',
       catagaryimg: '../image/tabbar/5.png'
@@ -196,6 +198,7 @@ Page({
   },
   toPrevious: function () {
     let refer = this;
+    wx.stopBackgroundAudio();
     refer.setData({
       indeximg: '../image/tabbar/2.png'
     });

@@ -164,7 +164,7 @@ Page({
               dataUrl: tempFilePath
             });
             if (refer.data.rdataIndex == 3){
-              app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
+              //app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
               setTimeout(function () {
                 wx.redirectTo({
                   url: '../page_020/page_020',
@@ -172,14 +172,14 @@ Page({
               }.bind(refer), 2500);
             }
             if (refer.data.rdataIndex == 1) {
-              app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
+              //app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
               setTimeout(function () {
                 wx.redirectTo({
                   url: '../page_017/page_017',
                 });
               }.bind(refer), 2500);
             } else {
-              app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
+              //app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
               setTimeout(function () {
                 refer.setData({
                   rdataIndex: refer.data.rdataIndex + 1,
@@ -196,7 +196,7 @@ Page({
               dataUrl: tempFilePath
             });
             if (refer.data.rdataIndex == 3) {
-              app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
+              //app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
               setTimeout(function () {
                 wx.redirectTo({
                   url: '../page_011/page_011',
@@ -204,14 +204,14 @@ Page({
               }.bind(refer), 2000);
             }
             if (refer.data.rdataIndex == 1){
-              app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
+              //app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
               setTimeout(function () {
                 wx.redirectTo({
                   url: '../page_017/page_017',
                 });
               }.bind(refer), 2000);
             }else{
-              app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
+              //app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
               setTimeout(function () {
                 refer.setData({
                   rdataIndex: refer.data.rdataIndex + 1,

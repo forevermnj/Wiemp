@@ -187,8 +187,8 @@ Page({
       refer.setData({
         nochooseflag: 0
       });
-      app.globalData.chooseDataIndex = app.globalData.chooseDataIndex + 1;
-      app.globalData.mp3dataIndex = app.globalData.mp3dataIndex + 1;
+      //app.globalData.chooseDataIndex = app.globalData.chooseDataIndex + 1;
+      //app.globalData.mp3dataIndex = app.globalData.mp3dataIndex + 1;
       setTimeout(function () {
         wx.redirectTo({
           url: '../page_014/page_014',
@@ -205,8 +205,8 @@ Page({
           mp3dataIndex:refer.data.mp3dataIndex + 1,
           nochooseflag: -1
         });
-        app.globalData.chooseDataIndex=app.globalData.chooseDataIndex + 1;
-        app.globalData.mp3dataIndex = app.globalData.mp3dataIndex+1;
+        //app.globalData.chooseDataIndex=app.globalData.chooseDataIndex + 1;
+        //app.globalData.mp3dataIndex = app.globalData.mp3dataIndex+1;
         refer.speech();
       }.bind(refer), 1300);
       

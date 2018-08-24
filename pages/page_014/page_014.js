@@ -137,8 +137,8 @@ Page({
           emptypositionIndex:0,
           chooseResult:[]
         });
-        app.globalData.dataIndex = app.globalData.dataIndex+1;
-        app.globalData.anwdataIndex = app.globalData.anwdataIndex+1;
+        //app.globalData.dataIndex = app.globalData.dataIndex+1;
+        //app.globalData.anwdataIndex = app.globalData.anwdataIndex+1;
       } else {
         let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
         wx.playBackgroundAudio({

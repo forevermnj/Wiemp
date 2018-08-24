@@ -36,13 +36,30 @@ Page({
          refer.setData({
            correctFlag:true
          });
+      // app.globalData.backImgIndex = app.globalData.backImgIndex+1;
+      // app.globalData.backMp3Index = app.globalData.backMp3Index+1;
+      //page_012页面全局参数
+      app.globalData.backImgIndex = app.globalData.backImgIndex+1;
+      //page_012页面全局参数
+      app.globalData.backMp3Index = app.globalData.backMp3Index+1;
+      //page_013页面全局参数
+      app.globalData.chooseDataIndex = app.globalData.chooseDataIndex+2;
+      //page_013页面全局参数
+      app.globalData.mp3dataIndex = app.globalData.mp3dataIndex+2;
+      //page_014页面全局参数
+      app.globalData.dataIndex = app.globalData.dataIndex+2;
+      //page_014页面全局参数
+      app.globalData.anwdataIndex = app.globalData.anwdataIndex+2;
+      //page_015页面全局参数
+      app.globalData.mp3dataIndex2 = app.globalData.mp3dataIndex2+1;
+      //page_016页面全局参数
+      app.globalData.rdataIndex = app.globalData.rdataIndex+2;
       let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/page_017/1.mp3';
       wx.playBackgroundAudio({
         dataUrl: tempFilePath
       });
       wx.onBackgroundAudioStop(function () {
-        app.globalData.backImgIndex = app.globalData.backImgIndex+1;
-        app.globalData.backMp3Index = app.globalData.backMp3Index+1;
+        
         wx.redirectTo({
           url: '../page_012/page_012',
         });
