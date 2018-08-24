@@ -20,7 +20,12 @@ Page({
       
     ],
     start: { x: 0, y: 0 },
-    correctFlag:false
+    correctFlag:false,
+    mp3index:0,
+    mp3:[
+      app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3',
+      app.globalData.serverUrl + '/Emp/mobile/mp3/page_017/1.mp3'
+    ]
   },
   toSubmit:function(){
      let refer = this;
@@ -54,15 +59,25 @@ Page({
       app.globalData.mp3dataIndex2 = app.globalData.mp3dataIndex2+1;
       //page_016页面全局参数
       app.globalData.rdataIndex = app.globalData.rdataIndex+2;
-      let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/page_017/1.mp3';
+      let tempFilePath = refer.data.mp3[refer.data.mp3index];
       wx.playBackgroundAudio({
         dataUrl: tempFilePath
       });
       wx.onBackgroundAudioStop(function () {
+        refer.setData({
+          mp3index:refer.data.mp3index+1
+        })
+        if (refer.data.mp3index==2){
+          wx.redirectTo({
+            url: '../page_012/page_012',
+          });
+        }else{
+          let tempFilePath = refer.data.mp3[refer.data.mp3index];
+          wx.playBackgroundAudio({
+            dataUrl: tempFilePath
+          });
+        }
         
-        wx.redirectTo({
-          url: '../page_012/page_012',
-        });
       });
       
     }else{

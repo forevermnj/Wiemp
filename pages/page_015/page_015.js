@@ -31,6 +31,7 @@ Page({
     flag1:false,
     flag2:false,
     flag3:false,
+    preflag:false,
     speeImgInit: '../image/tabbar/14.png',
     speechFlag: false,
     animationErrorData: {},
@@ -39,33 +40,40 @@ Page({
 
   },
   speech: function () {
+
     let refer = this;
-    refer.setData({
-      speeImgInit: '../image/tabbar/18.gif',
-      speechFlag: true,
-      anwIndex: 0
-    });
-    let tempFilePath = refer.data.mp3data[refer.data.mp3dataIndex].pro;
-    wx.playBackgroundAudio({
-      dataUrl: tempFilePath
-    });
-    //监听播放停止
-    wx.onBackgroundAudioStop(function () {
-      if (refer.data.anwIndex<=2){
-        let tempFilePath = refer.data.mp3data[refer.data.mp3dataIndex].anw[refer.data.anwIndex].url;
-        wx.playBackgroundAudio({
-          dataUrl: tempFilePath
-        });
-        refer.setData({
-          anwIndex: refer.data.anwIndex + 1
-        })
-      }else{
-        refer.setData({
-           speeImgInit: '../image/tabbar/14.png',
-           speechFlag: false
-        });
-      }
-    })
+    if (refer.data.preflag==false){
+      refer.setData({
+        speeImgInit: '../image/tabbar/18.gif',
+        speechFlag: true,
+        anwIndex: 0
+      });
+      let tempFilePath = refer.data.mp3data[refer.data.mp3dataIndex].pro;
+      wx.playBackgroundAudio({
+        dataUrl: tempFilePath
+      });
+      //监听播放停止
+      wx.onBackgroundAudioStop(function () {
+        if (refer.data.preflag == false){
+          if (refer.data.anwIndex <= 2) {
+            let tempFilePath = refer.data.mp3data[refer.data.mp3dataIndex].anw[refer.data.anwIndex].url;
+            wx.playBackgroundAudio({
+              dataUrl: tempFilePath
+            });
+            refer.setData({
+              anwIndex: refer.data.anwIndex + 1
+            })
+          } else {
+            refer.setData({
+              speeImgInit: '../image/tabbar/14.png',
+              speechFlag: false
+            });
+          }
+        }
+        
+      })
+    }
+    
   },
   onLoad: function () {
     util.showBusy('加载中...');
@@ -162,7 +170,8 @@ Page({
     if(csv){
       //app.globalData.mp3dataIndex2 = app.globalData.mp3dataIndex2+1;
       refer.setData({
-        nochooseflag: 0
+        nochooseflag: 0,
+        preflag: true
       })
       let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
       wx.playBackgroundAudio({
@@ -199,8 +208,10 @@ Page({
   toPrevious: function () {
     let refer = this;
     wx.stopBackgroundAudio();
+
     refer.setData({
-      indeximg: '../image/tabbar/2.png'
+      indeximg: '../image/tabbar/2.png',
+      preflag:true
     });
     wx.redirectTo({
       url: '../page_014/page_014',
