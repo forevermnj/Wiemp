@@ -19,10 +19,16 @@
   border-style: solid;
   border-width: 0px;
   width: 95%;
-  height: 95%;
+  height: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
 }
 
 .style3{
@@ -113,11 +119,7 @@
   border-color: white;
 }
 
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  color: transparent;
-}
+
 
 
 
