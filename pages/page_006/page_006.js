@@ -183,10 +183,10 @@ Page({
     }
 
     /************************************************
-     * 如果选择正确，则自动跳转下一个单词,正确单词下标为0
+     * 如果选择正确
      * 自动跳转暂时取消
      *************************************************/
-    if (e.currentTarget.dataset.optionsindex == '0')    {
+    if (e.currentTarget.dataset.optionsindex == this.data.wordList[this.data.wordIndex].correct)    {
       wx.playBackgroundAudio({
         dataUrl: app.globalData.serverUrl + '/Emp/mobile/mp3/correct.mp3'
       });
