@@ -39,7 +39,25 @@ Page({
     indeximg: '../image/tabbar/2.png',
     previousImg: '../image/tabbar/13.png'
   },
-
+  toIndex: function () {
+    let refer = this;
+    refer.setData({
+      indeximg: '../image/tabbar/1.png',
+      catagaryimg: '../image/tabbar/5.png'
+    });
+    wx.redirectTo({
+      url: '../page_010/page_010',
+    });
+  },
+  toPrevious: function () {
+    let refer = this;
+    refer.setData({
+      indeximg: '../image/tabbar/2.png'
+    });
+    wx.redirectTo({
+      url: '../page_010/page_010',
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

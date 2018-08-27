@@ -5,16 +5,24 @@ Page({
     list1: [
       {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/1.png',
-        title: 'SweetWords'
+        title: 'SweetWords',
+        num: 0,
+        ttype: 1
       }, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/2.png',
-        title: 'MongoReading'
+        title: 'MongoReading',
+        num: 1,
+        ttype: 1
       }, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/3.png',
-        title: 'StandUpMeeting'
+        title: 'StandUpMeeting',
+        num: 2,
+        ttype: 1
       }, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/4.png',
-        title: 'StandUpMeeting'
+        title: 'Finance',
+        num: 3,
+        ttype: 1
       }/*, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/5.png',
         title: 'Professionalliteracy'
@@ -23,25 +31,35 @@ Page({
     list2: [
       {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/6.png',
-        title: 'MuleSoft'
+        title: 'MuleSoft',
+        num: 0,
+        ttype: 2
       }, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/7.png',
-        title: 'Aws'
+        title: 'Aws',
+        num: 1,
+        ttype: 2
       },/* {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/8.png',
         title: 'Expect'
       }, */{
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/9.png',
-        title: 'SpringBoot'
+        title: 'SpringBoot',
+        num: 2,
+        ttype: 2
       }, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/10.png',
-        title: 'NodeJS'
+        title: 'NodeJS',
+        num: 3,
+        ttype: 2
       }
     ],
     list3: [
       {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/11.png',
-        title: 'Expect'
+        title: 'Expect',
+        num: 0,
+        ttype: 3
       }
     ],
     headImage: wx.getStorageSync('headImage'),
@@ -51,15 +69,33 @@ Page({
     loginimg:'../image/tabbar/3.png'
    
   },
-  clickImg:function(){
-    wx.redirectTo({
-      url: '../page_001/page_001',
-    })
+  clickImg:function(e){
+    let csv1 = e.currentTarget.dataset.hi[0];
+    let csv2 = e.currentTarget.dataset.hi[1];
+    console.log(csv1+csv2);
+    if (csv2==1){
+      if(csv1==0){
+        wx.redirectTo({
+          url: '../page_001/page_001',
+        })
+      }
+      if(csv1==2){
+        wx.redirectTo({
+          url: '../page_011/page_011',
+        })
+      }
+      if(csv1==3){
+        wx.redirectTo({
+          url: '../page_021/page_021',
+        })
+      }
+    }
+    
   },
-  clickImg2: function () {
-    wx.redirectTo({
-      url: '../page_011/page_011',
-    })
+  clickImg2: function (e) {
+    // wx.redirectTo({
+    //   url: '../page_011/page_011',
+    // })
   },
   onPullDownRefresh:function(){
     
