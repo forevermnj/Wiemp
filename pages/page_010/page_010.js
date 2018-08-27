@@ -14,14 +14,9 @@ Page({
         num: 1,
         ttype: 1
       }, {
-        pic: app.globalData.serverUrl +'/Emp/mobile/page_010/3.png',
-        title: 'StandUpMeeting',
-        num: 2,
-        ttype: 1
-      }, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/4.png',
-        title: 'Finance',
-        num: 3,
+        title: 'Fin-Tech English',
+        num: 2,
         ttype: 1
       }/*, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_010/5.png',
@@ -72,7 +67,7 @@ Page({
   clickImg:function(e){
     let csv1 = e.currentTarget.dataset.hi[0];
     let csv2 = e.currentTarget.dataset.hi[1];
-    console.log(csv1+csv2);
+    
     if (csv2==1){
       if(csv1==0){
         wx.redirectTo({
@@ -80,11 +75,6 @@ Page({
         })
       }
       if(csv1==2){
-        wx.redirectTo({
-          url: '../page_011/page_011',
-        })
-      }
-      if(csv1==3){
         wx.redirectTo({
           url: '../page_021/page_021',
         })

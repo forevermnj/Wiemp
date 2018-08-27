@@ -3,11 +3,11 @@
   <scroll-view class='style2' scroll-y='true'>
    
     <block wx:for="{{resdata}}">
-     <view class='style3'>
-      <view class='style4'>
-       <image class='style11' src='{{item.img}}'></image>
+     <view data-hi="{{item.num}}" catchtap='toClickImg' class='style3'>
+      <view data-hi="{{item.num}}" catchtap='toClickImg' class='style4'>
+       <image class='style11' data-hi="{{item.num}}" catchtap='toClickImg' src="{{item.pic}}"></image>
       </view>
-      <view class='style5'>
+      <view data-hi="{{item.num}}" catchtap='toClickImg' class='style5'>
         <view class='style7'>{{item.tit}}</view>
         <view class='style6'>
          <progress radius="10" activeColor="#53CB14" percent="{{item.process}}" stroke-width="10"/>
@@ -15,7 +15,7 @@
         <view class='style8'>{{item.tip}}</view>
         <view class='style9'>
          <image class='style10' src='../image/tabbar/26.png'></image>
-         <text class='style12'>16/30</text>
+         <text class='style12'>{{item.tt}}</text>
         </view>
       </view>
       
