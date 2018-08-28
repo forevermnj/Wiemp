@@ -31,13 +31,29 @@ Page({
           tt: '100/500',
           num:2
         },
+        
         {
+          pic: app.globalData.serverUrl + '/Emp/mobile/page_021/6.png',
+          tit: 'Exchange Meeting',
+          process: '0',
+          tip: '至今还未闯关，赶紧开始吧!',
+          tt: '100/500',
+          num: 3
+        },
+        {
+          pic: app.globalData.serverUrl + '/Emp/mobile/page_021/7.png',
+          tit: 'Progress Report',
+          process: '0',
+          tip: '至今还未闯关，赶紧开始吧!',
+          tt: '100/500',
+          num: 3
+        }, {
           pic: app.globalData.serverUrl + '/Emp/mobile/page_021/3.png',
           tit: 'Shown Demo',
           process: '0',
           tip: '至今还未闯关，赶紧开始吧!',
           tt: '100/500',
-          num:3
+          num: 3
         },
         {
           pic: app.globalData.serverUrl + '/Emp/mobile/page_021/4.png',

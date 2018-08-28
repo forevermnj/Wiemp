@@ -107,6 +107,7 @@ Page({
     chooseResult:[],
     emptypositionIndex:0,
     flag1:false,
+    ifsubflag:false,
     temp:[],
     indeximg: '../image/tabbar/2.png',
     previousImg: '../image/tabbar/13.png'
@@ -118,7 +119,10 @@ Page({
   },
   check:function(e){
       let refer = this;
-
+      // refer.setData({
+      //   ifsubflag:true
+      // })
+      
       if(refer.data.anwdata[refer.data.anwdataIndex].correct1==refer.data.chooseResult[0] && refer.data.anwdata[refer.data.anwdataIndex].correct2==refer.data.chooseResult[1]
       ){
         console.log('选择正确'+refer.data.dataIndex);

@@ -4,14 +4,15 @@ Page({
   data: {
     list2: [
       {
+        pic: app.globalData.serverUrl + '/Emp/mobile/page_011/3.png',
+        title: 'Scenario'
+      }, 
+      {
         pic: app.globalData.serverUrl+'/Emp/mobile/page_011/1.png',
         title: 'Listening'
       }, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_011/2.png',
         title: 'Speaking'
-      }, {
-        pic: app.globalData.serverUrl +'/Emp/mobile/page_011/3.png',
-        title: 'Meeting'
       }, {
         pic: app.globalData.serverUrl +'/Emp/mobile/page_011/4.png',
         title: 'Vocabulary'
@@ -153,7 +154,7 @@ Page({
       indeximg: '../image/tabbar/2.png'
     });
     wx.redirectTo({
-      url: '../page_010/page_010',
+      url: '../page_021/page_021',
     });
   }
 })

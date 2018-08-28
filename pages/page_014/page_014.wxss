@@ -237,6 +237,27 @@
   padding:3px;
 }
 
+.style20{
+  border-style: solid;
+  border-width: 1px;
+  border-color: red;
+  background-color: red;
+  border-radius: 5px;
+  font-size: 16px;
+  padding:3px;
+}
+
+.style21{
+  border-style: solid;
+  border-width: 1px;
+  border-color: green;
+  background-color: green;
+  border-radius: 5px;
+  font-size: 16px;
+  padding:3px;
+}
+
+
 
 
 
