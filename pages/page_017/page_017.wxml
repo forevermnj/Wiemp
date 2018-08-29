@@ -1,4 +1,5 @@
 <view class="container">
+ <scroll-view scroll-y="true">
  <view bindtap="box" class="box" >
 
 
@@ -8,7 +9,7 @@
 
    </view>
  </view>
-
+</scroll-view>
  <view bindtap='toSubmit' class='style6'>Submit</view>
 </view>
 

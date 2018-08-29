@@ -1,7 +1,9 @@
 <!--pages/page_006/page_006.wxml-->
 <view style="opacity:{{showDialog?0.3:1}}">
-  <view class="mainarea" bindtouchstart='touchstart' bindtouchmove='touchmove' bindtouchend='touchend'>
-    <scroll-view scroll-y="true" scroll-with-animation="true">
+  
+  <scroll-view scroll-y="true" class="mainarea" bindtouchstart='touchstart' bindtouchmove='touchmove' bindtouchend='touchend'>
+    <view>
+    <scroll-view scroll-y="true">
       <view class="title">
         <text>{{wordList[wordIndex].word}}</text>
       </view>
@@ -24,9 +26,9 @@
           <icon wx:if="{{myanswer[wordIndex]!=index?'':(flag1=='0'?'':(myanswer[wordIndex]==wordList[wordIndex].correct))}}" type="success_no_circle" size='24' color='green'/>
         </view>
       </view>
-
-    </scroll-view>
-  </view>
+      </scroll-view>
+    </view>
+  </scroll-view>
   <view class='footer'>{{wordIndex+1}}/{{wordList.length}}</view>
 </view>
 <!--result dialog-->
