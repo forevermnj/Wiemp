@@ -90,6 +90,7 @@ Page({
   },
   toIndex: function () {
     let refer = this;
+    wx.stopBackgroundAudio();
     refer.setData({
       indeximg: '../image/tabbar/1.png',
       catagaryimg: '../image/tabbar/5.png'
@@ -100,6 +101,7 @@ Page({
   },
   toPrevious: function () {
     let refer = this;
+    wx.stopBackgroundAudio();
     refer.setData({
       indeximg: '../image/tabbar/2.png'
     });

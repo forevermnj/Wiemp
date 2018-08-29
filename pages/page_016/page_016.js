@@ -264,6 +264,10 @@ Page({
         resolve(1)
       }
     })
+
+
+
+    
   },
   onPullDownRefresh: function () {
 

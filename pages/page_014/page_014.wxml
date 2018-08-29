@@ -7,17 +7,20 @@
      </view>
 
      <view class='style5'>
-       <block wx:for="{{data[dataIndex].tit}}">
-         <block>
-          <text class="{{item=='______'?'style18':((index==data[dataIndex].emptyposition[0] || index==data[dataIndex].emptyposition[1])?'style19':'')}}">{{item}}</text>\n
+       <block wx:for="{{data[dataIndex].pro}}">
+         <block wx:if="{{item.tit!='______'}}">
+          <text data-hi="{{[item.tit,item.num]}}" catchtap="{{item.ifem?'clickEmpty':''}}" class="{{ifsubflag==false && item.ifem?'style19':(item.ifem==false?'':(item.tit==item.correct?'style21':'style20'))}}">{{item.tit}}</text>\n
+         </block>
+         <block wx:elif="{{item.tit=='______'}}">
+          <text class="{{item.tit=='______'?'style18':''}}">{{item.tit}}</text>\n
          </block>
        </block>
      </view>
 
      
      <view class="{{flag1==true?'style7':'style13'}}">
-      <block wx:for="{{anwdata[anwdataIndex].tit}}">
-        <view data-hi="{{item}}" class="{{(item==chooseResult[0] ||item==chooseResult[1])?'style11':'style8'}}" catchtap='chooseAnswer'>{{item}}</view>
+      <block wx:for="{{data[dataIndex].answer}}">
+        <view data-hi="{{[item.subnum,item.tit]}}" class="{{(item.tit==chooseResult[0] ||item.tit==chooseResult[1])?'style11':'style8'}}" catchtap="{{(item.tit==chooseResult[0] ||item.tit==chooseResult[1])?'':'chooseAnswer'}}">{{item.tit}}</view>
       </block>
      </view>
      
