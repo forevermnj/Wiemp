@@ -36,6 +36,8 @@ Page({
     speechFlag: false,
     animationErrorData: {},
     animationCorrectData: {},
+    allowClickNum:3,
+    allowClickIndex:0,
     nochooseflag: -1
 
   },
@@ -184,6 +186,21 @@ Page({
         });
       }.bind(refer), 1500);
     }else{
+      //选错次数递增
+      wx.stopBackgroundAudio();
+      refer.data.allowClickIndex = refer.data.allowClickIndex + 1;
+      if(refer.data.allowClickIndex == refer.data.allowClickNum){
+          console.log('选错三次');
+        refer.data.allowClickIndex = 0;
+        setTimeout(function () {
+          wx.stopBackgroundAudio();
+          wx.redirectTo({
+            url: '../page_016/page_016',
+          });
+        }.bind(refer), 500);
+        return
+
+      }
       let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
       console.log(tempFilePath);
       wx.playBackgroundAudio({

@@ -12,6 +12,8 @@ Page({
       { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_013/6.mp3'}
     ],
     nochooseflag:-1,
+    allowClickNum:3,
+    allowClickIndex:0,
     chooseDataFlag:false,
     chooseDataNum:0,
     chooseDataIndex: app.globalData.chooseDataIndex,
@@ -149,7 +151,7 @@ Page({
        speeImgInit:'../image/tabbar/18.gif',
        speechFlag:true
      });
-    var tempFilePath = refer.data.mp3data[refer.data.mp3dataIndex].url;
+     let tempFilePath = refer.data.mp3data[refer.data.mp3dataIndex].url;
      wx.playBackgroundAudio({
        dataUrl: tempFilePath
      });
@@ -260,6 +262,48 @@ Page({
       
     }else{
       let refer = this;
+      //允许点错次数递增
+      refer.data.allowClickIndex = refer.data.allowClickIndex + 1;
+      //超过三次选错则自动跳转下一个
+      if(refer.data.allowClickIndex==3){
+          console.log('选错3次');
+        if (refer.data.chooseDataIndex == 1 || refer.data.chooseDataIndex == 5) {
+          refer.setData({
+            nochooseflag: 0
+          });
+          //app.globalData.chooseDataIndex = app.globalData.chooseDataIndex + 1;
+          //app.globalData.mp3dataIndex = app.globalData.mp3dataIndex + 1;
+          setTimeout(function () {
+            wx.redirectTo({
+              url: '../page_014/page_014',
+            });
+          }.bind(refer), 1300);
+        } else {
+          refer.setData({
+            nochooseflag: 0
+          });
+          setTimeout(function () {
+            console.log('开始递增');
+            refer.setData({
+              chooseDataIndex: refer.data.chooseDataIndex + 1,
+              mp3dataIndex: refer.data.mp3dataIndex + 1,
+              nochooseflag: -1,
+              allowClickIndex:0
+            });
+            //app.globalData.chooseDataIndex=app.globalData.chooseDataIndex + 1;
+            //app.globalData.mp3dataIndex = app.globalData.mp3dataIndex+1;
+            refer.speech();
+          }.bind(refer), 500);
+
+        }
+        return
+      }
+
+
+
+
+
+
       refer.setData({
         nochooseflag: -1
       })

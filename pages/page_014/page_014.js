@@ -197,6 +197,8 @@ Page({
     chooseResult:[],
     chooseResultIndex:[],
     emptypositionIndex:0,
+    allowClickNum:3,
+    allowClickIndex:0,
     which_sel:-1,
     flag1:false,
     ifsubflag:false,
@@ -317,6 +319,29 @@ Page({
         //app.globalData.dataIndex = app.globalData.dataIndex+1;
         //app.globalData.anwdataIndex = app.globalData.anwdataIndex+1;
       } else {
+        //允许选错的次数递增
+        refer.data.allowClickIndex = refer.data.allowClickIndex + 1;
+        if(refer.data.allowClickIndex == refer.data.allowClickNum){
+            console.log('选错三次');
+          if (refer.data.dataIndex == 1 || refer.data.dataIndex == 3) {
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '../page_015/page_015',
+              });
+            }.bind(refer), 1000);
+            return
+
+          }
+          refer.setData({
+            anwdataIndex: refer.data.anwdataIndex + 1,
+            dataIndex: refer.data.dataIndex + 1,
+            emptypositionIndex: 0,
+            chooseResult: [],
+            flag1: false,
+            allowClickIndex:0
+          });
+
+        }
         let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
         wx.playBackgroundAudio({
           dataUrl: tempFilePath
