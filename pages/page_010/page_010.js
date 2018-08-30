@@ -2,61 +2,8 @@ var app = getApp();
 var util = require('../../utils/util.js');
 Page({
   data: {
-    list1: [
-      {
-        pic: app.globalData.serverUrl +'/Emp/mobile/page_010/1.png',
-        title: 'SweetWords',
-        num: 0,
-        ttype: 1
-      }, {
-        pic: app.globalData.serverUrl +'/Emp/mobile/page_010/2.png',
-        title: 'MongoReading',
-        num: 1,
-        ttype: 1
-      }, {
-        pic: app.globalData.serverUrl +'/Emp/mobile/page_010/4.png',
-        title: 'Fin-Tech English',
-        num: 2,
-        ttype: 1
-      }/*, {
-        pic: app.globalData.serverUrl +'/Emp/mobile/page_010/5.png',
-        title: 'Professionalliteracy'
-      }*/
-    ],
-    list2: [
-      {
-        pic: app.globalData.serverUrl +'/Emp/mobile/page_010/6.png',
-        title: 'MuleSoft',
-        num: 0,
-        ttype: 2
-      }, {
-        pic: app.globalData.serverUrl +'/Emp/mobile/page_010/7.png',
-        title: 'Aws',
-        num: 1,
-        ttype: 2
-      },/* {
-        pic: app.globalData.serverUrl +'/Emp/mobile/page_010/8.png',
-        title: 'Expect'
-      }, */{
-        pic: app.globalData.serverUrl +'/Emp/mobile/page_010/9.png',
-        title: 'SpringBoot',
-        num: 2,
-        ttype: 2
-      }, {
-        pic: app.globalData.serverUrl +'/Emp/mobile/page_010/10.png',
-        title: 'NodeJS',
-        num: 3,
-        ttype: 2
-      }
-    ],
-    list3: [
-      {
-        pic: app.globalData.serverUrl +'/Emp/mobile/page_010/11.png',
-        title: 'Expect',
-        num: 0,
-        ttype: 3
-      }
-    ],
+    fistData: [],
+    
     headImage: wx.getStorageSync('headImage'),
     nickName: wx.getStorageSync('nickName'),
     indeximg:'../image/tabbar/2.png',
@@ -65,21 +12,18 @@ Page({
    
   },
   clickImg:function(e){
-    let csv1 = e.currentTarget.dataset.hi[0];
-    let csv2 = e.currentTarget.dataset.hi[1];
+    let refer = this;
+    let csv1 = e.currentTarget.dataset.hi;
     
-    if (csv2==1){
-      if(csv1==0){
+    
+    
+      
+      
         wx.redirectTo({
-          url: '../page_001/page_001',
+          url: csv1,
         })
-      }
-      if(csv1==2){
-        wx.redirectTo({
-          url: '../page_021/page_021',
-        })
-      }
-    }
+     
+   
     
   },
   clickImg2: function (e) {
@@ -91,13 +35,17 @@ Page({
     
   },
   onLoad: function () {
-    // var pages = getCurrentPages();
-    // console.log('ddd' + pages.length);
-    // if (pages.length>2){
-    //   wx.navigateBack({
-    //     delta: pages.length-1
-    //   })
-    // }
+    let refer = this;
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/getIndexData/getIndexData',
+      method: 'GET',
+      success: function (res) {
+        //refer.data.fistData = res.data;
+        refer.setData({
+          fistData: res.data
+        })
+      }
+    })
     util.showBusy('加载中...');
   },
   /**

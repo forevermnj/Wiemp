@@ -324,35 +324,125 @@ Page({
         if(refer.data.allowClickIndex == refer.data.allowClickNum){
             console.log('选错三次');
           if (refer.data.dataIndex == 1 || refer.data.dataIndex == 3) {
+            for (let n = 0; n < refer.data.data[refer.data.dataIndex].emptyposition.length; n++) {
+              let temp_correct = refer.data.data[refer.data.dataIndex].pro[refer.data.data[refer.data.dataIndex].emptyposition[n]].correct;
+              let temp_num = refer.data.data[refer.data.dataIndex].pro[refer.data.data[refer.data.dataIndex].emptyposition[n]].num;
+              let temp_ifem = refer.data.data[refer.data.dataIndex].pro[refer.data.data[refer.data.dataIndex].emptyposition[n]].ifem;
+
+              refer.data.data[refer.data.dataIndex].pro.splice(
+                refer.data.data[refer.data.dataIndex].emptyposition[n],
+                1,
+                { tit: temp_correct, correct: temp_correct, num: temp_num, ifem: temp_ifem },
+              );
+            }
+
+            let data_temp = new Array();
+            for (let n = 0; n < refer.data.data.length; n++) {
+              if (refer.data.dataIndex == n) {
+                data_temp.push(
+                  {
+                    pro: refer.data.data[refer.data.dataIndex].pro,
+                    emptyposition: refer.data.data[refer.data.dataIndex].emptyposition,
+                    correct: refer.data.data[refer.data.dataIndex].correct,
+                    answer: refer.data.data[refer.data.dataIndex].answer
+                  }
+                );
+              } else {
+                data_temp.push(refer.data.data[n]);
+              }
+            }
+            refer.setData({
+
+              data: data_temp
+            });
+            setTimeout(function () {
+              refer.setData({
+                anwdataIndex: refer.data.anwdataIndex + 1,
+                dataIndex: refer.data.dataIndex + 1,
+                emptypositionIndex: 0,
+                chooseResult: [],
+                flag1: false,
+                allowClickIndex: 0
+              });
+            }.bind(refer), 1300);
+
+            let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
+            wx.playBackgroundAudio({
+              dataUrl: tempFilePath
+            });
+            refer.setData({
+              //chooseResult: [],
+              //data:refer.data.datainit,
+              which_sel: -1,
+              //emptypositionIndex:0,
+              flag1: false
+            });
+            
+            
+            
             setTimeout(function () {
               wx.redirectTo({
                 url: '../page_015/page_015',
               });
-            }.bind(refer), 1000);
+            }.bind(refer), 1300);
             return
 
           }
-          refer.setData({
-            anwdataIndex: refer.data.anwdataIndex + 1,
-            dataIndex: refer.data.dataIndex + 1,
-            emptypositionIndex: 0,
-            chooseResult: [],
-            flag1: false,
-            allowClickIndex:0
-          });
+          for (let n = 0; n < refer.data.data[refer.data.dataIndex].emptyposition.length;n++){
+            let temp_correct = refer.data.data[refer.data.dataIndex].pro[refer.data.data[refer.data.dataIndex].emptyposition[n]].correct;
+            let temp_num = refer.data.data[refer.data.dataIndex].pro[refer.data.data[refer.data.dataIndex].emptyposition[n]].num;
+            let temp_ifem = refer.data.data[refer.data.dataIndex].pro[refer.data.data[refer.data.dataIndex].emptyposition[n]].ifem;
 
+            refer.data.data[refer.data.dataIndex].pro.splice(
+              refer.data.data[refer.data.dataIndex].emptyposition[n],
+              1,
+              { tit: temp_correct, correct: temp_correct, num: temp_num, ifem: temp_ifem },
+            );
+          }
+          
+          let data_temp = new Array();
+          for (let n = 0; n < refer.data.data.length; n++) {
+            if (refer.data.dataIndex == n) {
+              data_temp.push(
+                {
+                  pro: refer.data.data[refer.data.dataIndex].pro,
+                  emptyposition: refer.data.data[refer.data.dataIndex].emptyposition,
+                  correct: refer.data.data[refer.data.dataIndex].correct,
+                  answer: refer.data.data[refer.data.dataIndex].answer
+                }
+              );
+            } else {
+              data_temp.push(refer.data.data[n]);
+            }
+          }
+          refer.setData({
+            
+            data: data_temp
+          });
+          setTimeout(function () {
+            refer.setData({
+              anwdataIndex: refer.data.anwdataIndex + 1,
+              dataIndex: refer.data.dataIndex + 1,
+              emptypositionIndex: 0,
+              chooseResult: [],
+              flag1: false,
+              allowClickIndex: 0
+            });
+          }.bind(refer), 1300);
+          
+          let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
+          wx.playBackgroundAudio({
+            dataUrl: tempFilePath
+          });
+          refer.setData({
+            //chooseResult: [],
+            //data:refer.data.datainit,
+            which_sel: -1,
+            //emptypositionIndex:0,
+            flag1: false
+          });
         }
-        let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
-        wx.playBackgroundAudio({
-          dataUrl: tempFilePath
-        });
-        refer.setData({
-          //chooseResult: [],
-          //data:refer.data.datainit,
-          which_sel:-1,
-          //emptypositionIndex:0,
-          flag1: false
-        });
+        
       }
   },
   chooseAnswer:function(e){

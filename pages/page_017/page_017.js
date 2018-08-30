@@ -22,6 +22,8 @@ Page({
     start: { x: 0, y: 0 },
     correctFlag:false,
     mp3index:0,
+    allowClickNum:3,
+    allowClickIndex:0,
     mp3:[
       app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3',
       app.globalData.serverUrl + '/Emp/mobile/mp3/page_017/1.mp3'
@@ -81,6 +83,54 @@ Page({
       });
       
     }else{
+      //排错次数递增
+      refer.data.allowClickIndex = refer.data.allowClickIndex + 1;
+      if (refer.data.allowClickIndex == refer.data.allowClickNum){
+        //排序正确
+        refer.setData({
+          correctFlag: true
+        });
+        refer.data.allowClickIndex = 0;
+        // app.globalData.backImgIndex = app.globalData.backImgIndex+1;
+        // app.globalData.backMp3Index = app.globalData.backMp3Index+1;
+        //page_012页面全局参数
+        app.globalData.backImgIndex = app.globalData.backImgIndex + 1;
+        //page_012页面全局参数
+        app.globalData.backMp3Index = app.globalData.backMp3Index + 1;
+        //page_013页面全局参数
+        app.globalData.chooseDataIndex = app.globalData.chooseDataIndex + 2;
+        //page_013页面全局参数
+        app.globalData.mp3dataIndex = app.globalData.mp3dataIndex + 2;
+        //page_014页面全局参数
+        app.globalData.dataIndex = app.globalData.dataIndex + 2;
+        //page_014页面全局参数
+        app.globalData.anwdataIndex = app.globalData.anwdataIndex + 2;
+        //page_015页面全局参数
+        app.globalData.mp3dataIndex2 = app.globalData.mp3dataIndex2 + 1;
+        //page_016页面全局参数
+        app.globalData.rdataIndex = app.globalData.rdataIndex + 2;
+        let tempFilePath = refer.data.mp3[refer.data.mp3index];
+        wx.playBackgroundAudio({
+          dataUrl: tempFilePath
+        });
+        wx.onBackgroundAudioStop(function () {
+          refer.setData({
+            mp3index: refer.data.mp3index + 1
+          })
+          if (refer.data.mp3index == 2) {
+            wx.redirectTo({
+              url: '../page_012/page_012',
+            });
+          } else {
+            let tempFilePath = refer.data.mp3[refer.data.mp3index];
+            wx.playBackgroundAudio({
+              dataUrl: tempFilePath
+            });
+          }
+
+        });
+        return
+      }
       let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
       console.log(tempFilePath);
       wx.playBackgroundAudio({

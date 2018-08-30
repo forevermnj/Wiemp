@@ -296,6 +296,10 @@ Page({
           }.bind(refer), 500);
 
         }
+        let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
+        wx.playBackgroundAudio({
+          dataUrl: tempFilePath
+        });
         return
       }
 

@@ -10,44 +10,20 @@
   
 </view>
 
-<scroll-view class='style1'>
+<scroll-view class='style1' wx:for="{{fistData}}">
 <view class='style3'>
- <view>English</view>
+ <view>{{item.firCatName}}</view>
  <view class='style7'>View ALL      ></view>
 </view>
 <scroll-view class="recommend_scroll_x_box" scroll-x="true">
-  <view class="recommend_hot_box" wx:for="{{list1}}">
-    <image data-hi="{{[item.num,item.ttype]}}" catchtap='clickImg' src="{{item.pic}}" class="recommend_hot_image"></image>
-    <view class="title text_center">{{item.title}}</view>
+  <view class="recommend_hot_box" wx:for="{{item.sceCategoryListBean}}" wx:for-item="opts">
+    <image data-hi="{{opts.dropLetLink}}" catchtap='clickImg' src="{{opts.icon}}" class="recommend_hot_image"></image>
+    <view class="title text_center">{{opts.sceCatName}}</view>
   </view>
 </scroll-view>
 </scroll-view>
 
-<scroll-view class='style1'>
-<view class='style3'>
- <view>Technical</view>
- <view class='style7'>View ALL      ></view>
-</view>
-<scroll-view class="recommend_scroll_x_box" scroll-x="true">
-  <view class="recommend_hot_box" wx:for="{{list2}}">
-    <image catchtap='clickImg2' src="{{item.pic}}" class="recommend_hot_image"></image>
-    <view class="title text_center">{{item.title}}</view>
-  </view>
-</scroll-view>
-</scroll-view>
 
-<scroll-view class='style1'>
-<view class='style3'>
-<view>Generic</view>
-<view class='style7'>View ALL      ></view>
-</view>
-<scroll-view class="recommend_scroll_x_box" scroll-x="true">
-  <view class="recommend_hot_box" wx:for="{{list3}}">
-    <image src="{{item.pic}}" class="recommend_hot_image"></image>
-    <view class="title text_center">{{item.title}}</view>
-  </view>
-</scroll-view>
-</scroll-view>
 
 </scroll-view>
 

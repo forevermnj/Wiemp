@@ -38,6 +38,7 @@ Page({
     animationCorrectData: {},
     allowClickNum:3,
     allowClickIndex:0,
+    allowClickFlag:false,
     nochooseflag: -1
 
   },
@@ -48,7 +49,8 @@ Page({
       refer.setData({
         speeImgInit: '../image/tabbar/18.gif',
         speechFlag: true,
-        anwIndex: 0
+        anwIndex: 0,
+        allowClickFlag:false
       });
       let tempFilePath = refer.data.mp3data[refer.data.mp3dataIndex].pro;
       wx.playBackgroundAudio({
@@ -56,22 +58,25 @@ Page({
       });
       //监听播放停止
       wx.onBackgroundAudioStop(function () {
-        if (refer.data.preflag == false){
-          if (refer.data.anwIndex <= 2) {
-            let tempFilePath = refer.data.mp3data[refer.data.mp3dataIndex].anw[refer.data.anwIndex].url;
-            wx.playBackgroundAudio({
-              dataUrl: tempFilePath
-            });
-            refer.setData({
-              anwIndex: refer.data.anwIndex + 1
-            })
-          } else {
-            refer.setData({
-              speeImgInit: '../image/tabbar/14.png',
-              speechFlag: false
-            });
+        if (!refer.data.allowClickFlag){
+          if (refer.data.preflag == false) {
+            if (refer.data.anwIndex <= 2) {
+              let tempFilePath = refer.data.mp3data[refer.data.mp3dataIndex].anw[refer.data.anwIndex].url;
+              wx.playBackgroundAudio({
+                dataUrl: tempFilePath
+              });
+              refer.setData({
+                anwIndex: refer.data.anwIndex + 1
+              })
+            } else {
+              refer.setData({
+                speeImgInit: '../image/tabbar/14.png',
+                speechFlag: false
+              });
+            }
           }
         }
+        
         
       })
     }
@@ -166,7 +171,9 @@ Page({
     let csv = e.currentTarget.dataset.hi[0];
     let numflag = e.currentTarget.dataset.hi[1];
     refer.setData({
-      chooseDataNum: numflag
+      chooseDataNum: numflag,
+      speeImgInit: '../image/tabbar/14.png',
+      speechFlag: false
     });
     console.log('选择的结果'+csv);
     if(csv){
@@ -187,18 +194,26 @@ Page({
       }.bind(refer), 1500);
     }else{
       //选错次数递增
+      refer.setData({
+        allowClickFlag:true
+        
+      })
       wx.stopBackgroundAudio();
       refer.data.allowClickIndex = refer.data.allowClickIndex + 1;
       if(refer.data.allowClickIndex == refer.data.allowClickNum){
           console.log('选错三次');
+          refer.setData({
+            nochooseflag: 0,
+            preflag: true
+          })
         refer.data.allowClickIndex = 0;
         setTimeout(function () {
           wx.stopBackgroundAudio();
           wx.redirectTo({
             url: '../page_016/page_016',
           });
-        }.bind(refer), 500);
-        return
+        }.bind(refer), 1500);
+        //return
 
       }
       let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
