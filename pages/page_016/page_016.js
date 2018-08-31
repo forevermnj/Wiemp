@@ -1,5 +1,8 @@
-var app = getApp();
-var util = require('../../utils/util.js');
+const app = getApp();
+const util = require('../../utils/util.js');
+const plugin = requirePlugin("WechatSI");
+// 获取**全局唯一**的语音识别管理器**recordRecoManager**
+const manager = plugin.getRecordRecognitionManager();
 Page({
   data: {
     indeximg: '../image/tabbar/2.png',
@@ -103,6 +106,7 @@ Page({
       url: '../page_001/page_001',
     })
   },
+  /*
   toRecordEnd:function(e){
     let refer = this;
     if ((e.timeStamp - refer.data.timestart)<300){
@@ -240,7 +244,8 @@ Page({
       recordimg: '../image/tabbar/20.gif',
       flag1: false
     })
-  },
+  },*/
+  /*
   toRecordStart:function(e){
     let refer = this;
     refer.setData({
@@ -274,6 +279,169 @@ Page({
 
 
     
+  },*/
+  /**
+   * 按住按钮开始语音识别
+   */
+  streamRecord: function (e) {
+    let refer = this;
+    refer.setData({
+      recordimg: '../image/tabbar/19.gif',
+      flag1: true,
+      flag2: false,
+      timestart: e.timeStamp,
+      recoresult: '',
+      scoreIndex: 0
+    })
+    //  发起授权
+    wx.authorize({
+      scope: 'scope.record',
+      success() {
+        const options = {
+          lang: "en_US",
+        }
+        // const options = {
+        //   duration: 10000, //指定录音的时长，单位 ms
+        //   sampleRate: 16000,//采样率
+        //   numberOfChannels: 1,//录音通道数
+        //   encodeBitRate: 64000,//编码码率
+        //   format: 'mp3',//音频格式，有效值 aac/mp3
+        //   frameSize: 50//指定帧大小，单位 KB
+        // }
+        manager.start(options);
+
+      }, fail() {
+        resolve(1)
+      }
+    })
+
+  },
+  /**
+   * 松开按钮结束语音识别
+   */
+  streamRecordEnd: function (e) {
+    let refer = this;
+    if ((e.timeStamp - refer.data.timestart) < 300) {
+      manager.stop();
+      refer.setData({
+        recordimg: '../image/tabbar/20.gif',
+        flag1: false,
+        flag2: true
+      })
+      return
+    }
+    manager.stop();
+    
+    manager.onStop = (res) =>{
+      let text = res.result;
+      //console.log('==='+text);
+      let tem = new Array();
+      tem = text.split(' ');
+      //console.log(tem);
+      refer.data.resultExample = tem;
+      refer.setData({
+        resultExample: tem,
+        tempurl: app.globalData.serverUrl + '/Emp/mobile/page_016/1.png',
+        flag3: true
+      })
+      for (let i = 0; i < refer.data.rdata[refer.data.rdataIndex].tit.length; i++) {
+        for (let k = 0; k < tem.length; k++) {
+          if (tem[k] == refer.data.rdata[refer.data.rdataIndex].tit[i].wo) {
+            refer.data.scoreIndex = refer.data.scoreIndex + 1;
+            refer.data.rdata[refer.data.rdataIndex].tit[i].flag = true;
+          }
+        }
+      }
+      refer.setData({
+        rdata: refer.data.rdata
+      })
+      let temp_score = refer.data.scoreIndex / refer.data.rdata[refer.data.rdataIndex].tit.length;
+      refer.setData({
+        score: Math.round(temp_score * 100)
+      })
+      if (refer.data.score > refer.data.passsScore) {
+        console.log('过了' + temp_score);
+        let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
+        wx.playBackgroundAudio({
+          dataUrl: tempFilePath
+        });
+        if (refer.data.rdataIndex == 3) {
+          //app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
+          setTimeout(function () {
+            wx.redirectTo({
+              url: '../page_011/page_011',
+            });
+          }.bind(refer), 2000);
+        }
+        if (refer.data.rdataIndex == 1) {
+          //app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
+          setTimeout(function () {
+            wx.redirectTo({
+              url: '../page_017/page_017',
+            });
+          }.bind(refer), 2000);
+        } else {
+          //app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
+          setTimeout(function () {
+            refer.setData({
+              rdataIndex: refer.data.rdataIndex + 1,
+              resultExample: [],
+              score: 0,
+              flag3: false
+            });
+
+          }.bind(refer), 2000);
+        }
+
+      } else {
+        console.log('没过');
+        //读错次数递增
+        refer.data.allowReadIndex = refer.data.allowReadIndex + 1;
+        if (refer.data.allowReadIndex == refer.data.allowReadNum) {
+          console.log('过了' + temp_score);
+          let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
+          wx.playBackgroundAudio({
+            dataUrl: tempFilePath
+          });
+          refer.data.allowReadIndex = 0;
+          if (refer.data.rdataIndex == 3) {
+            //app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '../page_011/page_011',
+              });
+            }.bind(refer), 2000);
+          }
+          if (refer.data.rdataIndex == 1) {
+            //app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '../page_017/page_017',
+              });
+            }.bind(refer), 2000);
+          } else {
+            //app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
+            setTimeout(function () {
+              refer.setData({
+                rdataIndex: refer.data.rdataIndex + 1,
+                resultExample: [],
+                score: 0,
+                flag3: false
+              });
+
+            }.bind(refer), 2000);
+          }
+        }
+      }
+
+    }
+    refer.setData({
+      recordimg: '../image/tabbar/20.gif',
+      flag1: false
+    })
+
+
+
   },
   onPullDownRefresh: function () {
 

@@ -94,6 +94,9 @@ App({
     mp3dataIndex2:0,//page_015页面全局参数
     rdataIndex:0,//page_016页面全局参数
     examFlag:false,//单词考试数据加载失败
+
+    dropLetId:-1,//page_010页面全局参数
+    relaDropLetId:-1,//page_021页面全局参数
     uid:'020b28e556de4352a231650c1637653c'//测试用户ID
   }
 })

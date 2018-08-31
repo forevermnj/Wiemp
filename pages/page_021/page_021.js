@@ -11,12 +11,12 @@ Page({
     previousImg: '../image/tabbar/13.png'
   },
   toClickImg: function (e){
-    let csv1 = e.currentTarget.dataset.hi;
-    console.log(csv1);
-    
-      wx.redirectTo({
-        url: csv1,
-      })
+    let csv0 = e.currentTarget.dataset.hi[0];
+    let csv1 = e.currentTarget.dataset.hi[1];
+    app.globalData.relaDropLetId = csv1;
+    wx.redirectTo({
+      url: csv0,
+    })
     
   },
   toIndex: function () {
@@ -41,13 +41,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     let refer = this;
     wx.request({
-      url: app.globalData.serverUrl + '/Emp/mobile/getScenListDropLetData/getScenListDropLetData/sd/sd',
+      url: app.globalData.serverUrl + '/Emp/mobile/getScenListDropLetData/getScenListDropLetData/' + app.globalData.dropLetId+'/sd',
       method: 'GET',
       success: function (res) {
-        //refer.data.fistData = res.data;
         refer.setData({
           resdata: res.data
         })

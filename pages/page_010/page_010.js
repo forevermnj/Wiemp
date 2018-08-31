@@ -3,9 +3,6 @@ var util = require('../../utils/util.js');
 Page({
   data: {
     fistData: [],
-    
-    headImage: wx.getStorageSync('headImage'),
-    nickName: wx.getStorageSync('nickName'),
     indeximg:'../image/tabbar/2.png',
     catagaryimg:'../image/tabbar/6.png',
     loginimg:'../image/tabbar/3.png'
@@ -13,23 +10,13 @@ Page({
   },
   clickImg:function(e){
     let refer = this;
-    let csv1 = e.currentTarget.dataset.hi;
-    
-    
-    
-      
-      
-        wx.redirectTo({
-          url: csv1,
-        })
-     
+    let csv0 = e.currentTarget.dataset.hi[0];
+    let csv1 = e.currentTarget.dataset.hi[1];
+    app.globalData.dropLetId = csv1;
+    wx.redirectTo({
+       url: csv0,
+    });
    
-    
-  },
-  clickImg2: function (e) {
-    // wx.redirectTo({
-    //   url: '../page_011/page_011',
-    // })
   },
   onPullDownRefresh:function(){
     
@@ -40,7 +27,6 @@ Page({
       url: app.globalData.serverUrl + '/Emp/mobile/getIndexData/getIndexData',
       method: 'GET',
       success: function (res) {
-        //refer.data.fistData = res.data;
         refer.setData({
           fistData: res.data
         })

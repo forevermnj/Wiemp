@@ -3,9 +3,6 @@ var util = require('../../utils/util.js');
 Page({
   data: {
     resdata: [],
-    
-    headImage: wx.getStorageSync('headImage'),
-    nickName: wx.getStorageSync('nickName'),
     indeximg: '../image/tabbar/2.png',
     catagaryimg: '../image/tabbar/5.png',
     bgimg: app.globalData.serverUrl +'/Emp/mobile/page_011/7.png',
@@ -65,10 +62,9 @@ Page({
   onLoad: function () {
     let refer = this;
     wx.request({
-      url: app.globalData.serverUrl + '/Emp/mobile/getCardListDroplet/getCardListDroplet',
+      url: app.globalData.serverUrl + '/Emp/mobile/getCardListDroplet/getCardListDroplet/' + app.globalData.relaDropLetId+'/sd',
       method: 'GET',
       success: function (res) {
-        //refer.data.fistData = res.data;
         refer.setData({
           resdata: res.data
         })
@@ -82,6 +78,9 @@ Page({
     app.globalData.dataIndex = 0;//page_014页面全局参数
     app.globalData.anwdataIndex = 0;//page_014页面全局参数
     app.globalData.rdataIndex = 0;//page_016页面全局参数
+
+    app.globalData.dropLetId = -1;//page_010页面全局参数
+    app.globalData.relaDropLetId = -1;//page_021页面全局参数
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

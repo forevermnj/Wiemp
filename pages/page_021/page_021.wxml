@@ -3,11 +3,11 @@
   <scroll-view class='style2' scroll-y='true'>
    
     <block wx:for="{{resdata}}">
-     <view data-hi="{{item.relaDropLet}}" catchtap='toClickImg' class='style3'>
-      <view data-hi="{{item.relaDropLet}}" catchtap='toClickImg' class='style4'>
-       <image class='style11' data-hi="{{item.relaDropLet}}" catchtap='toClickImg' src="{{item.scenIcon}}"></image>
+     <view data-hi="{{[item.relaDropLet,item.relaDropLetId]}}" catchtap='toClickImg' class='style3'>
+      <view data-hi="{{[item.relaDropLet,item.relaDropLetId]}}" catchtap='toClickImg' class='style4'>
+       <image class='style11' data-hi="{{[item.relaDropLet,item.relaDropLetId]}}" catchtap='toClickImg' src="{{item.scenIcon}}"></image>
       </view>
-      <view data-hi="{{item.num}}" catchtap='toClickImg' class='style5'>
+      <view data-hi="{{[item.relaDropLet,item.relaDropLetId]}}" catchtap='toClickImg' class='style5'>
         <view class='style7'>{{item.scenName}}</view>
         <view class='style6'>
          <progress radius="10" activeColor="#53CB14" percent="{{item.compPerc}}" stroke-width="10"/>
