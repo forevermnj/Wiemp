@@ -6,75 +6,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-      resdata:[
-        {
-          pic: app.globalData.serverUrl + '/Emp/mobile/page_021/5.png',
-          tit: 'Sand Up Meeting',
-          process: '60',
-          tip: 'completed 60%,average score 83',
-          tt: '100/500',
-          num:0
-        },
-        { 
-          pic: app.globalData.serverUrl + '/Emp/mobile/page_021/1.png',
-          tit: 'Working Report',
-          process: '0',
-          tip: '至今还未闯关，赶紧开始吧!',
-          tt: '100/500',
-          num:1
-        },
-        {
-          pic: app.globalData.serverUrl + '/Emp/mobile/page_021/2.png',
-          tit: 'Issue Report',
-          process: '60',
-          tip: 'completed 60%,average score 83',
-          tt: '100/500',
-          num:2
-        },
-        
-        {
-          pic: app.globalData.serverUrl + '/Emp/mobile/page_021/6.png',
-          tit: 'Exchange Meeting',
-          process: '0',
-          tip: '至今还未闯关，赶紧开始吧!',
-          tt: '100/500',
-          num: 3
-        },
-        {
-          pic: app.globalData.serverUrl + '/Emp/mobile/page_021/7.png',
-          tit: 'Progress Report',
-          process: '0',
-          tip: '至今还未闯关，赶紧开始吧!',
-          tt: '100/500',
-          num: 3
-        }, {
-          pic: app.globalData.serverUrl + '/Emp/mobile/page_021/3.png',
-          tit: 'Shown Demo',
-          process: '0',
-          tip: '至今还未闯关，赶紧开始吧!',
-          tt: '100/500',
-          num: 3
-        },
-        {
-          pic: app.globalData.serverUrl + '/Emp/mobile/page_021/4.png',
-          tit: 'Finance Report',
-          process: '0',
-          tip: '至今还未闯关，赶紧开始吧!',
-          tt: '100/500',
-          num:4
-        }
-      ],
+    resdata: [],
     indeximg: '../image/tabbar/2.png',
     previousImg: '../image/tabbar/13.png'
   },
   toClickImg: function (e){
     let csv1 = e.currentTarget.dataset.hi;
     console.log(csv1);
-    if (csv1==0){
+    
       wx.redirectTo({
-        url: '../page_011/page_011',
+        url: csv1,
       })
-    }
+    
   },
   toIndex: function () {
     let refer = this;
@@ -99,14 +42,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    util.showBusy('加载中...');
+    let refer = this;
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/getScenListDropLetData/getScenListDropLetData/sd/sd',
+      method: 'GET',
+      success: function (res) {
+        //refer.data.fistData = res.data;
+        refer.setData({
+          resdata: res.data
+        })
+      }
+    })
+    util.showBusy('loading...');
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    util.showSuccess('加载成功');
+    util.showSuccess('loading successed');
   },
 
   /**

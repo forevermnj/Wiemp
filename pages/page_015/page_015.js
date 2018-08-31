@@ -87,6 +87,7 @@ Page({
     let refer = this;
     refer.setData({
       anwIndex:0,
+      chooseDataNum:0,
       mp3dataIndex:app.globalData.mp3dataIndex2
     })
     refer.speech();

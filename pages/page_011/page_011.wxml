@@ -4,11 +4,11 @@
   <view class='style4'>Listening</view>
   <view class='style5'>完成关卡0/5</view>
   <scroll-view class="style2" scroll-x="true">
-    <view bindtouchstart='touchstart' bindtouchend='touchend' catchtap='clickImg' class="style3" wx:for="{{list2}}">
+    <view bindtouchstart='touchstart' bindtouchend='touchend' catchtap='clickImg' class="style3" wx:for="{{resdata}}">
          <view catchtap='clickImg' class='style7'>
-           <image catchtap='clickImg' class='style8' src='{{item.pic}}'></image>
+           <image catchtap='clickImg' class='style8' src='{{item.cardIcon}}'></image>
          </view>
-         <view catchtap='clickImg' class='style9'>{{item.title}}</view>
+         <view catchtap='clickImg' class='style9'>{{item.cardName}}</view>
     </view>
   </scroll-view>
 </scroll-view>

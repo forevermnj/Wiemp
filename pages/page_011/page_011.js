@@ -2,34 +2,16 @@ var app = getApp();
 var util = require('../../utils/util.js');
 Page({
   data: {
-    list2: [
-      {
-        pic: app.globalData.serverUrl + '/Emp/mobile/page_011/3.png',
-        title: 'Scenario'
-      }, 
-      {
-        pic: app.globalData.serverUrl+'/Emp/mobile/page_011/1.png',
-        title: 'Listening'
-      }, {
-        pic: app.globalData.serverUrl +'/Emp/mobile/page_011/2.png',
-        title: 'Speaking'
-      }, {
-        pic: app.globalData.serverUrl +'/Emp/mobile/page_011/4.png',
-        title: 'Vocabulary'
-      }
-    ],
+    resdata: [],
+    
     headImage: wx.getStorageSync('headImage'),
     nickName: wx.getStorageSync('nickName'),
     indeximg: '../image/tabbar/2.png',
     catagaryimg: '../image/tabbar/5.png',
-    bgimg: app.globalData.serverUrl +'/Emp/mobile/page_011/5.png',
+    bgimg: app.globalData.serverUrl +'/Emp/mobile/page_011/7.png',
     startIndex:0,
     endIndex:0,
-    bgimg2:[
-      {urlimg:app.globalData.serverUrl + '/Emp/mobile/page_011/6.png'},
-      {urlimg:app.globalData.serverUrl + '/Emp/mobile/page_011/7.png'},
-      {urlimg:app.globalData.serverUrl + '/Emp/mobile/page_011/8.png'}
-    ],
+    
     sindex:0
   },
   clickImg: function () {
@@ -53,7 +35,7 @@ Page({
    
     if ((refer.data.endIndex - refer.data.startIndex) < 0 && refer.data.sindex<=2){
         refer.setData({
-          bgimg: refer.data.bgimg2[refer.data.sindex].urlimg,
+          bgimg: refer.data.resdata[refer.data.sindex].cardBackImag,
           sindex: refer.data.sindex + 1
         })
         if (refer.data.sindex==3){
@@ -65,7 +47,7 @@ Page({
     if ((refer.data.endIndex - refer.data.startIndex) > 0 && refer.data.sindex >= 0){
       
       refer.setData({
-        bgimg: refer.data.bgimg2[refer.data.sindex].urlimg,
+        bgimg: refer.data.resdata[refer.data.sindex].cardBackImag,
         sindex: refer.data.sindex - 1
       })
       
@@ -81,6 +63,17 @@ Page({
 
   },
   onLoad: function () {
+    let refer = this;
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/getCardListDroplet/getCardListDroplet',
+      method: 'GET',
+      success: function (res) {
+        //refer.data.fistData = res.data;
+        refer.setData({
+          resdata: res.data
+        })
+      }
+    })
     util.showBusy('加载中...');
     app.globalData.backImgIndex = 0;//page_012页面全局参数
     app.globalData.backMp3Index = 0;//page_012页面全局参数
