@@ -11,13 +11,15 @@ Page({
   toClickImg: function (e){
     let csv0 = e.currentTarget.dataset.hi[0];
     let csv1 = e.currentTarget.dataset.hi[1];
+    let csv2 = e.currentTarget.dataset.hi[2];
     app.globalData.relaDropLetId = csv1;
+    app.globalData.id = csv2;
     wx.redirectTo({
       url: csv0,
     })
     
   },
-  toButtomButton: function (e) {
+  toBootomButton: function (e) {
     let refer = this;
     let csv0 = e.currentTarget.dataset.hi;
     console.log("========"+csv0);

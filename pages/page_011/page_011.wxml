@@ -4,7 +4,7 @@
   <view class='style4'>Listening</view>
   <view class='style5'>完成关卡0/5</view>
   <scroll-view class="style2" scroll-x="true">
-    <view bindtouchstart='touchstart' bindtouchend='touchend' catchtap='clickImg' class="style3" wx:for="{{resdata}}">
+    <view bindtouchstart='touchstart' bindtouchend='touchend' catchtap='clickImg' class="style3" wx:for="{{resdata.list}}">
          <view catchtap='clickImg' class='style7'>
            <image catchtap='clickImg' class='style8' src='{{item.cardIcon}}'></image>
          </view>
@@ -21,6 +21,13 @@
 
 <!--底部导航条-->
 <view class="footerstyle1">
+   
+    <view wx:for="{{resdata.button}}" class="smallgroup">
+     <image data-hi="{{item.buttonlink}}" bindtap='toBootomButton' class='tabbar1' src='{{item.icon}}'></image>
+      <view data-hi="{{item.buttonlink}}" bindtap='toBootomButton' class='tabbar2'>{{item.buttonname}}</view>
+    </view>
+
+    <!--
     <view bindtap='toIndex' class="smallgroup">
       <image bindtap='toIndex' class='tabbar1' src='{{indeximg}}'></image>
       <view bindtap='toIndex' class='tabbar2'>Home</view>
@@ -28,5 +35,5 @@
     <view bindtap='toCatagary' class="smallgroup">
       <image bindtap='toCatagary' class='tabbar1' src='{{catagaryimg}}'></image>
       <view bindtap='toCatagary' class='tabbar2'>FinTechEn</view>
-    </view>
+    </view>-->
 </view>

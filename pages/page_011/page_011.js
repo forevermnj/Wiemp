@@ -3,12 +3,9 @@ var util = require('../../utils/util.js');
 Page({
   data: {
     resdata: [],
-    indeximg: '../image/tabbar/2.png',
-    catagaryimg: '../image/tabbar/5.png',
     bgimg: app.globalData.serverUrl +'/Emp/mobile/page_011/7.png',
     startIndex:0,
     endIndex:0,
-    
     sindex:0
   },
   clickImg: function () {
@@ -61,8 +58,14 @@ Page({
   },
   onLoad: function () {
     let refer = this;
+    let url = "";
+    if (app.globalData.dropLetConfigTypeId!=10){
+      url = app.globalData.serverUrl + '/Emp/mobile/getCardListDroplet/getCardListDroplet/' + app.globalData.relaDropLetId + '/' + app.globalData.id;
+    }else{
+      url = app.globalData.serverUrl + '/Emp/mobile/getCardListDroplet/getCardListDroplet/3/10';
+    }
     wx.request({
-      url: app.globalData.serverUrl + '/Emp/mobile/getCardListDroplet/getCardListDroplet/' + app.globalData.dropLetId + '/' +app.globalData.dropLetConfigTypeId,
+      url: url,
       method: 'GET',
       success: function (res) {
         console.log(res.data);
@@ -130,24 +133,12 @@ Page({
   onShareAppMessage: function () {
 
   },
-  toIndex: function () {
+  toBootomButton: function (e) {
     let refer = this;
-    refer.setData({
-      indeximg: '../image/tabbar/2.png',
-      catagaryimg: '../image/tabbar/5.png'
-    });
+    let csv0 = e.currentTarget.dataset.hi;
+    console.log("========" + csv0);
     wx.redirectTo({
-      url: '../page_010/page_010',
-    });
-  },
-  toCatagary: function () {
-    let refer = this;
-    refer.setData({
-      catagaryimg: '../image/tabbar/6.png',
-      indeximg: '../image/tabbar/2.png'
-    });
-    wx.redirectTo({
-      url: '../page_021/page_021',
+      url: csv0,
     });
   }
 })
