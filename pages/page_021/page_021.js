@@ -6,9 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    resdata: [],
-    indeximg: '../image/tabbar/2.png',
-    previousImg: '../image/tabbar/13.png'
+    resdata: []
   },
   toClickImg: function (e){
     let csv0 = e.currentTarget.dataset.hi[0];
@@ -19,23 +17,12 @@ Page({
     })
     
   },
-  toIndex: function () {
+  toButtomButton: function (e) {
     let refer = this;
-    refer.setData({
-      indeximg: '../image/tabbar/1.png',
-      catagaryimg: '../image/tabbar/5.png'
-    });
+    let csv0 = e.currentTarget.dataset.hi;
+    console.log("========"+csv0);
     wx.redirectTo({
-      url: '../page_010/page_010',
-    });
-  },
-  toPrevious: function () {
-    let refer = this;
-    refer.setData({
-      indeximg: '../image/tabbar/2.png'
-    });
-    wx.redirectTo({
-      url: '../page_010/page_010',
+      url: csv0,
     });
   },
   /**
@@ -44,7 +31,7 @@ Page({
   onLoad: function () {
     let refer = this;
     wx.request({
-      url: app.globalData.serverUrl + '/Emp/mobile/getScenListDropLetData/getScenListDropLetData/' + app.globalData.dropLetId+'/sd',
+      url: app.globalData.serverUrl + '/Emp/mobile/getScenListDropLetData/getScenListDropLetData/' + app.globalData.dropLetId + '/' + app.globalData.dropLetConfigTypeId,
       method: 'GET',
       success: function (res) {
         refer.setData({

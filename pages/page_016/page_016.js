@@ -330,41 +330,91 @@ Page({
       })
       return
     }
+    refer.setData({
+      recordimg: '../image/tabbar/20.gif',
+      flag1: false
+    });
     manager.stop();
     
-    manager.onStop = (res) =>{
-      let text = res.result;
-      //console.log('==='+text);
-      let tem = new Array();
-      tem = text.split(' ');
-      //console.log(tem);
-      refer.data.resultExample = tem;
-      refer.setData({
-        resultExample: tem,
-        tempurl: app.globalData.serverUrl + '/Emp/mobile/page_016/1.png',
-        flag3: true
-      })
-      for (let i = 0; i < refer.data.rdata[refer.data.rdataIndex].tit.length; i++) {
-        for (let k = 0; k < tem.length; k++) {
-          if (tem[k] == refer.data.rdata[refer.data.rdataIndex].tit[i].wo) {
-            refer.data.scoreIndex = refer.data.scoreIndex + 1;
-            refer.data.rdata[refer.data.rdataIndex].tit[i].flag = true;
-          }
+    
+  },
+  onPullDownRefresh: function () {
+
+  },
+  toMatch:function(text){
+    console.log('识别结果'+text);
+    
+    let refer = this;
+    console.log('下标' + refer.data.rdataIndex);
+    let tem = new Array();
+    tem = text.split(' ');
+    //console.log(tem);
+    refer.data.resultExample = tem;
+    refer.setData({
+      resultExample: tem,
+      tempurl: app.globalData.serverUrl + '/Emp/mobile/page_016/1.png',
+      flag3: true
+    })
+    for (let i = 0; i < refer.data.rdata[refer.data.rdataIndex].tit.length; i++) {
+      for (let k = 0; k < tem.length; k++) {
+        if (tem[k] == refer.data.rdata[refer.data.rdataIndex].tit[i].wo) {
+          refer.data.scoreIndex = refer.data.scoreIndex + 1;
+          refer.data.rdata[refer.data.rdataIndex].tit[i].flag = true;
         }
       }
-      refer.setData({
-        rdata: refer.data.rdata
-      })
-      let temp_score = refer.data.scoreIndex / refer.data.rdata[refer.data.rdataIndex].tit.length;
-      refer.setData({
-        score: Math.round(temp_score * 100)
-      })
-      if (refer.data.score > refer.data.passsScore) {
+    }
+    refer.setData({
+      rdata: refer.data.rdata
+    })
+    let temp_score = refer.data.scoreIndex / refer.data.rdata[refer.data.rdataIndex].tit.length;
+    refer.setData({
+      score: Math.round(temp_score * 100)
+    })
+    if (refer.data.score > refer.data.passsScore) {
+      console.log('过了' + temp_score);
+      let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
+      wx.playBackgroundAudio({
+        dataUrl: tempFilePath
+      });
+      if (refer.data.rdataIndex == 3) {
+        //app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
+        setTimeout(function () {
+          wx.redirectTo({
+            url: '../page_011/page_011',
+          });
+        }.bind(refer), 2000);
+      }
+      if (refer.data.rdataIndex == 1) {
+        //app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
+        setTimeout(function () {
+          wx.redirectTo({
+            url: '../page_017/page_017',
+          });
+        }.bind(refer), 2000);
+      } else {
+        //app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
+        setTimeout(function () {
+          refer.setData({
+            rdataIndex: refer.data.rdataIndex + 1,
+            resultExample: [],
+            score: 0,
+            flag3: false
+          });
+
+        }.bind(refer), 2000);
+      }
+
+    } else {
+      console.log('没过');
+      //读错次数递增
+      refer.data.allowReadIndex = refer.data.allowReadIndex + 1;
+      if (refer.data.allowReadIndex == refer.data.allowReadNum) {
         console.log('过了' + temp_score);
         let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
         wx.playBackgroundAudio({
           dataUrl: tempFilePath
         });
+        refer.data.allowReadIndex = 0;
         if (refer.data.rdataIndex == 3) {
           //app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
           setTimeout(function () {
@@ -392,63 +442,49 @@ Page({
 
           }.bind(refer), 2000);
         }
-
-      } else {
-        console.log('没过');
-        //读错次数递增
-        refer.data.allowReadIndex = refer.data.allowReadIndex + 1;
-        if (refer.data.allowReadIndex == refer.data.allowReadNum) {
-          console.log('过了' + temp_score);
-          let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3';
-          wx.playBackgroundAudio({
-            dataUrl: tempFilePath
-          });
-          refer.data.allowReadIndex = 0;
-          if (refer.data.rdataIndex == 3) {
-            //app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
-            setTimeout(function () {
-              wx.redirectTo({
-                url: '../page_011/page_011',
-              });
-            }.bind(refer), 2000);
-          }
-          if (refer.data.rdataIndex == 1) {
-            //app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
-            setTimeout(function () {
-              wx.redirectTo({
-                url: '../page_017/page_017',
-              });
-            }.bind(refer), 2000);
-          } else {
-            //app.globalData.rdataIndex = app.globalData.rdataIndex + 1;
-            setTimeout(function () {
-              refer.setData({
-                rdataIndex: refer.data.rdataIndex + 1,
-                resultExample: [],
-                score: 0,
-                flag3: false
-              });
-
-            }.bind(refer), 2000);
-          }
-        }
       }
-
     }
-    refer.setData({
-      recordimg: '../image/tabbar/20.gif',
-      flag1: false
-    })
-
-
+  },
+  initRecord: function (){
+    let refer = this;
+    //有新的识别内容返回，则会调用此事件
+    manager.onRecognize = (res) => {
+      let text = res.result;
+      //refer.toMatch(text);
+    }
+    // 识别结束事件
+    manager.onStop = (res) => {
+      let text = res.result;
+      if (text == '') {
+        this.showRecordEmptyTip()
+        return
+      }
+      refer.toMatch(text);
+    }
 
   },
-  onPullDownRefresh: function () {
+  /**
+   * 识别内容为空时的反馈
+   */
+  showRecordEmptyTip: function () {
+    
+    wx.showToast({
+      title: '请说话',
+      icon: 'success',
+      duration: 1000,
+      image:'../image/tabbar/27.png',
+      success: function (res) {
 
+      },
+      fail: function (res) {
+        console.log(res);
+      }
+    });
   },
   onLoad: function () {
     util.showBusy('加载中...');
     let refer = this;
+    refer.initRecord();
     refer.setData({
       rdataIndex: app.globalData.rdataIndex
     });

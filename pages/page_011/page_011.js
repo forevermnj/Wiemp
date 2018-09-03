@@ -62,9 +62,10 @@ Page({
   onLoad: function () {
     let refer = this;
     wx.request({
-      url: app.globalData.serverUrl + '/Emp/mobile/getCardListDroplet/getCardListDroplet/' + app.globalData.relaDropLetId+'/sd',
+      url: app.globalData.serverUrl + '/Emp/mobile/getCardListDroplet/getCardListDroplet/' + app.globalData.dropLetId + '/' +app.globalData.dropLetConfigTypeId,
       method: 'GET',
       success: function (res) {
+        console.log(res.data);
         refer.setData({
           resdata: res.data
         })

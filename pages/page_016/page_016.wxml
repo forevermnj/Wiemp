@@ -21,8 +21,8 @@
 
 <view class='style5' wx:if="{{flag2}}">时间太短没听清</view>
  <view class='style16'>
- <view catchtouchstart='streamRecord' catchtouchend='streamRecordEnd' class="{{flag1?'style4':'style2'}}">
-    <image catchtap='streamRecord' class="{{flag1?'style6':'style3'}}" src="{{recordimg}}"></image>
+ <view class="{{flag1?'style4':'style2'}}">
+    <image  catchtouchstart='streamRecord' catchtouchend='streamRecordEnd' class="{{flag1?'style6':'style3'}}" src="{{recordimg}}"></image>
   </view>
  </view>
   
