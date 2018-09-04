@@ -5,10 +5,10 @@
   <view class='style5'>完成关卡0/5</view>
   <scroll-view class="style2" scroll-x="true">
     <view bindtouchstart='touchstart' bindtouchend='touchend' catchtap='clickImg' class="style3" wx:for="{{resdata.list}}">
-         <view catchtap='clickImg' class='style7'>
-           <image catchtap='clickImg' class='style8' src='{{item.cardIcon}}'></image>
+         <view data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid]}}" catchtap='clickImg' class='style7'>
+           <image data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid]}}" catchtap='clickImg' class='style8' src='{{item.cardIcon}}'></image>
          </view>
-         <view catchtap='clickImg' class='style9'>{{item.cardName}}</view>
+         <view data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid]}}" catchtap='clickImg' class='style9'>{{item.cardName}}</view>
     </view>
   </scroll-view>
 </scroll-view>
@@ -23,8 +23,8 @@
 <view class="footerstyle1">
    
     <view wx:for="{{resdata.button}}" class="smallgroup">
-     <image data-hi="{{item.buttonlink}}" bindtap='toBootomButton' class='tabbar1' src='{{item.icon}}'></image>
-      <view data-hi="{{item.buttonlink}}" bindtap='toBootomButton' class='tabbar2'>{{item.buttonname}}</view>
+     <image data-hi="{{[item.buttonlink,item.reladropletid,item.reladropletconftype]}}" bindtap='toBootomButton' class='tabbar1' src='{{item.icon}}'></image>
+      <view data-hi="{{[item.buttonlink,item.reladropletid,item.reladropletconftype]}}" bindtap='toBootomButton' class='tabbar2'>{{item.buttonname}}</view>
     </view>
 
     <!--

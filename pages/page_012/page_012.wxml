@@ -1,7 +1,7 @@
 <view class='style1'>
 
   <view class='style2'>
-    <image class='style3' src="{{backImg[backImgIndex].img[imgIndex]}}"></image>
+    <image class='style3' src="{{backMp3.list[mp3Index].scenarioimage}}"></image>
   </view>
 
   <view class='style6'>
@@ -28,12 +28,16 @@
 
 <!--底部导航条-->
 <view class="footerstyle1">
-    <view catchtap='toIndex' class="smallgroup">
-      <image catchtap='toIndex' class='tabbar1' src='{{indeximg}}'></image>
-      <view catchtap='toIndex' class='tabbar2'>首页</view>
+
+    <view wx:for="{{backMp3.button}}" class="smallgroup">
+     <image catchtap='toIndex' class='tabbar1' src='{{item.icon}}'></image>
+      <view catchtap='toIndex' class='tabbar2'>{{item.buttonname}}</view>
     </view>
+    
+
     <view catchtap='toPrevious' class="smallgroup">
       <image catchtap='toPrevious' class='tabbar1' src='{{previousImg}}'></image>
       <view catchtap='toPrevious' class='tabbar2'>上级</view>
     </view>
+    
 </view>

@@ -97,9 +97,10 @@ App({
 
     dropLetId:-1,//page_010页面全局参数
     dropLetConfigTypeId:-1,//page_010页面全局参数
-    relaDropLetId:-1,//page_021页面全局参数
-    id:-1,//page_021页面全局参数
-    id2:-1,//page_010页面全局参数
+    
+    //relaDropLetId:-1,//page_021页面全局参数
+    //reladropletcontypeid: -1,//page_021页面全局参数
+    
     uid:'020b28e556de4352a231650c1637653c'//测试用户ID
   }
 })

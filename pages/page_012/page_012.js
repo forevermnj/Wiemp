@@ -7,63 +7,38 @@ Page({
     previousImg: '../image/tabbar/13.png',
     speechImg:'../image/tabbar/18.gif',
     speechFlag:false,
-    backImg:[
-      { 
-        img: 
-        [
-          app.globalData.serverUrl + '/Emp/mobile/page_012/1.png',               app.globalData.serverUrl + '/Emp/mobile/page_012/2.png',               app.globalData.serverUrl + '/Emp/mobile/page_012/3.png',               app.globalData.serverUrl + '/Emp/mobile/page_012/4.png',               app.globalData.serverUrl + '/Emp/mobile/page_012/5.png'
-        ]
-      },
-      { 
-        img:
-        [
-          app.globalData.serverUrl + '/Emp/mobile/page_020/1.png',
-          app.globalData.serverUrl + '/Emp/mobile/page_020/2.png',
-          app.globalData.serverUrl + '/Emp/mobile/page_020/3.png',
-          app.globalData.serverUrl + '/Emp/mobile/page_020/4.png'
-        ]
-      }
-    ],
-    backMp3:[
-      {
-        mp3:
-        [
-          app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/1.mp3',
-          app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/2.mp3',
-          app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/3.mp3',
-          app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/4.mp3',
-          app.globalData.serverUrl + '/Emp/mobile/mp3/page_012/5.mp3'
-        ]
-      },
-      { mp3:
-        [
-          app.globalData.serverUrl + '/Emp/mobile/mp3/page_020/1.mp3',
-          app.globalData.serverUrl + '/Emp/mobile/mp3/page_020/2.mp3',
-          app.globalData.serverUrl + '/Emp/mobile/mp3/page_020/3.mp3',
-          app.globalData.serverUrl + '/Emp/mobile/mp3/page_020/4.mp3'
-        ]
-      }
-    ],
-    backImgIndex: app.globalData.backImgIndex,
-    imgIndex:0,
+    backMp3:{},
     backMp3Index: app.globalData.backMp3Index,
     mp3Index:0,
     tflag:false
   },
   onLoad: function () {
+    console.log('===' + app.globalData.dropLetId);
+    console.log('===' + app.globalData.dropLetConfigTypeId);
     util.showBusy('加载中...');
     let refer = this;
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/scenariodroplet/getScenarioDropletData/' + app.globalData.dropLetId + '/' + app.globalData.dropLetConfigTypeId,
+      method: 'GET',
+      success: function (res) {
+        console.log("返回数据"+res.data);
+        refer.setData({
+          backMp3: res.data
+        })
+      }
+    })
+
     refer.setData({
-      backImgIndex: app.globalData.backImgIndex,
-      backMp3Index: app.globalData.backMp3Index
+      //backImgIndex: app.globalData.backImgIndex,
+      //backMp3Index: app.globalData.backMp3Index
     });
     refer.toPlay();
   },
   toPlay:function(){
     
     let refer = this;
-    if (refer.data.imgIndex <= refer.data.backImg[refer.data.backImgIndex].img.length-1){
-      let tempFilePath = refer.data.backMp3[refer.data.backMp3Index].mp3[refer.data.mp3Index];
+    if (refer.data.mp3Index <= refer.data.backMp3.list.length-1){
+      let tempFilePath = refer.data.backMp3.list[refer.data.mp3Index].scenarioaudio;
       wx.playBackgroundAudio({
         dataUrl: tempFilePath
       });
@@ -74,7 +49,7 @@ Page({
           refer.setData({
             // backImgIndex: refer.data.backImgIndex + 1,
             // backMp3Index: refer.data.backMp3Index + 1,
-            imgIndex:refer.data.imgIndex+1,
+            //imgIndex:refer.data.imgIndex+1,
             mp3Index:refer.data.mp3Index+1
 
           });
@@ -119,8 +94,8 @@ Page({
   },
   toNext:function(){
     let refer = this;
-    console.log(refer.data.backImgIndex);
-    if (refer.data.imgIndex == refer.data.backImg[refer.data.backImgIndex].img.length - 1){
+    //console.log(refer.data.backImgIndex);
+    if (refer.data.mp3Index == refer.data.backMp3.list.length - 1){
       wx.stopBackgroundAudio();
       refer.setData({
         tflag: true
@@ -130,9 +105,6 @@ Page({
       });
     }
     refer.setData({
-      // backImgIndex: refer.data.backImgIndex + 1,
-      // backMp3Index: refer.data.backMp3Index + 1,
-      imgIndex: refer.data.imgIndex + 1,
       mp3Index: refer.data.mp3Index + 1
     });
     refer.toPlay();
@@ -140,11 +112,8 @@ Page({
   },
   toPrevious:function(){
     let refer = this;
-    if (refer.data.imgIndex>=1){
+    if (refer.data.mp3Index>=1){
       refer.setData({
-        // backImgIndex: refer.data.backImgIndex - 1,
-        // backMp3Index: refer.data.backMp3Index - 1,
-        imgIndex: refer.data.imgIndex - 1,
         mp3Index: refer.data.mp3Index - 1
       });
       refer.toPlay();

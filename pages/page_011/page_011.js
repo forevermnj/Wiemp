@@ -8,9 +8,15 @@ Page({
     endIndex:0,
     sindex:0
   },
-  clickImg: function () {
+  clickImg: function (e) {
+    let csv0 = e.currentTarget.dataset.hi[0];
+    let csv1 = e.currentTarget.dataset.hi[1];
+    let csv2 = e.currentTarget.dataset.hi[2];
+    
+    app.globalData.dropLetId = csv1;
+    app.globalData.dropLetConfigTypeId = csv2;
     wx.redirectTo({
-      url: '../page_012/page_012',
+      url: csv0,
     })
   },
   touchstart:function(e){
@@ -58,14 +64,11 @@ Page({
   },
   onLoad: function () {
     let refer = this;
-    let url = "";
-    if (app.globalData.dropLetConfigTypeId!=10){
-      url = app.globalData.serverUrl + '/Emp/mobile/getCardListDroplet/getCardListDroplet/' + app.globalData.relaDropLetId + '/' + app.globalData.id;
-    }else{
-      url = app.globalData.serverUrl + '/Emp/mobile/getCardListDroplet/getCardListDroplet/3/10';
-    }
+    console.log('===' + app.globalData.dropLetId);
+    console.log('===' + app.globalData.dropLetConfigTypeId);
+    
     wx.request({
-      url: url,
+      url: app.globalData.serverUrl + '/Emp/mobile/getCardListDroplet/getCardListDroplet/' + app.globalData.dropLetId + '/' + app.globalData.dropLetConfigTypeId,
       method: 'GET',
       success: function (res) {
         console.log(res.data);
@@ -83,8 +86,7 @@ Page({
     app.globalData.anwdataIndex = 0;//page_014页面全局参数
     app.globalData.rdataIndex = 0;//page_016页面全局参数
 
-    app.globalData.dropLetId = -1;//page_010页面全局参数
-    app.globalData.relaDropLetId = -1;//page_021页面全局参数
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -135,8 +137,11 @@ Page({
   },
   toBootomButton: function (e) {
     let refer = this;
-    let csv0 = e.currentTarget.dataset.hi;
-    console.log("========" + csv0);
+    let csv0 = e.currentTarget.dataset.hi[0];
+    let csv1 = e.currentTarget.dataset.hi[1];
+    let csv2 = e.currentTarget.dataset.hi[2];
+    app.globalData.dropLetId = csv1;
+    app.globalData.dropLetConfigTypeId = csv2;
     wx.redirectTo({
       url: csv0,
     });
