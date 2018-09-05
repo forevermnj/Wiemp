@@ -37,7 +37,7 @@
 
     <view catchtap='toPrevious' class="smallgroup">
       <image catchtap='toPrevious' class='tabbar1' src='{{previousImg}}'></image>
-      <view catchtap='toPrevious' class='tabbar2'>上级</view>
+      <view catchtap='toPrevious' class='tabbar2'>Previous</view>
     </view>
     
 </view>
