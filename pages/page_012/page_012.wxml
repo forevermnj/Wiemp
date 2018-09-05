@@ -30,8 +30,8 @@
 <view class="footerstyle1">
 
     <view wx:for="{{backMp3.button}}" class="smallgroup">
-     <image catchtap='toIndex' class='tabbar1' src='{{item.icon}}'></image>
-      <view catchtap='toIndex' class='tabbar2'>{{item.buttonname}}</view>
+     <image data-hi="{{[item.buttonlink,item.reladropletid,item.reladropletconftype]}}" catchtap='toIndex' class='tabbar1' src='{{item.icon}}'></image>
+      <view data-hi="{{[item.buttonlink,item.reladropletid,item.reladropletconftype]}}" catchtap='toIndex' class='tabbar2'>{{item.buttonname}}</view>
     </view>
     
 

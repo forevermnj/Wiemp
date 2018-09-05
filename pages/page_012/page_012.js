@@ -7,7 +7,9 @@ Page({
     previousImg: '../image/tabbar/13.png',
     speechImg:'../image/tabbar/18.gif',
     speechFlag:false,
-    backMp3:{},
+    backMp3:{
+      
+    },
     backMp3Index: app.globalData.backMp3Index,
     mp3Index:0,
     tflag:false
@@ -21,10 +23,11 @@ Page({
       url: app.globalData.serverUrl + '/Emp/mobile/scenariodroplet/getScenarioDropletData/' + app.globalData.dropLetId + '/' + app.globalData.dropLetConfigTypeId,
       method: 'GET',
       success: function (res) {
-        console.log("返回数据"+res.data);
+        console.log("返回数据" + res.data);
         refer.setData({
           backMp3: res.data
         })
+        refer.toPlay();
       }
     })
 
@@ -32,11 +35,12 @@ Page({
       //backImgIndex: app.globalData.backImgIndex,
       //backMp3Index: app.globalData.backMp3Index
     });
-    refer.toPlay();
+    
   },
   toPlay:function(){
-    
     let refer = this;
+    console.log('开始' + refer.data.backMp3.list.length);
+   
     if (refer.data.mp3Index <= refer.data.backMp3.list.length-1){
       let tempFilePath = refer.data.backMp3.list[refer.data.mp3Index].scenarioaudio;
       wx.playBackgroundAudio({
@@ -66,9 +70,16 @@ Page({
       refer.setData({
         tflag:true
       })
+      let path = refer.data.backMp3.list[0].dropLetLink;
+      console.log('========'+path);
+      app.globalData.dropLetId = refer.data.backMp3.list[0].reladropletid;
+      app.globalData.dropLetConfigTypeId = refer.data.backMp3.list[0].reladropletconftypeid;
       wx.redirectTo({
-        url: '../page_013/page_013',
+        url: path
       });
+      // wx.redirectTo({
+      //   url: '../page_013/page_013',
+      // });
     }
   },
   speech:function(){
@@ -100,8 +111,12 @@ Page({
       refer.setData({
         tflag: true
       })
+      let path = refer.data.backMp3.list[0].dropLetLink;
+      console.log('========' + path);
+      app.globalData.dropLetId = refer.data.backMp3.list[0].reladropletid;
+      app.globalData.dropLetConfigTypeId = refer.data.backMp3.list[0].reladropletconftypeid;
       wx.redirectTo({
-         url: '../page_013/page_013',
+        url: path
       });
     }
     refer.setData({
@@ -119,10 +134,14 @@ Page({
       refer.toPlay();
     }
   },
-  toIndex: function () {
+  toIndex: function (e) {
     let refer = this;
+    let csv0 = e.currentTarget.dataset.hi[0];
+    let csv1 = e.currentTarget.dataset.hi[1];
+    let csv2 = e.currentTarget.dataset.hi[2];
+    app.globalData.dropLetId = csv1;
+    app.globalData.dropLetConfigTypeId = csv2;
     refer.setData({
-      backImgIndex: 5,
       tflag: true
     })
     wx.stopBackgroundAudio();
@@ -130,7 +149,7 @@ Page({
       indeximg: '../image/tabbar/1.png',
     });
     wx.redirectTo({
-      url: '../page_010/page_010',
+      url: csv0,
     });
   },
   /**

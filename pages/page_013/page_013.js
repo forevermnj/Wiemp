@@ -17,7 +17,31 @@ Page({
     chooseDataFlag:false,
     chooseDataNum:0,
     chooseDataIndex: app.globalData.chooseDataIndex,
-    chooseData:[
+    chooseData:{
+      "button": [{
+        "icon": "../image/tabbar/13.png",
+        "buttonname": "Previous",
+        "buttonlink": "../page_012/page_012",
+        "reladropletid": "4",
+        "reladropletconftype": "1"
+      }],
+      "choice": {
+        "reladropletid": "5",
+        "reladropletconftypeid": "2",
+        "choicetextaudio": "https://www.learnzp.com/Emp/mobile/mp3/page_013/1.mp3",
+        "choicetextimage": "https://www.learnzp.com/Emp/mobile/page_012/1.png",
+        "optionindexa": 1,
+        "optionflaga": "false",
+        "optionindexb": 2,
+        "optionflagb": "true",
+        "optionindexc": 3,
+        "optionflagc": "false",
+        "optiontexta": "It can monitor who is late today",
+        "optiontextb": "It can form discipline, belongings and spirit among team members",
+        "optiontextc": "It can help us solve our personal problems"
+      }
+    },
+    /*chooseData:[
       {
         choicepro:'For the following descriptions of stand up meeting, which one is correct?',
         choiceanw:
@@ -72,7 +96,7 @@ Page({
           {anw:'Because stand up meeting time is limited',flag:true,num:2}
         ]
       }
-    ],
+    ],*/
     indeximg: '../image/tabbar/2.png',
     previousImg: '../image/tabbar/13.png',
     animationErrorData: {},
