@@ -26,23 +26,57 @@ Page({
       }
     ],
     datainit: [{
-      pro:
-        [
-          { tit: 'We can measure', correct: '', num: 0, ifem: false },
-          { tit: '______', correct: 'with', num: 1, ifem: true },
-          { tit: 'the corner of eyes', correct: '', num: 2, ifem: false },
-          { tit: '______', correct: 'to', num: 3, ifem: true },
-          { tit: 'judge others when stand in a circle', correct: '', num: 4, ifem: false }
+      
+        "pro": [{
+          "tit": "We can measure",
+          "correct": "",
+          "num": "0",
+          "ifem": false
+        },
+        {
+          "tit": "______",
+          "correct": "with",
+          "num": "1",
+          "ifem": true
+        },
+        {
+          "tit": "the corner of eyes",
+          "correct": "",
+          "num": "2",
+          "ifem": false
+        },
+        {
+          "tit": "______",
+          "correct": "to",
+          "num": "3",
+          "ifem": true
+        },
+        {
+          "tit": "judge others when stand in a circle",
+          "correct": "",
+          "num": "4",
+          "ifem": false
+        }
         ],
-      emptyposition: [1, 3],
-      answer:
-        [
-          { subnum: 0, tit: 'with' },
-          { subnum: 1, tit: 'to' },
-          { subnum: 2, tit: '/' },
-          { subnum: 3, tit: 'by' }
+        "emptyposition": [1, 3],
+        "answer": [{
+          "subnum": "0",
+          "tit": "with"
+        },
+        {
+          "subnum": "1",
+          "tit": "to"
+        },
+        {
+          "subnum": "2",
+          "tit": "/"
+        },
+        {
+          "subnum": "3",
+          "tit": "by"
+        }
         ]
-    },
+      },
       {
         pro:
           [
@@ -111,21 +145,54 @@ Page({
     dataIndex:0,
     data:[
       {
-        pro:
-        [
-          { tit: 'We can measure', correct: '', num: 0, ifem:false},
-          { tit: '______', correct: 'with', num: 1, ifem:true},
-          { tit: 'the corner of eyes', correct: '', num: 2, ifem:false},
-          { tit: '______', correct: 'to', num: 3, ifem:true},
-          { tit: 'judge others when stand in a circle', correct: '', num: 4, ifem:false}
+        "pro": [{
+          "tit": "We can measure",
+          "correct": "",
+          "num": "0",
+          "ifem": false
+        },
+        {
+          "tit": "______",
+          "correct": "with",
+          "num": "1",
+          "ifem": true
+        },
+        {
+          "tit": "the corner of eyes",
+          "correct": "",
+          "num": "2",
+          "ifem": false
+        },
+        {
+          "tit": "______",
+          "correct": "to",
+          "num": "3",
+          "ifem": true
+        },
+        {
+          "tit": "judge others when stand in a circle",
+          "correct": "",
+          "num": "4",
+          "ifem": false
+        }
         ],
-        emptyposition: [1, 3],
-        answer:
-        [
-          { subnum: 0, tit: 'with'},
-          { subnum: 1, tit: 'to'},
-          { subnum: 2, tit: '/'},
-          { subnum: 3, tit: 'by'}
+        "emptyposition": [1, 3],
+        "answer": [{
+          "subnum": "0",
+          "tit": "with"
+        },
+        {
+          "subnum": "1",
+          "tit": "to"
+        },
+        {
+          "subnum": "2",
+          "tit": "/"
+        },
+        {
+          "subnum": "3",
+          "tit": "by"
+        }
         ]
       },
       {
@@ -574,10 +641,21 @@ Page({
   onLoad: function () {
     util.showBusy('加载中...');
     let refer = this;
-    refer.data.temp = refer.data.data[refer.data.dataIndex].tit;
-    refer.setData({
-      dataIndex : app.globalData.dataIndex,
-      anwdataIndex : app.globalData.anwdataIndex
+    // refer.data.temp = refer.data.data[refer.data.dataIndex].tit;
+    // refer.setData({
+    //   dataIndex : app.globalData.dataIndex,
+    //   anwdataIndex : app.globalData.anwdataIndex
+    // })
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/getFillBlankData/getFillBlankData/6/1',
+      method: 'GET',
+      success: function (res) {
+        console.log(res.data.fillBlank.contentconfig);
+        console.log(res.data.fillBlank.contentconfig.pro[0].tit);
+        refer.setData({
+          fistData: res.data
+        })
+      }
     })
     
   },
