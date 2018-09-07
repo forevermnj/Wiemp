@@ -7,7 +7,7 @@
      </view>
 
      <view class='style5'>
-       <block wx:for="{{data[dataIndex].pro}}">
+       <block wx:for="{{fillBlankdata.fillBlank.quest}}">
          <block wx:if="{{item.tit!='______'}}">
           <text data-hi="{{[item.tit,item.num]}}" catchtap="{{item.ifem?'clickEmpty':''}}" class="{{ifsubflag==false && item.ifem?'style19':(item.ifem==false?'':(item.tit==item.correct?'style21':'style20'))}}">{{item.tit}}</text>\n
          </block>
@@ -19,8 +19,8 @@
 
      
      <view class="{{flag1==true?'style7':'style13'}}">
-      <block wx:for="{{data[dataIndex].answer}}">
-        <view data-hi="{{[item.subnum,item.tit]}}" class="{{(item.tit==chooseResult[0] ||item.tit==chooseResult[1])?'style11':'style8'}}" catchtap="{{(item.tit==chooseResult[0] ||item.tit==chooseResult[1])?'':'chooseAnswer'}}">{{item.tit}}</view>
+      <block wx:for="{{fillBlankdata.fillBlank.answer}}">
+        <view data-hi="{{[item.subnum,item.tit]}}" class="{{(item.tit==chooseResult[0] ||item.tit==chooseResult[1])?'style11':'style8'}}" catchtap="{{chooseResult.length==2?'':'chooseAnswer'}}">{{item.tit}}</view>
       </block>
      </view>
      
@@ -35,12 +35,10 @@
 
 <!--底部导航条-->
 <view class="footerstyle1">
-    <view bindtap='toIndex' class="smallgroup">
-      <image bindtap='toIndex' class='tabbar1' src='{{indeximg}}'></image>
-      <view bindtap='toIndex' class='tabbar2'>首页</view>
+
+    <view wx:for="{{fillBlankdata.button}}" class="smallgroup">
+     <image data-hi="{{[item.buttonlink,item.reladropletid,item.reladropletconftype]}}" bindtap='toBootomButton' class='tabbar1' src='{{item.icon}}'></image>
+      <view data-hi="{{[item.buttonlink,item.reladropletid,item.reladropletconftype]}}" bindtap='toBootomButton' class='tabbar2'>{{item.buttonname}}</view>
     </view>
-    <view bindtap='toPrevious' class="smallgroup">
-      <image bindtap='toPrevious' class='tabbar1' src='{{previousImg}}'></image>
-      <view bindtap='toPrevious' class='tabbar2'>上级</view>
-    </view>
+    
 </view>
