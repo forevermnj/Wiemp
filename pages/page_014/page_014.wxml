@@ -3,7 +3,7 @@
   <view class='style2'>
 
      <view class='style3'>
-       <image class='style4' src='https://www.learnzp.com/Emp/mobile/page_012/1.png'></image>
+       <image class='style4' src="{{fillBlankdata.fillBlank.image}}"></image>
      </view>
 
      <view class='style5'>
@@ -20,7 +20,7 @@
      
      <view class="{{flag1==true?'style7':'style13'}}">
       <block wx:for="{{fillBlankdata.fillBlank.answer}}">
-        <view data-hi="{{[item.subnum,item.tit]}}" class="{{(item.tit==chooseResult[0] ||item.tit==chooseResult[1])?'style11':'style8'}}" catchtap="{{chooseResult.length==2?'':'chooseAnswer'}}">{{item.tit}}</view>
+        <view data-hi="{{[item.subnum,item.tit]}}" class="{{(chooseResultSubNum[0]==item.subnum || chooseResultSubNum[1]==item.subnum || chooseResultSubNum[2] == item.subnum || chooseResultSubNum[3] == item.subnum || chooseResultSubNum[4]==item.subnum)?'style11':'style8'}}" catchtap="{{chooseResult.length==fillBlankdata.fillBlank.emptyposition.length?'':'chooseAnswer'}}">{{item.tit}}</view>
       </block>
      </view>
      

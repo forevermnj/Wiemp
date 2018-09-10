@@ -6,96 +6,36 @@ Page({
    * 页面的初始数据
    */
   data: {
-    indeximg: '../image/tabbar/2.png',
-    previousImg: '../image/tabbar/13.png'
+    button: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    util.showBusy('加载中...');
-  },
-  toContinue:function(){
-    wx.redirectTo({
-      url: '../page_011/page_011',
-    });
-  },
-  toCancel:function(){
-    wx.redirectTo({
-      url: '../page_011/page_011',
-    });
-  },
-  toIndex: function () {
+  onLoad: function () {
     let refer = this;
-    refer.setData({
-      backImgIndex: 5,
-      tflag: true
+    console.log(app.globalData.dropLetId);
+    console.log(app.globalData.dropLetConfigTypeId);
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/gammarSuccess/gammarSuccess/' + app.globalData.dropLetId + '/' + app.globalData.dropLetConfigTypeId,
+      method: 'GET',
+      success: function (res) {
+        refer.setData({
+          button: res.data
+        })
+       
+      }
     })
-    wx.stopBackgroundAudio();
-    refer.setData({
-      indeximg: '../image/tabbar/1.png',
-      catagaryimg: '../image/tabbar/5.png'
-    });
-    wx.redirectTo({
-      url: '../page_010/page_010',
-    });
   },
-  toPrevious: function () {
+  toBootomButton: function (e) {
     let refer = this;
-    refer.setData({
-      indeximg: '../image/tabbar/2.png'
-    });
+    let csv0 = e.currentTarget.dataset.hi[0];
+    let csv1 = e.currentTarget.dataset.hi[1];
+    let csv2 = e.currentTarget.dataset.hi[2];
+    app.globalData.dropLetId = csv1;
+    app.globalData.dropLetConfigTypeId = csv2;
     wx.redirectTo({
-      url: '../page_011/page_011',
+      url: csv0,
     });
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    util.showSuccess('加载成功');
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
   }
 })
