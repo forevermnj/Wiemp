@@ -2,14 +2,14 @@
 
   <view class='style18'>
     <view wx:if="{{flag3}}" class="{{score>10?'style14':'style15'}}">{{score}}</view>
-    <image class="{{flag3?'style8':'style7'}}" src='{{tempurl}}'   ></image>
+    <image class="{{flag3?'style8':'style7'}}" src='{{readSpeakData.readspeak.image}}'   ></image>
 
     
-    <view class='style9'>
+    <view class='style9' wx:if="{{speakFlag==false}}">
      <view class='style10'>
-        <block wx:for="{{rdata[rdataIndex].tit}}">
+        <block wx:for="{{readSpeakData.readspeak.sentence}}">
            <block>
-             <text data-id="{{index}}" class="{{flag3==false?'':(item.flag?'style12':'style13')}}">{{item.wo}}</text>\n
+             <text data-id="{{index}}" class="{{flag3==false?'':(item.flag?'style12':'style13')}}">{{item.tit}}</text>\n
            </block>
         </block>
      </view>
@@ -33,12 +33,8 @@
 
 <!--底部导航条-->
 <view class="footerstyle1">
-    <view bindtap='toIndex' class="smallgroup">
-      <image bindtap='toIndex' class='tabbar1' src='{{indeximg}}'></image>
-      <view bindtap='toIndex' class='tabbar2'>首页</view>
-    </view>
-    <view bindtap='toPrevious' class="smallgroup">
-      <image bindtap='toPrevious' class='tabbar1' src='{{previousImg}}'></image>
-      <view bindtap='toPrevious' class='tabbar2'>上级</view>
+    <view wx:for="{{readSpeakData.button}}" class="smallgroup">
+     <image data-hi="{{[item.buttonlink,item.reladropletid,item.reladropletconftype]}}" bindtap='toBootomButton' class='tabbar1' src='{{item.icon}}'></image>
+      <view data-hi="{{[item.buttonlink,item.reladropletid,item.reladropletconftype]}}" bindtap='toBootomButton' class='tabbar2'>{{item.buttonname}}</view>
     </view>
 </view>

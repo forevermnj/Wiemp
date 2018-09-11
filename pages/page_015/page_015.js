@@ -182,5 +182,5 @@ Page({
     wx.redirectTo({
       url: csv0,
     });
-  },
+  }
 })
