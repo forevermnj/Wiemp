@@ -2,35 +2,9 @@ var app = getApp();
 var util = require('../../utils/util.js');
 Page({
   data: {
-    mp3dataIndex:0,
-    anwIndex:0,
+    audioChoice:{},
     chooseDataNum:0,
-    mp3data:[
-      {
-        pro: app.globalData.serverUrl + '/Emp/mobile/mp3/page_015/1.mp3',
-        anw:
-        [
-          { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_015/2.mp3',flag:false,num:0},
-          { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_015/3.mp3',flag:false,num:1},
-          { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_015/4.mp3',flag:true,num:2}
-        ]
-      },
-      {
-        pro: app.globalData.serverUrl + '/Emp/mobile/mp3/page_015/5.mp3',
-        anw:
-        [
-          { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_015/6.mp3',flag:false,num:0},
-          { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_015/7.mp3',flag:false,num:1},
-          { url: app.globalData.serverUrl + '/Emp/mobile/mp3/page_015/8.mp3',flag:true,num:2}
-         
-        ]
-      }
-    ],
-    indeximg: '../image/tabbar/2.png',
-    previousImg: '../image/tabbar/13.png',
-    flag1:false,
-    flag2:false,
-    flag3:false,
+    mp3index:1,
     preflag:false,
     speeImgInit: '../image/tabbar/14.png',
     speechFlag: false,
@@ -40,60 +14,62 @@ Page({
     allowClickIndex:0,
     allowClickFlag:false,
     nochooseflag: -1
-
+  },
+  toPlay:function(mp3url){
+    wx.playBackgroundAudio({
+      dataUrl: mp3url
+    });
   },
   speech: function () {
-
     let refer = this;
+    let mp3url = refer.data.audioChoice.choiceAudio.choiceaudio;
     if (refer.data.preflag==false){
       refer.setData({
         speeImgInit: '../image/tabbar/18.gif',
         speechFlag: true,
-        anwIndex: 0,
-        allowClickFlag:false
+        allowClickFlag:false,
+        mp3index: refer.data.audioChoice.choiceAudio.choiceaudioindexa
       });
-      let tempFilePath = refer.data.mp3data[refer.data.mp3dataIndex].pro;
-      wx.playBackgroundAudio({
-        dataUrl: tempFilePath
-      });
+      refer.toPlay(mp3url);
       //监听播放停止
       wx.onBackgroundAudioStop(function () {
+        refer.data.mp3index = refer.data.mp3index +1;
         if (!refer.data.allowClickFlag){
           if (refer.data.preflag == false) {
-            if (refer.data.anwIndex <= 2) {
-              let tempFilePath = refer.data.mp3data[refer.data.mp3dataIndex].anw[refer.data.anwIndex].url;
-              wx.playBackgroundAudio({
-                dataUrl: tempFilePath
-              });
-              refer.setData({
-                anwIndex: refer.data.anwIndex + 1
-              })
-            } else {
-              refer.setData({
-                speeImgInit: '../image/tabbar/14.png',
-                speechFlag: false
-              });
+            if (refer.data.mp3index ==2) {
+              let mp3url =refer.data.audioChoice.choiceAudio.choiceaudioa;
+              refer.toPlay(mp3url);
+            } else if (refer.data.mp3index == 3) {
+              let mp3url = refer.data.audioChoice.choiceAudio.choiceaudiob;
+              refer.toPlay(mp3url);
+            } else if (refer.data.mp3index == 4){
+              let mp3url = refer.data.audioChoice.choiceAudio.choiceaudioc;
+              refer.toPlay(mp3url);
+            }else{
+               refer.setData({
+                 speeImgInit: '../image/tabbar/14.png',
+                 speechFlag: false
+               });
             }
           }
         }
-        
-        
       })
     }
-    
   },
   onLoad: function () {
     util.showBusy('加载中...');
     let refer = this;
-    refer.setData({
-      anwIndex:0,
-      chooseDataNum:0,
-      mp3dataIndex:app.globalData.mp3dataIndex2
-    })
-    refer.speech();
-  },
-  onPullDownRefresh: function () {
-
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/getChoiceAudioDroplet/getChoiceAudioDroplet/' + app.globalData.dropLetId + '/' + app.globalData.dropLetConfigTypeId,
+      method: 'GET',
+      success: function (res) {
+        refer.setData({
+          audioChoice: res.data,
+          chooseDataNum: 0
+        })
+        refer.speech();
+      }
+    });
   },
   toCreateErrorAnimation: function () {
     let refer = this;
@@ -128,16 +104,14 @@ Page({
   },
   choose: function (e) {
     let refer = this;
-    let csv = e.currentTarget.dataset.hi[0];
-    let numflag = e.currentTarget.dataset.hi[1];
+    let flag = e.currentTarget.dataset.hi[0];
+    let num = e.currentTarget.dataset.hi[1];
     refer.setData({
-      chooseDataNum: numflag,
+      chooseDataNum: num,
       speeImgInit: '../image/tabbar/14.png',
       speechFlag: false
     });
-    console.log('选择的结果'+csv);
-    if(csv){
-      //app.globalData.mp3dataIndex2 = app.globalData.mp3dataIndex2+1;
+    if (flag){
       refer.setData({
         nochooseflag: 0,
         preflag: true
@@ -146,17 +120,25 @@ Page({
       wx.playBackgroundAudio({
         dataUrl: tempFilePath
       });
+      
+    
       setTimeout(function () {
         wx.stopBackgroundAudio();
+        let path = refer.data.audioChoice.choiceAudio.dropLetLink;
+        app.globalData.dropLetId = refer.data.audioChoice.choiceAudio.reladropletid;
+        app.globalData.dropLetConfigTypeId = refer.data.audioChoice.choiceAudio.reladropletconftypeid;
         wx.redirectTo({
-          url: '../page_016/page_016',
+          url: path
         });
+        // wx.stopBackgroundAudio();
+        // wx.redirectTo({
+        //   url: '../page_016/page_016',
+        // });
       }.bind(refer), 1500);
     }else{
       //选错次数递增
       refer.setData({
         allowClickFlag:true
-        
       })
       wx.stopBackgroundAudio();
       refer.data.allowClickIndex = refer.data.allowClickIndex + 1;
@@ -169,44 +151,36 @@ Page({
         refer.data.allowClickIndex = 0;
         setTimeout(function () {
           wx.stopBackgroundAudio();
+          let path = refer.data.audioChoice.choiceAudio.dropLetLink;
+          app.globalData.dropLetId = refer.data.audioChoice.choiceAudio.reladropletid;
+          app.globalData.dropLetConfigTypeId = refer.data.audioChoice.choiceAudio.reladropletconftypeid;
           wx.redirectTo({
-            url: '../page_016/page_016',
+            url: path
           });
         }.bind(refer), 1500);
         //return
 
       }
-      let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
-      console.log(tempFilePath);
-      wx.playBackgroundAudio({
-        dataUrl: tempFilePath
-      });
+      refer.errorSoundEffect();
       refer.toCreateErrorAnimation();
     }
-
-    
   },
-  toIndex: function () {
-    let refer = this;
-    wx.stopBackgroundAudio();
-    refer.setData({
-      indeximg: '../image/tabbar/1.png',
-      catagaryimg: '../image/tabbar/5.png'
-    });
-    wx.redirectTo({
-      url: '../page_010/page_010',
+  //错误音效
+  errorSoundEffect: function () {
+    let tempFilePath = app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3';
+    wx.playBackgroundAudio({
+      dataUrl: tempFilePath
     });
   },
-  toPrevious: function () {
+  toBootomButton: function (e) {
     let refer = this;
-    wx.stopBackgroundAudio();
-
-    refer.setData({
-      indeximg: '../image/tabbar/2.png',
-      preflag:true
-    });
+    let csv0 = e.currentTarget.dataset.hi[0];
+    let csv1 = e.currentTarget.dataset.hi[1];
+    let csv2 = e.currentTarget.dataset.hi[2];
+    app.globalData.dropLetId = csv1;
+    app.globalData.dropLetConfigTypeId = csv2;
     wx.redirectTo({
-      url: '../page_014/page_014',
+      url: csv0,
     });
-  }
+  },
 })
