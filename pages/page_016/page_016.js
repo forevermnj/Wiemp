@@ -14,7 +14,7 @@ Page({
     timestart:'',
     score:0,
     scoreIndex:0,
-    passsScore:-1,
+    passsScore:70,
     allowReadNum:3,
     allowReadIndex:0,
     readSpeakData:{},
@@ -169,7 +169,6 @@ Page({
     });
   },
   onLoad: function () {
-    //util.showBusy('加载中...');
     let refer = this;
     refer.initRecord();
     wx.request({

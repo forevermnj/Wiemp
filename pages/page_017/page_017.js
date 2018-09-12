@@ -20,8 +20,6 @@ Page({
   },
   toSubmit: function () {
     let refer = this;
-    //console.log('提交');
-    //console.log(refer.data.content);
     if (
       refer.data.content[0].key == 1 &&
       refer.data.content[1].key == 2 &&
@@ -173,7 +171,6 @@ Page({
     }
   },
   onLoad: function () {
-    //util.showBusy('加载中...');
     let refer = this;
     wx.request({
       url: app.globalData.serverUrl + '/Emp/mobile/getSortData/getSortData/' + app.globalData.dropLetId + '/' + app.globalData.dropLetConfigTypeId,

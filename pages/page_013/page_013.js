@@ -15,9 +15,6 @@ Page({
     speechFlag:false
   },
   onLoad: function () {
-    util.showBusy('加载中...');
-    console.log('===' + app.globalData.dropLetId);
-    console.log('===' + app.globalData.dropLetConfigTypeId);
     let refer = this;
     wx.request({
       url: app.globalData.serverUrl + '/Emp/mobile/getChoiceDropLet/getChoiceDropLet/' + app.globalData.dropLetId + '/' + app.globalData.dropLetConfigTypeId,
@@ -29,12 +26,6 @@ Page({
         refer.speech();
       }
     })
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    util.showSuccess('加载成功');
   },
   speech:function(){
      let refer = this;

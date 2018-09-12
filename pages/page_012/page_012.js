@@ -3,27 +3,18 @@ var util = require('../../utils/util.js');
 
 Page({
   data: {
-    indeximg: '../image/tabbar/2.png',
-    previousImg: '../image/tabbar/13.png',
     speechImg:'../image/tabbar/18.gif',
     speechFlag:false,
-    backMp3:{
-      
-    },
-    backMp3Index: app.globalData.backMp3Index,
+    backMp3:{},
     mp3Index:0,
     tflag:false
   },
   onLoad: function () {
-    console.log('===' + app.globalData.dropLetId);
-    console.log('===' + app.globalData.dropLetConfigTypeId);
-    util.showBusy('加载中...');
     let refer = this;
     wx.request({
       url: app.globalData.serverUrl + '/Emp/mobile/scenariodroplet/getScenarioDropletData/' + app.globalData.dropLetId + '/' + app.globalData.dropLetConfigTypeId,
       method: 'GET',
       success: function (res) {
-        console.log("返回数据" + res.data);
         refer.setData({
           backMp3: res.data
         })
@@ -39,8 +30,6 @@ Page({
   },
   toPlay:function(){
     let refer = this;
-    console.log('开始' + refer.data.backMp3.list.length);
-   
     if (refer.data.mp3Index <= refer.data.backMp3.list.length-1){
       let tempFilePath = refer.data.backMp3.list[refer.data.mp3Index].scenarioaudio;
       wx.playBackgroundAudio({
@@ -49,37 +38,24 @@ Page({
       if (refer.data.tflag == false){
         //监听播放停止
         wx.onBackgroundAudioStop(function () {
-          console.log('播放停止');
           refer.setData({
-            // backImgIndex: refer.data.backImgIndex + 1,
-            // backMp3Index: refer.data.backMp3Index + 1,
-            //imgIndex:refer.data.imgIndex+1,
             mp3Index:refer.data.mp3Index+1
-
           });
           if (refer.data.tflag == false){
-            console.log('再次播放');
             refer.toPlay();
           }
-          
         });
       }
-      
     }else{
-      console.log('toPlay--跳转页面');
       refer.setData({
         tflag:true
       })
       let path = refer.data.backMp3.list[0].dropLetLink;
-      console.log('========'+path);
       app.globalData.dropLetId = refer.data.backMp3.list[0].reladropletid;
       app.globalData.dropLetConfigTypeId = refer.data.backMp3.list[0].reladropletconftypeid;
       wx.redirectTo({
         url: path
       });
-      // wx.redirectTo({
-      //   url: '../page_013/page_013',
-      // });
     }
   },
   speech:function(){
@@ -95,7 +71,6 @@ Page({
       });
       //监听播放停止
       wx.onBackgroundAudioStop(function () {
-        //console.log('onBackgroundAudioStop')
         refer.setData({
           speechImg: '../image/tabbar/14.png',
           speechFlag: true
@@ -105,14 +80,12 @@ Page({
   },
   toNext:function(){
     let refer = this;
-    //console.log(refer.data.backImgIndex);
     if (refer.data.mp3Index == refer.data.backMp3.list.length - 1){
       wx.stopBackgroundAudio();
       refer.setData({
         tflag: true
       })
       let path = refer.data.backMp3.list[0].dropLetLink;
-      console.log('========' + path);
       app.globalData.dropLetId = refer.data.backMp3.list[0].reladropletid;
       app.globalData.dropLetConfigTypeId = refer.data.backMp3.list[0].reladropletconftypeid;
       wx.redirectTo({
@@ -123,7 +96,6 @@ Page({
       mp3Index: refer.data.mp3Index + 1
     });
     refer.toPlay();
-    
   },
   toPrevious:function(){
     let refer = this;
@@ -134,7 +106,7 @@ Page({
       refer.toPlay();
     }
   },
-  toIndex: function (e) {
+  toBootomButton: function (e) {
     let refer = this;
     let csv0 = e.currentTarget.dataset.hi[0];
     let csv1 = e.currentTarget.dataset.hi[1];
@@ -151,52 +123,5 @@ Page({
     wx.redirectTo({
       url: csv0,
     });
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    util.showSuccess('加载成功');
-  },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })
