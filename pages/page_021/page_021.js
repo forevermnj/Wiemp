@@ -16,8 +16,7 @@ Page({
     app.globalData.dropLetConfigTypeId = csv2;
     wx.redirectTo({
       url: csv0,
-    })
-    
+    });
   },
   toBootomButton: function (e) {
     let refer = this;
@@ -35,8 +34,6 @@ Page({
    */
   onLoad: function () {
     let refer = this;
-    console.log('===' + app.globalData.dropLetId);
-    console.log('===' + app.globalData.dropLetConfigTypeId);
     wx.request({
       url: app.globalData.serverUrl + '/Emp/mobile/getScenListDropLetData/getScenListDropLetData/' + app.globalData.dropLetId + '/' + app.globalData.dropLetConfigTypeId,
       method: 'GET',
@@ -45,56 +42,6 @@ Page({
           resdata: res.data
         })
       }
-    })
-    util.showBusy('loading...');
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    util.showSuccess('loading successed');
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+    });
   }
 })

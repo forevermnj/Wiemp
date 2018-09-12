@@ -14,7 +14,7 @@ Page({
     timestart:'',
     score:0,
     scoreIndex:0,
-    passsScore:70,
+    passsScore:-1,
     allowReadNum:3,
     allowReadIndex:0,
     readSpeakData:{},
