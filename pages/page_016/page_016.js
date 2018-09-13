@@ -207,6 +207,7 @@ Page({
   },
   toBootomButton: function (e) {
     let refer = this;
+    wx.stopBackgroundAudio();
     let csv0 = e.currentTarget.dataset.hi[0];
     let csv1 = e.currentTarget.dataset.hi[1];
     let csv2 = e.currentTarget.dataset.hi[2];
