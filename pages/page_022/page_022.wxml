@@ -1,0 +1,34 @@
+<view class='style1'>
+ 
+ <!--图标-->
+ <view class='style2'>
+    <image class='style3' src='../image/page_005/top.png'></image>
+ </view>
+
+ <!--输入-->
+ <view class='style5'>
+   <view>
+     <input bindinput='toTelinput' class='style4' placeholder="电话"></input>
+   </view>
+   <view class='style7'>
+     <input bindinput='toUserNameInput' class='style4' placeholder="姓名"></input>
+   </view>
+   <view class='style7'>
+     <input bindinput='toDepartMentInput' class='style4' placeholder="部门"></input>
+   </view>
+   <view class='style7'>
+     <input password='true' bindinput='toPasswordInput' class='style4' placeholder="密码"></input>
+   </view>
+   <view class='style7'>
+     <input bindinput='toEmailInput' class='style4' placeholder="邮箱"></input>
+   </view>
+ </view>
+
+ <!--注册按钮-->
+ <view class='style10'>
+   <button catchtap='toRegister' class='style6'>注册</button>
+ </view>
+ <view class='style8' catchtap='toLogin'>登录</view>
+ <!--<text class='style9'>©2017-2018 Capacity Center</text>-->
+
+</view>

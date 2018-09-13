@@ -85,22 +85,12 @@ App({
     serverUrl:'https://www.learnzp.com',//服务器地址
     easyError:'',
     easyErrorId: '',
-    backImgIndex:0,//page_012页面全局参数
-    backMp3Index: 0,//page_012页面全局参数
-    chooseDataIndex:0,//page_013页面全局参数
-    mp3dataIndex:0,//page_013页面全局参数
-    dataIndex:0,//page_014页面全局参数
-    anwdataIndex:0,//page_014页面全局参数
-    mp3dataIndex2:0,//page_015页面全局参数
-    rdataIndex:0,//page_016页面全局参数
     examFlag:false,//单词考试数据加载失败
 
+    userName:'',//登录名,全局变量
+    pwd:'',//登录密码,全局变量
     dropLetId:-1,//page_010页面全局参数
     dropLetConfigTypeId:-1,//page_010页面全局参数
-    
-    //relaDropLetId:-1,//page_021页面全局参数
-    //reladropletcontypeid: -1,//page_021页面全局参数
-    
     uid:'020b28e556de4352a231650c1637653c'//测试用户ID
   }
 })

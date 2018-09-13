@@ -8,14 +8,20 @@ Page({
    */
   data: {
      tel:'',
-     code:''
+     code:'',
+     globalUserName:'',
+     globalPassWord:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function () {
+    let refer = this;
+    refer.setData({
+      globalUserName: app.globalData.userName,
+      globalPassWord: app.globalData.pwd
+    })
     /**
      * 移除指定缓存数据
      */
@@ -42,10 +48,13 @@ Page({
     })
   },
   clogin: function (){
-    var openId = wx.getStorageSync('openId');
-    var nickName = wx.getStorageSync('nickName');
+    let refer = this;
+    let openId = wx.getStorageSync('openId');
+    let nickName = wx.getStorageSync('nickName');
+    app.globalData.userName = refer.data.tel;
+    app.globalData.pwd = refer.data.code;
     util.showBusy('登录中...');
-    var refer = this;
+    
     wx.request({
       url: app.globalData.serverUrl + '/Emp/mobile/login/login2',
       method: 'POST',
@@ -53,8 +62,8 @@ Page({
         "Content-Type": "application/json"
       },
       data: {
-        code: refer.data.code,
-        tel: refer.data.tel,
+        code: refer.data.globalUserName != '' ? refer.data.globalUserName:refer.data.code,
+        tel: refer.data.globalPassWord != '' ? refer.data.globalPassWord:refer.data.tel,
         openid: openId,
         nickName: nickName
       },
@@ -75,52 +84,9 @@ Page({
       }
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  toRegister:function(){
+    wx.redirectTo({
+      url: '../page_022/page_022',
+    })
   }
 })
