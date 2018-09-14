@@ -26,7 +26,7 @@
 
  <!--注册按钮-->
  <view class='style10'>
-   <button catchtap='toRegister' class='style6'>注册</button>
+   <button catchtap='toRegister' class='style6'>下一步</button>
  </view>
  <view class='style8' catchtap='toLogin'>登录</view>
  <!--<text class='style9'>©2017-2018 Capacity Center</text>-->

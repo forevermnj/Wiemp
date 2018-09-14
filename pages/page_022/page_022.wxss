@@ -36,7 +36,7 @@
 .style5{
   border-style: solid;
   border-width: 0px;
-  width: 75%;
+  width: 65%;
   margin-top: 50px;
 }
 

@@ -1,0 +1,51 @@
+<view class='style1'>
+
+  <scroll-view class='style2' scroll-y='true'>
+   
+    <block wx:for="{{courseData}}">
+     <view data-hi="{{[item.relaDropLet,item.relaDropLetId,item.reladropletcontypeid]}}" catchtap='toClickImg' class='style3'>
+      <view data-hi="{{[item.relaDropLet,item.relaDropLetId,item.reladropletcontypeid]}}" catchtap='toClickImg' class='style4'>
+       <image class='style11' data-hi="{{[item.relaDropLet,item.relaDropLetId,item.reladropletcontypeid]}}" catchtap='toClickImg' src="{{item.scenIcon}}"></image>
+      </view>
+      <view data-hi="{{[item.relaDropLet,item.relaDropLetId,item.reladropletcontypeid]}}" catchtap='toClickImg' class='style5'>
+        <view class='style7'>{{item.scenName}}</view>
+        <view class='style6'>
+         <progress radius="10" activeColor="#53CB14" percent="{{item.compPerc}}" stroke-width="10"/>
+        </view>
+
+        <view wx:if="{{item.compPerc==0}}" class='style8'>Mission unfinished. Start now!</view>
+        <view wx:elif="{{item.compPerc>0}}" class='style8'>completed {{item.compPerc}}%,average score {{item.averageScore}}</view>
+
+        <view class='style9'>
+         <image class='style10' src='../image/tabbar/26.png'></image>
+         <text class='style12'>{{item.currentPoint}}/{{item.totalPoint}}</text>
+        </view>
+      </view>
+      
+     </view>
+    </block>
+  
+  </scroll-view>
+
+
+</view>
+
+
+<!--底部导航条-->
+<view class="footerstyle1">
+
+    <!-- <view wx:for="{{resdata.button}}" class="smallgroup">
+     <image data-hi="{{[item.buttonlink,item.reladropletid,item.reladropletconftype]}}" bindtap='toBootomButton' class='tabbar1' src='{{item.icon}}'></image>
+      <view data-hi="{{[item.buttonlink,item.reladropletid,item.reladropletconftype]}}" bindtap='toBootomButton' class='tabbar2'>{{item.buttonname}}</view>
+    </view> -->
+
+
+    <!--<view bindtap='toIndex' class="smallgroup">
+      <image bindtap='toIndex' class='tabbar1' src='{{indeximg}}'></image>
+      <view bindtap='toIndex' class='tabbar2'>首页</view>
+    </view>
+    <view bindtap='toPrevious' class="smallgroup">
+      <image bindtap='toPrevious' class='tabbar1' src='{{previousImg}}'></image>
+      <view bindtap='toPrevious' class='tabbar2'>上级</view>
+    </view>-->
+</view> 

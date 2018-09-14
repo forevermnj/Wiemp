@@ -76,46 +76,50 @@ Page({
       return
     }
 
-
-    wx.request({
-      url: app.globalData.serverUrl + '/Emp/mobile/register/register',
-      method: 'POST',
-      header: {
-        "Content-Type": "application/json"
-      },
-      data: {
-        code: refer.data.passWord,
-        phone: refer.data.tel,
-        userName:refer.data.userName,
-        deparment:refer.data.deparment,
-        email:refer.data.email
-      },
-      success: function (res) {
-        console.log(res.data);
-        if (res.data.code == 1){
-          wx.showModal({
-            title: '提示',
-            content: res.data.result,
-            success: function (res) {
-              if (res.confirm) {
-                console.log('用户点击确定')
-                wx.redirectTo({
-                  url: '../page_005/page_005',
-                })
-              } else if (res.cancel) {
-                console.log('用户点击取消')
-              }
-            }
-          })
-        }
-        if (res.data.code == 2) {
-          refer.toTip(res.data.result);
-        }
-        if (res.data.code == 0) {
-          refer.toTip(res.data.result);
-        }
-      }
+    wx.redirectTo({
+      url: '../page_023/page_023',
     })
+
+
+    // wx.request({
+    //   url: app.globalData.serverUrl + '/Emp/mobile/register/register',
+    //   method: 'POST',
+    //   header: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   data: {
+    //     code: refer.data.passWord,
+    //     phone: refer.data.tel,
+    //     userName:refer.data.userName,
+    //     deparment:refer.data.deparment,
+    //     email:refer.data.email
+    //   },
+    //   success: function (res) {
+    //     console.log(res.data);
+    //     if (res.data.code == 1){
+    //       wx.showModal({
+    //         title: '提示',
+    //         content: res.data.result,
+    //         success: function (res) {
+    //           if (res.confirm) {
+    //             console.log('用户点击确定')
+    //             wx.redirectTo({
+    //               url: '../page_005/page_005',
+    //             })
+    //           } else if (res.cancel) {
+    //             console.log('用户点击取消')
+    //           }
+    //         }
+    //       })
+    //     }
+    //     if (res.data.code == 2) {
+    //       refer.toTip(res.data.result);
+    //     }
+    //     if (res.data.code == 0) {
+    //       refer.toTip(res.data.result);
+    //     }
+    //   }
+    // })
   }
   
   
