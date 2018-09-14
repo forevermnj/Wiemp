@@ -1,107 +1,41 @@
-var app = getApp();
-var x, y, x1, y1, x2, y2, index, currindex, n, yy;
-var arr1 =
- [
-   {content: 'Global warming is the result of an increase in carbon gases in our atmosphere.', id: 1 }, 
-   {content: 'As a result,sea levels are rising and weather patterns are changing. ', id: 2 },
-   {content: 'These gases trap heat from the sun,so the Earth is getting warmer.', id: 3 }, 
-   { content: 'In addition,we humans are destroying the habitats of many plants and animals.', id: 4 }
-];
+
+const App = getApp()
+
 Page({
   data: {
-    mainx: 0,
-    indeximg: '../image/tabbar/2.png',
-    previousImg: '../image/tabbar/13.png',
-    content: [
-      {content: 'Global warming is the result of an increase in carbon gases in our atmosphere.', id: 1 }, 
-      {content: 'As a result,sea levels are rising and weather patterns are changing. ', id: 2 }, 
-      {content: 'These gases trap heat from the sun,so the Earth is getting warmer.', id: 3 }, 
-      {content: 'In addition,we humans are destroying the habitats of many plants and animals.', id: 4 }
-      ],
-    start: { x: 0, y: 0 }
+    itemData: []
   },
-  onLoad: function (options) {
-    wx.showModal({
-      title: '提示',
-      content: '这是一个模态弹窗',
+  touchS: function (e) {  // touchstart
+    console.log('开始滑动');
+    let startX = App.Touches.getClientX(e)
+    startX && this.setData({ startX })
+  },
+  touchM: function (e) {  // touchmove
+    let itemData = App.Touches.touchM(e, this.data.itemData, this.data.startX)
+    console.log(itemData);
+    itemData && this.setData({ itemData })
+
+  },
+  touchE: function (e) {  // touchend
+    const width = 150  // 定义操作列表宽度
+    let itemData = App.Touches.touchE(e, this.data.itemData, this.data.startX, width)
+    itemData && this.setData({ itemData })
+  },
+  itemDelete: function (e) {  // itemDelete
+    let itemData = App.Touches.deleteItem(e, this.data.itemData)
+    itemData && this.setData({ itemData })
+  },
+  onLoad: function () {
+    let refer = this;
+    wx.request({
+      url: App.globalData.serverUrl + '/Emp/mobile/getCourse/getCourse/',
+      method: 'GET',
       success: function (res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
+        refer.setData({
+          itemData: res.data
+        });
+        console.log(res);
       }
     });
-    return;
-  },
-  toIndex: function () {
-    let refer = this;
-    refer.setData({
-      indeximg: '../image/tabbar/1.png',
-      catagaryimg: '../image/tabbar/5.png'
-    });
-    wx.redirectTo({
-      url: '../page_010/page_010',
-    });
-  },
-  toPrevious: function () {
-    let refer = this;
-    refer.setData({
-      indeximg: '../image/tabbar/2.png'
-    });
-    wx.redirectTo({
-      url: '../page_016/page_016',
-    });
-  },
-  movestart: function (e) {
-    currindex = e.target.dataset.index;
-    x = e.touches[0].clientX;
-    y = e.touches[0].clientY;
-    x1 = e.currentTarget.offsetLeft;
-    y1 = e.currentTarget.offsetTop;
-  },
-  move: function (e) {
-    yy = e.currentTarget.offsetTop;
-    x2 = e.touches[0].clientX - x + x1;
-    y2 = e.touches[0].clientY - y + y1;
-    this.setData({
-      mainx: currindex,
-      opacity: 1,
-      start: { x: x2, y: y2 }
-    })
-  },
-  moveend: function () {
-    if (y2 != 0) {
-      var arr = [];
-      for (var i = 0; i < this.data.content.length; i++) {
-        arr.push(this.data.content[i]);
-      }
-      var nx = this.data.content.length;
-      n = 1;
-      for (var k = 2; k < nx; k++) {
-        if (y2 > (82 * (k - 1) + k * 2 - 26)) {
-          n = k;
-        }
-      }
-      if (y2 > (82 * (nx - 1) + nx * 2 - 26)) {
-        n = nx;
-      }
-      console.log(arr);
-      console.log(arr1)
-      arr.splice((currindex - 1), 1);
-      arr.splice((n - 1), 0, arr1[currindex - 1]);
-      arr1 = [];
-      for (var m = 0; m < this.data.content.length; m++) {
-        console.log(arr[m]);
-        arr[m].id = m + 1;
-        arr1.push(arr[m]);
-      }
-      // console.log(arr1);
-      this.setData({
-        mainx: "",
-        content: arr,
-        opacity: 1
-      })
-    }
   }
 })

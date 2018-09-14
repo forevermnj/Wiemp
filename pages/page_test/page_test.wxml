@@ -1,25 +1,20 @@
-<view class="container">
- <view bindtap="box" class="box" >
-
-
-   <view disable-scroll="true" wx:for="{{content}}" bindtouchmove="move" bindtouchstart="movestart" bindtouchend="moveend" data-index="{{item.id}}" data-main="{{mainx}}" class="main {{mainx == item.id? 'mainmove':(item.id==1?'':(item.id==2?'style3':(item.id==3?'style4':(item.id==4?'style5':''))))}}" style="left:{{start.x}}px; top:{{start.y}}px">
-   
-   {{item.content}}
-
-   </view>
- </view>
-
- <view class='style6'>submit</view>
+<view class="item-wrapper">
+    <view class='style2' wx:for="{{itemData}}" wx:for-item="item" wx:for-index="index" wx:key="that">
+        <view class='style1' data-index="{{index}}" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" style="left:{{item.left + 'rpx'}}">
+            <!--图片-->
+            <view class='style4'>
+             <image class="style3" src="{{item.icon}}"></image>
+            </view>
+            <!--描述内容-->
+            <view>
+                <view>
+                    <view>{{item.scecatname}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="style5">
+            <view bindtap="itemDelete" data-index="{{index}}">选择</view>
+            <view bindtap="itemDelete" data-index="{{index}}">取消</view>
+        </view>
+    </view>
 </view>
-
-<!--底部导航条-->
-<view class="footerstyle1">
-    <view bindtap='toIndex' class="smallgroup">
-      <image bindtap='toIndex' class='tabbar1' src='{{indeximg}}'></image>
-      <view bindtap='toIndex' class='tabbar2'>首页</view>
-    </view>
-    <view bindtap='toPrevious' class="smallgroup">
-      <image bindtap='toPrevious' class='tabbar1' src='{{previousImg}}'></image>
-      <view bindtap='toPrevious' class='tabbar2'>上级</view>
-    </view>
-</view> 

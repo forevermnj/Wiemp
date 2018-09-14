@@ -10,8 +10,8 @@ Page({
     isTouchMove: '',
     startX: 0, //开始坐标
     startY: 0,
-    courseData: [],
-    ifchoose: false,
+    courseData:[],
+    ifchoose:false,
     loginimg: '../image/tabbar/3.png'
   },
   /**
@@ -86,11 +86,11 @@ Page({
     let index = e.currentTarget.dataset.index;
     refer.data.courseData[index].selected = true;
     refer.setData({
-      courseData: refer.data.courseData
+      courseData:refer.data.courseData
     })
   },
   //取消事件
-  toCancel: function (e) {
+  toCancel:function(e){
     let refer = this;
     let index = e.currentTarget.dataset.index;
     refer.data.courseData[index].selected = false;
