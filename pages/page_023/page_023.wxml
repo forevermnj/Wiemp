@@ -27,6 +27,10 @@
 </view>
 </scroll-view>
 
+<view catchtap='toRegister' class='style16'>
+  注册
+</view>
+
 <!--底部导航条-->
 <view class="footerstyle1">
     <view catchtap='toLogin' class="smallgroup">

@@ -11,7 +11,7 @@ Page({
     startX: 0, //开始坐标
     startY: 0,
     courseData: [],
-    ifchoose: false,
+    courseID:'',
     loginimg: '../image/tabbar/3.png'
   },
   /**
@@ -84,6 +84,11 @@ Page({
   toSelect: function (e) {
     let refer = this;
     let index = e.currentTarget.dataset.index;
+    if (refer.data.courseID==''){
+      refer.data.courseID = refer.data.courseData[index].courseID;
+    }else{
+      refer.data.courseID = refer.data.courseID + "," + refer.data.courseData[index].courseID;
+    }
     refer.data.courseData[index].selected = true;
     refer.setData({
       courseData: refer.data.courseData
@@ -102,5 +107,57 @@ Page({
     wx.redirectTo({
       url: '../page_005/page_005',
     });
+  },
+  toRegister:function(){
+    let refer = this;
+    console.log('注册' + refer.data.courseID);
+    if(refer.data.courseID==''){
+      wx.showToast({
+        title: '请选择课程',
+        image: '../image/tabbar/25.png',
+        duration: 2000
+      })
+      return
+    }
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/register/register',
+      method: 'POST',
+      header: {
+        "Content-Type": "application/json"
+      },
+      data: {
+        code: app.globalData.regpassWord,
+        phone: app.globalData.regtel,
+        userName: app.globalData.reguserName,
+        deparment: app.globalData.regdepartMent,
+        email: app.globalData.regemail,
+        courseid: refer.data.courseID,
+      },
+      success: function (res) {
+        console.log(res.data);
+        if (res.data.code != 0){
+          wx.showModal({
+            title: '提示',
+            content: res.data.result,
+            success: function (res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+                wx.redirectTo({
+                  url: '../page_005/page_005',
+                })
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
+          })
+        }
+        if (res.data.code == 2) {
+          refer.toTip(res.data.result);
+        }
+        if (res.data.code == 0) {
+          refer.toTip(res.data.result);
+        }
+      }
+    })
   }
 })
