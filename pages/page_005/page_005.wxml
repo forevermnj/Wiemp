@@ -9,10 +9,10 @@
 
   <!--输入-->
   <view class='style5'>
-    <input value='{{globalUserName}}' bindinput='telInput' class='style3' placeholder="手机号"></input>
+    <input value='{{storagetel}}' bindinput='telInput' class='style3' placeholder="手机号"></input>
   </view>
   <view  class='style6'>
-    <input value='{{globalPassWord}}' bindinput='pwdInput' class='style3' placeholder="密码"></input>
+    <input password='true' value='{{storagecode}}' bindinput='pwdInput' class='style3' placeholder="密码"></input>
   </view>
 
   <!--提交-->

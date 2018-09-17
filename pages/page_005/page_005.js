@@ -9,8 +9,8 @@ Page({
   data: {
      tel:'',
      code:'',
-     globalUserName:'',
-     globalPassWord:''
+     storagetel:'',
+     storagecode:''
   },
 
   /**
@@ -18,10 +18,6 @@ Page({
    */
   onLoad: function () {
     let refer = this;
-    refer.setData({
-      globalUserName: app.globalData.userName,
-      globalPassWord: app.globalData.pwd
-    })
     /**
      * 移除指定缓存数据
      */
@@ -30,30 +26,41 @@ Page({
     wx.removeStorageSync("totalaccount");
     wx.removeStorageSync("uid");
 
-    //清理本地缓存
-    wx.clearStorage();
+    refer.setData({
+      storagetel: wx.getStorageSync('userName'),
+      storagecode: wx.getStorageSync('pwd')
+    });
+
   },
   //获取用户输入的手机号
   telInput: function (e) {
-    var refer = this;
+    let refer = this;
     refer.setData({
       tel: e.detail.value
-    })
+    });
   },
   //获取用户输入的密码
   pwdInput: function (e) {
-    var refer = this;
+    let refer = this;
     refer.setData({
       code: e.detail.value
-    })
+    });
   },
   clogin: function (){
     let refer = this;
     let openId = wx.getStorageSync('openId');
     let nickName = wx.getStorageSync('nickName');
-    app.globalData.userName = refer.data.tel;
-    app.globalData.pwd = refer.data.code;
-    console.log('openid' + openId + '用户昵称' + nickName + '登录名' + app.globalData.userName + '登录密码' + app.globalData.pwd);
+    if (refer.data.tel!=''){
+      //将登录名存入缓存中
+      wx.setStorageSync("userName", refer.data.tel);
+      
+    }
+    if (refer.data.code!=''){
+      //将登录密码存入缓存中
+      wx.setStorageSync("pwd", refer.data.code);
+    }
+    
+    // console.log('登录名' + wx.getStorageSync('userName') + '登录密码' + wx.getStorageSync('pwd'));
     util.showBusy('登录中...');
     
     wx.request({
@@ -63,8 +70,8 @@ Page({
         "Content-Type": "application/json"
       },
       data: {
-        code: refer.data.globalUserName != '' ? refer.data.globalUserName:refer.data.code,
-        tel: refer.data.globalPassWord != '' ? refer.data.globalPassWord:refer.data.tel,
+        code: wx.getStorageSync('pwd') != '' ? wx.getStorageSync('pwd'):refer.data.code,
+        tel: wx.getStorageSync('userName') != '' ? wx.getStorageSync('userName'):refer.data.tel,
         openid: openId,
         nickName: nickName
       },
@@ -75,6 +82,7 @@ Page({
             key: "uid",
             data: res.data.uid
           });
+          
           util.showSuccess('加载成功');
           wx.redirectTo({
             url: '../page_010/page_010',

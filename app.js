@@ -87,15 +87,12 @@ App({
     easyErrorId: '',
     examFlag:false,//单词考试数据加载失败
 
-
     regtel: '',
     reguserName: '',
     regdepartMent: '',
     regpassWord: '',
     regemail: '',
 
-    userName:'',//登录名,全局变量
-    pwd:'',//登录密码,全局变量
     dropLetId:-1,//page_010页面全局参数
     dropLetConfigTypeId:-1,//page_010页面全局参数
     uid:'020b28e556de4352a231650c1637653c'//测试用户ID
