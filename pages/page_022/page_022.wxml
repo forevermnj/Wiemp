@@ -8,7 +8,7 @@
  <!--输入-->
  <view class='style5'>
    <view>
-     <input bindinput='toTelinput' class='style4' placeholder="电话"></input>
+     <input bindinput='toTelinput' class='style4' placeholder="手机号"></input>
    </view>
    <view class='style7'>
      <input bindinput='toUserNameInput' class='style4' placeholder="姓名"></input>
