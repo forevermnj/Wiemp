@@ -53,6 +53,7 @@ Page({
     let nickName = wx.getStorageSync('nickName');
     app.globalData.userName = refer.data.tel;
     app.globalData.pwd = refer.data.code;
+    console.log('openid' + openId + '用户昵称' + nickName + '登录名' + app.globalData.userName + '登录密码' + app.globalData.pwd);
     util.showBusy('登录中...');
     
     wx.request({

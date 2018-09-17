@@ -26,7 +26,6 @@ Page({
         refer.setData({
           courseData: res.data
         });
-        console.log(res);
       }
     });
   },
@@ -84,15 +83,10 @@ Page({
   toSelect: function (e) {
     let refer = this;
     let index = e.currentTarget.dataset.index;
-    if (refer.data.courseID==''){
-      refer.data.courseID = refer.data.courseData[index].courseID;
-    }else{
-      refer.data.courseID = refer.data.courseID + "," + refer.data.courseData[index].courseID;
-    }
     refer.data.courseData[index].selected = true;
     refer.setData({
       courseData: refer.data.courseData
-    })
+    });
   },
   //取消事件
   toCancel: function (e) {
@@ -101,7 +95,7 @@ Page({
     refer.data.courseData[index].selected = false;
     refer.setData({
       courseData: refer.data.courseData
-    })
+    });
   },
   toLogin: function () {
     wx.redirectTo({
@@ -110,7 +104,7 @@ Page({
   },
   toRegister:function(){
     let refer = this;
-    console.log('注册' + refer.data.courseID);
+    let courseid = refer.getCourseID();
     if(refer.data.courseID==''){
       wx.showToast({
         title: '请选择课程',
@@ -131,22 +125,22 @@ Page({
         userName: app.globalData.reguserName,
         deparment: app.globalData.regdepartMent,
         email: app.globalData.regemail,
-        courseid: refer.data.courseID,
+        courseid: courseid,
       },
       success: function (res) {
-        console.log(res.data);
+        //重置选择的课程数据
+        refer.data.courseID = '';
         if (res.data.code != 0){
           wx.showModal({
             title: '提示',
             content: res.data.result,
             success: function (res) {
               if (res.confirm) {
-                console.log('用户点击确定')
                 wx.redirectTo({
                   url: '../page_005/page_005',
                 })
               } else if (res.cancel) {
-                console.log('用户点击取消')
+
               }
             }
           })
@@ -159,5 +153,20 @@ Page({
         }
       }
     })
+  },
+  //获取选择的课程的ID
+  getCourseID:function(){
+    let refer = this;
+    for (let i = 0; i < refer.data.courseData.length;i++){
+       //如果被选中
+       if(refer.data.courseData[i].selected){
+         if (refer.data.courseID==''){
+            refer.data.courseID = refer.data.courseData[i] .courseID;
+          }else{
+            refer.data.courseID = refer.data.courseID + "," +    refer.data.courseData[i].courseID;
+          }
+       }
+    }
+    return refer.data.courseID;
   }
 })
