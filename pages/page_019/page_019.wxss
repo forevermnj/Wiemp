@@ -15,52 +15,16 @@
 }
 
 .style2{
-  border-width: 0px;
-  border-style: solid;
-  margin-top: 30%;
-  width: 100%;
-  height: 50%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  justify-content:space-between;
+  margin-top: 30%;
+  border-style: solid;
+  border-width: 0px;
+  width: 80%;
 }
 
 .style3{
-  width: 184px;
-  height: 184px;
-}
-
-.style4{
-  width: 280px;
-  height: 191px;
-  border-radius: 8px;
-}
-
-.style5{
-  border-width: 0px;
-  border-style: solid;
-  margin-top: 30%;
-  width: 100%;
-  height: 50%;
-  
-}
-
-.style6{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content:space-between;
-}
-
-.style7{
-  border-width: 0px;
-  border-style: solid;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.style8{
   border-width: 1px;
   border-style: solid;
   width: 70px;
@@ -72,13 +36,13 @@
   background-color:rgb(183, 207, 205);
   border-color: rgb(183, 207, 205);
   margin-bottom: 20px;
-  margin-left: 25px;
+  margin-left: 5px;
   border-top-left-radius: 45px;
   border-bottom-left-radius: 45px;
   height: 30px;
 }
 
-.style9{
+.style4{
   border-width: 1px;
   border-style: solid;
   width: 70px;
@@ -90,31 +54,61 @@
   background-color: rgb(183, 207, 205);
   border-color: rgb(183, 207, 205);
   margin-bottom: 20px;
-  margin-right: 25px;
+  margin-right: 5px;
   border-top-right-radius: 45px;
   border-bottom-right-radius: 45px;
   height: 30px;
 }
 
-.style10{
+.style5{
   width: 25px;
   height: 25px;
-  
 }
 
-.style11{
-  width: 100px;
-  height: 100px;
+.style6{
+  width: 80%;
+  height: 35%;
+  border-style: solid;
+  border-width: 0px;
+ 
 }
 
-.style12{
+.style7{
   width: 100%;
-  height: 50%;
-  margin-top: 30%;
+  height: 100%;
+}
+
+.style8{
+  width: 100%;
+  height: 100%;
+  border-style: solid;
+  border-width: 0px;
+  word-wrap: break-word;
+}
+
+.style9{
+  width: 100%;
+  height: 100%;
+  border-style: solid;
+  border-width: 1px;
+  background-color: #a7c1bf;
+  border-color:white;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+.style10{
+  width: 60%;
+  height: 80%;
+}
+
+
+
+.style30{
+  margin-top: 50%;
+}
+
 
 
 .footerstyle1 {

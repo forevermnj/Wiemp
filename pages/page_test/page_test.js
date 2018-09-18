@@ -1,41 +1,24 @@
 
-const App = getApp()
-
 Page({
   data: {
-    itemData: []
+    src: 'https://www.learnzp.com/Emp/mobile/page_019/1.png',
+    animationData: ''
   },
-  touchS: function (e) {  // touchstart
-    console.log('开始滑动');
-    let startX = App.Touches.getClientX(e)
-    startX && this.setData({ startX })
-  },
-  touchM: function (e) {  // touchmove
-    let itemData = App.Touches.touchM(e, this.data.itemData, this.data.startX)
-    console.log(itemData);
-    itemData && this.setData({ itemData })
+  touchmove: function (e) {
+    var animation = wx.createAnimation({
+      duration: 1000,
+      timingFunction: "ease",
+    })
 
+    this.animation = animation
+
+    animation.scale(1, 1).rotate(-45).step();
+
+    this.setData({
+      animationData: animation.export()
+    })
   },
-  touchE: function (e) {  // touchend
-    const width = 150  // 定义操作列表宽度
-    let itemData = App.Touches.touchE(e, this.data.itemData, this.data.startX, width)
-    itemData && this.setData({ itemData })
-  },
-  itemDelete: function (e) {  // itemDelete
-    let itemData = App.Touches.deleteItem(e, this.data.itemData)
-    itemData && this.setData({ itemData })
-  },
-  onLoad: function () {
-    let refer = this;
-    wx.request({
-      url: App.globalData.serverUrl + '/Emp/mobile/getCourse/getCourse/',
-      method: 'GET',
-      success: function (res) {
-        refer.setData({
-          itemData: res.data
-        });
-        console.log(res);
-      }
-    });
+  touchend: function (e) {
+   
   }
 })

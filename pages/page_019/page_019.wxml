@@ -1,32 +1,75 @@
 <view class='style1'>
- <view wx:if="{{speechFlag==false}}" class='style2'>
-   <image class='style3' src="{{speechImg}}"></image>
- </view>
-
-
- <view wx:if="{{cflag}}" class='style5'>
-     <view class='style6'>
-      <view bindtap='toCorrect' class='style8'>
-        <image class='style10' src='../image/tabbar/22.png'></image>
-      </view>
-      <view bindtap='toError' class='style9'>
-        <image class='style10' src='../image/tabbar/23.png'></image>
-      </view>
-     </view>
-     
-     <view animation="{{animationData1}}" catchtouchstart='toMoveStart' catchtouchmove='toMoveEnd' catchtouchend='' class='style7'>
-      <image catchtouchstart='toMoveStart' catchtouchend='toMoveEnd' class='style4' src="{{cimgs[imgindex].url}}"></image>
-     </view>
-  </view>
-
-  <view class='style12'>
-    <icon wx:if="{{resRigFlag}}" type="success" size="100" color="green"/>
-    <icon wx:if="{{resErrFlag}}" type="clear" size="100" color="red"/>
-  </view>
-   
  
-</view>
 
+  <!--图片类型-->
+  <view wx:if="{{rightFlag==false && errorFlag==false}}" class='style2'>
+    <view class='style3'>
+      <image class='style5' src='../image/tabbar/22.png'></image>
+    </view>
+    <view class='style4'>
+      <image class='style5' src='../image/tabbar/23.png'></image>
+    </view>
+  </view>
+  <view wx:if="{{rightFlag==false && errorFlag==false && matchData.match.matchtype==0}}" class='style6'>
+   <image 
+    data-hi="{{matchData.match.ifimageright}}"
+    class='style7'
+    animation="{{animationData}}"
+    catchtouchstart='toMoveStart'
+    catchtouchmove='toMove'
+    src="{{matchData.match.image}}"
+   ></image>
+  </view>
+
+
+  <!--句子正确类型-->
+  <view wx:if="{{rightFlag==false && errorFlag==false && matchData.match.matchtype==1}}" class='style6'>
+    <view 
+    data-hi="{{matchData.match.ifsentenceright}}"
+    class='style8' 
+    animation="{{animationData}}"
+    catchtouchstart='toMoveStart'
+    catchtouchmove='toMove'>
+     {{matchData.match.sentence}}
+    </view>
+  </view>
+
+
+  <!--句子答案正确类型-->
+  <view wx:if="{{rightFlag==false && errorFlag==false && matchData.match.matchtype==2}}" class='style6'>
+    <view 
+    data-hi="{{matchData.match.ifanswersentenceright}}"
+    class='style8' 
+    animation="{{animationData}}"
+    catchtouchstart='toMoveStart'
+    catchtouchmove='toMove'>
+    {{matchData.match.answersentence}}
+    </view>
+  </view>
+
+
+  <!--音频答案正确类型-->
+  <view wx:if="{{rightFlag==false && errorFlag==false && matchData.match.matchtype==3}}" class='style6'>
+    <view 
+    data-hi="{{matchData.match.ifansweraudioright}}"
+    class='style9' 
+    animation="{{animationData}}"
+    catchtouchstart='toMoveStart'
+    catchtouchmove='toMove'>
+     <image class='style10' src='{{speechImg}}'></image>
+    </view>
+  </view>
+
+
+ 
+  <!--正确错误图标-->
+  <view class='style30'>
+    <icon wx:if="{{rightFlag}}" type="success" size="100" color="green"/>
+    <icon wx:if="{{errorFlag}}" type="clear" size="100" color="red"/>
+  </view>
+
+  
+</view>
 
 <!--底部导航条-->
 <view class="footerstyle1">

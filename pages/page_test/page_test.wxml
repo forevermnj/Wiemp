@@ -1,20 +1,8 @@
-<view class="item-wrapper">
-    <view class='style2' wx:for="{{itemData}}" wx:for-item="item" wx:for-index="index" wx:key="that">
-        <view class='style1' data-index="{{index}}" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" style="left:{{item.left + 'rpx'}}">
-            <!--图片-->
-            <view class='style4'>
-             <image class="style3" src="{{item.icon}}"></image>
-            </view>
-            <!--描述内容-->
-            <view>
-                <view>
-                    <view>{{item.scecatname}}</view>
-                </view>
-            </view>
-        </view>
-        <view class="style5">
-            <view bindtap="itemDelete" data-index="{{index}}">选择</view>
-            <view bindtap="itemDelete" data-index="{{index}}">取消</view>
-        </view>
-    </view>
+<view>
+ 
+   <image 
+    animation="{{animationData}}"
+    catchtouchmove='touchmove'
+    src="{{src}}"
+  ></image>
 </view>
