@@ -1,5 +1,6 @@
 {
   "pages": [
+    
    
     "pages/index/index",
     "pages/page_001/page_001",
@@ -25,6 +26,7 @@
     "pages/page_021/page_021",
     "pages/page_022/page_022",
     "pages/page_023/page_023",
+    "pages/page_024/page_024",
     "pages/page_test/page_test",
     "pages/logs/logs"
   ],

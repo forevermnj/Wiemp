@@ -1,8 +1,21 @@
 <view class='style1'>
  
 
+  <!--开始音频-->
+  <view wx:if="{{rightFlag==false && errorFlag==false &&startFlag==false}}" class='style11'>
+    <view 
+    class='style12' 
+    animation="{{animationData}}"
+    catchtouchstart='toMoveStart'
+    catchtouchend='toMoveEnd'
+    catchtouchmove='toMove'>
+     <image class='style10' src='{{speechImg}}'></image>
+    </view>
+  </view>
+  
+
   <!--图片类型-->
-  <view wx:if="{{rightFlag==false && errorFlag==false}}" class='style2'>
+  <view wx:if="{{rightFlag==false && errorFlag==false && startFlag==true}}" class='style2'>
     <view class='style3'>
       <image class='style5' src='../image/tabbar/22.png'></image>
     </view>
@@ -10,12 +23,13 @@
       <image class='style5' src='../image/tabbar/23.png'></image>
     </view>
   </view>
-  <view wx:if="{{rightFlag==false && errorFlag==false && matchData.match.matchtype==0}}" class='style6'>
+  <view wx:if="{{rightFlag==false && errorFlag==false && matchData.match.matchtype==0 && startFlag==true}}" class='style6'>
    <image 
     data-hi="{{matchData.match.ifimageright}}"
     class='style7'
     animation="{{animationData}}"
     catchtouchstart='toMoveStart'
+    catchtouchend='toMoveEnd'
     catchtouchmove='toMove'
     src="{{matchData.match.image}}"
    ></image>
@@ -23,12 +37,13 @@
 
 
   <!--句子正确类型-->
-  <view wx:if="{{rightFlag==false && errorFlag==false && matchData.match.matchtype==1}}" class='style6'>
+  <view wx:if="{{rightFlag==false && errorFlag==false && matchData.match.matchtype==1 && startFlag==true}}" class='style6'>
     <view 
     data-hi="{{matchData.match.ifsentenceright}}"
     class='style8' 
     animation="{{animationData}}"
     catchtouchstart='toMoveStart'
+    catchtouchend='toMoveEnd'
     catchtouchmove='toMove'>
      {{matchData.match.sentence}}
     </view>
@@ -36,12 +51,13 @@
 
 
   <!--句子答案正确类型-->
-  <view wx:if="{{rightFlag==false && errorFlag==false && matchData.match.matchtype==2}}" class='style6'>
+  <view wx:if="{{rightFlag==false && errorFlag==false && matchData.match.matchtype==2 && startFlag==true}}" class='style6'>
     <view 
     data-hi="{{matchData.match.ifanswersentenceright}}"
     class='style8' 
     animation="{{animationData}}"
     catchtouchstart='toMoveStart'
+    catchtouchend='toMoveEnd'
     catchtouchmove='toMove'>
     {{matchData.match.answersentence}}
     </view>
@@ -49,14 +65,15 @@
 
 
   <!--音频答案正确类型-->
-  <view wx:if="{{rightFlag==false && errorFlag==false && matchData.match.matchtype==3}}" class='style6'>
+  <view wx:if="{{rightFlag==false && errorFlag==false && matchData.match.matchtype==3 && startFlag==true}}" class='style6'>
     <view 
     data-hi="{{matchData.match.ifansweraudioright}}"
     class='style9' 
     animation="{{animationData}}"
     catchtouchstart='toMoveStart'
+    catchtouchend='toMoveEnd'
     catchtouchmove='toMove'>
-     <image class='style10' src='{{speechImg}}'></image>
+     <image class='style13' src='{{anwserImg}}'></image>
     </view>
   </view>
 
@@ -73,12 +90,8 @@
 
 <!--底部导航条-->
 <view class="footerstyle1">
-    <view bindtap='toIndex' class="smallgroup">
-      <image bindtap='toIndex' class='tabbar1' src='{{indeximg}}'></image>
-      <view bindtap='toIndex' class='tabbar2'>首页</view>
-    </view>
-    <view bindtap='toPrevious' class="smallgroup">
-      <image bindtap='toPrevious' class='tabbar1' src='{{previousImg}}'></image>
-      <view bindtap='toPrevious' class='tabbar2'>上级</view>
+    <view wx:for="{{matchData.button}}" class="smallgroup">
+     <image data-hi="{{[item.buttonlink,item.reladropletid,item.reladropletconftype]}}" bindtap='toBootomButton' class='tabbar1' src='{{item.icon}}'></image>
+      <view data-hi="{{[item.buttonlink,item.reladropletid,item.reladropletconftype]}}" bindtap='toBootomButton' class='tabbar2'>{{item.buttonname}}</view>
     </view>
 </view> 

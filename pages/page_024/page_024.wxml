@@ -1,0 +1,9 @@
+
+<view>
+  <video src="https://www.learnzp.com/Emp/mobile/video/page_024/1.mp4"  controls ></video>
+  
+  <!-- <view>
+    <input bindblur="bindInputBlur"/>
+    <button bindtap="bindSendDanmu">发送弹幕</button>
+  </view> -->
+</view>
