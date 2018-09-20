@@ -5,48 +5,48 @@ Page({
   data: {
     rightSoundEffect: app.globalData.serverUrl + '/Emp/mobile/mp3/3.mp3',
     errorSoundEffect: app.globalData.serverUrl + '/Emp/mobile/mp3/2.mp3',
-    rightFlag:false,
-    errorFlag:false,
-    startFlag:false,
-    moveDirection:-1,
-    videoFlag:false,
+    rightFlag: false,
+    errorFlag: false,
+    startFlag: false,
+    moveDirection: -1,
+    videoFlag: false,
     animationData: '',
-    matchData:{},
-    speechImg:'../image/tabbar/18.gif',
-    anwserImg:'../image/tabbar/29.gif',
-    startIndex:0
+    matchData: {},
+    speechImg: '../image/tabbar/18.gif',
+    anwserImg: '../image/tabbar/29.gif',
+    startIndex: 0
   },
- 
 
-  toMoveStart:function(e){
+
+  toMoveStart: function (e) {
     let refer = this;
     refer.data.startIndex = e.touches[0].clientX;
   },
-  toMove:function(e){
+  toMove: function (e) {
     let refer = this;
     let flag = e.currentTarget.dataset.hi;
     //左移动
-    if (e.touches[0].clientX-refer.data.startIndex <-20){
+    if (e.touches[0].clientX - refer.data.startIndex < -30) {
       refer.setData({
         startIndex: e.touches[0].clientX,
-        moveDirection:'left'
+        moveDirection: 'left'
       })
-      refer.toLeft(flag);//调用左移动方法
-    } else if ((e.touches[0].clientX - refer.data.startIndex >20)){
+      refer.toLeft();//调用左移动方法
+    } else if ((e.touches[0].clientX - refer.data.startIndex > 30)) {
       refer.setData({
         startIndex: e.touches[0].clientX,
         moveDirection: 'right'
       })
-      refer.toRight(flag);//调用右移动方法
+      refer.toRight();//调用右移动方法
     }
   },
-  toMoveEnd:function(e){
+  toMoveEnd: function (e) {
     let refer = this;
     let flag = e.currentTarget.dataset.hi;
     console.log(flag);
     setTimeout(function () {
       //如果答案正确并且向左移动则回答正确
-      if (flag && refer.data.moveDirection=='left') {
+      if (flag && refer.data.moveDirection == 'left') {
         //console.log('回答正确');
         refer.setData({
           rightFlag: true,
@@ -55,7 +55,7 @@ Page({
         refer.toCorrect();
       }
       //如果答案错误并且向右移动则回答正确 
-      if (flag == false && refer.data.moveDirection == 'right'){
+      if (flag == false && refer.data.moveDirection == 'right') {
         //console.log('回答正确');
         refer.setData({
           rightFlag: true,
@@ -64,7 +64,7 @@ Page({
         refer.toCorrect();
       }
       //如果答案正确并且向右移动则回答错误
-      if(flag && refer.data.moveDirection=='right'){
+      if (flag && refer.data.moveDirection == 'right') {
         //console.log('回答错误');
         refer.setData({
           rightFlag: false,
@@ -73,7 +73,7 @@ Page({
         refer.toError();
       }
       //如果答案错误并且向左移动则回答错误
-      if (flag==false && refer.data.moveDirection == 'left') {
+      if (flag == false && refer.data.moveDirection == 'left') {
         //console.log('回答错误');
         refer.setData({
           rightFlag: false,
@@ -81,7 +81,7 @@ Page({
         });
         refer.toError();
       }
-    }.bind(refer), 850);
+    }.bind(refer), 200);
     setTimeout(function () {
       //跳下一题
       let path = refer.data.matchData.match.dropletlink;
@@ -92,21 +92,21 @@ Page({
       });
     }.bind(refer), 1000);
   },
-  toCorrect:function(){
+  toCorrect: function () {
     let refer = this;
     let tempFilePath = refer.data.rightSoundEffect;
     wx.playBackgroundAudio({
       dataUrl: tempFilePath
     });
   },
-  toError:function(){
+  toError: function () {
     let refer = this;
     let tempFilePath = refer.data.errorSoundEffect;
     wx.playBackgroundAudio({
       dataUrl: tempFilePath
     });
   },
-  toLeft:function(){
+  toLeft: function () {
     let refer = this;
     let animation = wx.createAnimation({
       duration: 900,
@@ -120,7 +120,7 @@ Page({
       animationData: animation.export()
     });
   },
-  toRight:function(){
+  toRight: function () {
     let refer = this;
     let animation = wx.createAnimation({
       duration: 900,
@@ -134,7 +134,7 @@ Page({
       animationData: animation.export()
     });
 
-    
+
   },
   toBootomButton: function (e) {
     let refer = this;
@@ -165,18 +165,18 @@ Page({
           refer.setData({
             startFlag: true
           });
-          if(refer.data.videoFlag){
-             refer.setData({
-               anwserImg: '../image/tabbar/28.png'
-             })
+          if (refer.data.videoFlag) {
+            refer.setData({
+              anwserImg: '../image/tabbar/28.png'
+            })
           }
-          if (refer.data.matchData.match.matchtype == 3 && refer.data.videoFlag == false){
+          if (refer.data.matchData.match.matchtype == 3 && refer.data.videoFlag == false) {
             //console.log(refer.data.matchData.match.matchtype+'音频答案');
             wx.playBackgroundAudio({
               dataUrl: refer.data.matchData.match.answeraudio
             });
             refer.setData({
-              videoFlag:true
+              videoFlag: true
             })
           }
         });

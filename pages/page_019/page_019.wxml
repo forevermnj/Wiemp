@@ -3,12 +3,7 @@
 
   <!--开始音频-->
   <view wx:if="{{rightFlag==false && errorFlag==false &&startFlag==false}}" class='style11'>
-    <view 
-    class='style12' 
-    animation="{{animationData}}"
-    catchtouchstart='toMoveStart'
-    catchtouchend='toMoveEnd'
-    catchtouchmove='toMove'>
+    <view class='style12'>
      <image class='style10' src='{{speechImg}}'></image>
     </view>
   </view>
