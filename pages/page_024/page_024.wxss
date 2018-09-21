@@ -1,1 +1,91 @@
-/* pages/page_024/page_024.wxss */
+
+.style1{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 100rpx 0;
+  box-sizing: border-box;
+  background-color: #F2F2F2;
+  border-style: solid;
+  border-width: 0px;
+}
+
+.style2{
+  width: 95%;
+  height: 60%;
+  margin-top: 26%;
+}
+
+.style3{
+  width: 85%;
+  background-color: green;
+  color:white;
+}
+
+.style4{
+  border-style: solid;
+  border-width: 1px;
+  width: 80%;
+  height: 10%;
+  border-color: green;
+}
+
+
+
+
+
+
+
+.footerstyle1 {
+  position: absolute;
+  bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: rgb(249, 249, 249);
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border:1px;
+  border-color:#D8D8D8;
+  border-style:solid;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  /*border-color: red;
+  border-style: dashed;*/
+}
+
+
+
+.tabbar1{
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  
+}
+
+.tabbar2{
+  font-size: 10px;
+  margin-left:1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-width: 0px;
+  border-style: solid;
+}
+
+.smallgroup{
+  border-width: 0px;
+  border-style: solid;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+
+}

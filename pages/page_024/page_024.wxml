@@ -1,9 +1,26 @@
 
-<view>
-  <video src="https://www.learnzp.com/Emp/mobile/video/page_024/1.mp4"  controls ></video>
-  
-  <!-- <view>
-    <input bindblur="bindInputBlur"/>
-    <button bindtap="bindSendDanmu">发送弹幕</button>
-  </view> -->
+<view class='style1'>
+  <video 
+  id="myVideo"
+  bindended="toEnd"
+  danmu-list="{{danmuList}}"
+  danmu-btn='true' 
+  page-gesture='true' 
+  class='style2'   
+  src="{{videoData.video.video}}" 
+  controls
+  enable-danmu danmu-btn
+  >
+  </video>
+  <!-- <input class='style4' bindblur="bindInputBlur" placeholder="发送弹幕"/>
+  <button class='style3' bindtap="bindSendDanmu">发送弹幕</button> -->
+</view>
+
+
+<!--底部导航条-->
+<view class="footerstyle1">
+    <view wx:for="{{videoData.button}}" class="smallgroup">
+     <image data-hi="{{[item.buttonlink,item.reladropletid,item.reladropletconftype]}}" bindtap='toBootomButton' class='tabbar1' src='{{item.icon}}'></image>
+      <view data-hi="{{[item.buttonlink,item.reladropletid,item.reladropletconftype]}}" bindtap='toBootomButton' class='tabbar2'>{{item.buttonname}}</view>
+    </view>
 </view>

@@ -1,15 +1,20 @@
 <scroll-view scroll-y="true" class='style1'>
 
   <view class='style2'>
-     <view class='style4'>
+     
+     <view wx:if="{{chooseData.choice.choicetype==1}}" class='style4'>
       <image class='style3' src='{{chooseData.choice.choicetextimage}}'></image>
      </view>
 
-<view class='style4'>
+    <view wx:if="{{chooseData.choice.choicetype==1}}" class='style4'>
       <view catchtap='speech' class="{{speechFlag!=true?'style8':'style10'}}">
        <image catchtap='speech' class="{{speechFlag?'style11':'style7'}}" src='{{speeImgInit}}'></image>
       </view>
-     </view>
+    </view>
+
+    <view wx:if="{{chooseData.choice.choicetype==0}}" class='style14'>
+      {{chooseData.choice.choicetext}}
+    </view>
 
      
      <view class='style5'>

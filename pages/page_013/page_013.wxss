@@ -142,6 +142,18 @@
   font-size: 16px;  
 }
 
+.style14{
+  border-style: solid;
+  border-width: 0px;
+  width: 100%;
+  height: 10%;
+  margin-top: 35%;
+  color:white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
