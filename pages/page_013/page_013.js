@@ -23,7 +23,9 @@ Page({
         refer.setData({
           chooseData: res.data
         })
-        refer.speech();
+        if (refer.data.chooseData.choice.choicetype=="1"){
+          refer.speech();
+        }
       }
     })
   },
