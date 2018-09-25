@@ -74,7 +74,9 @@ Page({
             refer.data.correctIndex = refer.data.correctIndex + 1;
             refer.data.answerIndex = refer.data.answerIndex + 1;
             newQuestion[a].correctflag = true;
-          }
+        }else{
+          refer.data.answerIndex = refer.data.answerIndex + 1;
+        }
       }
     }
     refer.correctSoundEffect();
