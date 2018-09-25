@@ -1,0 +1,52 @@
+
+<view class='style1'>
+ 
+
+  
+
+  <!--显示图片-->
+  <view class='style2'>
+   <image class='style3' src='{{dictationData.dictation.image}}'></image>
+   <!--分数显示-->
+   <view wx:if="{{ifsubFlag}}" class="{{score<10?'style13':'style12'}}">
+     {{score}}
+   </view>
+  </view>
+ 
+  
+
+  <!--问题显示区-->
+  <scroll-view class='style11' scroll-y='true'>
+  <view class='style4'>
+    <block wx:for="{{question}}">
+         <block wx:if="{{item.tit!='$$$'}}">
+          <text class="{{(ifsubFlag == false && item.emptyflag)?'style8':(item.emptyflag==false?'':(item.correctflag?'style9':'style10'))}}">{{item.tit}}</text>\n
+         </block>
+         <block wx:elif="{{item.tit=='$$$'}}">
+          <text class='style8'>{{emptyStr}}</text>\n
+         </block>
+       </block>
+  </view>
+
+  <!--输入答案框-->
+  <view class='style5'>
+    <input bindinput="answerInput" placeholder-class="style6" placeholder="Please Enter the Answer"/>
+  </view>
+  </scroll-view>
+  <!--提交按钮-->
+  <view class='style7' catchtap='toSub'>
+   submit
+  </view>
+ 
+
+</view>
+
+
+
+<!--底部导航条-->
+<view class="footerstyle1">
+    <view wx:for="{{dictationData.button}}" class="smallgroup">
+     <image data-hi="{{[item.buttonlink,item.reladropletid,item.reladropletconftype]}}" bindtap='toBootomButton' class='tabbar1' src='{{item.icon}}'></image>
+      <view data-hi="{{[item.buttonlink,item.reladropletid,item.reladropletconftype]}}" bindtap='toBootomButton' class='tabbar2'>{{item.buttonname}}</view>
+    </view>
+</view>
