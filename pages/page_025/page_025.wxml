@@ -2,10 +2,13 @@
 <view class='style1'>
  
 
-  
+  <!--显示音频-->
+  <view wx:if="{{playFlag==false}}" class='style14'>
+    <image class='style15' src='{{speechImg}}'></image>
+  </view>
 
   <!--显示图片-->
-  <view class='style2'>
+  <view wx:if="{{playFlag}}" class='style2'>
    <image class='style3' src='{{dictationData.dictation.image}}'></image>
    <!--分数显示-->
    <view wx:if="{{ifsubFlag}}" class="{{score<10?'style13':'style12'}}">
@@ -16,7 +19,7 @@
   
 
   <!--问题显示区-->
-  <scroll-view class='style11' scroll-y='true'>
+  <scroll-view  wx:if="{{playFlag}}" class='style11' scroll-y='true'>
   <view class='style4'>
     <block wx:for="{{question}}">
          <block wx:if="{{item.tit!='$$$'}}">
@@ -34,7 +37,7 @@
   </view>
   </scroll-view>
   <!--提交按钮-->
-  <view class='style7' catchtap='toSub'>
+  <view wx:if="{{playFlag}}" class='style7' catchtap='toSub'>
    submit
   </view>
  

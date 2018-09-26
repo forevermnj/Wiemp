@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 100rpx 0;
+  padding: 80rpx 0;
   box-sizing: border-box;
   background-color: #a7c1bf;
   border-style: solid;
@@ -19,12 +19,12 @@
 .style2{
   border-style: solid;
   border-width: 0px;
-  width: 95%;
+  width: 75%;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 5px;
-  height: 45%; 
+  height: 35%; 
 }
 
 .style3{
@@ -38,9 +38,9 @@
   border-width: 0px;
   width: 95%;
   border-radius: 5px;
-  margin-top: 20px;
+  margin-top: 15px;
   color:white;
-  font-size: 17px;
+  font-size: 15px;
   line-height: 35px;
   margin-left: 15px;
  
@@ -51,7 +51,7 @@
   border-width: 1px;
   width: 95%;
   margin-top: 30px;
-  height: 25%;
+  height: 20%;
   border-color: #1B2B42;
   color:green;
   border-radius: 5px;
@@ -61,7 +61,7 @@
 
 .style6{
   color:#1B2B42;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .style7{
@@ -111,7 +111,7 @@
   border-style: solid;
   border-width: 0px;
   width: 95%;
-  height: 42%;
+  height: 52%;
 }
 
 .style12{
@@ -144,6 +144,21 @@
   border-radius: 50px;
   margin-top: -80px;
   margin-left: 160px;
+}
+
+.style14{
+  border-style: solid;
+  border-width: 0px;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.style15{
+  width: 50%;
+  height: 32%;
 }
 
 ::-webkit-scrollbar {

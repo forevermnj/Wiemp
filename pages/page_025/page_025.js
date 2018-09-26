@@ -12,7 +12,9 @@ Page({
     emptyStr: '____________',
     answerIndex:0,
     score:0,
-    correctIndex:0
+    correctIndex:0,
+    speechImg: '../image/tabbar/18.gif',
+    playFlag:false
   },
   onLoad: function () {
     let refer = this;
@@ -24,8 +26,21 @@ Page({
         refer.setData({
           dictationData: res.data,
           question: res.data.dictation.question
-        })
+        });
+        refer.toPlay(refer.data.dictationData.dictation.audio);
       }
+    });
+  },
+  toPlay:function(path){
+    let refer = this;
+    wx.playBackgroundAudio({
+      dataUrl: path
+    });
+    //监听播放停止
+    wx.onBackgroundAudioStop(function () {
+      refer.setData({
+        playFlag: true
+      });
     });
   },
   toSub:function(){
