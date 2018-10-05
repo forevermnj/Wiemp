@@ -9,6 +9,7 @@
   class='style2'   
   src="{{videoData.video.video}}" 
   controls
+  poster="{{backImg}}"
   enable-danmu danmu-btn
   >
   </video>

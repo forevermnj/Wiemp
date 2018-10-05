@@ -17,7 +17,8 @@ Page({
   data: {
     videoData:{},
     inputValue: '',
-    danmuList: []
+    danmuList: [],
+    backImg: app.globalData.serverUrl+'/Emp/mobile/page_024/1.png'
   },
   onLoad: function (options) {
     let refer = this;

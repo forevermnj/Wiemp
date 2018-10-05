@@ -56,7 +56,7 @@ Page({
       refer.toTip('用户名不能为空');
       return
     }
-    if (app.globalData.passWord==''){
+    if (app.globalData.regpassWord==''){
       refer.toTip('密码不能为空');
       return
     }
