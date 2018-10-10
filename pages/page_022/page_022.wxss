@@ -63,3 +63,80 @@
 .style10{
   width: 90%;
 }
+
+.style11{
+  color:red;
+  font-size: 15px;
+}
+
+.style12{
+  font-size: 15px;
+}
+
+.style13{
+  font-size: 15px;
+  border-bottom-style:ridge;
+  border-bottom-color:green;
+  border-width: 1pt;
+  width: 70%;
+  color:#808080;
+}
+
+.style14{
+  border-style: solid;
+  border-width: 0px;
+  height: 90%;
+  margin-top: 5%;
+}
+
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.close_icon {
+  width: 25rpx;
+  height: 25rpx;
+  line-height: 20rpx;
+  font-size: 30rpx;
+  position: absolute;
+  right: 5rpx;
+  top:5rpx;
+  padding: 10rpx;
+  color: white;
+  border: 1rpx solid red;
+  border-radius: 50%;
+  text-align: center;
+  background: red;
+}
+
+.drawer_attr_content {
+  padding: 20rpx;
+  height: 500rpx;
+  overflow-y: scroll;
+}
+
+.drawer_attr_box {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+}
+
+.drawer_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}

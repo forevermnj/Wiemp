@@ -1,24 +1,38 @@
-
+// pages/others/drawer/drawer.js
 Page({
-  data: {
-    src: 'https://www.learnzp.com/Emp/mobile/page_019/1.png',
-    animationData: ''
-  },
-  touchmove: function (e) {
+  
+  // showModal和hideModal函数可以合并为一个函数，需要在组件中设置状态值
+  setModalStatus: function (e) {
+    console.log("设置显示状态，1显示0不显示", e.currentTarget.dataset.status);
     var animation = wx.createAnimation({
-      duration: 1000,
-      timingFunction: "ease",
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
     })
-
     this.animation = animation
-
-    animation.scale(1, 1).rotate(-45).step();
-
+    animation.translateY(300).step()
     this.setData({
       animationData: animation.export()
     })
-  },
-  touchend: function (e) {
-   
+    if (e.currentTarget.dataset.status == 1) {
+      this.setData(
+        {
+          showModalStatus: true
+        }
+      );
+    }
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation
+      })
+      if (e.currentTarget.dataset.status == 0) {
+        this.setData(
+          {
+            showModalStatus: false
+          }
+        );
+      }
+    }.bind(this), 200)
   }
 })

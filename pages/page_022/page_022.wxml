@@ -8,19 +8,40 @@
  <!--输入-->
  <view class='style5'>
    <view>
-     <input bindinput='toTelinput' class='style4' placeholder="手机号"></input>
+     <input placeholder-class='style11' bindinput='toTelinput' class='style4' placeholder="手机号"></input>
    </view>
    <view class='style7'>
-     <input bindinput='toUserNameInput' class='style4' placeholder="姓名"></input>
+     <input placeholder-class='style11' bindinput='toUserNameInput' class='style4' placeholder="用户名"></input>
    </view>
    <view class='style7'>
-     <input bindinput='toDepartMentInput' class='style4' placeholder="部门"></input>
+     <input placeholder-class='style11' password='true' bindinput='toPasswordInput' class='style4' placeholder="密码"></input>
    </view>
    <view class='style7'>
-     <input password='true' bindinput='toPasswordInput' class='style4' placeholder="密码"></input>
+     <input placeholder-class='style12' bindinput='toDepartMentInput' class='style4' placeholder="部门"></input>
    </view>
+
    <view class='style7'>
-     <input bindinput='toEmailInput' class='style4' placeholder="邮箱"></input>
+     <label data-status="1" catchtap='setModalStatus' class='style13'>导师</label>
+   </view>
+   
+   <view class='style7'>
+     <input placeholder-class='style12' bindinput='toEmailInput' class='style4' placeholder="邮箱"></input>
+   </view>
+ </view>
+
+
+ <!--导师选择-->
+ <view class="drawer_screen" bindtap="setModalStatus" data-status="0" wx:if="{{showModalStatus}}"></view>
+ <view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+   <view class="close_icon" bindtap="setModalStatus" data-status="0">×</view>
+   <view class="drawer_attr_content">
+    <view class='style14'>
+      <picker-view indicator-style="height: 50px;" style="width: 100%; height: 100%;" value="{{value}}" bindchange="bindChange">
+        <picker-view-column>
+          <view wx:for="{{test}}" style="line-height: 50px">{{item}}</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
    </view>
  </view>
 
