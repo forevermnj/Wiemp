@@ -8,8 +8,8 @@ Page({
      departMent:'',
      passWord:'',
      email:'',
-    test: ['导师1', '导师2', '导师3', '导师4', '导师5', '导师6','导师7', '导师8', '导师9'],
-    value:2
+     tutorData:[],
+     value:2
   },
   setModalStatus: function (e) {
     console.log("设置显示状态，1显示0不显示", e.currentTarget.dataset.status);
@@ -45,7 +45,16 @@ Page({
     }.bind(this), 200)
   },
   onLoad: function () {
-
+    let refer = this;
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/admin/getTutor',
+      method: 'GET',
+      success: function (res) {
+        refer.setData({
+          tutorData: res.data
+        });
+      }
+    });
   },
   toTelinput:function(e){
     app.globalData.regtel = e.detail.value;
