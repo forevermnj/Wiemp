@@ -1,5 +1,6 @@
 var app = getApp();
 var util = require('../../utils/util.js');
+var calculatescore = require('../../utils/calculatescore.js');
 Page({
   data: {
     fillBlankdata: {},
@@ -35,9 +36,9 @@ Page({
         break;
       }
     }
-    console.log(csv0 + "dddd" + subnum);
+    //console.log(csv0 + "dddd" + subnum);
     for (let m = 0; m < refer.data.answertemp.length; m++) {
-      console.log(refer.data.answertemp[m].subnum + "--" + refer.data.answertemp[m].tit);
+      //console.log(refer.data.answertemp[m].subnum + "--" + refer.data.answertemp[m].tit);
     }
     refer.data.numtemp = subnum;
     //获取选择的下标结果数组内,某个元素的下标
@@ -55,7 +56,7 @@ Page({
 
     //获取空位数组内,某个元素的下标
     let num = refer.data.fillBlankdata.fillBlank.emptyposition.indexOf(csv1);
-    console.log("====" + refer.data.chooseResultSubNum); 
+    //console.log("====" + refer.data.chooseResultSubNum); 
     refer.setData({
       fillBlankdata: refer.data.fillBlankdata,
       chooseResult: refer.data.chooseResult,
@@ -79,6 +80,9 @@ Page({
     }
     //如果选择正确
     if (weatherCorrect){
+      //调用计算用户得分函数
+      let score = calculatescore.addScore();
+      console.log("===" + score);
       refer.correctSoundEffect();
       let path = refer.data.fillBlankdata.fillBlank.dropLetLink;
       app.globalData.dropLetId = refer.data.fillBlankdata.fillBlank.reladropletid;

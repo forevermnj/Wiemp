@@ -12,11 +12,11 @@ Page({
     let csv0 = e.currentTarget.dataset.hi[0];
     let csv1 = e.currentTarget.dataset.hi[1];
     let csv2 = e.currentTarget.dataset.hi[2];
-    console.log('dddddddd'+csv1);
-    console.log('dddddddd' + csv2);
+    let csv3 = e.currentTarget.dataset.hi[3];
     
     app.globalData.dropLetId = csv1;
     app.globalData.dropLetConfigTypeId = csv2;
+    app.globalData.index = csv3;
     wx.redirectTo({
       url: csv0,
     })

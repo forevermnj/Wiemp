@@ -1,5 +1,6 @@
 var app = getApp();
 var util = require('../../utils/util.js');
+var calculatescore = require('../../utils/calculatescore.js');
 Page({
   data: {
     nochooseflag:-1,
@@ -68,7 +69,9 @@ Page({
         animationCorrectData: animation.export()
       })
     }.bind(refer), 500);
-
+    //调用计算用户得分函数
+    let score = calculatescore.addScore();
+    console.log("==="+score);
     refer.setData({
       nochooseflag: 0
     });

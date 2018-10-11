@@ -5,11 +5,11 @@
   <view class='style5'>完成关卡0/5</view>
   <scroll-view class="style2" scroll-x="true">
     <block wx:for="{{resdata.list}}">
-    <view data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid]}}" bindtouchstart='touchstart' bindtouchend='touchend' catchtap='clickImg' class="style3">
-         <view data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid]}}" catchtap='clickImg' class='style7'>
-           <image data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid]}}" catchtap='clickImg' class='style8' src='{{item.cardIcon}}'></image>
+    <view data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid,item.index]}}" bindtouchstart='touchstart' bindtouchend='touchend' catchtap='clickImg' class="style3">
+         <view data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid,item.index]}}" catchtap='clickImg' class='style7'>
+           <image data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid,item.index]}}" catchtap='clickImg' class='style8' src='{{item.cardIcon}}'></image>
          </view>
-         <view data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid]}}" catchtap='clickImg' class='style9'>{{item.cardName}}</view>
+         <view data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid,item.index]}}" catchtap='clickImg' class='style9'>{{item.cardName}}</view>
     </view>
     </block>
   </scroll-view>
@@ -28,14 +28,5 @@
      <image data-hi="{{[item.buttonlink,item.reladropletid,item.reladropletconftype]}}" bindtap='toBootomButton' class='tabbar1' src='{{item.icon}}'></image>
       <view data-hi="{{[item.buttonlink,item.reladropletid,item.reladropletconftype]}}" bindtap='toBootomButton' class='tabbar2'>{{item.buttonname}}</view>
     </view>
-
-    <!--
-    <view bindtap='toIndex' class="smallgroup">
-      <image bindtap='toIndex' class='tabbar1' src='{{indeximg}}'></image>
-      <view bindtap='toIndex' class='tabbar2'>Home</view>
-    </view>
-    <view bindtap='toCatagary' class="smallgroup">
-      <image bindtap='toCatagary' class='tabbar1' src='{{catagaryimg}}'></image>
-      <view bindtap='toCatagary' class='tabbar2'>FinTechEn</view>
-    </view>-->
+    
 </view>

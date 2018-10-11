@@ -1,5 +1,6 @@
 var app = getApp();
 var util = require('../../utils/util.js');
+var calculatescore = require('../../utils/calculatescore.js');
 Page({
   data: {
     audioChoice:{},
@@ -123,6 +124,9 @@ Page({
       
     
       setTimeout(function () {
+        //调用计算用户得分函数
+        let score = calculatescore.addScore();
+        console.log("===" + score);
         wx.stopBackgroundAudio();
         let path = refer.data.audioChoice.choiceAudio.dropLetLink;
         app.globalData.dropLetId = refer.data.audioChoice.choiceAudio.reladropletid;
@@ -130,10 +134,6 @@ Page({
         wx.redirectTo({
           url: path
         });
-        // wx.stopBackgroundAudio();
-        // wx.redirectTo({
-        //   url: '../page_016/page_016',
-        // });
       }.bind(refer), 1500);
     }else{
       //选错次数递增
@@ -143,7 +143,7 @@ Page({
       wx.stopBackgroundAudio();
       refer.data.allowClickIndex = refer.data.allowClickIndex + 1;
       if(refer.data.allowClickIndex == refer.data.allowClickNum){
-          console.log('选错三次');
+          //console.log('选错三次');
           refer.setData({
             nochooseflag: 0,
             preflag: true
