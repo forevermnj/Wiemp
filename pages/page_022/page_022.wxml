@@ -21,7 +21,7 @@
    </view>
 
    <view class='style7'>
-     <label data-status="1" catchtap='setModalStatus' class='style13'>导师</label>
+     <label data-status="1" catchtap='setModalStatus' class='style13'>导师：{{tutor}}</label>
    </view>
    
    <view class='style7'>
@@ -36,9 +36,9 @@
    <view class="close_icon" bindtap="setModalStatus" data-status="0">×</view>
    <view class="drawer_attr_content">
     <view class='style14'>
-      <picker-view indicator-style="height: 50px;" style="width: 100%; height: 100%;" value="{{value}}" bindchange="bindChange">
+      <picker-view indicator-style="height: 50px;" class='style15' bindchange="tutorChange">
         <picker-view-column>
-          <view wx:for="{{tutorData}}" style="line-height: 50px">{{item.adminName}}</view>
+          <view class='style16' wx:for="{{tutorData}}">{{item.name}}</view>
         </picker-view-column>
       </picker-view>
     </view>

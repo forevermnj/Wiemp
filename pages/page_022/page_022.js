@@ -8,11 +8,20 @@ Page({
      departMent:'',
      passWord:'',
      email:'',
-     tutorData:[],
-     value:2
+     tutor:'',
+     tutorData:[]
+  },
+  tutorChange:function(e){
+    let refer = this;
+    let tutor = e.detail.value;
+    console.log(refer.data.tutorData[tutor[0]].name);
+    app.globalData.regtutor = refer.data.tutorData[tutor[0]].name;
+    refer.setData({
+      tutor: refer.data.tutorData[tutor[0]].name
+    })
   },
   setModalStatus: function (e) {
-    console.log("设置显示状态，1显示0不显示", e.currentTarget.dataset.status);
+    //console.log("设置显示状态，1显示0不显示", e.currentTarget.dataset.status);
     var animation = wx.createAnimation({
       duration: 200,
       timingFunction: "linear",

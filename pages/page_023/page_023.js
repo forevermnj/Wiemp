@@ -126,6 +126,7 @@ Page({
         deparment: app.globalData.regdepartMent,
         email: app.globalData.regemail,
         courseid: courseid,
+        tutor: app.globalData.regtutor
       },
       success: function (res) {
         //重置选择的课程数据

@@ -23,7 +23,7 @@
 }
 
 .style3{
-  font-size: 14pt;
+  font-size: 15px;
   border-bottom-style:ridge;
   border-bottom-color:green;
   border-width: 1pt;
@@ -57,4 +57,8 @@
 .style9{
   color:green;
   margin-top: 10px;
+}
+
+.style10{
+  font-size: 15px;
 }

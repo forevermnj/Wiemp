@@ -27,7 +27,7 @@
 }
 
 .style4{
-  font-size: 14pt;
+  font-size: 15px;
   border-bottom-style:ridge;
   border-bottom-color:green;
   border-width: 1pt;
@@ -87,6 +87,24 @@
   border-width: 0px;
   height: 90%;
   margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.style15{
+  border-style: solid;
+  border-width: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.style16{
+  border-style: solid;
+  border-width: 0px;
+  line-height: 50px;
+  
 }
 
 
@@ -113,12 +131,16 @@
 }
 
 .drawer_attr_content {
+  border-style: solid;
+  border-width: 0px;
   padding: 20rpx;
   height: 500rpx;
   overflow-y: scroll;
 }
 
 .drawer_attr_box {
+  border-style: solid;
+  border-width: 0px;
   width: 100%;
   overflow: hidden;
   position: fixed;
