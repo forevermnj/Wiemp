@@ -94,6 +94,7 @@ Page({
     refer.setData({
       score: Math.round(temp_score * 100)
     })
+    
     if (refer.data.score > refer.data.passsScore) {
       setTimeout(function () {
         refer.setData({

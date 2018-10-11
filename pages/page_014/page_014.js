@@ -130,7 +130,7 @@ Page({
     }
     
       for (let m = 0; m < refer.data.answertemp.length; m++) {
-        console.log(refer.data.answertemp[m].subnum + "--" + refer.data.answertemp[m].tit);
+        //console.log(refer.data.answertemp[m].subnum + "--" + refer.data.answertemp[m].tit);
       }
     //当选择的答案数组为空时,将空位下标重置
     if(refer.data.chooseResult.length==0){
