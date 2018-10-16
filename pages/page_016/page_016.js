@@ -1,5 +1,6 @@
 const app = getApp();
 const util = require('../../utils/util.js');
+var calculatescore = require('../../utils/calculatescore.js');
 const plugin = requirePlugin("WechatSI");
 // 获取**全局唯一**的语音识别管理器**recordRecoManager**
 const manager = plugin.getRecordRecognitionManager();
@@ -65,6 +66,36 @@ Page({
       recordimg: '../image/tabbar/20.gif',
       flag1: false
     });
+
+    //测试代码开始,可删除
+    setTimeout(function () {
+      refer.setData({
+        resultExample: [],
+        score: 0,
+        flag3: false
+      });
+      let path = refer.data.readSpeakData.readspeak.dropLetLink;
+      app.globalData.dropLetId = refer.data.readSpeakData.readspeak.reladropletid;
+      app.globalData.dropLetConfigTypeId = refer.data.readSpeakData.readspeak.reladropletconftypeid;
+
+      //如果完成场景学习则调用保存分数方法
+      if (refer.data.readSpeakData.readspeak.reladropletid == app.globalData.successDropLetId) {
+        refer.saveUserScore(
+          wx.getStorageSync('uid'),
+          app.globalData.scoreIndex,
+          app.globalData.scoreDropLetId,
+          app.globalData.scoreDropLetConfigTypeId
+        );
+      }
+      wx.redirectTo({
+        url: path
+      });
+    }.bind(refer), 2000);
+    refer.correctSoundEffect();
+    //测试代码结束,可删除
+
+
+
     manager.stop();
   },
   toMatch:function(text){
@@ -77,6 +108,14 @@ Page({
       tempurl: app.globalData.serverUrl + '/Emp/mobile/page_016/1.png',
       flag3: true
     })
+     
+    
+
+
+
+
+
+
     //数据比对
     for (let i = 0; i < refer.data.readSpeakData.readspeak.sentence.length; i++) {
       for (let k = 0; k < tem.length; k++) {
@@ -124,6 +163,8 @@ Page({
           let path = refer.data.readSpeakData.readspeak.dropLetLink;
           app.globalData.dropLetId = refer.data.readSpeakData.readspeak.reladropletid;
           app.globalData.dropLetConfigTypeId = refer.data.readSpeakData.readspeak.reladropletconftypeid;
+
+          
           wx.redirectTo({
             url: path
           });
@@ -217,5 +258,25 @@ Page({
     wx.redirectTo({
       url: csv0,
     });
+  },
+  //保存用户得分
+  saveUserScore: function (userid, index, dropletid, dropletconftypeid) {
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/subtask/saveScore',
+      method: 'POST',
+      header: {
+        "Content-Type": "application/json"
+      },
+      data: {
+        userid: userid,
+        index: index,
+        dropletid: dropletid,
+        dropletconftypeid: dropletconftypeid,
+        score: app.globalData.score
+      },
+      success: function (result) {
+        console.log(result);
+      }
+    })
   }
 })

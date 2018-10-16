@@ -8,4 +8,4 @@ function addScore(){
     return score;
 }
 
-module.exports = {addScore}
+module.exports = { addScore, score}

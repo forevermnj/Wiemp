@@ -5,11 +5,11 @@
   <view class='style5'>完成关卡0/5</view>
   <scroll-view class="style2" scroll-x="true">
     <block wx:for="{{resdata.list}}">
-    <view data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid,item.index]}}" bindtouchstart='touchstart' bindtouchend='touchend' catchtap='clickImg' class="style3">
-         <view data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid,item.index]}}" catchtap='clickImg' class='style7'>
-           <image data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid,item.index]}}" catchtap='clickImg' class='style8' src='{{item.cardIcon}}'></image>
+    <view data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid,item.index,item.dropletid,item.dropletcontypeid]}}" bindtouchstart='touchstart' bindtouchend='touchend' catchtap='clickImg' class="style3">
+         <view data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid,item.index,item.dropletid,item.dropletcontypeid]}}" catchtap='clickImg' class='style7'>
+           <image data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid,item.index,item.dropletid,item.dropletcontypeid]}}" catchtap='clickImg' class='style8' src='{{item.cardIcon}}'></image>
          </view>
-         <view data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid,item.index]}}" catchtap='clickImg' class='style9'>{{item.cardName}}</view>
+         <view data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid,item.index,item.dropletid,item.dropletcontypeid]}}" catchtap='clickImg' class='style9'>{{item.cardName}}</view>
     </view>
     </block>
   </scroll-view>

@@ -83,10 +83,21 @@ Page({
       //调用计算用户得分函数
       let score = calculatescore.addScore();
       console.log("===" + score);
+      app.globalData.score = score;
       refer.correctSoundEffect();
       let path = refer.data.fillBlankdata.fillBlank.dropLetLink;
       app.globalData.dropLetId = refer.data.fillBlankdata.fillBlank.reladropletid;
       app.globalData.dropLetConfigTypeId = refer.data.fillBlankdata.fillBlank.reladropletconftypeid;
+
+      //如果完成场景学习则调用保存分数方法
+      if (refer.data.fillBlankdata.fillBlank.reladropletid == app.globalData.successDropLetId) {
+        refer.saveUserScore(
+          wx.getStorageSync('uid'),
+          app.globalData.scoreIndex,
+          app.globalData.scoreDropLetId,
+          app.globalData.scoreDropLetConfigTypeId
+        );
+      }
       wx.redirectTo({
         url: path
       });
@@ -209,6 +220,25 @@ Page({
       }
     })
     
+  },
+  //保存用户得分
+  saveUserScore: function (userid, index, dropletid, dropletconftypeid) {
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/subtask/saveScore',
+      method: 'POST',
+      header: {
+        "Content-Type": "application/json"
+      },
+      data: {
+        userid: userid,
+        index: index,
+        dropletid: dropletid,
+        dropletconftypeid: dropletconftypeid
+      },
+      success: function (result) {
+        console.log(result);
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

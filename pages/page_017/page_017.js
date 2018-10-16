@@ -1,6 +1,7 @@
 var app = getApp();
 var x, y, x1, y1, x2, y2, index, currindex, n, yy;
 var arr1 = [];
+var calculatescore = require('../../utils/calculatescore.js');
 Page({
   data: {
     mainx: 0,
@@ -30,8 +31,13 @@ Page({
       refer.setData({
         correctFlag: true
       });
+      //调用计算用户得分函数
+      let score = calculatescore.addScore();
+      console.log("===" + score);
+      app.globalData.score = score;
       
       let tempFilePath = refer.data.mp3[refer.data.mp3index];
+      console.log('地址'+tempFilePath);
       wx.playBackgroundAudio({
         dataUrl: tempFilePath
       });
@@ -43,6 +49,16 @@ Page({
           let path = refer.data.originContent.sortdata.dropLetLink;
           app.globalData.dropLetId = refer.data.originContent.sortdata.reladropletid;
           app.globalData.dropLetConfigTypeId = refer.data.originContent.sortdata.reladropletconftypeid;
+
+          //如果完成场景学习则调用保存分数方法
+          if (refer.data.originContent.sortdata.reladropletid == app.globalData.successDropLetId) {
+            refer.saveUserScore(
+              wx.getStorageSync('uid'),
+              app.globalData.scoreIndex,
+              app.globalData.scoreDropLetId,
+              app.globalData.scoreDropLetConfigTypeId
+            );
+          }
           wx.redirectTo({
             url: path
           });
@@ -195,5 +211,24 @@ Page({
     wx.redirectTo({
       url: csv0,
     });
+  },
+  //保存用户得分
+  saveUserScore: function (userid, index, dropletid, dropletconftypeid) {
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/subtask/saveScore',
+      method: 'POST',
+      header: {
+        "Content-Type": "application/json"
+      },
+      data: {
+        userid: userid,
+        index: index,
+        dropletid: dropletid,
+        dropletconftypeid: dropletconftypeid
+      },
+      success: function (result) {
+        console.log(result);
+      }
+    })
   }
 })

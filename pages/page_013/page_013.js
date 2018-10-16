@@ -69,9 +69,7 @@ Page({
         animationCorrectData: animation.export()
       })
     }.bind(refer), 500);
-    //调用计算用户得分函数
-    let score = calculatescore.addScore();
-    console.log("==="+score);
+    
     refer.setData({
       nochooseflag: 0
     });
@@ -79,6 +77,15 @@ Page({
       let path = refer.data.chooseData.choice.dropLetLink;
       app.globalData.dropLetId = refer.data.chooseData.choice.reladropletid;
       app.globalData.dropLetConfigTypeId = refer.data.chooseData.choice.reladropletconftypeid;
+      //如果完成场景学习则调用保存分数方法
+      if (refer.data.chooseData.choice.reladropletid == app.globalData.successDropLetId){
+        refer.saveUserScore(
+          wx.getStorageSync('uid'),
+          app.globalData.scoreIndex,
+          app.globalData.scoreDropLetId,
+          app.globalData.scoreDropLetConfigTypeId
+          );
+      }
       wx.redirectTo({
         url: path
       });
@@ -119,6 +126,10 @@ Page({
    
     //如果选择正确
     if (optionFlag) {
+      //调用计算用户得分函数
+      let score = calculatescore.addScore();
+      console.log("===" + score);
+      app.globalData.score = score;
       refer.correctSoundEffect();
       refer.setData({
         chooseDataFlag:true
@@ -176,5 +187,24 @@ Page({
     wx.playBackgroundAudio({
       dataUrl: tempFilePath
     });
+  },
+  //保存用户得分
+  saveUserScore:function(userid,index,dropletid,dropletconftypeid){
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/subtask/saveScore',
+      method: 'POST',
+      header: {
+        "Content-Type": "application/json"
+      },
+      data: {
+        userid: userid,
+        index: index,
+        dropletid: dropletid,
+        dropletconftypeid: dropletconftypeid
+      },
+      success: function (result) {
+        console.log(result);
+      }
+    })
   }
 })

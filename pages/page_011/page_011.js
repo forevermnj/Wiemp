@@ -13,10 +13,15 @@ Page({
     let csv1 = e.currentTarget.dataset.hi[1];
     let csv2 = e.currentTarget.dataset.hi[2];
     let csv3 = e.currentTarget.dataset.hi[3];
+    let csv4 = e.currentTarget.dataset.hi[4];
+    let csv5 = e.currentTarget.dataset.hi[5];
     
     app.globalData.dropLetId = csv1;
     app.globalData.dropLetConfigTypeId = csv2;
-    app.globalData.index = csv3;
+
+    app.globalData.scoreDropLetId = csv4;
+    app.globalData.scoreDropLetConfigTypeId = csv5;
+    app.globalData.scoreIndex = csv3;
     wx.redirectTo({
       url: csv0,
     })
