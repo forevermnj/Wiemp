@@ -1,5 +1,6 @@
 var app = getApp();
 var util = require('../../utils/util.js');
+var calculatescore = require('../../utils/calculatescore.js');
 
 Page({
   data: {
@@ -43,11 +44,15 @@ Page({
   toMoveEnd: function (e) {
     let refer = this;
     let flag = e.currentTarget.dataset.hi;
-    console.log(flag);
+    //console.log(flag);
     setTimeout(function () {
       //如果答案正确并且向左移动则回答正确
       if (flag && refer.data.moveDirection == 'left') {
         //console.log('回答正确');
+        //调用计算用户得分函数
+        let score = calculatescore.addScore();
+        //console.log("===" + score);
+        app.globalData.score = score;
         refer.setData({
           rightFlag: true,
           errorFlag: false
@@ -57,6 +62,10 @@ Page({
       //如果答案错误并且向右移动则回答正确 
       if (flag == false && refer.data.moveDirection == 'right') {
         //console.log('回答正确');
+        //调用计算用户得分函数
+        let score = calculatescore.addScore();
+        //console.log("===" + score);
+        app.globalData.score = score;
         refer.setData({
           rightFlag: true,
           errorFlag: false
@@ -87,6 +96,16 @@ Page({
       let path = refer.data.matchData.match.dropletlink;
       app.globalData.dropLetId = refer.data.matchData.match.reladropletid;
       app.globalData.dropLetConfigTypeId = refer.data.matchData.match.reladropletconftypeid;
+
+      //如果完成场景学习则调用保存分数方法
+      if (refer.data.matchData.match.reladropletid == app.globalData.successDropLetId) {
+        refer.saveUserScore(
+          wx.getStorageSync('uid'),
+          app.globalData.scoreIndex,
+          app.globalData.scoreDropLetId,
+          app.globalData.scoreDropLetConfigTypeId
+        );
+      }
       wx.redirectTo({
         url: path
       });
@@ -182,5 +201,28 @@ Page({
         });
       }
     });
+  },
+  //保存用户得分
+  saveUserScore: function (userid, index, dropletid, dropletconftypeid) {
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/subtask/saveScore',
+      method: 'POST',
+      header: {
+        "Content-Type": "application/json"
+      },
+      data: {
+        userid: userid,
+        index: index,
+        dropletid: dropletid,
+        dropletconftypeid: dropletconftypeid,
+        score: app.globalData.score
+      },
+      success: function (result) {
+        console.log(result);
+        if(result.code=="1"){
+          app.globalData.score=0;
+        }
+      }
+    })
   }
 })

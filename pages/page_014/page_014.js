@@ -233,10 +233,14 @@ Page({
         userid: userid,
         index: index,
         dropletid: dropletid,
-        dropletconftypeid: dropletconftypeid
+        dropletconftypeid: dropletconftypeid,
+        score: app.globalData.score
       },
       success: function (result) {
         console.log(result);
+        if (result.code == "1") {
+          app.globalData.score = 0;
+        }
       }
     })
   },

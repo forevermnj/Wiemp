@@ -9,7 +9,13 @@
          <view data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid,item.index,item.dropletid,item.dropletcontypeid]}}" catchtap='clickImg' class='style7'>
            <image data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid,item.index,item.dropletid,item.dropletcontypeid]}}" catchtap='clickImg' class='style8' src='{{item.cardIcon}}'></image>
          </view>
-         <view data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid,item.index,item.dropletid,item.dropletcontypeid]}}" catchtap='clickImg' class='style9'>{{item.cardName}}</view>
+         <view data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid,item.index,item.dropletid,item.dropletcontypeid]}}" catchtap='clickImg' class='style9'>
+           {{item.index}}.{{item.cardName}}
+           <view class='style12'>
+             <view class='style13'>闯关最高分</view>
+             <view class='style14'>{{item.score}}</view>
+           </view>
+         </view>
     </view>
     </block>
   </scroll-view>
