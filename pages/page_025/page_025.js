@@ -1,7 +1,6 @@
 var app = getApp();
 var util = require('../../utils/util.js');
-
-
+var calculatescore = require('../../utils/calculatescore.js');
 
 Page({
   data: {
@@ -12,6 +11,7 @@ Page({
     emptyStr: '____________',
     answerIndex:0,
     score:0,
+    passScore:-1,
     correctIndex:0,
     speechImg: '../image/tabbar/18.gif',
     playFlag:false
@@ -22,7 +22,6 @@ Page({
       url: app.globalData.serverUrl + '/Emp/mobile/getDictation/getDictation/' + app.globalData.dropLetId + '/' + app.globalData.dropLetConfigTypeId,
       method: 'GET',
       success: function (res) {
-        //console.log(res.data.dictation.question);
         refer.setData({
           dictationData: res.data,
           question: res.data.dictation.question
@@ -44,7 +43,6 @@ Page({
     });
   },
   toSub:function(){
-    
     let refer = this;
     if(refer.data.enterAnswer==''){
       wx.showToast({
@@ -62,11 +60,9 @@ Page({
     let newQuestion = new Array();
     //赋值原答案
     originalAnswer = refer.data.dictationData.dictation.anwser.split(" ");
-    //console.log(originalAnswer);
     for(let j=0;j<refer.data.dictationData.dictation.question.length;j++){
       if (refer.data.dictationData.dictation.question[j].emptyflag){
         inputAnswer = refer.data.dictationData.dictation.question[j].tit.split(" ");
-        //console.log(inputAnswer);
       }
     }
 
@@ -107,12 +103,27 @@ Page({
       score: Math.round(temp_score * 100),
       correctIndex:0
     });
+    if (refer.data.score > refer.data.passScore){
+      //调用计算用户得分函数
+      let score = calculatescore.addScore();
+      console.log("===" + score);
+    }
     
 
     setTimeout(function () {
       let path = refer.data.dictationData.dictation.dropletlink;
       app.globalData.dropLetId = refer.data.dictationData.dictation.reladropletid;
       app.globalData.dropLetConfigTypeId = refer.data.dictationData.dictation.reladropletcontypeid;
+
+      //如果完成场景学习则调用保存分数方法
+      if (refer.data.dictationData.dictation.reladropletid == app.globalData.successDropLetId) {
+        refer.saveUserScore(
+          wx.getStorageSync('uid'),
+          app.globalData.scoreIndex,
+          app.globalData.scoreDropLetId,
+          app.globalData.scoreDropLetConfigTypeId
+        );
+      }
       wx.redirectTo({
         url: path
       });
@@ -155,5 +166,29 @@ Page({
     wx.playBackgroundAudio({
       dataUrl: tempFilePath
     });
+  },
+  //保存用户得分
+  saveUserScore: function (userid, index, dropletid, dropletconftypeid) {
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/subtask/saveScore',
+      method: 'POST',
+      header: {
+        "Content-Type": "application/json"
+      },
+      data: {
+        userid: userid,
+        index: index,
+        dropletid: dropletid,
+        dropletconftypeid: dropletconftypeid,
+        score: app.globalData.score
+      },
+      success: function (result) {
+        if (result.data.code == "1") {
+          app.globalData.score = 0;
+          //分数重置
+          calculatescore.resetScore();
+        }
+      }
+    })
   }
 })

@@ -210,7 +210,7 @@ Page({
         score: app.globalData.score
       },
       success: function (result) {
-        if (result.code == "1") {
+        if (result.data.code == "1") {
           app.globalData.score = 0;
           //分数重置
           calculatescore.resetScore();
