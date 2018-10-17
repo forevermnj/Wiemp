@@ -35,7 +35,7 @@ Page({
   onLoad: function () {
     let refer = this;
     wx.request({
-      url: app.globalData.serverUrl + '/Emp/mobile/getScenListDropLetData/getScenListDropLetData/' + app.globalData.dropLetId + '/' + app.globalData.dropLetConfigTypeId,
+      url: app.globalData.serverUrl + '/Emp/mobile/getScenListDropLetData/getScenListDropLetData/' + app.globalData.dropLetId + '/' + app.globalData.dropLetConfigTypeId + '/' + wx.getStorageSync('uid'),
       method: 'GET',
       success: function (res) {
         refer.setData({
