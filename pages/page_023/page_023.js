@@ -105,14 +105,14 @@ Page({
   toRegister:function(){
     let refer = this;
     let courseid = refer.getCourseID();
-    if(refer.data.courseID==''){
-      wx.showToast({
-        title: '请选择课程',
-        image: '../image/tabbar/25.png',
-        duration: 2000
-      })
-      return
-    }
+    // if(refer.data.courseID==''){
+    //   wx.showToast({
+    //     title: '请选择课程',
+    //     image: '../image/tabbar/25.png',
+    //     duration: 2000
+    //   })
+    //   return
+    // }
     wx.request({
       url: app.globalData.serverUrl + '/Emp/mobile/register/register',
       method: 'POST',
