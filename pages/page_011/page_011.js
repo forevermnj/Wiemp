@@ -3,7 +3,7 @@ var util = require('../../utils/util.js');
 Page({
   data: {
     resdata: [],
-    bgimg: app.globalData.serverUrl +'/Emp/mobile/page_011/7.png',
+    bgimg: '',
     startIndex:0,
     endIndex:0,
     sindex:0
@@ -31,116 +31,55 @@ Page({
     refer.setData({
       startIndex: e.changedTouches[0].pageX
     })
-    
   },
   touchend:function(e){
     let refer = this;
-    console.log(refer.data.sindex);
     refer.setData({
       endIndex: e.changedTouches[0].pageX
     })
-   
-    if ((refer.data.endIndex - refer.data.startIndex) < 0 && refer.data.sindex<=2){
+    if ((refer.data.endIndex - refer.data.startIndex) < 0 && refer.data.sindex<=refer.data.resdata.list.length){
         refer.setData({
-          bgimg: refer.data.resdata[refer.data.sindex].cardBackImag,
+          bgimg: refer.data.resdata.list[refer.data.sindex].cardBackImag,
           sindex: refer.data.sindex + 1
-        })
-        if (refer.data.sindex==3){
+        });
+        if (refer.data.sindex == refer.data.resdata.list.length){
             refer.setData({
-              sindex:2
-            })
+              sindex: refer.data.resdata.list.length-1
+            });
         }
     } 
     if ((refer.data.endIndex - refer.data.startIndex) > 0 && refer.data.sindex >= 0){
-      
       refer.setData({
-        bgimg: refer.data.resdata[refer.data.sindex].cardBackImag,
+        bgimg: refer.data.resdata.list[refer.data.sindex].cardBackImag,
         sindex: refer.data.sindex - 1
       })
-      
     }
     if (refer.data.sindex == -1) {
       refer.setData({
-        bgimg: app.globalData.serverUrl + '/Emp/mobile/page_011/5.png',
+        bgimg: refer.data.resdata.list[0].cardBackImag,
         sindex:0
       })
     }
   },
-  onPullDownRefresh: function () {
-
-  },
   onLoad: function () {
     let refer = this;
-    //console.log('===' + app.globalData.dropLetId);
-    //console.log('===' + app.globalData.dropLetConfigTypeId);
-    
     wx.request({
       url: app.globalData.serverUrl + '/Emp/mobile/getCardListDroplet/getCardListDroplet/' + app.globalData.dropLetId + '/' + app.globalData.dropLetConfigTypeId + '/' + wx.getStorageSync('uid'),
       method: 'GET',
       success: function (res) {
-        console.log(res.data);
         refer.setData({
-          resdata: res.data
+          resdata: res.data,
+          bgimg: res.data.list[0].cardBackImag
         })
       }
     })
     util.showBusy('加载中...');
-    app.globalData.backImgIndex = 0;//page_012页面全局参数
-    app.globalData.backMp3Index = 0;//page_012页面全局参数
-    app.globalData.chooseDataIndex = 0;//page_013页面全局参数
-    app.globalData.mp3dataIndex = 0;//page_013页面全局参数
-    app.globalData.dataIndex = 0;//page_014页面全局参数
-    app.globalData.anwdataIndex = 0;//page_014页面全局参数
-    app.globalData.rdataIndex = 0;//page_016页面全局参数
-
-    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
     util.showSuccess('加载成功');
-  },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   },
   toBootomButton: function (e) {
     let refer = this;
