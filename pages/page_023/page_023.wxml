@@ -27,7 +27,7 @@
 </view>
 </scroll-view>
 
-<view catchtap='toRegister' class='style16'>
+<view wx:if="{{ifsubmit==false}}" catchtap='toRegister' class='style16'>
   注册
 </view>
 

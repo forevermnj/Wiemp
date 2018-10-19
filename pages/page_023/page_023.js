@@ -12,6 +12,7 @@ Page({
     startY: 0,
     courseData: [],
     courseID:'',
+    ifsubmit:false,
     loginimg: '../image/tabbar/3.png'
   },
   /**
@@ -104,6 +105,9 @@ Page({
   },
   toRegister:function(){
     let refer = this;
+    refer.setData({
+      ifsubmit:true
+    })
     let courseid = refer.getCourseID();
     // if(refer.data.courseID==''){
     //   wx.showToast({
@@ -141,7 +145,9 @@ Page({
                   url: '../page_005/page_005',
                 })
               } else if (res.cancel) {
-
+                wx.redirectTo({
+                  url: '../page_005/page_005',
+                })
               }
             }
           })
