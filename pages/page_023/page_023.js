@@ -13,6 +13,7 @@ Page({
     courseData: [],
     courseID:'',
     ifsubmit:false,
+    progress: 0,
     loginimg: '../image/tabbar/3.png'
   },
   /**
@@ -105,6 +106,7 @@ Page({
   },
   toRegister:function(){
     let refer = this;
+    refer.progress();
     refer.setData({
       ifsubmit:true
     })
@@ -140,6 +142,9 @@ Page({
             title: '提示',
             content: res.data.result,
             success: function (res) {
+              refer.setData({
+                progress:100
+              })
               if (res.confirm) {
                 wx.redirectTo({
                   url: '../page_005/page_005',
@@ -175,5 +180,20 @@ Page({
        }
     }
     return refer.data.courseID;
+  },
+  progress:function(){
+    let refer = this;
+    if (refer.data.progress >= 100) {
+      // this.setData({
+      //   disabled: false
+      // });
+      return true;
+    }
+    refer.setData({
+      progress: ++refer.data.progress
+    });
+    setTimeout(function () {
+      refer.progress();
+    }, 20);
   }
 })

@@ -1,38 +1,31 @@
-// pages/others/drawer/drawer.js
-Page({
-  
-  // showModal和hideModal函数可以合并为一个函数，需要在组件中设置状态值
-  setModalStatus: function (e) {
-    console.log("设置显示状态，1显示0不显示", e.currentTarget.dataset.status);
-    var animation = wx.createAnimation({
-      duration: 200,
-      timingFunction: "linear",
-      delay: 0
-    })
-    this.animation = animation
-    animation.translateY(300).step()
+function _next() {
+  var that = this;
+  if (this.data.progress >= 100) {
     this.setData({
-      animationData: animation.export()
-    })
-    if (e.currentTarget.dataset.status == 1) {
-      this.setData(
-        {
-          showModalStatus: true
-        }
-      );
-    }
-    setTimeout(function () {
-      animation.translateY(0).step()
-      this.setData({
-        animationData: animation
-      })
-      if (e.currentTarget.dataset.status == 0) {
-        this.setData(
-          {
-            showModalStatus: false
-          }
-        );
-      }
-    }.bind(this), 200)
+      disabled: false
+    });
+    return true;
   }
-})
+  this.setData({
+    progress: ++this.data.progress
+  });
+  setTimeout(function () {
+    _next.call(that);
+  }, 20);
+}
+
+Page({
+  data: {
+    progress: 0,
+    disabled: false
+  },
+  upload: function () {
+    if (this.data.disabled) return;
+
+    this.setData({
+      progress: 0,
+      disabled: true
+    });
+    _next.call(this);
+  }
+});
