@@ -31,12 +31,16 @@
   margin-right: 64rpx;
   margin-top: 10px;
   display: inline-block;
+  border-style: solid;
+  border-width: 0px;
 }
 
 .recommend_hot_image {
   width: 230rpx;
   height: 280rpx;
   border-radius: 5px;
+  border-style: solid;
+  border-width: 0px;
 }
 
 .title {
@@ -175,6 +179,15 @@
 .style11{
   color:#4FCB19;
   font-size: 28px;
+}
+
+.style12{
+  width: 230rpx;
+  height: 280rpx;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 0px;
+  opacity: 0.4;
 }
 
 .footerstyle1 {
