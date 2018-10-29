@@ -27,7 +27,7 @@ Page({
       wx.showToast({
         title: '无权限',
         image: '../image/tabbar/30.png',
-        duration: 1000
+        duration: 500
       })
     }
   },
