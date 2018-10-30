@@ -92,9 +92,16 @@ App({
     regdepartMent: '',
     regpassWord: '',
     regemail: '',
+    regtutor:'',
 
-    dropLetId:-1,//page_010页面全局参数
-    dropLetConfigTypeId:-1,//page_010页面全局参数
+    dropLetId:-1,
+    dropLetConfigTypeId:-1,
+
+    scoreDropLetId:-1,//计算分数时用
+    scoreDropLetConfigTypeId:-1,//计算分数时用
+    scoreIndex:-1,//计算分数时用
+    score:-1,//分数
+    successDropLetId:7,//完成场景学习调转的droplet
     uid:'020b28e556de4352a231650c1637653c'//测试用户ID
   }
 })

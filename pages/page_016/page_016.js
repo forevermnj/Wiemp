@@ -68,30 +68,30 @@ Page({
     });
 
     //测试代码开始,可删除
-    setTimeout(function () {
-      refer.setData({
-        resultExample: [],
-        score: 0,
-        flag3: false
-      });
-      let path = refer.data.readSpeakData.readspeak.dropLetLink;
-      app.globalData.dropLetId = refer.data.readSpeakData.readspeak.reladropletid;
-      app.globalData.dropLetConfigTypeId = refer.data.readSpeakData.readspeak.reladropletconftypeid;
+    // setTimeout(function () {
+    //   refer.setData({
+    //     resultExample: [],
+    //     score: 0,
+    //     flag3: false
+    //   });
+    //   let path = refer.data.readSpeakData.readspeak.dropLetLink;
+    //   app.globalData.dropLetId = refer.data.readSpeakData.readspeak.reladropletid;
+    //   app.globalData.dropLetConfigTypeId = refer.data.readSpeakData.readspeak.reladropletconftypeid;
 
-      //如果完成场景学习则调用保存分数方法
-      if (refer.data.readSpeakData.readspeak.reladropletid == app.globalData.successDropLetId) {
-        refer.saveUserScore(
-          wx.getStorageSync('uid'),
-          app.globalData.scoreIndex,
-          app.globalData.scoreDropLetId,
-          app.globalData.scoreDropLetConfigTypeId
-        );
-      }
-      wx.redirectTo({
-        url: path
-      });
-    }.bind(refer), 2000);
-    refer.correctSoundEffect();
+    //   //如果完成场景学习则调用保存分数方法
+    //   if (refer.data.readSpeakData.readspeak.reladropletid == app.globalData.successDropLetId) {
+    //     refer.saveUserScore(
+    //       wx.getStorageSync('uid'),
+    //       app.globalData.scoreIndex,
+    //       app.globalData.scoreDropLetId,
+    //       app.globalData.scoreDropLetConfigTypeId
+    //     );
+    //   }
+    //   wx.redirectTo({
+    //     url: path
+    //   });
+    // }.bind(refer), 2000);
+    // refer.correctSoundEffect();
     //测试代码结束,可删除
 
 
@@ -144,6 +144,15 @@ Page({
         let path = refer.data.readSpeakData.readspeak.dropLetLink;
         app.globalData.dropLetId = refer.data.readSpeakData.readspeak.reladropletid;
         app.globalData.dropLetConfigTypeId = refer.data.readSpeakData.readspeak.reladropletconftypeid;
+        //如果完成场景学习则调用保存分数方法
+        if (refer.data.readSpeakData.readspeak.reladropletid == app.globalData.successDropLetId) {
+          refer.saveUserScore(
+            wx.getStorageSync('uid'),
+            app.globalData.scoreIndex,
+            app.globalData.scoreDropLetId,
+            app.globalData.scoreDropLetConfigTypeId
+          );
+        }
         wx.redirectTo({
           url: path
         });
