@@ -2,7 +2,7 @@
 
 <scroll-view class='style11'>
   <view class='style4'>Listening</view>
-  <view class='style5'>完成关卡0/5</view>
+  <view class='style5'>完成关卡{{resdata.completionbarrier}}/{{resdata.list.length}}</view>
   <scroll-view class="style2" scroll-x="true">
     <block wx:for="{{resdata.list}}">
     <view data-hi="{{[item.dropletlink,item.reladropletid,item.reladropletcontypeid,item.index,item.dropletid,item.dropletcontypeid]}}" bindtouchstart='touchstart' bindtouchend='touchend' catchtap='clickImg' class="style3">
