@@ -9,7 +9,8 @@
         <view class='style8'>
             <view class='style13'>{{item.scecatname}}</view>
             <view class='style10'> 
-             <text class='style18'>{{item.coursestatename}}</text>
+             <text wx:if="{{item.coursestate=='1'}}" class="{{item.coursestate=='1'?'style18':'style19'}}">{{item.coursestatename}}</text>
+             <text wx:if="{{item.coursestate=='0'}}" class="{{item.coursestate=='1'?'style18':'style19'}}">{{item.coursestatename}}-----{{item.courseEndDate}}截止</text>
             </view>
             <view class='style11'>左滑动选择课程</view>
             <view class="{{item.selected?'style15':'style14'}}">{{item.selected?'已选中':'未选中'}}</view>
