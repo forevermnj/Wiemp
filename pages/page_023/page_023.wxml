@@ -9,14 +9,14 @@
         <view class='style8'>
             <view class='style13'>{{item.scecatname}}</view>
             <view class='style10'> 
-             <progress radius="10" activeColor="#53CB14" percent="60" stroke-width="10"/>
+             <text class='style18'>{{item.coursestatename}}</text>
             </view>
             <view class='style11'>左滑动选择课程</view>
             <view class="{{item.selected?'style15':'style14'}}">{{item.selected?'已选中':'未选中'}}</view>
-            <view class='style12'>
+            <!--<view class='style12'>
              <image class='style9' src='../image/tabbar/26.png'></image>
              <text class='style12'>0/500</text>
-            </view>
+            </view>-->
            
           </view>
       </view>
