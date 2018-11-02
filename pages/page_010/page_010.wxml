@@ -4,8 +4,8 @@
   <image class='style9' src='https://www.learnzp.com/Emp/mobile/page_010/12.png'></image>
   <view class='style10'>
    <view>Power</view>
-   <view class='style11'>20</view>
-   <view>A total of 0 days</view>
+   <view class='style11'>{{score}}</view>
+   <view><image class='style13' src='{{starUrl}}'></image></view>
   </view>
   
 </view>

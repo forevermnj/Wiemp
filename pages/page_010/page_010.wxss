@@ -190,6 +190,11 @@
   opacity: 0.4;
 }
 
+.style13{
+  width: 32px;
+  height: 32px;
+}
+
 .footerstyle1 {
   position: absolute;
   bottom: 0px;

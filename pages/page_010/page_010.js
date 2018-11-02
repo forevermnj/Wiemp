@@ -3,6 +3,8 @@ var util = require('../../utils/util.js');
 Page({
   data: {
     fistData: [],
+    score:'',
+    starUrl:'../image/tabbar/26.png',
     indeximg:'../image/tabbar/2.png',
     catagaryimg:'../image/tabbar/6.png',
     loginimg:'../image/tabbar/3.png'
@@ -38,7 +40,8 @@ Page({
       method: 'GET',
       success: function (res) {
         refer.setData({
-          fistData: res.data
+          fistData: res.data.list,
+          score:res.data.score
         })
       }
     })
