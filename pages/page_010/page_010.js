@@ -7,7 +7,8 @@ Page({
     starUrl:'../image/tabbar/26.png',
     indeximg:'../image/tabbar/2.png',
     catagaryimg:'../image/tabbar/6.png',
-    loginimg:'../image/tabbar/3.png'
+    loginimg:'../image/tabbar/31.png',
+    center:'../image/tabbar/3.png'
    
   },
   clickImg:function(e){
@@ -79,6 +80,11 @@ Page({
     });
     wx.redirectTo({
       url: '../page_005/page_005',
+    });
+  },
+  toCenter:function(){
+    wx.redirectTo({
+      url: '../page_026/page_026',
     });
   }
 })

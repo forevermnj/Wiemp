@@ -42,4 +42,8 @@
       <image bindtap='toLogin' class='tabbar1' src='{{loginimg}}'></image>
       <view bindtap='toLogin' class='tabbar2'>Login On</view>
     </view>
+    <view bindtap='toCenter' class="smallgroup">
+      <image bindtap='toCenter' class='tabbar1' src='{{center}}'></image>
+      <view bindtap='toCenter' class='tabbar2'>Center</view>
+    </view>
 </view>
