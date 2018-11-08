@@ -17,6 +17,11 @@ Page({
      center: '../image/tabbar/3.png'
      
   },
+  toMyCourse:function(){
+    wx.redirectTo({
+      url: '../page_027/page_027',
+    });
+  },
   onLoad: function () {
 
   },
