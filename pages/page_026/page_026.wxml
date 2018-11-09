@@ -9,9 +9,9 @@
           <view class='style16'><image catchtap='toMyCourse' class='style24' src='{{imgdata[0].url}}'></image></view>
           <view catchtap='toMyCourse' class='style17'>我的课程</view>
         </view>
-        <view class='style7'>
-          <view class='style18'><image class='style24' src='{{imgdata[3].url}}'></image></view>
-          <view class='style19'>选择课程</view>
+        <view class='style7' catchtap='toSelectCourse'>
+          <view class='style18'><image catchtap='toSelectCourse' class='style24' src='{{imgdata[3].url}}'></image></view>
+          <view catchtap='toSelectCourse' class='style19'>选择课程</view>
         </view>
         <view class='style8'>
           <view class='style20'><image class='style24' src='{{imgdata[2].url}}'></image></view>

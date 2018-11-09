@@ -22,6 +22,11 @@ Page({
       url: '../page_027/page_027',
     });
   },
+  toSelectCourse:function(){
+    wx.redirectTo({
+      url: '../page_028/page_028',
+    });
+  },
   onLoad: function () {
 
   },

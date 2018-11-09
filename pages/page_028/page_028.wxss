@@ -1,0 +1,281 @@
+/* pages/page_003/page_003.wxss */
+
+.topstyle {
+  width: 100%;
+  
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid lightgray;
+  background-color: rgb(227, 248, 235);
+  display: flex;
+  flex-direction: row;
+}
+
+.accountstyle {
+  font-size: 18px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+}
+
+.buttonalign {
+  position: absolute;
+  right: 10px;
+}
+
+.button1 {
+  font-size: 14px;
+  border-color: darkgreen;
+  background-color: transparent;
+}
+
+.scrollstyle{
+  height: 91%;
+}
+
+.style1 {
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid lightgray;
+}
+
+.distanceofword {
+  padding-left: 20px;
+}
+
+.style2{
+  background-color:#e2f7ea;
+}
+
+.style3{
+  white-space: nowrap;
+  display: inline-blcok;
+}
+
+.style4{
+  font-size: 20px;
+}
+
+.style5{
+  background-color:rgb(227, 248, 235); 
+}
+
+.style6{
+  border-style: solid;
+  border-width: 0px;
+  width: 35%;
+  border-color: red;
+  height: 150px;
+}
+
+.style7{
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  height: 150px;
+}
+
+.style8{
+  border-style: solid;
+  border-width: 0px;
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 65%;
+}
+
+.style9{
+  width: 16px;
+  height: 16px;
+  margin-top: 8px;
+}
+
+.style10{
+  margin-top: 10px;
+}
+
+.style11{
+  margin-top: 10px;
+  color:#606060;
+  font-size: 13px;
+}
+
+.style12{
+  margin-top: 5px;
+  color:#606060;
+  font-size: 13px;
+}
+
+.style13{
+  font-size: 15px;
+}
+
+.style14{
+  margin-top: 15px;
+}
+
+.style15{
+  margin-top: 15px;
+  color: green;
+}
+
+.style16{
+  color:white;
+  position: absolute;
+  bottom: 45px;
+  border-width: 1px;
+  border-style: solid;
+  height: 40px;
+  width: 100%;
+  background-color: green;
+  border-color: green;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  font-size: 20px;
+}
+
+.style17{
+  color:white;
+  position: absolute;
+  bottom: 45px;
+  border-width: 0px;
+  border-style: solid;
+  height: 40px;
+  width: 100%;
+  background-color: green;
+  border-color: green;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  font-size: 20px;
+}
+
+.style18{
+   color: green;
+}
+
+.style19{
+   color: red;
+}
+
+
+
+
+
+.touch-item {
+ font-size: 14px;
+ display: flex;
+ justify-content: space-between;
+ border-bottom:1px solid #ccc;
+ width: 100%;
+ overflow: hidden;
+ 
+ padding-left: 10px;
+ padding-top: 12px;
+ 
+ /* padding-bottom: 5px; */
+}
+.content {
+ border-style: solid;
+ border-width: 0px;
+ border-color: green;
+ display: flex;
+ flex-direction:row;
+ 
+
+ width: 100%;
+ height: 150px;
+ background-color: white;
+ padding-right: 10px;
+ -webkit-transition: all 0.4s;
+ transition: all 0.4s;
+ -webkit-transform: translateX(90px);
+ transform: translateX(90px);
+ margin-left: -90px
+}
+
+.del {
+ background-color: orangered;
+ width: 90px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ color: #fff;
+ -webkit-transform: translateX(90px);
+ transform: translateX(90px);
+ -webkit-transition: all 0.4s;
+ transition: all 0.4s;
+}
+.touch-move-active .content,
+.touch-move-active .del {
+ -webkit-transform: translateX(0);
+ transform: translateX(0);
+}
+
+
+.zhud{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 93%;
+  display: inline-blcok;
+  white-space:nowrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-bottom: 50px;
+  background-color: #EAEAEA;
+}
+
+
+.footerstyle1 {
+  position: absolute;
+  bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: rgb(249, 249, 249);
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border:1px;
+  border-color:#D8D8D8;
+  border-style:solid;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  /*border-color: red;
+  border-style: dashed;*/
+}
+
+
+
+.tabbar1{
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  
+}
+
+.tabbar2{
+  font-size: 10px;
+  margin-left:1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-width: 0px;
+  border-style: solid;
+}
+
+.smallgroup{
+  border-width: 0px;
+  border-style: solid;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+
+}
