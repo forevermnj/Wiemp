@@ -8,7 +8,10 @@ Page({
        { url: '../image/tabbar/33.png'},
        { url: '../image/tabbar/34.png'},
        { url: '../image/tabbar/35.png'},
-       { url: '../image/tabbar/37.png' }
+       { url: '../image/tabbar/37.png' },
+       { url: '../image/tabbar/38.png' },
+       { url: '../image/tabbar/39.png' },
+       { url: '../image/tabbar/40.png' }
      ],
      headimg:'../image/tabbar/36.png',
      indeximg: '../image/tabbar/2.png',
