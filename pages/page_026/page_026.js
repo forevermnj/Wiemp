@@ -11,7 +11,9 @@ Page({
        { url: '../image/tabbar/37.png' },
        { url: '../image/tabbar/38.png' },
        { url: '../image/tabbar/39.png' },
-       { url: '../image/tabbar/40.png' }
+       { url: '../image/tabbar/40.png' },
+       { url: '../image/tabbar/41.png' },
+       { url: '../image/tabbar/42.png' }
      ],
      headimg:'../image/tabbar/36.png',
      indeximg: '../image/tabbar/2.png',

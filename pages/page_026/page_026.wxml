@@ -38,12 +38,12 @@
           <view class='style21'>关于</view>
         </view>
         <view class='style13' hover-class='style29' hover-stay-time='50'>
-          <view class='style20'><image class='style24' src='{{imgdata[4].url}}'></image></view>
-          <view class='style21'>未开放</view>
+          <view class='style20'><image class='style24' src='{{imgdata[8].url}}'></image></view>
+          <view class='style21'>联系我们</view>
         </view>
         <view class='style14' hover-class='style29' hover-stay-time='50'>
-          <view class='style20'><image class='style24' src='{{imgdata[4].url}}'></image></view>
-          <view class='style21'>未开放</view>
+          <view class='style20'><image class='style24' src='{{imgdata[9].url}}'></image></view>
+          <view class='style21'>消息</view>
         </view>
       </view>
       <view class='style3'>
