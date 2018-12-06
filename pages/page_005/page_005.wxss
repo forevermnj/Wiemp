@@ -25,12 +25,12 @@
 .style3{
   font-size: 15px;
   border-bottom-style:ridge;
-  border-bottom-color:green;
+  border-bottom-color:#ABA1A0;
   border-width: 1pt;
 }
 
 .style4{
-  background-color:green;
+  background-color:#139ED5;
   color:white;
   width:200pt;
   margin-top: 80pt;
@@ -55,7 +55,7 @@
 }
 
 .style9{
-  color:green;
+  color:#50BDDC;
   margin-top: 10px;
 }
 
