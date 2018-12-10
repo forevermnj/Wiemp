@@ -1,6 +1,7 @@
 
 var app = getApp();
 var util = require('../../utils/util.js');
+const plugin = requirePlugin("WechatSI");
 Page({
 
   /**
@@ -96,14 +97,18 @@ Page({
       imgwordurl: '../image/page_002/3.gif'
     });
     var word = refer.data.wordlist[refer.data.wordindex];
-    wx.request({
-      url: app.globalData.serverUrl+'/Emp/mobile/word/pronunciation/' + word,
-      method: 'GET',
+    plugin.textToSpeech({
+      lang: "en_US",
+      tts: true,
+      content: word,
       success: function (res) {
-          var tempFilePath = res.data;
-          wx.playBackgroundAudio({
-            dataUrl: tempFilePath
-          });
+        console.log("succ tts", res.filename)
+        wx.playBackgroundAudio({
+          dataUrl: res.filename
+        });
+      },
+      fail: function (res) {
+        console.log("fail tts", res)
       }
     })
     //监听播放停止
@@ -121,16 +126,30 @@ Page({
       imgsentenceurl:'../image/page_002/3.gif'
     });
     var word = refer.data.worddetail.sentence;
-    wx.request({
-      url: app.globalData.serverUrl+'/Emp/mobile/word/pronunciation/' + word,
-      method: 'GET',
+    plugin.textToSpeech({
+      lang: "en_US",
+      tts: true,
+      content: word,
       success: function (res) {
-        var tempFilePath = res.data;
+        console.log("succ tts", res.filename)
         wx.playBackgroundAudio({
-          dataUrl: tempFilePath
+          dataUrl: res.filename
         });
+      },
+      fail: function (res) {
+        console.log("fail tts", res)
       }
-    });
+    })
+    // wx.request({
+    //   url: app.globalData.serverUrl+'/Emp/mobile/word/pronunciation/' + word,
+    //   method: 'GET',
+    //   success: function (res) {
+    //     var tempFilePath = res.data;
+    //     wx.playBackgroundAudio({
+    //       dataUrl: tempFilePath
+    //     });
+    //   }
+    // });
     //监听播放停止
     wx.onBackgroundAudioStop(function () {
       //console.log('onBackgroundAudioStop')
