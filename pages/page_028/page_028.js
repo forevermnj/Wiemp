@@ -12,8 +12,6 @@ Page({
     startY: 0,
     courseData: [],
     courseID: '',
-    ifsubmit: false,
-    progress: 0,
     loginimg: '../image/tabbar/3.png',
     backimg: '../image/tabbar/13.png'
   },
@@ -23,7 +21,7 @@ Page({
   onLoad: function (options) {
     let refer = this;
     wx.request({
-      url: app.globalData.serverUrl + '/Emp/mobile/getCourse/getCourse/',
+      url: app.globalData.serverUrl + '/Emp/mobile/getCourse/getUserNotSelectCourse/' + wx.getStorageSync('uid'),
       method: 'GET',
       success: function (res) {
         refer.setData({
@@ -105,67 +103,57 @@ Page({
       url: '../page_005/page_005',
     });
   },
-  toRegister: function () {
-    // let refer = this;
-    // refer.progress();
-    // refer.setData({
-    //   ifsubmit: true
-    // })
-    // let courseid = refer.getCourseID();
-    // // if(refer.data.courseID==''){
-    // //   wx.showToast({
-    // //     title: '请选择课程',
-    // //     image: '../image/tabbar/25.png',
-    // //     duration: 2000
-    // //   })
-    // //   return
-    // // }
-    // wx.request({
-    //   url: app.globalData.serverUrl + '/Emp/mobile/register/register',
-    //   method: 'POST',
-    //   header: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   data: {
-    //     code: app.globalData.regpassWord,
-    //     phone: app.globalData.regtel,
-    //     userName: app.globalData.reguserName,
-    //     deparment: app.globalData.regdepartMent,
-    //     email: app.globalData.regemail,
-    //     courseid: courseid,
-    //     tutor: app.globalData.regtutor
-    //   },
-    //   success: function (res) {
-    //     //重置选择的课程数据
-    //     refer.data.courseID = '';
-    //     if (res.data.code != 0) {
-    //       wx.showModal({
-    //         title: '提示',
-    //         content: res.data.result,
-    //         success: function (res) {
-    //           refer.setData({
-    //             progress: 100
-    //           })
-    //           if (res.confirm) {
-    //             wx.redirectTo({
-    //               url: '../page_005/page_005',
-    //             })
-    //           } else if (res.cancel) {
-    //             wx.redirectTo({
-    //               url: '../page_005/page_005',
-    //             })
-    //           }
-    //         }
-    //       })
-    //     }
-    //     if (res.data.code == 2) {
-    //       refer.toTip(res.data.result);
-    //     }
-    //     if (res.data.code == 0) {
-    //       refer.toTip(res.data.result);
-    //     }
-    //   }
-    // })
+  toSure: function () {
+    let refer = this;
+    let courseid = refer.getCourseID();
+    if(refer.data.courseID==''){
+      wx.showToast({
+        title: '请选择课程',
+        image: '../image/tabbar/25.png',
+        duration: 2000
+      })
+      return
+    }
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/getCourse/chooseCourse',
+      method: 'POST',
+      header: {
+        "Content-Type": "application/json"
+      },
+      data: {
+        id: courseid,
+        userid: wx.getStorageSync('uid')
+      },
+      success: function (res) {
+        if(res.data.code==1){
+          wx.showModal({
+            title: '提示',
+            content: res.data.msg,
+            success: function (res) {
+              refer.setData({
+                progress: 100
+              })
+              if (res.confirm) {
+                wx.redirectTo({
+                  url: '../page_010/page_010',
+                })
+              } else if (res.cancel) {
+                wx.redirectTo({
+                  url: '../page_028/page_028',
+                })
+              }
+            }
+          })
+        }else{
+          wx.showToast({
+            title: res.data.msg,
+            image: '../image/tabbar/25.png',
+            duration: 2000
+          })
+          return
+        }
+      }
+    })
   },
   //获取选择的课程的ID
   getCourseID: function () {
@@ -181,21 +169,6 @@ Page({
       }
     }
     return refer.data.courseID;
-  },
-  progress: function () {
-    let refer = this;
-    if (refer.data.progress >= 100) {
-      // this.setData({
-      //   disabled: false
-      // });
-      return true;
-    }
-    refer.setData({
-      progress: ++refer.data.progress
-    });
-    setTimeout(function () {
-      refer.progress();
-    }, 20);
   },
   toBack: function () {
     wx.redirectTo({

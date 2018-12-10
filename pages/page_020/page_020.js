@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    button: []
+    button: [],
+    passimg: app.globalData.serverUrl+'/Emp/mobile/page_020/5.png'
   },
 
   /**
