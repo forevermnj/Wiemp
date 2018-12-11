@@ -88,7 +88,8 @@ Page({
   toTip:function(tit){
     wx.showToast({
       title: tit,
-      image:'../image/tabbar/25.png',
+      icon:'none',
+      mask:true,
       duration: 2000
     })
   },

@@ -1,7 +1,6 @@
-
+var app = getApp();
+var util = require('../../utils/util.js');
 Page({
-
- 
   data: {
      imgdata:[
        { url: '../image/tabbar/32.png'},
@@ -19,7 +18,8 @@ Page({
      indeximg: '../image/tabbar/2.png',
      catagaryimg: '../image/tabbar/5.png',
      loginimg: '../image/tabbar/31.png',
-     center: '../image/tabbar/3.png'
+     center: '../image/tabbar/3.png',
+     userheadimg: wx.getStorageSync('headImage')
      
   },
   toMyCourse:function(){
@@ -33,7 +33,7 @@ Page({
     });
   },
   onLoad: function () {
-
+    console.log('=====' + wx.getStorageSync('headImage'));
   },
   toIndex: function () {
     let refer = this;

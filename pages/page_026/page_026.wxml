@@ -1,6 +1,6 @@
 <view class='style5'>
    <view class='style15'>
-     <view class='style25'><image class='style27' src='{{headimg}}'></image><text class='style28'>159****8511</text></view>
+     <view class='style25'><image class='style27' src='{{userheadimg}}'></image><text class='style28'>159****8511</text></view>
      <view class='style26'></view>
    </view>
    <scroll-view class='style4' scroll-y='true'>
