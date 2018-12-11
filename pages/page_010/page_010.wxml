@@ -1,11 +1,26 @@
 <scroll-view class='.zhud' scroll-y="true">
 
 <view class='style8'>
-  <image class='style9' src='https://www.learnzp.com/Emp/mobile/page_010/12.png'></image>
-  <view class='style10'>
-   <view>Power</view>
-   <view class='style11'>{{score}}</view>
-   <view><image class='style13' src='{{starUrl}}'></image></view>
+  <!--轮播图片-->
+  <view class='style14'>
+   <swiper indicator-active-color="red" indicator-dots="true" class="swiper_container"  autoplay="true"  interval="2000" >
+    <block wx:for="{{msgList}}">
+        <swiper-item>
+          <image width="375" height="100" class="swiper_item" src='{{item.url}}'></image>
+        </swiper-item>
+     </block>
+   </swiper>
+  </view>
+
+  <!--滚动消息-->
+  <view class='style16'>
+   <swiper class="swiper_container2" vertical="true" autoplay="true" circular="true" interval="2000">
+    <block wx:for="{{msgList}}">
+        <swiper-item class='swiper_item2'>
+          <view class="swiper_item2">{{item.title}}</view>
+        </swiper-item>
+    </block>
+   </swiper>
   </view>
   
 </view>

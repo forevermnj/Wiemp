@@ -148,12 +148,14 @@
 .style8{
   border-width: 1px;
   border-color: #D8D8D8;
+  /* border-color:red; */
   border-style: solid;
   border-left: none;
   border-right: none;
   background-color: #FFFFFF;
-  display: flex;
-  justify-content:left;
+  /* display: flex;
+  justify-content:left; */
+  height: 25%;
   
 }
 
@@ -168,17 +170,20 @@
 
 .style10{
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   flex-direction: column;
-  align-items:flex-start;
+  /* align-items:flex-start; */
   margin-left: 10px;
+  margin-top: 12px;
   color:#757575;
   font-size: 14px;
+  border-style: solid;
+  border-width: 0px;
 }
 
 .style11{
   color:#4FCB19;
-  font-size: 28px;
+  font-size: 18px;
 }
 
 .style12{
@@ -191,9 +196,71 @@
 }
 
 .style13{
-  width: 32px;
-  height: 32px;
+  width: 16px;
+  height: 16px;
 }
+
+.style14{
+  border-style: solid;
+  border-width: 0px;
+  width: 100%;
+  height: 85%;
+}
+
+.style15{
+  width: 16px;
+  height: 16px;
+  
+}
+
+.style16{
+  border-style: solid;
+  border-width: 0px;
+  width: 98%;
+  height: 10%;
+  font-size: 15px;
+  margin-top: 2px;
+}
+
+.swiper_container {
+  border-style: solid;
+  border-width: 0px;
+  height:100%;
+  width:100%;
+  
+}
+
+.swiper_item {
+  width: 100%;
+  height: 100%;
+  border-style: solid;
+  border-width: 0px;
+}
+
+
+.swiper_container2 {
+  border-style: solid;
+  border-width: 0px;
+  height:100%;
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.swiper_item2 {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  font-size: 25rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: 2px;
+  color: red;
+}
+
+
 
 .footerstyle1 {
   position: absolute;

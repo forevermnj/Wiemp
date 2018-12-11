@@ -8,7 +8,13 @@ Page({
     indeximg:'../image/tabbar/2.png',
     catagaryimg:'../image/tabbar/6.png',
     loginimg:'../image/tabbar/31.png',
-    center:'../image/tabbar/3.png'
+    center:'../image/tabbar/3.png',
+    noticeimg:'../image/tabbar/43.png',
+    msgList: [
+      { url: "https://www.learnzp.com/Emp/mobile/page_010/16.jpg", title: "公告:2019年新课程即将上线啦" },
+      { url: "https://www.learnzp.com/Emp/mobile/page_010/17.jpg", title: "公告:2019年新课程即将上线啦" },
+      { url: "https://www.learnzp.com/Emp/mobile/page_010/18.jpg", title: "公告:2019年新课程即将上线啦" }
+      ]
    
   },
   clickImg:function(e){
