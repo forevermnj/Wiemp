@@ -88,7 +88,8 @@ Page({
   toTip:function(tit){
     wx.showToast({
       title: tit,
-      image:'../image/tabbar/25.png',
+      icon:'none',
+      mask:true,
       duration: 2000
     })
   },
@@ -114,9 +115,29 @@ Page({
       return
     }
 
-    wx.redirectTo({
-      url: '../page_023/page_023',
+    /**
+     * 校验手机号是否被注册
+     */
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/register/checkPhone',
+      method: 'POST',
+      header: {
+        "Content-Type": "application/json"
+      },
+      data: {
+        phone: app.globalData.regtel
+      },
+      success: function (res) {
+        if (res.data.code == 1) {
+          wx.redirectTo({
+            url: '../page_023/page_023',
+          })
+        }else{
+          refer.toTip(res.data.result);
+        }
+      }
     })
+    
   }
   
   

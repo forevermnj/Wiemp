@@ -8,7 +8,14 @@ Page({
     indeximg:'../image/tabbar/2.png',
     catagaryimg:'../image/tabbar/6.png',
     loginimg:'../image/tabbar/31.png',
-    center:'../image/tabbar/3.png'
+    center:'../image/tabbar/3.png',
+    noticeimg:'../image/tabbar/43.png',
+    msgList: [
+      { url: "../image/tabbar/46.jpg", title: "公告:2019年新课程即将上线啦" },
+      { url: "../image/tabbar/45.jpg", title: "公告:2019年新课程即将上线啦" },
+      { url: "../image/tabbar/44.jpg", title: "公告:2019年新课程即将上线啦" }
+      
+      ]
    
   },
   clickImg:function(e){

@@ -37,10 +37,7 @@ App({
                     data: resz.data.userInfo.nickName
                   });
                   //将用户头像存入缓存中
-                  wx.setStorage({
-                    key: 'headImage',
-                    data: resz.data.userInfo.avatarUrl
-                  });
+                  wx.setStorageSync("headImage", resz.data.userInfo.avatarUrl);
                 }
               })
             },

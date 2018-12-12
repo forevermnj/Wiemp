@@ -1,60 +1,61 @@
 <view class='style5'>
    <view class='style15'>
-     <view class='style25'><image class='style27' src='{{headimg}}'></image><text class='style28'>159****8511</text></view>
+     <view class='style25'><image class='style27' src='{{userheadimg}}'></image><text class='style28'>159****8511</text></view>
      <view class='style26'></view>
    </view>
    <scroll-view class='style4' scroll-y='true'>
       <view class='style1'>
-        <view catchtap='toMyCourse' class='style6'>
+        <view catchtap='toMyCourse' class='style6' hover-class='style29' hover-stay-time='50'>
           <view class='style16'><image catchtap='toMyCourse' class='style24' src='{{imgdata[0].url}}'></image></view>
           <view catchtap='toMyCourse' class='style17'>我的课程</view>
         </view>
-        <view class='style7' catchtap='toSelectCourse'>
+        <view class='style7' catchtap='toSelectCourse' hover-class='style29' hover-stay-time='50'>
           <view class='style18'><image catchtap='toSelectCourse' class='style24' src='{{imgdata[3].url}}'></image></view>
           <view catchtap='toSelectCourse' class='style19'>选择课程</view>
         </view>
-        <view class='style8'>
+        <view class='style8' hover-class='style29' hover-stay-time='50'>
           <view class='style20'><image class='style24' src='{{imgdata[2].url}}'></image></view>
           <view class='style21'>安全中心</view>
         </view>
       </view>
       <view class='style2'>
-        <view class='style9'>
-          <view class='style22'><image class='style24' src='{{imgdata[1].url}}'></image></view>
-          <view class='style23'>设置</view>
+        <view catchtap='toSetting' class='style9' hover-class='style29' hover-stay-time='50'>
+          <view class='style22'><image catchtap='toSetting' class='style24' src='{{imgdata[1].url}}'></image></view>
+          <view catchtap='toSetting' class='style23'>设置</view>
         </view>
-        <view class='style10 ' catchtap="toAddCourse">
+        <view catchtap="toAddCourse" class='style10' hover-class='style29' hover-stay-time='50'>
           <view class='style20'><image class='style24' src='{{imgdata[5].url}}'></image></view>
-          <view class='style21' >添加课程</view>
+          <view class='style21'>课程申请</view>
         </view>
-          <view class='style11'><view class='style20'><image class='style24' src='{{imgdata[4].url}}'></image></view>
-          <view class='style21'>未开放</view>
+          <view class='style11' hover-class='style29' hover-stay-time='50'>
+           <view class='style20'><image class='style24' src='{{imgdata[6].url}}'></image></view>
+           <view class='style21'>帮助</view>
           </view>
       </view>
       <view class='style3'>
-        <view class='style12'>
-          <view class='style20'><image class='style24' src='{{imgdata[4].url}}'></image></view>
-          <view class='style21'>未开放</view>
+        <view class='style12' hover-class='style29' hover-stay-time='50'>
+          <view class='style20'><image class='style24' src='{{imgdata[7].url}}'></image></view>
+          <view class='style21'>关于</view>
         </view>
-        <view class='style13'>
-          <view class='style20'><image class='style24' src='{{imgdata[4].url}}'></image></view>
-          <view class='style21'>未开放</view>
+        <view class='style13' hover-class='style29' hover-stay-time='50'>
+          <view class='style20'><image class='style24' src='{{imgdata[8].url}}'></image></view>
+          <view class='style21'>联系我们</view>
         </view>
-        <view class='style14'>
-          <view class='style20'><image class='style24' src='{{imgdata[4].url}}'></image></view>
-          <view class='style21'>未开放</view>
+        <view class='style14' hover-class='style29' hover-stay-time='50'>
+          <view class='style20'><image class='style24' src='{{imgdata[9].url}}'></image></view>
+          <view class='style21'>消息</view>
         </view>
       </view>
       <view class='style3'>
-        <view class='style12'>
+        <view class='style12' hover-class='style29' hover-stay-time='50'>
           <view class='style20'><image class='style24' src='{{imgdata[4].url}}'></image></view>
           <view class='style21'>未开放</view>
         </view>
-        <view class='style13'>
+        <view class='style13' hover-class='style29' hover-stay-time='50'>
           <view class='style20'><image class='style24' src='{{imgdata[4].url}}'></image></view>
           <view class='style21'>未开放</view>
         </view>
-        <view class='style14'>
+        <view class='style14' hover-class='style29' hover-stay-time='50'>
           <view class='style20'><image class='style24' src='{{imgdata[4].url}}'></image></view>
           <view class='style21'>未开放</view>
         </view>

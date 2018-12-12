@@ -1,7 +1,6 @@
-
+var app = getApp();
+var util = require('../../utils/util.js');
 Page({
-
- 
   data: {
      imgdata:[
        { url: '../image/tabbar/32.png'},
@@ -9,13 +8,18 @@ Page({
        { url: '../image/tabbar/34.png'},
        { url: '../image/tabbar/35.png'},
        { url: '../image/tabbar/37.png' },
-       { url: '../image/tabbar/38.png'}
+       { url: '../image/tabbar/38.png' },
+       { url: '../image/tabbar/39.png' },
+       { url: '../image/tabbar/40.png' },
+       { url: '../image/tabbar/41.png' },
+       { url: '../image/tabbar/42.png' }
      ],
      headimg:'../image/tabbar/36.png',
      indeximg: '../image/tabbar/2.png',
      catagaryimg: '../image/tabbar/5.png',
      loginimg: '../image/tabbar/31.png',
-     center: '../image/tabbar/3.png'
+     center: '../image/tabbar/3.png',
+     userheadimg: wx.getStorageSync('headImage')
      
   },
   toMyCourse:function(){
@@ -34,7 +38,7 @@ Page({
     });
   },
   onLoad: function () {
-
+    console.log('=====' + wx.getStorageSync('headImage'));
   },
   toIndex: function () {
     let refer = this;

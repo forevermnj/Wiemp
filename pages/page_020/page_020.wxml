@@ -1,10 +1,8 @@
 <view class='style1'>
-
-
-  <icon type="success" size="80"/>
-  <view class='style5'>恭喜您通过场景学习</view>
-
   
+  <view class='style5'>
+    <image src='{{passimg}}'></image>
+  </view>
 
 </view>
 

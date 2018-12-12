@@ -28,14 +28,14 @@
 </view>
 </scroll-view>
 
-<view wx:if="{{ifsubmit==false}}" catchtap='toRegister' class='style16'>
+<view catchtap='toSure' class='style16'>
   确定
 </view>
  
-<!--注册进度-->
+<!--注册进度
 <view wx:if="{{ifsubmit}}">
  <progress percent="{{progress}}" stroke-width="40" class='style17'/>
-</view>
+</view>-->
 
 <!--底部导航条-->
 <view class="footerstyle1">

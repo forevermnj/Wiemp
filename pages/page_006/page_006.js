@@ -1,6 +1,7 @@
 
 var app = getApp();
 var util = require('../../utils/util.js');
+const plugin = requirePlugin("WechatSI");
 Page({
 
   /**
@@ -31,16 +32,30 @@ Page({
       imgwordurl: '../image/page_002/3.gif'
     });
     let words = refer.data.wordList[refer.data.wordIndex].word;
-    wx.request({
-      url: app.globalData.serverUrl+'/Emp/mobile/word/pronunciation/' + words,
-      method: 'GET',
+    plugin.textToSpeech({
+      lang: "en_US",
+      tts: true,
+      content: words,
       success: function (res) {
-        var tempFilePath = res.data;
+        console.log("succ tts", res.filename)
         wx.playBackgroundAudio({
-          dataUrl: tempFilePath
+          dataUrl: res.filename
         });
+      },
+      fail: function (res) {
+        console.log("fail tts", res)
       }
-    });
+    })
+    // wx.request({
+    //   url: app.globalData.serverUrl+'/Emp/mobile/word/pronunciation/' + words,
+    //   method: 'GET',
+    //   success: function (res) {
+    //     var tempFilePath = res.data;
+    //     wx.playBackgroundAudio({
+    //       dataUrl: tempFilePath
+    //     });
+    //   }
+    // });
     //监听播放停止
     wx.onBackgroundAudioStop(function () {
       refer.setData({

@@ -29,7 +29,7 @@
 .style4{
   font-size: 15px;
   border-bottom-style:ridge;
-  border-bottom-color:green;
+  border-bottom-color:#ABA1A0;
   border-width: 1pt;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .style6{
-  background-color:green;
+  background-color:#139ED5;
   color:white;
   width:100%;
   margin-top: 30pt;
@@ -52,7 +52,7 @@
 }
 
 .style8{
-  color:green;
+  color:#50BDDC;
   margin-top: 10px;
 }
 
@@ -61,7 +61,7 @@
 }
 
 .style10{
-  width: 90%;
+  width: 70%;
 }
 
 .style11{
@@ -76,7 +76,7 @@
 .style13{
   font-size: 15px;
   border-bottom-style:ridge;
-  border-bottom-color:green;
+  border-bottom-color:#ABA1A0;
   border-width: 1pt;
   width: 70%;
   color:#808080;
