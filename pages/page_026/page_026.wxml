@@ -23,9 +23,9 @@
           <view class='style22'><image class='style24' src='{{imgdata[1].url}}'></image></view>
           <view class='style23'>设置</view>
         </view>
-        <view class='style10'>
-          <view class='style20'><image class='style24' src='{{imgdata[4].url}}'></image></view>
-          <view class='style21'>未开放</view>
+        <view class='style10 ' catchtap="toAddCourse">
+          <view class='style20'><image class='style24' src='{{imgdata[5].url}}'></image></view>
+          <view class='style21' >添加课程</view>
         </view>
           <view class='style11'><view class='style20'><image class='style24' src='{{imgdata[4].url}}'></image></view>
           <view class='style21'>未开放</view>

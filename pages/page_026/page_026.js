@@ -8,7 +8,8 @@ Page({
        { url: '../image/tabbar/33.png'},
        { url: '../image/tabbar/34.png'},
        { url: '../image/tabbar/35.png'},
-       { url: '../image/tabbar/37.png' }
+       { url: '../image/tabbar/37.png' },
+       { url: '../image/tabbar/38.png'}
      ],
      headimg:'../image/tabbar/36.png',
      indeximg: '../image/tabbar/2.png',
@@ -25,6 +26,11 @@ Page({
   toSelectCourse:function(){
     wx.redirectTo({
       url: '../page_028/page_028',
+    });
+  },
+  toAddCourse:function(){
+    wx.redirectTo({
+      url: '../page_029/page_029'
     });
   },
   onLoad: function () {
