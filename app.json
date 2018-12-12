@@ -1,7 +1,7 @@
 {
   "pages": [
     
-    "pages/index/index",
+    "pages/index/index",  
     "pages/page_001/page_001",
     "pages/page_002/page_002",
     "pages/page_003/page_003",
@@ -30,6 +30,7 @@
     "pages/page_026/page_026",
     "pages/page_027/page_027",
     "pages/page_028/page_028",
+    "pages/page_029/page_029",
     "pages/page_test/page_test",
     "pages/logs/logs"
   ],

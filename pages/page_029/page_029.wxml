@@ -1,0 +1,32 @@
+ <view class="contentStyle" catchtap='hideDropDown'>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class="section" style="display:flex;">
+        <label class="nameStyle" name="courseName"> Course Name :</label>
+        <input id="courseName" name="courseName"/>
+      </view>
+      <view class="section" style="display:flex;">
+        <view class="nameStyle"> Course Type : </view>
+          <Select item-list = "{{itemList}}" show-drop="{{showTypeDrop}}" bind:drop='showType' bind:myget = "getType"></Select>
+      </view>
+      <view class="section" style="display:flex;">
+        <view class="nameStyle" name="courseState"> Course State :</view>
+        <Select item-list = "{{stateList}}" show-drop="{{showStateDrop}}" bind:drop='showState' bind:myget = "getState"></Select>
+      </view>
+      <view class="section" style="display:flex;">
+        <view class="nameStyle" name="courseDescribe">Course Describe :</view>
+      </view>
+       <view class="section" style="display:flex;">
+            <textarea name="courseDescribe" maxlength='1000'></textarea>
+      </view>
+      <view class="section" style="display:flex;">
+        <button form-type='submit'> Confirm </button>
+      </view>
+  </form>
+</view>
+ <!--底部导航条-->
+  <view class="footerstyle1">
+      <view catchtap='toBack' class="smallgroup">
+        <image catchtap='toBack' class='tabbar1' src='{{backimg}}'></image>
+        <view catchtap='toBack' class='tabbar2'>Previous</view>
+      </view>
+  </view>

@@ -1,0 +1,39 @@
+
+.selectParent{
+    border: 1px solid #e2e2e2;
+    background: white;
+    position: relative;
+    width:350rpx;
+    height:56rpx;
+    padding: 0 6rpx;
+}
+.com-sImg{
+    position: absolute;
+    right: 5%;
+    top: 10%;
+    width: 48rpx;
+    height: 48rpx;
+}
+.com-sList{
+    background: white;
+    width:362rpx;
+    position: absolute;
+    border: 1px solid #e2e2e2;
+    border-top: none;
+    box-sizing: border-box;
+    z-index: 3;
+    overflow: auto;
+    padding: 0 6rpx;
+}
+.com-sItem{
+    border-top: 1px solid #e2e2e2;
+    padding: 0 6rpx;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height:48rpx;
+}
+.com-sItem:first-child{
+  border-top:none;
+}
