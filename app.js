@@ -15,7 +15,7 @@ App({
               //console.log({ encryptedData: resu.encryptedData, iv: resu.iv, code: res.code })
               //解密用户信息
               wx.request({
-                url: 'https://www.learnzp.com/Emp/mobile/login/login',
+                url: 'https://aisss5ct.qcloud.la/Emp/mobile/login/login',
                 method: 'POST',
                 header: {
                   "Content-Type": "application/json"
@@ -82,7 +82,7 @@ App({
     });
   },
   globalData: {
-    serverUrl:'https://www.learnzp.com',//服务器地址
+    serverUrl:'https://aisss5ct.qcloud.la',//服务器地址
     easyError:'',
     easyErrorId: '',
     examFlag:false,//单词考试数据加载失败
