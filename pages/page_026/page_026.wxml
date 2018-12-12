@@ -23,7 +23,7 @@
           <view class='style22'><image catchtap='toSetting' class='style24' src='{{imgdata[1].url}}'></image></view>
           <view catchtap='toSetting' class='style23'>设置</view>
         </view>
-        <view class='style10' hover-class='style29' hover-stay-time='50'>
+        <view catchtap="toAddCourse" class='style10' hover-class='style29' hover-stay-time='50'>
           <view class='style20'><image class='style24' src='{{imgdata[5].url}}'></image></view>
           <view class='style21'>课程申请</view>
         </view>

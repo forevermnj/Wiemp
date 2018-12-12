@@ -1,0 +1,11 @@
+<view class='com-selectBox' >
+  <view class=' selectParent' catchtap='showItemData'>
+    <view data-index="{{selectOption.id}}">{{selectOption.name}}</view>
+    <image class="com-sImg" src='{{showDrop?upImage:downImage}}' />
+  </view>
+  <view class='com-sList' hidden="{{showDrop? false:true}}">
+    <block wx:for="{{itemList}}" wx:for-item="selectItem" wx:for-index="selectItemIndex" wx:key="selectItemIndex">
+      <view class='com-sItem' data-selectItem="{{selectItem}}" catchtap='selectItem'>{{selectItem.name}}</view> 
+    </block>
+  </view>
+</view>

@@ -32,6 +32,11 @@ Page({
       url: '../page_028/page_028',
     });
   },
+  toAddCourse:function(){
+    wx.redirectTo({
+      url: '../page_029/page_029'
+    });
+  },
   onLoad: function () {
     console.log('=====' + wx.getStorageSync('headImage'));
   },
