@@ -52,6 +52,8 @@
 
 .style8{
   margin-top: 50px;
+  color:#999999;
+  font-size: 15px;
 }
 
 .style9{
