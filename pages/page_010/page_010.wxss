@@ -155,7 +155,7 @@
   background-color: #FFFFFF;
   /* display: flex;
   justify-content:left; */
-  height: 25%;
+  height: 30%;
   
 }
 

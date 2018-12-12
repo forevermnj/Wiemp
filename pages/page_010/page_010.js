@@ -11,9 +11,10 @@ Page({
     center:'../image/tabbar/3.png',
     noticeimg:'../image/tabbar/43.png',
     msgList: [
-      { url: "https://www.learnzp.com/Emp/mobile/page_010/16.jpg", title: "公告:2019年新课程即将上线啦" },
-      { url: "https://www.learnzp.com/Emp/mobile/page_010/17.jpg", title: "公告:2019年新课程即将上线啦" },
-      { url: "https://www.learnzp.com/Emp/mobile/page_010/18.jpg", title: "公告:2019年新课程即将上线啦" }
+      { url: "../image/tabbar/46.jpg", title: "公告:2019年新课程即将上线啦" },
+      { url: "../image/tabbar/45.jpg", title: "公告:2019年新课程即将上线啦" },
+      { url: "../image/tabbar/44.jpg", title: "公告:2019年新课程即将上线啦" }
+      
       ]
    
   },
