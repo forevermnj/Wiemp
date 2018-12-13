@@ -75,6 +75,11 @@ Page({
     wx.redirectTo({
       url: '../page_026/page_026',
     });
+  },
+  toSetting:function(){
+    wx.redirectTo({
+      url: '../page_030/page_030',
+    });
   }
   
 })

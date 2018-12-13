@@ -1,0 +1,21 @@
+<view class='main'>
+  <view class="weui-cells weui-cells_after-title">
+    <view bindtap='toQuit' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">退出</view>
+      <view bindtap='toQuit' class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+    <view bindtap='toClearCache' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">清除缓存</view>
+      <view bindtap='toClearCache' class="weui-cell__ft weui-cell__ft_in-access">{{cacheSize}}</view>
+    </view>
+  </view>
+</view>
+
+
+<!--底部导航条-->
+<view class="footerstyle1">
+    <view bindtap='toPrevious' class="smallgroup">
+      <image bindtap='toPrevious' class='tabbar1' src='{{previousimg}}'></image>
+      <view bindtap='toPrevious' class='tabbar2'>Previous</view>
+    </view>
+</view>
