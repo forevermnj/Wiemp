@@ -60,7 +60,7 @@ Page({
       wx.setStorageSync("pwd", refer.data.code);
     }
     
-    // console.log('登录名' + wx.getStorageSync('userName') + '登录密码' + wx.getStorageSync('pwd'));
+    //console.log('登录名' + wx.getStorageSync('userName') + '登录密码' + wx.getStorageSync('pwd'));
     util.showBusy('登录中...');
     
     wx.request({

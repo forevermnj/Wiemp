@@ -2,43 +2,34 @@ var app = getApp();
 var util = require('../../utils/util.js');
 Page({
   data: {
-     imgdata:[
-       { url: '../image/tabbar/32.png'},
-       { url: '../image/tabbar/33.png'},
-       { url: '../image/tabbar/34.png'},
-       { url: '../image/tabbar/35.png'},
-       { url: '../image/tabbar/37.png' },
-       { url: '../image/tabbar/38.png' },
-       { url: '../image/tabbar/39.png' },
-       { url: '../image/tabbar/40.png' },
-       { url: '../image/tabbar/41.png' },
-       { url: '../image/tabbar/42.png' }
-     ],
-     headimg:'../image/tabbar/36.png',
+     userCenterData:[],
      indeximg: '../image/tabbar/2.png',
      catagaryimg: '../image/tabbar/5.png',
      loginimg: '../image/tabbar/31.png',
      center: '../image/tabbar/3.png',
-     userheadimg: wx.getStorageSync('headImage')
-     
+     userheadimg: wx.getStorageSync('headImage'),
+     tel: wx.getStorageSync('userName'),
+     nickName: wx.getStorageSync('nickName')
   },
-  toMyCourse:function(){
-    wx.redirectTo({
-      url: '../page_027/page_027',
-    });
-  },
-  toSelectCourse:function(){
-    wx.redirectTo({
-      url: '../page_028/page_028',
-    });
-  },
-  toAddCourse:function(){
-    wx.redirectTo({
-      url: '../page_029/page_029'
-    });
+  toClick:function(e){
+    let path = e.currentTarget.dataset.hi;
+    if(path!="" && path!=null){
+      wx.redirectTo({
+        url: path
+      });
+    }
   },
   onLoad: function () {
-    console.log('=====' + wx.getStorageSync('headImage'));
+    let refer = this;
+    wx.request({
+      url: app.globalData.serverUrl + '/Emp/mobile/userCenter/getUserCenterData',
+      method: 'GET',
+      success: function (res) {
+        refer.setData({
+          userCenterData:res.data.result
+        });
+      }
+    });
   },
   toIndex: function () {
     let refer = this;
@@ -75,11 +66,5 @@ Page({
     wx.redirectTo({
       url: '../page_026/page_026',
     });
-  },
-  toSetting:function(){
-    wx.redirectTo({
-      url: '../page_030/page_030',
-    });
   }
-  
 })

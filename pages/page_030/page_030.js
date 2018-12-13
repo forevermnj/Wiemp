@@ -26,6 +26,9 @@ Page({
           refer.setData({
             cacheSize: wx.getStorageInfoSync().currentSize + "KB"
           })
+          wx.redirectTo({
+            url: '../page_005/page_005',
+          });
         } else {
           
         }

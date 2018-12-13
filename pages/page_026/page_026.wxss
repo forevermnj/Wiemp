@@ -3,17 +3,21 @@
   border-style: solid;
   border-width: 0px;
   width: 100%;
-  height: 26%;
+  height: 31.5%;
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 .style2{
   border-style: solid;
-  border-width: 0px;
+  border-width: 1px;
+  border-color: #EBEBEB;
   width: 100%;
-  height: 26%;
+  height: 11%;
+  background-color: #FEFEFE;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,21 +25,27 @@
 
 .style3{
   border-style: solid;
-  border-width: 0px;
-  width: 100%;
-  height: 26%;
+  border-width: 1px;
+  width: 40%;
+  height: 80%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+  border-color: #EBEBEB;
 }
 
 .style4{
   border-style: solid;
   border-width: 0px;
   width: 100%;
-  height: 70%;
+  height: 60%;
   background-color: #FEFEFE;
   margin-top: 10px;
+  position: absolute;
+  bottom: 45px;
 }
 
 .style5{
@@ -70,109 +80,34 @@
 .style7{
   border-style: solid;
   border-width: 1px;
-  width: 35%;
-  height: 100%;
-  border-color: #EBEBEB;
+  width: 40%;
+  height: 80%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  border-top: none;
   border-bottom: none;
   border-right: none;
+  border-left: none;
 }
 
 .style8{
-  border-style: solid;
-  border-width: 1px;
-  width: 35%;
-  height: 100%;
-  border-color: #EBEBEB;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-bottom: none;
+  color: red;
 }
 
 .style9{
-  border-style: solid;
-  border-width: 1px;
-  width: 35%;
-  height: 100%;
-  border-color: #EBEBEB;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-bottom: none;
-  border-right: none;
+  font-size: 15px;
 }
 
 .style10{
-  border-style: solid;
-  border-width: 1px;
-  width: 35%;
-  height: 100%;
-  border-color: #EBEBEB;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-bottom: none;
-  border-right: none;
-}
-
-.style11{
-  border-style: solid;
-  border-width: 1px;
-  width: 35%;
-  height: 100%;
-  border-color: #EBEBEB;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-bottom: none;
-}
-
-.style12{
-  border-style: solid;
-  border-width: 1px;
-  width: 35%;
-  height: 100%;
-  border-color: #EBEBEB;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-bottom: none;
-  border-right: none;
-}
-
-.style13{
-  border-style: solid;
-  border-width: 1px;
-  width: 35%;
-  height: 100%;
-  border-color: #EBEBEB;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-bottom: none;
-  border-right: none;
-}
-
-.style14{
-  border-style: solid;
-  border-width: 1px;
-  width: 35%;
-  height: 100%;
-  border-color: #EBEBEB;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-bottom: none;
+  font-size: 15px;
 }
 
 .style15{
   border-style: solid;
   border-width: 1px;
   width: 100%;
-  height: 20%;
+  height: 19%;
   background-color: #686F78;
   display: flex;
   flex-direction: row;
@@ -200,69 +135,6 @@
   margin-top: 15px;
 }
 
-.style18{
-  border-style: solid;
-  border-width: 0px;
-  width:100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.style19{
-  border-style: solid;
-  border-width: 0px;
-  width:100%;
-  color: #2F2F2F;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 15px;
-}
-
-.style20{
-  border-style: solid;
-  border-width: 0px;
-  width:100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.style21{
-  border-style: solid;
-  border-width: 0px;
-  width:100%;
-  color: #2F2F2F;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 15px;
-}
-
-.style22{
-  border-style: solid;
-  border-width: 0px;
-  width:100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.style23{
-  border-style: solid;
-  border-width: 0px;
-  width:100%;
-  color: #2F2F2F;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 15px;
-}
-
 .style24{
   width: 32px;
   height: 32px;
@@ -276,7 +148,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 55%;
+  width: 25%;
   height: 100%;
 }
 
@@ -286,16 +158,16 @@
   border-color: red;
   color:white;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  width: 45%;
+  width: 75%;
   height: 100%;
 }
 
 .style27{
   width: 60px;
   height: 60px;
-  border-radius: 50px;
+  border-radius: 10px;
 }
 
 .style28{
