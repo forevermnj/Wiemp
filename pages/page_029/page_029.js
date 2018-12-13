@@ -133,7 +133,6 @@ Page({
         }else if(res.data.state == '1'){
           wx.showToast({
             title: 'Added successfully, wait Approve',
-            icon: 'none',
             duration: 2000,
             success: function(){
               wx.redirectTo({

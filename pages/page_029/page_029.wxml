@@ -1,25 +1,27 @@
  <view class="contentStyle" catchtap='hideDropDown'>
   <form bindsubmit="formSubmit" bindreset="formReset">
       <view class="section" style="display:flex;">
-        <label class="nameStyle" name="courseName"> Course Name :</label>
-        <input id="courseName" name="courseName"/>
+        <label class="nameStyle" name="courseName"> Course Name </label>
+        <input id="courseName" name="courseName" placeholder='Pleace enter course name'/>
       </view>
       <view class="section" style="display:flex;">
-        <view class="nameStyle"> Course Type : </view>
+        <view class="nameStyle"> Course Type </view>
           <Select item-list = "{{itemList}}" show-drop="{{showTypeDrop}}" bind:drop='showType' bind:myget = "getType"></Select>
       </view>
       <view class="section" style="display:flex;">
-        <view class="nameStyle" name="courseState"> Course State :</view>
+        <view class="nameStyle" name="courseState"> Course State </view>
         <Select item-list = "{{stateList}}" show-drop="{{showStateDrop}}" bind:drop='showState' bind:myget = "getState"></Select>
       </view>
-      <view class="section" style="display:flex;">
-        <view class="nameStyle" name="courseDescribe">Course Describe :</view>
+      <view class="section courseDescribe" style="display:flex;">
+        <view class="nameStyle " name="courseDescribe">Course Describe </view>
+        
       </view>
-       <view class="section" style="display:flex;">
-            <textarea name="courseDescribe" maxlength='1000'></textarea>
+      <view>
+        <textarea name="courseDescribe" maxlength='1000'></textarea>
       </view>
-      <view class="section" style="display:flex;">
-        <button form-type='submit'> Confirm </button>
+        
+      <view class="" style="display:flex;">
+        <button class="confrimButton" form-type='submit'> Confirm </button>
       </view>
   </form>
 </view>
