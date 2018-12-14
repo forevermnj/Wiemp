@@ -47,6 +47,20 @@ Page({
     });
   },
   clogin: function (){
+    wx.getUserInfo({
+      success: function (res) {
+        let userInfo = res.userInfo
+        let nickName = userInfo.nickName
+        let avatarUrl = userInfo.avatarUrl
+        console.log(nickName);
+        //将用户昵称存入缓存中
+        wx.setStorageSync("nickName", nickName);
+        //将用户头像存入缓存中
+        wx.setStorageSync("headImage", avatarUrl);
+      }
+    })
+
+
     let refer = this;
     let openId = wx.getStorageSync('openId');
     let nickName = wx.getStorageSync('nickName');
@@ -59,6 +73,12 @@ Page({
       //将登录密码存入缓存中
       wx.setStorageSync("pwd", refer.data.code);
     }
+
+    //判断onLaunch是否执行完成
+    // console.log("====" + app.globalData.launchFlag);
+    // if (!app.globalData.launchFlag){
+    //     return
+    // }
     
     //console.log('登录名' + wx.getStorageSync('userName') + '登录密码' + wx.getStorageSync('pwd'));
     util.showBusy('登录中...');
