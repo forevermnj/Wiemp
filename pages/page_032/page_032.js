@@ -15,13 +15,13 @@ Page({
     if(oldPwd == ""){
       wx.showModal({
         title: '提示',
-        content: '原密码为空，请输入确认密码'
+        content: '原密码为空，请输入原密码'
       });
     }
     if (newPwd == "") {
       wx.showModal({
         title: '提示',
-        content: '新密码为空，请输入确认密码'
+        content: '新密码为空，请输入新密码'
       });
       return;
     }
@@ -71,6 +71,7 @@ Page({
             content: '原密码不正确，请重新输入'
           });
         }else if(res.data=="1"){
+          wx.setStorageSync("pwd", newPwd);
           wx.showModal({
             title: '提示',
             content: '密码更新成功，请重新登录',
