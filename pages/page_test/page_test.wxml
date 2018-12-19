@@ -1,4 +1,1 @@
-<view class="page">
-    <progress percent="{{progress}}" stroke-width="33" />
-    <button type="primary" bindtap="upload" disabled="{{disabled}}">上传</button>
-</view>阿斯蒂
+<button open-type="contact">ddddd</button>

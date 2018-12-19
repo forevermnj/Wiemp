@@ -12,10 +12,14 @@ App({
           //调用获取用户信息接口
           wx.getUserInfo({
             success: function (resu) {
+              // let userInfo = resu.userInfo
+              // let nickName = userInfo.nickName
+              // let avatarUrl = userInfo.avatarUrl
+              // console.log(nickName);
               //console.log({ encryptedData: resu.encryptedData, iv: resu.iv, code: res.code })
               //解密用户信息
               wx.request({
-                url: 'https://aisss5ct.qcloud.la/Emp/mobile/login/login',
+                url: 'https://www.learnzp.com/Emp/mobile/login/login',
                 method: 'POST',
                 header: {
                   "Content-Type": "application/json"
@@ -27,17 +31,12 @@ App({
                 },
                 success: function (resz) {
                   //将openid存入缓存中
-                  wx.setStorage({
-                    key: "openId",
-                    data: resz.data.userInfo.openId
-                  });
+                  wx.setStorageSync("openId", resz.data.userInfo.openId);
                   //将用户昵称存入缓存中
-                  wx.setStorage({
-                    key: 'nickName',
-                    data: resz.data.userInfo.nickName
-                  });
+                  wx.setStorageSync("nickName", resz.data.userInfo.nickName);
                   //将用户头像存入缓存中
                   wx.setStorageSync("headImage", resz.data.userInfo.avatarUrl);
+                  //launchFlag = true;
                 }
               })
             },
@@ -79,7 +78,7 @@ App({
     });
   },
   globalData: {
-    serverUrl:'https://aisss5ct.qcloud.la',//服务器地址
+    serverUrl:'https://www.learnzp.com',//服务器地址
     easyError:'',
     easyErrorId: '',
     examFlag:false,//单词考试数据加载失败
@@ -99,6 +98,7 @@ App({
     scoreIndex:-1,//计算分数时用
     score:-1,//分数
     successDropLetId:7,//完成场景学习调转的droplet
-    uid:'020b28e556de4352a231650c1637653c'//测试用户ID
+    uid:'020b28e556de4352a231650c1637653c',//测试用户ID
+    launchFlag:false
   }
 })
