@@ -71,6 +71,7 @@ Page({
             content: '原密码不正确，请重新输入'
           });
         }else if(res.data=="1"){
+          wx.setStorageSync("pwd", newPwd);
           wx.showModal({
             title: '提示',
             content: '密码更新成功，请重新登录',
