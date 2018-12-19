@@ -16,7 +16,8 @@ Page({
     selectedState: "", //选中的course state的 id
     selectedType: "", //选中的course Type的id
     showTypeDrop: false, 
-    showStateDrop: false
+    showStateDrop: false,
+    disabled:false
   },
 
   onLoad: function () {
@@ -55,14 +56,16 @@ Page({
   //获取在组件中选择的course Type
   getType: function(e){
     this.setData({
-      selectedType : e.detail.id
+      selectedType : e.detail.id,
+      disabled: false
     });
   },
 
   //获取在组件中选择的course state
   getState: function (e) {
     this.setData({
-      selectedState: e.detail.id
+      selectedState: e.detail.id,
+      disabled: false
     });
   },
 
@@ -70,21 +73,24 @@ Page({
   hideDropDown: function(){
     this.setData({
       showTypeDrop: false,
-      showStateDrop: false
+      showStateDrop: false,
+      disabled: false
     });
   },
 
   //显示type下拉框
   showType: function(){
     this.setData({
-      showStateDrop: false
+      showStateDrop: false,
+      disabled: true
     });
   },
 
   //显示State 下拉框
   showState: function () {
     this.setData({
-      showTypeDrop: false
+      showTypeDrop: false,
+      disabled:true
     });
   },
 

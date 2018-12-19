@@ -1,5 +1,5 @@
  <view class="contentStyle" catchtap='hideDropDown'>
-  <form bindsubmit="formSubmit" bindreset="formReset">
+  <form bindsubmit="formSubmit">
       <view class="section" style="display:flex;">
         <label class="nameStyle" name="courseName"> Course Name </label>
         <input id="courseName" name="courseName" placeholder='Pleace enter course name'/>
@@ -17,7 +17,7 @@
         
       </view>
       <view>
-        <textarea name="courseDescribe" maxlength='1000'></textarea>
+        <textarea name="courseDescribe" disabled='{{disabled}}' maxlength='1000'></textarea>
       </view>
         
       <view class="" style="display:flex;">
