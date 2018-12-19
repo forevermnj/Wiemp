@@ -4,9 +4,9 @@
   <!--轮播图片-->
   <view class='style14'>
    <swiper indicator-active-color="red" indicator-dots="true" class="swiper_container"  autoplay="true"  interval="2000" >
-    <block wx:for="{{msgList}}">
+    <block wx:for="{{imgList}}">
         <swiper-item>
-          <image width="375" height="100" class="swiper_item" src='{{item.url}}'></image>
+          <image width="375" height="100" class="swiper_item" src='{{item.image}}'></image>
         </swiper-item>
      </block>
    </swiper>
