@@ -15,13 +15,13 @@ Page({
     if(oldPwd == ""){
       wx.showModal({
         title: '提示',
-        content: '原密码为空，请输入确认密码'
+        content: '原密码为空，请输入原密码'
       });
     }
     if (newPwd == "") {
       wx.showModal({
         title: '提示',
-        content: '新密码为空，请输入确认密码'
+        content: '新密码为空，请输入新密码'
       });
       return;
     }
