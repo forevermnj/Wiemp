@@ -17,7 +17,7 @@
 
   <!--提交-->
   <view>
-   <button open-type='startRecord' bindtap='clogin' class='style4'>登录</button>
+   <button open-type='getUserInfo' bindtap='clogin' class='style4'>登录</button>
   </view>
   <view catchtap='toRegister' class='style9'>注册</view>
   <text class='style8'>©2017-2018 Capacity Center</text>
