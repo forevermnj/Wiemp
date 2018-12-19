@@ -1,0 +1,41 @@
+<view class='main'>
+<form bindsubmit="formSubmit">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+          <view class="weui-label">原密码</view>
+      </view>
+      <view class="weui-cell__bd">
+          <input type="password" name="oldPwd"  class="weui-input" placeholder="请输入原密码"/>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+          <view class="weui-label">新密码</view>
+      </view>
+      <view class="weui-cell__bd">
+          <input type="password" name="newPwd" class="weui-input" placeholder="请输入新密码"/>
+      </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+          <view class="weui-label">确认密码</view>
+      </view>
+      <view class="weui-cell__bd">
+          <input type="password" name="ConfirmPwd"  class="weui-input" placeholder="再次确认填写"/>
+      </view>
+  </view>
+</view>
+<view class="weui-btn-area">
+    <button class="weui-btn" type="primary" form-type='submit'>确定</button>
+</view>
+</form>
+</view>
+
+<!--底部导航条-->
+<view class="footerstyle1">
+    <view bindtap='toPrevious' class="smallgroup">
+      <image bindtap='toPrevious' class='tabbar1' src='{{previousimg}}'></image>
+      <view bindtap='toPrevious' class='tabbar2'>Previous</view>
+    </view>
+</view>
